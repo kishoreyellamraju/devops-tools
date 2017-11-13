@@ -15,19 +15,19 @@ provider "aws" {
 }
 
 module "network" {
-  source = "../../../lib"
+  source = "../../../../lib"
   env = "${var.env}"
   app = "${var.appname}"
 }
 
 module "sg" {
-  source = "../../../lib"
+  source = "../../../../lib"
   env = "${var.env}"
   app = "${var.appname}"
 }
 
 module "subnet" {
-  source = "../../../lib"
+  source = "../../../../lib"
   env = "${var.env}"
   app = "${var.appname}"
 }
