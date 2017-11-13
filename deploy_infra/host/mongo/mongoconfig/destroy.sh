@@ -18,13 +18,14 @@ fi
 
 ENV=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 APPNAME=$2
-MODULE_TYPE=elastic-ip
-SUB_MODULE_TYPE=
-STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/terraform.tfstate"
+MODULE_TYPE=host
+SUB_MODULE_TYPE=mongo
+TYPE=mongoconfig
+STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE/terraform.tfstate"
 #BUCKET=poshmark-terraform-state
 BUCKET=$3
 echo `pwd`
-cd ../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/
+cd ../../../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE
 echo `pwd`
 
 #terraform init
@@ -35,4 +36,4 @@ terraform init -backend=true -force-copy \
 
 #cd ../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/${ENV}
 echo `pwd`
-terraform destroy -var-file="./${ENV}/terraform.tfvars" -force
+terraform destroy -var-file="../${ENV}/terraform.tfvars" -force
