@@ -18,8 +18,8 @@ fi
 
 ENV=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 APPNAME=$2
-MODULE_TYPE=mongo_db
-SUB_MODULE_TYPE=
+MODULE_TYPE=host
+SUB_MODULE_TYPE=mongo_db
 STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/terraform.tfstate"
 #BUCKET=poshmark-terraform-state
 BUCKET=$3
