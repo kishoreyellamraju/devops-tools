@@ -1,5 +1,0 @@
-region              =	"us-west-2"
-env                 =	"dev"
-appname             =	"poshmark"
-bu                  =	"it"
-service_name        = "com.amazonaws.us-west-2.s3"
