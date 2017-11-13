@@ -18,15 +18,13 @@ fi
 
 ENV=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 APPNAME=$2
-MODULE_TYPE=host
-SUB_MODULE_TYPE=elastic_search
-TYPE=elasticsearchmaster
-CLUSTER=doppio
-STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE/$CLUSTER/terraform.tfstate"
+MODULE_TYPE=elastic-ip
+SUB_MODULE_TYPE=
+STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/terraform.tfstate"
 #BUCKET=poshmark-terraform-state
 BUCKET=$3
 echo `pwd`
-cd ../../../../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE/$CLUSTER/
+cd ../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/
 echo `pwd`
 
 #terraform init
@@ -37,4 +35,4 @@ terraform init -backend=true -force-copy \
 
 #cd ../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/${ENV}
 echo `pwd`
-terraform destroy -var-file="../../${ENV}/terraform.tfvars" -force
+terraform plan -var-file="./${ENV}/terraform.tfvars"

@@ -26,7 +26,7 @@ STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE/$CLUSTER/t
 #BUCKET=poshmark-terraform-state
 BUCKET=$3
 echo `pwd`
-cd ../../../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE/$CLUSTER/
+cd ../../../../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE/$CLUSTER/
 echo `pwd`
 
 #terraform init
