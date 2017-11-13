@@ -1,37 +1,13 @@
-instance_type						= "c4.2xlarge"
-key_name							= "common_key_name"
-ebs_optimized						= true
-monitoring							= false
-source_dest_check					= true
-associate_public_ip_address			= true
-ami									= "common-ami-for-all-apps" 
-security_group						= "${module.network.aws_security_group.production-app.id}"
-count								= 1
-
-root-volume_type					= "gp2"
-root-volume_size					= "32"
-root-volume-delete_on_termination	= "true"
-
-tag-type							= "App"
-tag-env								= "Prod"
-tag-cluster							= "ApiApp"
-tag-vpc								= "true"
-tag-name							= "prod-api-app"
-
-variable "subnets" {
-  type = "list"
-  default = ["subnet-6469e801", "subnet-3fd71166"]
-}
 
 resource "aws_instance" "prod-api-app" {
-	count 						= "${var.count}"
+	count 											= "${var.count}"
 	ami                         = "${var.ami}"
 	ebs_optimized               = "${var.ebs_optimized}"
 	instance_type               = "${var.instance_type}"
 	monitoring                  = "${var.monitoring}"
 	key_name                    = "${var.key_name}"
-	subnet_id                   = "${element(var.subnets, count.index)}"
-	vpc_security_group_ids      = ["${var.security_group}"]
+	subnet_id                   = "${module.subnet.element(var.subnets, count.index)}"
+	vpc_security_group_ids      = ["${module.lib.var.security_group}"]
 	associate_public_ip_address = "${var.associate_public_ip_address}"
 	source_dest_check           = "${var.source_dest_check}"
 
@@ -48,4 +24,12 @@ resource "aws_instance" "prod-api-app" {
 			volume_size           = "${var.root-volume_size}"
 			delete_on_termination = "${var.root-volume-delete_on_termination}"
 		}
+}
+
+#########################################################
+#  				Outputs
+#########################################################
+
+output "prod-api-app-ids" {
+  value = "${join(",", aws_instance.prod-api-app.*.id)}"
 }

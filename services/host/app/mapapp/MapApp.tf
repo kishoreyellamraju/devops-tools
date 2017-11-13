@@ -1,28 +1,4 @@
-instance_type						= "c4.2xlarge"
-key_name							= "common_key_name"
-ebs_optimized						= true
-monitoring							= false
-source_dest_check					= true
-associate_public_ip_address			= true
-iam_instance_profile				= "arn:aws:iam::666737672436:instance-profile/app"
-ami									= "common-ami-for-all-apps" 
-security_group						= "${module.network.aws_security_group.production-app.id}"
-count								= 1
 
-root-volume_type					= "gp2"
-root-volume_size					= "32"
-root-volume-delete_on_termination	= "true"
-
-tag-type							= "App"
-tag-env								= "Prod"
-tag-cluster							= "MappApp"
-tag-vpc								= "true"
-tag-name							= "prod-mapp-app"
-
-variable "subnets" {
-  type = "list"
-  default = ["subnet-6469e801", "subnet-3fd71166"]
-}
 
 resource "aws_instance" "prod-mapp-app" {
 	count 						= "${var.count}"
