@@ -9,6 +9,7 @@
   	vpc_security_group_ids      = ["${module.lib.var.security_group}"]
   	associate_public_ip_address = "${var.associate_public_ip_address}"
   	source_dest_check           = "${var.source_dest_check}"
+    iam_instance_profile        = "${var.iam_instance_profile}"
 
   		tags {
   			Type                  = "${var.tag-type}"
