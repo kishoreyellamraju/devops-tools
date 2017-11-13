@@ -18,13 +18,13 @@ fi
 
 ENV=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 APPNAME=$2
-MODULE_TYPE=elastic-ip
-SUB_MODULE_TYPE=
+MODULE_TYPE=host
+SUB_MODULE_TYPE=haproxy
 STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/terraform.tfstate"
 #BUCKET=poshmark-terraform-state
 BUCKET=$3
 echo `pwd`
-cd ../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/
+cd ../../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/
 echo `pwd`
 
 #terraform init

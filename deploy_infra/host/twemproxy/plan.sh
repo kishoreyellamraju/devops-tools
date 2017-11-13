@@ -19,7 +19,7 @@ fi
 ENV=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 APPNAME=$2
 MODULE_TYPE=host
-SUB_MODULE_TYPE=haproxy
+SUB_MODULE_TYPE=twemproxy
 STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/terraform.tfstate"
 #BUCKET=poshmark-terraform-state
 BUCKET=$3
