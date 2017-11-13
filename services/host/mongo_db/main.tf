@@ -7,7 +7,7 @@
 */
 
 provider "aws" {
-  region     = "us-west-2"
+  region     = "${var.region}"
 }
 
  terraform {
@@ -16,23 +16,24 @@ provider "aws" {
 
 module "network" {
   source = "../../../lib"
-  env = "dev"
-  app = "poshmark"
+  env = "${var.env}"
+  app = "${var.appname}"
 }
 
 module "sg" {
   source = "../../../lib"
-  env = "dev"
-  app = "poshmark"
+  env = "${var.env}"
+  app = "${var.appname}"
 }
 
 module "subnet" {
   source = "../../../lib"
-  env = "dev"
-  app = "poshmark"
+  env = "${var.env}"
+  app = "${var.appname}"
 }
+
 resource "aws_instance" "yaga-a3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
@@ -71,7 +72,7 @@ resource "aws_instance" "yaga-a3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-up-app-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -102,7 +103,7 @@ resource "aws_instance" "prod-up-app-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-mapp-app-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -133,7 +134,7 @@ resource "aws_instance" "prod-mapp-app-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-up-app-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -164,7 +165,7 @@ resource "aws_instance" "prod-up-app-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-up-app-mongos03-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -195,7 +196,7 @@ resource "aws_instance" "prod-up-app-mongos03-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-sl-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -226,7 +227,7 @@ resource "aws_instance" "prod-sl-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-nt-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -257,7 +258,7 @@ resource "aws_instance" "prod-nt-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ps-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -288,7 +289,7 @@ resource "aws_instance" "prod-ps-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-act-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -319,7 +320,7 @@ resource "aws_instance" "prod-act-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-co-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -350,7 +351,7 @@ resource "aws_instance" "prod-co-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-sp-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -381,7 +382,7 @@ resource "aws_instance" "prod-sp-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-nrt-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -412,7 +413,7 @@ resource "aws_instance" "prod-nrt-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ps-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -443,7 +444,7 @@ resource "aws_instance" "prod-ps-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ff-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -474,7 +475,7 @@ resource "aws_instance" "prod-ff-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-co-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -505,7 +506,7 @@ resource "aws_instance" "prod-co-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-bg-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -536,7 +537,7 @@ resource "aws_instance" "prod-bg-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-act-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -567,7 +568,7 @@ resource "aws_instance" "prod-act-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-act-mongos03-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -598,7 +599,7 @@ resource "aws_instance" "prod-act-mongos03-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ip-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -629,7 +630,7 @@ resource "aws_instance" "prod-ip-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "sauron-db4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -668,7 +669,7 @@ resource "aws_instance" "sauron-db4" {
 ###################################################################################################
 
 resource "aws_instance" "sauron-db5" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -707,7 +708,7 @@ resource "aws_instance" "sauron-db5" {
 ###################################################################################################
 
 resource "aws_instance" "prod-analytics-db5-old" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -746,13 +747,13 @@ resource "aws_instance" "prod-analytics-db5-old" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -785,7 +786,7 @@ resource "aws_instance" "circe-db3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-up-app-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -816,13 +817,13 @@ resource "aws_instance" "prod-up-app-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db5" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -855,13 +856,13 @@ resource "aws_instance" "prod-user-db5" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -901,7 +902,7 @@ resource "aws_instance" "prod-user-db3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -940,7 +941,7 @@ resource "aws_instance" "gandalf-e2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -979,7 +980,7 @@ resource "aws_instance" "gandalf-c1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1018,7 +1019,7 @@ resource "aws_instance" "gandalf-h1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1057,7 +1058,7 @@ resource "aws_instance" "gandalf-j1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1096,7 +1097,7 @@ resource "aws_instance" "gandalf-a2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1135,7 +1136,7 @@ resource "aws_instance" "gandalf-k2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1174,7 +1175,7 @@ resource "aws_instance" "gandalf-b2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1213,7 +1214,7 @@ resource "aws_instance" "gandalf-d2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1252,7 +1253,7 @@ resource "aws_instance" "gandalf-i1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1291,7 +1292,7 @@ resource "aws_instance" "gandalf-g1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1330,7 +1331,7 @@ resource "aws_instance" "gandalf-l2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -1369,7 +1370,7 @@ resource "aws_instance" "gandalf-f1" {
 ###################################################################################################
 
 resource "aws_instance" "prod-analytics-db5" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1408,7 +1409,7 @@ resource "aws_instance" "prod-analytics-db5" {
 ###################################################################################################
 
 resource "aws_instance" "prod-mapp-app-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -1439,7 +1440,7 @@ resource "aws_instance" "prod-mapp-app-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "merlin-a2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1478,7 +1479,7 @@ resource "aws_instance" "merlin-a2" {
 ###################################################################################################
 
 resource "aws_instance" "prod-analytics-db6" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1517,7 +1518,7 @@ resource "aws_instance" "prod-analytics-db6" {
 ###################################################################################################
 
 resource "aws_instance" "prod-configsvr2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.xlarge"
 	monitoring                  = false
@@ -1555,7 +1556,7 @@ resource "aws_instance" "prod-configsvr2" {
 ###################################################################################################
 
 resource "aws_instance" "prod-configsvr1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.xlarge"
 	monitoring                  = false
@@ -1593,7 +1594,7 @@ resource "aws_instance" "prod-configsvr1" {
 ###################################################################################################
 
 resource "aws_instance" "prod-web-app-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -1624,7 +1625,7 @@ resource "aws_instance" "prod-web-app-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-web-app-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -1655,7 +1656,7 @@ resource "aws_instance" "prod-web-app-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-a2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1693,7 +1694,7 @@ resource "aws_instance" "stibbons-a2" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-b2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1731,7 +1732,7 @@ resource "aws_instance" "stibbons-b2" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-c2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1769,7 +1770,7 @@ resource "aws_instance" "stibbons-c2" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-d1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1807,7 +1808,7 @@ resource "aws_instance" "stibbons-d1" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-e1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -1845,13 +1846,13 @@ resource "aws_instance" "stibbons-e1" {
 ###################################################################################################
 
 resource "aws_instance" "medea-db3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -1884,7 +1885,7 @@ resource "aws_instance" "medea-db3" {
 ###################################################################################################
 
 resource "aws_instance" "medea-db4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
@@ -1923,7 +1924,7 @@ resource "aws_instance" "medea-db4" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
@@ -1962,7 +1963,7 @@ resource "aws_instance" "circe-db1" {
 ###################################################################################################
 
 resource "aws_instance" "prod-sidekiq-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -1993,7 +1994,7 @@ resource "aws_instance" "prod-sidekiq-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-sidekiq-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -2024,7 +2025,7 @@ resource "aws_instance" "prod-sidekiq-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2063,7 +2064,7 @@ resource "aws_instance" "gandalf-a1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2102,7 +2103,7 @@ resource "aws_instance" "gandalf-b1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2141,7 +2142,7 @@ resource "aws_instance" "gandalf-c2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2180,7 +2181,7 @@ resource "aws_instance" "gandalf-d1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2219,7 +2220,7 @@ resource "aws_instance" "gandalf-e1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2258,7 +2259,7 @@ resource "aws_instance" "gandalf-f2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2297,7 +2298,7 @@ resource "aws_instance" "gandalf-g2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2336,7 +2337,7 @@ resource "aws_instance" "gandalf-h2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2375,7 +2376,7 @@ resource "aws_instance" "gandalf-i2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2414,7 +2415,7 @@ resource "aws_instance" "gandalf-j2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2453,7 +2454,7 @@ resource "aws_instance" "gandalf-k1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -2492,7 +2493,7 @@ resource "aws_instance" "gandalf-l1" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
@@ -2538,13 +2539,13 @@ resource "aws_instance" "circe-db2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-m3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -2577,13 +2578,13 @@ resource "aws_instance" "gandalf-m3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -2616,13 +2617,13 @@ resource "aws_instance" "gandalf-p3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -2655,13 +2656,13 @@ resource "aws_instance" "gandalf-o3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -2694,13 +2695,13 @@ resource "aws_instance" "gandalf-r3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -2733,13 +2734,13 @@ resource "aws_instance" "gandalf-q3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -2772,7 +2773,7 @@ resource "aws_instance" "gandalf-n3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -2803,7 +2804,7 @@ resource "aws_instance" "prod-pb-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -2834,7 +2835,7 @@ resource "aws_instance" "prod-pb-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
@@ -2873,7 +2874,7 @@ resource "aws_instance" "circe-db4" {
 ###################################################################################################
 
 resource "aws_instance" "merlin-a4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -2912,7 +2913,7 @@ resource "aws_instance" "merlin-a4" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db6-old" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -2951,7 +2952,7 @@ resource "aws_instance" "prod-user-db6-old" {
 ###################################################################################################
 
 resource "aws_instance" "prod-nt-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -2982,7 +2983,7 @@ resource "aws_instance" "prod-nt-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-act-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3013,7 +3014,7 @@ resource "aws_instance" "prod-act-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-act-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3044,7 +3045,7 @@ resource "aws_instance" "prod-act-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-act-mongos03-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3075,7 +3076,7 @@ resource "aws_instance" "prod-act-mongos03-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-bg-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3106,7 +3107,7 @@ resource "aws_instance" "prod-bg-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-co-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3137,7 +3138,7 @@ resource "aws_instance" "prod-co-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-co-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3168,7 +3169,7 @@ resource "aws_instance" "prod-co-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ff-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3199,7 +3200,7 @@ resource "aws_instance" "prod-ff-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ip-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3230,7 +3231,7 @@ resource "aws_instance" "prod-ip-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-nrt-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3261,7 +3262,7 @@ resource "aws_instance" "prod-nrt-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ps-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3292,7 +3293,7 @@ resource "aws_instance" "prod-ps-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ps-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3323,7 +3324,7 @@ resource "aws_instance" "prod-ps-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-sl-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3354,7 +3355,7 @@ resource "aws_instance" "prod-sl-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-sp-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3385,7 +3386,7 @@ resource "aws_instance" "prod-sp-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-et-app-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3416,7 +3417,7 @@ resource "aws_instance" "prod-et-app-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-vault-db-a04" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
@@ -3455,7 +3456,7 @@ resource "aws_instance" "prod-vault-db-a04" {
 ###################################################################################################
 
 resource "aws_instance" "morgana-db4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -3494,7 +3495,7 @@ resource "aws_instance" "morgana-db4" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3525,7 +3526,7 @@ resource "aws_instance" "prod-pb-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3556,13 +3557,13 @@ resource "aws_instance" "prod-pb-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "sauron-db3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -3595,7 +3596,7 @@ resource "aws_instance" "sauron-db3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-fb-dpa-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3626,7 +3627,7 @@ resource "aws_instance" "prod-fb-dpa-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-eb-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3657,7 +3658,7 @@ resource "aws_instance" "prod-eb-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-eb-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3688,7 +3689,7 @@ resource "aws_instance" "prod-eb-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db8" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -3727,7 +3728,7 @@ resource "aws_instance" "prod-user-db8" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db7" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -3766,7 +3767,7 @@ resource "aws_instance" "prod-user-db7" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -3805,7 +3806,7 @@ resource "aws_instance" "prod-user-db4" {
 ###################################################################################################
 
 resource "aws_instance" "prod-is-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3836,7 +3837,7 @@ resource "aws_instance" "prod-is-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-nt-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -3867,7 +3868,7 @@ resource "aws_instance" "prod-nt-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-a4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -3906,7 +3907,7 @@ resource "aws_instance" "stibbons-a4" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-f4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -3945,7 +3946,7 @@ resource "aws_instance" "stibbons-f4" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-e4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -3984,7 +3985,7 @@ resource "aws_instance" "stibbons-e4" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-b4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -4023,7 +4024,7 @@ resource "aws_instance" "stibbons-b4" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-d4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -4062,7 +4063,7 @@ resource "aws_instance" "stibbons-d4" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-c4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -4101,7 +4102,7 @@ resource "aws_instance" "stibbons-c4" {
 ###################################################################################################
 
 resource "aws_instance" "prod-smr-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -4132,7 +4133,7 @@ resource "aws_instance" "prod-smr-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4171,7 +4172,7 @@ resource "aws_instance" "gandalf-q2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4210,7 +4211,7 @@ resource "aws_instance" "gandalf-q1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4249,7 +4250,7 @@ resource "aws_instance" "gandalf-r2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4288,7 +4289,7 @@ resource "aws_instance" "gandalf-r1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4327,7 +4328,7 @@ resource "aws_instance" "gandalf-o2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4366,7 +4367,7 @@ resource "aws_instance" "gandalf-o1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4405,7 +4406,7 @@ resource "aws_instance" "gandalf-p2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4444,7 +4445,7 @@ resource "aws_instance" "gandalf-p1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-m2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4483,7 +4484,7 @@ resource "aws_instance" "gandalf-m2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-m1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4522,7 +4523,7 @@ resource "aws_instance" "gandalf-m1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4561,7 +4562,7 @@ resource "aws_instance" "gandalf-n2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -4600,13 +4601,13 @@ resource "aws_instance" "gandalf-n1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4639,13 +4640,13 @@ resource "aws_instance" "gandalf-i3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4678,13 +4679,13 @@ resource "aws_instance" "gandalf-j3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4717,13 +4718,13 @@ resource "aws_instance" "gandalf-b3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4756,13 +4757,13 @@ resource "aws_instance" "gandalf-c3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4795,13 +4796,13 @@ resource "aws_instance" "gandalf-d3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4834,13 +4835,13 @@ resource "aws_instance" "gandalf-a3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4873,13 +4874,13 @@ resource "aws_instance" "gandalf-e3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4912,13 +4913,13 @@ resource "aws_instance" "gandalf-k3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4951,13 +4952,13 @@ resource "aws_instance" "gandalf-l3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -4990,13 +4991,13 @@ resource "aws_instance" "gandalf-g3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5029,13 +5030,13 @@ resource "aws_instance" "gandalf-f3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5068,7 +5069,7 @@ resource "aws_instance" "gandalf-h3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-web-app-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5099,7 +5100,7 @@ resource "aws_instance" "prod-web-app-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-web-app-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5130,7 +5131,7 @@ resource "aws_instance" "prod-web-app-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5161,7 +5162,7 @@ resource "aws_instance" "prod-api-app-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos03-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5192,7 +5193,7 @@ resource "aws_instance" "prod-api-app-mongos03-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5223,7 +5224,7 @@ resource "aws_instance" "prod-api-app-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-web-app-mongos03-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5254,7 +5255,7 @@ resource "aws_instance" "prod-web-app-mongos03-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-vault-db-a01" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
@@ -5293,7 +5294,7 @@ resource "aws_instance" "prod-vault-db-a01" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-f1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -5331,13 +5332,13 @@ resource "aws_instance" "stibbons-f1" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-b3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5370,13 +5371,13 @@ resource "aws_instance" "stibbons-b3" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-a3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5409,13 +5410,13 @@ resource "aws_instance" "stibbons-a3" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-c3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5448,13 +5449,13 @@ resource "aws_instance" "stibbons-c3" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-d3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5487,13 +5488,13 @@ resource "aws_instance" "stibbons-d3" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-f3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5526,13 +5527,13 @@ resource "aws_instance" "stibbons-f3" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-e3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -5565,7 +5566,7 @@ resource "aws_instance" "stibbons-e3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ind-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5596,7 +5597,7 @@ resource "aws_instance" "prod-ind-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-nt-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5627,7 +5628,7 @@ resource "aws_instance" "prod-nt-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-vault-db-a03" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
@@ -5666,7 +5667,7 @@ resource "aws_instance" "prod-vault-db-a03" {
 ###################################################################################################
 
 resource "aws_instance" "prod-btn-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5697,7 +5698,7 @@ resource "aws_instance" "prod-btn-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-ind-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5728,7 +5729,7 @@ resource "aws_instance" "prod-ind-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "yaga-a2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -5767,7 +5768,7 @@ resource "aws_instance" "yaga-a2" {
 ###################################################################################################
 
 resource "aws_instance" "yaga-a1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -5806,7 +5807,7 @@ resource "aws_instance" "yaga-a1" {
 ###################################################################################################
 
 resource "aws_instance" "prod-eb-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5837,7 +5838,7 @@ resource "aws_instance" "prod-eb-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-eb-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5868,7 +5869,7 @@ resource "aws_instance" "prod-eb-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-smr-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5899,7 +5900,7 @@ resource "aws_instance" "prod-smr-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-is-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -5930,7 +5931,7 @@ resource "aws_instance" "prod-is-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-e2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -5969,7 +5970,7 @@ resource "aws_instance" "stibbons-e2" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-b1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -6008,7 +6009,7 @@ resource "aws_instance" "stibbons-b1" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-f2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -6047,7 +6048,7 @@ resource "aws_instance" "stibbons-f2" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-c1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -6086,7 +6087,7 @@ resource "aws_instance" "stibbons-c1" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-a1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -6125,7 +6126,7 @@ resource "aws_instance" "stibbons-a1" {
 ###################################################################################################
 
 resource "aws_instance" "stibbons-d2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -6164,7 +6165,7 @@ resource "aws_instance" "stibbons-d2" {
 ###################################################################################################
 
 resource "aws_instance" "prod-bg-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6195,7 +6196,7 @@ resource "aws_instance" "prod-bg-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "merlin-a1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
@@ -6234,7 +6235,7 @@ resource "aws_instance" "merlin-a1" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db6" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -6273,7 +6274,7 @@ resource "aws_instance" "prod-user-db6" {
 ###################################################################################################
 
 resource "aws_instance" "prod-et-app-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6304,7 +6305,7 @@ resource "aws_instance" "prod-et-app-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-bg-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6335,7 +6336,7 @@ resource "aws_instance" "prod-bg-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "medea-db1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
@@ -6374,7 +6375,7 @@ resource "aws_instance" "medea-db1" {
 ###################################################################################################
 
 resource "aws_instance" "medea-db2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
@@ -6413,7 +6414,7 @@ resource "aws_instance" "medea-db2" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db4-old" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
@@ -6452,7 +6453,7 @@ resource "aws_instance" "circe-db4-old" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos03-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6483,7 +6484,7 @@ resource "aws_instance" "prod-api-app-mongos03-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6514,7 +6515,7 @@ resource "aws_instance" "prod-api-app-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos02-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6545,7 +6546,7 @@ resource "aws_instance" "prod-api-app-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-vault-db-a02" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
@@ -6584,7 +6585,7 @@ resource "aws_instance" "prod-vault-db-a02" {
 ###################################################################################################
 
 resource "aws_instance" "prod-up-app-mongos02-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6615,7 +6616,7 @@ resource "aws_instance" "prod-up-app-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-up-app-mongos03-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -6646,7 +6647,7 @@ resource "aws_instance" "prod-up-app-mongos03-c" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6685,7 +6686,7 @@ resource "aws_instance" "gandalf-h4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6724,7 +6725,7 @@ resource "aws_instance" "gandalf-j4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6763,7 +6764,7 @@ resource "aws_instance" "gandalf-f4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6802,7 +6803,7 @@ resource "aws_instance" "gandalf-p4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6841,7 +6842,7 @@ resource "aws_instance" "gandalf-b4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6880,7 +6881,7 @@ resource "aws_instance" "gandalf-c4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6919,7 +6920,7 @@ resource "aws_instance" "gandalf-i4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6958,7 +6959,7 @@ resource "aws_instance" "gandalf-d4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -6997,7 +6998,7 @@ resource "aws_instance" "gandalf-r4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7036,7 +7037,7 @@ resource "aws_instance" "gandalf-a4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7075,7 +7076,7 @@ resource "aws_instance" "gandalf-e4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7114,7 +7115,7 @@ resource "aws_instance" "gandalf-k4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7153,7 +7154,7 @@ resource "aws_instance" "gandalf-g4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7192,7 +7193,7 @@ resource "aws_instance" "gandalf-n4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-m4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7231,7 +7232,7 @@ resource "aws_instance" "gandalf-m4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7270,7 +7271,7 @@ resource "aws_instance" "gandalf-q4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7309,7 +7310,7 @@ resource "aws_instance" "gandalf-l4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o4" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7348,7 +7349,7 @@ resource "aws_instance" "gandalf-o4" {
 ###################################################################################################
 
 resource "aws_instance" "prod-btn-mongos01-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -7379,13 +7380,13 @@ resource "aws_instance" "prod-btn-mongos01-c" {
 ###################################################################################################
 
 resource "aws_instance" "morgana-db5" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -7418,13 +7419,13 @@ resource "aws_instance" "morgana-db5" {
 ###################################################################################################
 
 resource "aws_instance" "morgana-db6" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.2xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -7457,7 +7458,7 @@ resource "aws_instance" "morgana-db6" {
 ###################################################################################################
 
 resource "aws_instance" "sauron-db1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7496,7 +7497,7 @@ resource "aws_instance" "sauron-db1" {
 ###################################################################################################
 
 resource "aws_instance" "sauron-db2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
@@ -7535,7 +7536,7 @@ resource "aws_instance" "sauron-db2" {
 ###################################################################################################
 
 resource "aws_instance" "prod-co-batch-mongos01-b" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
@@ -7566,7 +7567,7 @@ resource "aws_instance" "prod-co-batch-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "morgana-db2" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -7605,7 +7606,7 @@ resource "aws_instance" "morgana-db2" {
 ###################################################################################################
 
 resource "aws_instance" "morgana-db1" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -7644,7 +7645,7 @@ resource "aws_instance" "morgana-db1" {
 ###################################################################################################
 
 resource "aws_instance" "morgana-db4-old" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -7683,7 +7684,7 @@ resource "aws_instance" "morgana-db4-old" {
 ###################################################################################################
 
 resource "aws_instance" "morgana-db3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
@@ -7722,13 +7723,13 @@ resource "aws_instance" "morgana-db3" {
 ###################################################################################################
 
 resource "aws_instance" "merlin-a3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -7761,13 +7762,13 @@ resource "aws_instance" "merlin-a3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-analytics-db7" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -7800,13 +7801,13 @@ resource "aws_instance" "prod-analytics-db7" {
 ###################################################################################################
 
 resource "aws_instance" "prod-analytics-db8" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "common_key_name"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id},${module.sg.production-db-id}"]
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
@@ -7839,7 +7840,7 @@ resource "aws_instance" "prod-analytics-db8" {
 ###################################################################################################
 
 resource "aws_instance" "prod-configsvr3" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.xlarge"
 	monitoring                  = false
@@ -7877,7 +7878,7 @@ resource "aws_instance" "prod-configsvr3" {
 ###################################################################################################
 
 resource "aws_instance" "prod-web-app-mongos03-c" {
-	ami                         = "ami-d58c96ac"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
