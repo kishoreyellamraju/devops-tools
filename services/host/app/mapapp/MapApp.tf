@@ -13,7 +13,7 @@ resource "aws_instance" "prod-map-app" {
 
 		tags {
 			Type                  = "${var.tag-type}"
-			Env                   = "${var.tag-env}"
+			Env                   = "${var.env}"
 			Cluster               = "${var.tag-cluster}"
 			Vpc                   = "${var.tag-vpc}"
 			Name                  = "${var.tag-name}-${count.index}"
