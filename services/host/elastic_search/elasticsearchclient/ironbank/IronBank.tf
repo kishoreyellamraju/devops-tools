@@ -2,7 +2,7 @@ resource "aws_instance" "ironbank-client01-c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
-	iam_instance_profile        = "${var.elasticsearch}"
+	iam_instance_profile        = "elasticsearch"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
