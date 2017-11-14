@@ -1,9 +1,9 @@
 resource "aws_instance" "prod-redis-userdata-a03" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
@@ -37,11 +37,11 @@ resource "aws_instance" "prod-redis-userdata-a03" {
 ###################################################################################################
 
 resource "aws_instance" "prod-redis-userdata-a02" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
@@ -75,11 +75,11 @@ resource "aws_instance" "prod-redis-userdata-a02" {
 ###################################################################################################
 
 resource "aws_instance" "prod-redis-userdata-a01" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
@@ -113,11 +113,11 @@ resource "aws_instance" "prod-redis-userdata-a01" {
 ###################################################################################################
 
 resource "aws_instance" "prod-redis-userdata-a04" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
@@ -142,5 +142,3 @@ resource "aws_instance" "prod-redis-userdata-a04" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

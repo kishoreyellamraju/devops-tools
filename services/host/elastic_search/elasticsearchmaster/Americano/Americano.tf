@@ -1,9 +1,9 @@
 resource "aws_instance" "americano-master03" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-americano-id}"]
 	associate_public_ip_address = false
@@ -30,11 +30,11 @@ resource "aws_instance" "americano-master03" {
 ###################################################################################################
 
 resource "aws_instance" "americano-master01" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-americano-id}"]
 	associate_public_ip_address = false
@@ -61,11 +61,11 @@ resource "aws_instance" "americano-master01" {
 ###################################################################################################
 
 resource "aws_instance" "americano-master02" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-americano-id}"]
 	associate_public_ip_address = false
@@ -90,5 +90,3 @@ resource "aws_instance" "americano-master02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

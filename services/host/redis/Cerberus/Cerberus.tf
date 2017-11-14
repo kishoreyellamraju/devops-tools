@@ -1,9 +1,9 @@
 resource "aws_instance" "cerberus-b01" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
 	associate_public_ip_address = false
@@ -37,11 +37,11 @@ resource "aws_instance" "cerberus-b01" {
 ###################################################################################################
 
 resource "aws_instance" "cerberus-b02" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
 	associate_public_ip_address = false
@@ -75,11 +75,11 @@ resource "aws_instance" "cerberus-b02" {
 ###################################################################################################
 
 resource "aws_instance" "cerberus-a01" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
 	associate_public_ip_address = false
@@ -113,11 +113,11 @@ resource "aws_instance" "cerberus-a01" {
 ###################################################################################################
 
 resource "aws_instance" "cerberus-a02" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
 	associate_public_ip_address = false
@@ -149,5 +149,3 @@ resource "aws_instance" "cerberus-a02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

@@ -1,9 +1,9 @@
 resource "aws_instance" "prod-pb-qw10-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -31,11 +31,11 @@ resource "aws_instance" "prod-pb-qw10-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw12-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -63,11 +63,11 @@ resource "aws_instance" "prod-pb-qw12-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw11-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -95,11 +95,11 @@ resource "aws_instance" "prod-pb-qw11-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw12-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -127,11 +127,11 @@ resource "aws_instance" "prod-pb-qw12-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw10-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -159,11 +159,11 @@ resource "aws_instance" "prod-pb-qw10-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw11-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -191,11 +191,11 @@ resource "aws_instance" "prod-pb-qw11-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw09-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -223,11 +223,11 @@ resource "aws_instance" "prod-pb-qw09-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw05-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -255,11 +255,11 @@ resource "aws_instance" "prod-pb-qw05-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw06-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -287,11 +287,11 @@ resource "aws_instance" "prod-pb-qw06-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw07-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -319,11 +319,11 @@ resource "aws_instance" "prod-pb-qw07-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw08-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -351,11 +351,11 @@ resource "aws_instance" "prod-pb-qw08-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw01-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -382,11 +382,11 @@ resource "aws_instance" "prod-pb-qw01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw02-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -413,11 +413,11 @@ resource "aws_instance" "prod-pb-qw02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw03-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -445,11 +445,11 @@ resource "aws_instance" "prod-pb-qw03-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw04-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -477,11 +477,11 @@ resource "aws_instance" "prod-pb-qw04-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw02-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -508,11 +508,11 @@ resource "aws_instance" "prod-pb-qw02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw01-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -539,11 +539,11 @@ resource "aws_instance" "prod-pb-qw01-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw09-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -571,11 +571,11 @@ resource "aws_instance" "prod-pb-qw09-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw08-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -603,11 +603,11 @@ resource "aws_instance" "prod-pb-qw08-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw07-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -635,11 +635,11 @@ resource "aws_instance" "prod-pb-qw07-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw06-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -667,11 +667,11 @@ resource "aws_instance" "prod-pb-qw06-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw05-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -699,11 +699,11 @@ resource "aws_instance" "prod-pb-qw05-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw04-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -731,11 +731,11 @@ resource "aws_instance" "prod-pb-qw04-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-pb-qw03-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -761,5 +761,3 @@ resource "aws_instance" "prod-pb-qw03-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

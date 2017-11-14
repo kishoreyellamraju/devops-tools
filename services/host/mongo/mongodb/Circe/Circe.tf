@@ -1,9 +1,9 @@
 resource "aws_instance" "circe-db4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -38,11 +38,11 @@ resource "aws_instance" "circe-db4" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -77,11 +77,11 @@ resource "aws_instance" "circe-db3" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -116,11 +116,11 @@ resource "aws_instance" "circe-db1" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -162,11 +162,11 @@ resource "aws_instance" "circe-db2" {
 ###################################################################################################
 
 resource "aws_instance" "circe-db4-old" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -199,5 +199,3 @@ resource "aws_instance" "circe-db4-old" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

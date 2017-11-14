@@ -6,11 +6,11 @@
  ########################################################
 */
 resource "aws_instance" "prod-kibana-queue1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-logs-queue-id}"]
 	associate_public_ip_address = true

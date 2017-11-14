@@ -1,9 +1,9 @@
 resource "aws_instance" "espresso-data01-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -37,11 +37,11 @@ resource "aws_instance" "espresso-data01-b" {
 ###################################################################################################
 
 resource "aws_instance" "espresso-data02-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -75,11 +75,11 @@ resource "aws_instance" "espresso-data02-b" {
 ###################################################################################################
 
 resource "aws_instance" "espresso-data01-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -113,11 +113,11 @@ resource "aws_instance" "espresso-data01-c" {
 ###################################################################################################
 
 resource "aws_instance" "espresso-data02-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -149,5 +149,3 @@ resource "aws_instance" "espresso-data02-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

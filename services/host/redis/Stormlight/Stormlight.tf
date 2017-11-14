@@ -1,9 +1,9 @@
 resource "aws_instance" "stormlight-a02" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.stormlight-id}"]
 	associate_public_ip_address = false
@@ -37,11 +37,11 @@ resource "aws_instance" "stormlight-a02" {
 ###################################################################################################
 
 resource "aws_instance" "stormlight-a01" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.stormlight-id}"]
 	associate_public_ip_address = false
@@ -73,5 +73,3 @@ resource "aws_instance" "stormlight-a01" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

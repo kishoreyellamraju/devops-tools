@@ -1,9 +1,9 @@
 resource "aws_instance" "prod-api-app-mongos03-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -30,11 +30,11 @@ resource "aws_instance" "prod-api-app-mongos03-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos01-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -61,11 +61,11 @@ resource "aws_instance" "prod-api-app-mongos01-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos02-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -92,11 +92,11 @@ resource "aws_instance" "prod-api-app-mongos02-b" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos02-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -123,11 +123,11 @@ resource "aws_instance" "prod-api-app-mongos02-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos03-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -154,11 +154,11 @@ resource "aws_instance" "prod-api-app-mongos03-c" {
 ###################################################################################################
 
 resource "aws_instance" "prod-api-app-mongos01-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -183,5 +183,3 @@ resource "aws_instance" "prod-api-app-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

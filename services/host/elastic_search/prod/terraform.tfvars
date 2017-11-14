@@ -1,5 +1,6 @@
 region                      =	"us-west-2"
-env                         =	"dev"
+env                         =	"prod"
 appname                     =	"poshmark"
 bu                          =	"it"
 ami                         = "test_ami"
+key_name                    = "test_key"

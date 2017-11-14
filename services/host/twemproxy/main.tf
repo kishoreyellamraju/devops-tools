@@ -37,7 +37,7 @@ resource "aws_instance" "prod-twemproxy01" {
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -75,7 +75,7 @@ resource "aws_instance" "prod-twemproxy02" {
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -113,7 +113,7 @@ resource "aws_instance" "prod-twemproxy03" {
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -151,7 +151,7 @@ resource "aws_instance" "prod-twemproxy04" {
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -189,7 +189,7 @@ resource "aws_instance" "cerberus-twemproxy06" {
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -227,7 +227,7 @@ resource "aws_instance" "cerberus-twemproxy05" {
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-twemproxy-id}"]
 	associate_public_ip_address = false

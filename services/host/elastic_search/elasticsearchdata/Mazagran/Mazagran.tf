@@ -1,10 +1,10 @@
 resource "aws_instance" "mazagran-data04-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -38,12 +38,12 @@ resource "aws_instance" "mazagran-data04-b" {
 ###################################################################################################
 
 resource "aws_instance" "mazagran-data01-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -77,12 +77,12 @@ resource "aws_instance" "mazagran-data01-b" {
 ###################################################################################################
 
 resource "aws_instance" "mazagran-data02-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -116,12 +116,12 @@ resource "aws_instance" "mazagran-data02-b" {
 ###################################################################################################
 
 resource "aws_instance" "mazagran-data03-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -155,12 +155,12 @@ resource "aws_instance" "mazagran-data03-b" {
 ###################################################################################################
 
 resource "aws_instance" "mazagran-data02-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -194,12 +194,12 @@ resource "aws_instance" "mazagran-data02-c" {
 ###################################################################################################
 
 resource "aws_instance" "mazagran-data01-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -233,12 +233,12 @@ resource "aws_instance" "mazagran-data01-c" {
 ###################################################################################################
 
 resource "aws_instance" "mazagran-data03-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -272,12 +272,12 @@ resource "aws_instance" "mazagran-data03-c" {
 ###################################################################################################
 
 resource "aws_instance" "mazagran-data04-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -309,5 +309,3 @@ resource "aws_instance" "mazagran-data04-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

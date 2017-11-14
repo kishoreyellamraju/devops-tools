@@ -1,9 +1,9 @@
 resource "aws_instance" "prod-user-db8" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -38,11 +38,11 @@ resource "aws_instance" "prod-user-db8" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db7" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -77,11 +77,11 @@ resource "aws_instance" "prod-user-db7" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -116,11 +116,11 @@ resource "aws_instance" "prod-user-db4" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db5" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -155,11 +155,11 @@ resource "aws_instance" "prod-user-db5" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db6" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -194,11 +194,11 @@ resource "aws_instance" "prod-user-db6" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db6-old" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -233,11 +233,11 @@ resource "aws_instance" "prod-user-db6-old" {
 ###################################################################################################
 
 resource "aws_instance" "prod-user-db3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -277,5 +277,3 @@ resource "aws_instance" "prod-user-db3" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

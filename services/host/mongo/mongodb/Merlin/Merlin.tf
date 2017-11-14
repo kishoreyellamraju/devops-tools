@@ -1,9 +1,9 @@
 resource "aws_instance" "merlin-a2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -38,11 +38,11 @@ resource "aws_instance" "merlin-a2" {
 ###################################################################################################
 
 resource "aws_instance" "merlin-a1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -77,11 +77,11 @@ resource "aws_instance" "merlin-a1" {
 ###################################################################################################
 
 resource "aws_instance" "merlin-a4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -116,11 +116,11 @@ resource "aws_instance" "merlin-a4" {
 ###################################################################################################
 
 resource "aws_instance" "merlin-a3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -153,5 +153,3 @@ resource "aws_instance" "merlin-a3" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

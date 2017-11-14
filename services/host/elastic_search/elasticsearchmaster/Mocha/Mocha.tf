@@ -1,10 +1,10 @@
 resource "aws_instance" "mocha-master03" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -31,12 +31,12 @@ resource "aws_instance" "mocha-master03" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-master01" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -63,12 +63,12 @@ resource "aws_instance" "mocha-master01" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-master02" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -93,5 +93,3 @@ resource "aws_instance" "mocha-master02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

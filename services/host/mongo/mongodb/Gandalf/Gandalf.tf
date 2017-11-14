@@ -1,9 +1,9 @@
 resource "aws_instance" "gandalf-m3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -38,11 +38,11 @@ resource "aws_instance" "gandalf-m3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -77,11 +77,11 @@ resource "aws_instance" "gandalf-p3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -116,11 +116,11 @@ resource "aws_instance" "gandalf-o3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -155,11 +155,11 @@ resource "aws_instance" "gandalf-r3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -194,11 +194,11 @@ resource "aws_instance" "gandalf-q3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -233,11 +233,11 @@ resource "aws_instance" "gandalf-n3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -272,11 +272,11 @@ resource "aws_instance" "gandalf-q2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-m1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -311,11 +311,11 @@ resource "aws_instance" "gandalf-m1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -350,11 +350,11 @@ resource "aws_instance" "gandalf-n1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -389,11 +389,11 @@ resource "aws_instance" "gandalf-q1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -428,11 +428,11 @@ resource "aws_instance" "gandalf-r2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -467,11 +467,11 @@ resource "aws_instance" "gandalf-r1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -506,11 +506,11 @@ resource "aws_instance" "gandalf-o2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -545,11 +545,11 @@ resource "aws_instance" "gandalf-o1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -584,11 +584,11 @@ resource "aws_instance" "gandalf-p2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -623,11 +623,11 @@ resource "aws_instance" "gandalf-p1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-m2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -662,11 +662,11 @@ resource "aws_instance" "gandalf-m2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -701,11 +701,11 @@ resource "aws_instance" "gandalf-n2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -740,11 +740,11 @@ resource "aws_instance" "gandalf-h4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -779,11 +779,11 @@ resource "aws_instance" "gandalf-j4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -818,11 +818,11 @@ resource "aws_instance" "gandalf-f4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -857,11 +857,11 @@ resource "aws_instance" "gandalf-d4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -896,11 +896,11 @@ resource "aws_instance" "gandalf-a4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -935,11 +935,11 @@ resource "aws_instance" "gandalf-g4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -974,11 +974,11 @@ resource "aws_instance" "gandalf-l4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-o4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1013,11 +1013,11 @@ resource "aws_instance" "gandalf-o4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-p4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1052,11 +1052,11 @@ resource "aws_instance" "gandalf-p4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1091,11 +1091,11 @@ resource "aws_instance" "gandalf-b4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1130,11 +1130,11 @@ resource "aws_instance" "gandalf-c4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1169,11 +1169,11 @@ resource "aws_instance" "gandalf-i4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-r4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1208,11 +1208,11 @@ resource "aws_instance" "gandalf-r4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1247,11 +1247,11 @@ resource "aws_instance" "gandalf-e4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1286,11 +1286,11 @@ resource "aws_instance" "gandalf-k4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-n4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1325,11 +1325,11 @@ resource "aws_instance" "gandalf-n4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-m4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1364,11 +1364,11 @@ resource "aws_instance" "gandalf-m4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-q4" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1403,11 +1403,11 @@ resource "aws_instance" "gandalf-q4" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1442,11 +1442,11 @@ resource "aws_instance" "gandalf-a1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1481,11 +1481,11 @@ resource "aws_instance" "gandalf-c2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1520,11 +1520,11 @@ resource "aws_instance" "gandalf-e1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1559,11 +1559,11 @@ resource "aws_instance" "gandalf-f2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1598,11 +1598,11 @@ resource "aws_instance" "gandalf-g2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1637,11 +1637,11 @@ resource "aws_instance" "gandalf-j2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1676,11 +1676,11 @@ resource "aws_instance" "gandalf-b1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1715,11 +1715,11 @@ resource "aws_instance" "gandalf-d1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1754,11 +1754,11 @@ resource "aws_instance" "gandalf-h2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1793,11 +1793,11 @@ resource "aws_instance" "gandalf-i2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1832,11 +1832,11 @@ resource "aws_instance" "gandalf-k1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1871,11 +1871,11 @@ resource "aws_instance" "gandalf-l1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1910,11 +1910,11 @@ resource "aws_instance" "gandalf-i3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1949,11 +1949,11 @@ resource "aws_instance" "gandalf-j3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1988,11 +1988,11 @@ resource "aws_instance" "gandalf-b3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2027,11 +2027,11 @@ resource "aws_instance" "gandalf-c3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2066,11 +2066,11 @@ resource "aws_instance" "gandalf-d3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2105,11 +2105,11 @@ resource "aws_instance" "gandalf-g3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2144,11 +2144,11 @@ resource "aws_instance" "gandalf-h3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2183,11 +2183,11 @@ resource "aws_instance" "gandalf-a3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2222,11 +2222,11 @@ resource "aws_instance" "gandalf-e3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2261,11 +2261,11 @@ resource "aws_instance" "gandalf-k3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2300,11 +2300,11 @@ resource "aws_instance" "gandalf-l3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f3" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2339,11 +2339,11 @@ resource "aws_instance" "gandalf-f3" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-e2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2378,11 +2378,11 @@ resource "aws_instance" "gandalf-e2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-c1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2417,11 +2417,11 @@ resource "aws_instance" "gandalf-c1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-j1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2456,11 +2456,11 @@ resource "aws_instance" "gandalf-j1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-b2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2495,11 +2495,11 @@ resource "aws_instance" "gandalf-b2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-d2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2534,11 +2534,11 @@ resource "aws_instance" "gandalf-d2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-g1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2573,11 +2573,11 @@ resource "aws_instance" "gandalf-g1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-l2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2612,11 +2612,11 @@ resource "aws_instance" "gandalf-l2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-h1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2651,11 +2651,11 @@ resource "aws_instance" "gandalf-h1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-a2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2690,11 +2690,11 @@ resource "aws_instance" "gandalf-a2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-k2" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2729,11 +2729,11 @@ resource "aws_instance" "gandalf-k2" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-i1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2768,11 +2768,11 @@ resource "aws_instance" "gandalf-i1" {
 ###################################################################################################
 
 resource "aws_instance" "gandalf-f1" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2805,5 +2805,3 @@ resource "aws_instance" "gandalf-f1" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

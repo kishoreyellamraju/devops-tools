@@ -1,10 +1,10 @@
 resource "aws_instance" "mocha-client02-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -31,12 +31,12 @@ resource "aws_instance" "mocha-client02-c" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-client03-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -63,12 +63,12 @@ resource "aws_instance" "mocha-client03-b" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-client04-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -95,12 +95,12 @@ resource "aws_instance" "mocha-client04-b" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-client01-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -127,12 +127,12 @@ resource "aws_instance" "mocha-client01-c" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-client01-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -159,12 +159,12 @@ resource "aws_instance" "mocha-client01-b" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-client02-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -191,12 +191,12 @@ resource "aws_instance" "mocha-client02-b" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-client04-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -223,12 +223,12 @@ resource "aws_instance" "mocha-client04-c" {
 ###################################################################################################
 
 resource "aws_instance" "mocha-client03-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -253,5 +253,3 @@ resource "aws_instance" "mocha-client03-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

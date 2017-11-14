@@ -1,10 +1,10 @@
 resource "aws_instance" "latte-client01-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -31,12 +31,12 @@ resource "aws_instance" "latte-client01-c" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client02-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -63,12 +63,12 @@ resource "aws_instance" "latte-client02-c" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client03-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -95,12 +95,12 @@ resource "aws_instance" "latte-client03-c" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client04-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -127,12 +127,12 @@ resource "aws_instance" "latte-client04-c" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client05-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -159,12 +159,12 @@ resource "aws_instance" "latte-client05-c" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client06-c" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -191,12 +191,12 @@ resource "aws_instance" "latte-client06-c" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client01-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -223,12 +223,12 @@ resource "aws_instance" "latte-client01-b" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client02-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -255,12 +255,12 @@ resource "aws_instance" "latte-client02-b" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client03-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -287,12 +287,12 @@ resource "aws_instance" "latte-client03-b" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client04-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -319,12 +319,12 @@ resource "aws_instance" "latte-client04-b" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client05-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -351,12 +351,12 @@ resource "aws_instance" "latte-client05-b" {
 ###################################################################################################
 
 resource "aws_instance" "latte-client06-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -381,5 +381,3 @@ resource "aws_instance" "latte-client06-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

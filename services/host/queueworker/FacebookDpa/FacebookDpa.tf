@@ -1,9 +1,9 @@
 resource "aws_instance" "prod-fb-dpa-qw01-b" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -28,5 +28,3 @@ resource "aws_instance" "prod-fb-dpa-qw01-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

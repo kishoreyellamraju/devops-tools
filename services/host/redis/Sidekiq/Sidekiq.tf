@@ -1,9 +1,9 @@
 resource "aws_instance" "sidekiq-redis-data01" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false
@@ -37,11 +37,11 @@ resource "aws_instance" "sidekiq-redis-data01" {
 ###################################################################################################
 
 resource "aws_instance" "sidekiq-redis-data02" {
-	ami                         = "common_ami"
+	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
-	key_name                    = "common_key_name"
+	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false
@@ -73,5 +73,3 @@ resource "aws_instance" "sidekiq-redis-data02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-
