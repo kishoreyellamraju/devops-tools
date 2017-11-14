@@ -19,5 +19,5 @@ variable "tag-cluster"                 {}
 variable "tag-vpc"                     {}
 variable "tag-name"                    {}
 variable "security_group"              {}
-variable "iam_instance_profile"        {}
+
 variable "instance_type"               {}
