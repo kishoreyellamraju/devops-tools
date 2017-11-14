@@ -1,4 +1,4 @@
-resource "aws_instance" "prod-mapp-app" {
+resource "aws_instance" "prod-map-app" {
 	count 											= "${var.count}"
 	ami                         = "${var.ami}"
 	ebs_optimized               = "${var.ebs_optimized}"
@@ -30,6 +30,6 @@ resource "aws_instance" "prod-mapp-app" {
 #  				Outputs
 #########################################################
 
-output "prod-mapp-app-ids" {
-	value = "${join(",", aws_instance.prod-mapp-app.*.id)}"
+output "prod-map-app-ids" {
+	value = "${join(",", aws_instance.prod-map-app.*.id)}"
 }
