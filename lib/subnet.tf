@@ -97,3 +97,7 @@ output "skynetprivatesubnetb-id" {
 output "sparkemrpublic1c-id" {
   value = "${data.terraform_remote_state.subnet.sparkemrpublic1c-id}"
 }
+
+output "appsubnets"{
+     value =["${data.terraform_remote_state.subnet.apppublicsubnetb-id}","${data.terraform_remote_state.subnet.apppublicsubnetc-id}"]
+}
