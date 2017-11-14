@@ -8,8 +8,8 @@ provider "aws" {
 
 module "vpc" {
   source = "../../lib"
-  env = "dev"
-  app = "poshmark"
+  env = "${var.env}"
+  app = "${var.appname}"
 }
 
 resource "aws_security_group" "production-search-latte" {
