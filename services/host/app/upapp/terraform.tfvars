@@ -18,6 +18,6 @@ tag-type							= "App"
 tag-cluster						= "MappApp"
 tag-vpc								= "true"
 tag-name							= "prod-up-app"
-subnets               = ["apppublicsubnetb-id","apppublicsubnetc-id"]
+subnets               = ["module.subnets.apppublicsubnetb-id","module.subnets.apppublicsubnetc-id"]
 security_group        ="production-app-id"
 iam_instance_profile  ="app"

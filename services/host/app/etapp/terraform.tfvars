@@ -18,6 +18,6 @@ tag-type							= "App"
 tag-cluster						= "EventTrackingApp"
 tag-vpc								= "true"
 tag-name							= "prod-et-app"
-subnets               = ["apppublicsubnetb-id","apppublicsubnetc-id"]
+subnets               = ["module.subnets.apppublicsubnetb-id","module.subnets.apppublicsubnetc-id"]
 security_group        ="production-app-id"
 iam_instance_profile  ="app"

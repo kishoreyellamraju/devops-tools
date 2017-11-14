@@ -5,7 +5,7 @@ resource "aws_instance" "prod-web-app" {
 	instance_type               = "${var.instance_type}"
 	monitoring                  = "${var.monitoring}"
 	key_name                    = "${var.key_name}"
-	subnet_id                   = "${module.subnet.element(var.subnets, count.index)}"
+	subnet_id                   = "${element(var.subnets, count.index)}"
 	vpc_security_group_ids      = ["${module.sg.production-app-id}"]
 	associate_public_ip_address = "${var.associate_public_ip_address}"
 	source_dest_check           = "${var.source_dest_check}"

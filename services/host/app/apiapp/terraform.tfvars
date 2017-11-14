@@ -18,5 +18,6 @@ tag-type							= "App"
 tag-cluster						= "ApiApp"
 tag-vpc								= "true"
 tag-name							= "prod-api-app"
-subnets               = ["apppublicsubnetb-id","apppublicsubnetc-id"]
+subnets               = ["module.subnets.apppublicsubnetb-id","module.subnets.apppublicsubnetc-id"]
 security_group        ="production-app-id"
+iam_instance_profile  = "app"
