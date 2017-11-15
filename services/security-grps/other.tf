@@ -1,7 +1,7 @@
 resource "aws_security_group" "spark-qubole" {
 	name="spark-qubole"
 	description="spark-qubole"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Name="spark-qubole"
@@ -29,7 +29,7 @@ output "spark-qubole-id" {
 resource "aws_security_group" "skynet-master" {
 	name="skynet-master"
 	description="skynet-master"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="skynet-master"
@@ -93,7 +93,7 @@ output "skynet-master-id" {
 resource "aws_security_group" "production-reporting-gateway" {
 	name="production-reporting-gateway"
 	description="production-reporting-gateway"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-reporting-gateway"
@@ -139,7 +139,7 @@ output "production-reporting-gateway-id" {
 resource "aws_security_group" "production-replay-producer" {
 	name="production-replay-producer"
 	description="production-replay-producer"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -184,7 +184,7 @@ output "production-replay-producer-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl35425" {
 	name="sc-qbol_acc4126_cl35425"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -247,7 +247,7 @@ output "sc-qbol_acc4126_cl35425-id" {
 resource "aws_security_group" "poshfit-server" {
 	name="poshfit-server"
 	description="SG for poshfit server"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -301,7 +301,7 @@ output "poshfit-server-id" {
 resource "aws_security_group" "production-yaga-app-elb" {
 	name="production-yaga-app-elb"
 	description="production-yaga-app-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-yaga-app-elb"
@@ -347,7 +347,7 @@ output "production-yaga-app-elb-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl30531" {
 	name="sc-qbol_acc4126_cl30531"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Name="qbol_acc4126_cl30531"
@@ -414,7 +414,7 @@ output "sc-qbol_acc4126_cl30531-id" {
 resource "aws_security_group" "prod-credentials" {
 	name="prod-credentials"
 	description="prod-credentials"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -459,7 +459,7 @@ output "prod-credentials-id" {
 resource "aws_security_group" "launch-wizard-1" {
 	name="launch-wizard-1"
 	description="launch-wizard-1 created 2017-09-13T14:13:13.486-07:00"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="app-testing-siege"
@@ -496,7 +496,7 @@ output "launch-wizard-1-id" {
 resource "aws_security_group" "production-testing-db" {
 	name="production-testing-db"
 	description="production-testing-db"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-test-db"
@@ -560,7 +560,7 @@ output "production-testing-db-id" {
 resource "aws_security_group" "production-test" {
 	name="production-test"
 	description="production-test"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-test"
@@ -615,7 +615,7 @@ output "production-test-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl28187" {
 	name="sc-qbol_acc4126_cl28187"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -678,7 +678,7 @@ output "sc-qbol_acc4126_cl28187-id" {
 resource "aws_security_group" "production-static-app" {
 	name="production-static-app"
 	description="production-static-app"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -741,7 +741,7 @@ output "production-static-app-id" {
 resource "aws_security_group" "production-jenkins" {
 	name="production-jenkins"
 	description="production-jenkins"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-jenkins"
@@ -814,7 +814,7 @@ output "production-jenkins-id" {
 resource "aws_security_group" "production-logs-queue" {
 	name="production-logs-queue"
 	description="production-logs-queue"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-logs-queue"
@@ -968,7 +968,7 @@ output "production-logs-queue-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl10431" {
 	name="sc-qbol_acc4126_cl10431"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -1031,7 +1031,7 @@ output "sc-qbol_acc4126_cl10431-id" {
 resource "aws_security_group" "vpc-testing" {
 	name="vpc-testing"
 	description="vpc-testing"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -1076,7 +1076,7 @@ output "vpc-testing-id" {
 resource "aws_security_group" "production-search-cortado" {
 	name="production-search-cortado"
 	description="production-search-cortado"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-cortado"
@@ -1140,7 +1140,7 @@ output "production-search-cortado-id" {
 resource "aws_security_group" "production-access" {
 	name="production-access"
 	description="production-access"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-access"
@@ -1177,7 +1177,7 @@ output "production-access-id" {
 resource "aws_security_group" "sc-qbol_acc7385_cl40070" {
 	name="sc-qbol_acc7385_cl40070"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Name="qbol_acc7385_cl40070"
@@ -1244,7 +1244,7 @@ output "sc-qbol_acc7385_cl40070-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl40112" {
 	name="sc-qbol_acc4126_cl40112"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		alias="qbol_acc4126_cl40112"
@@ -1311,7 +1311,7 @@ output "sc-qbol_acc4126_cl40112-id" {
 resource "aws_security_group" "production-warm" {
 	name="production-warm"
 	description="production-warm"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-warm"
@@ -1357,7 +1357,7 @@ output "production-warm-id" {
 resource "aws_security_group" "production-replay-consumer" {
 	name="production-replay-consumer"
 	description="production-replay-consumer"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -1402,7 +1402,7 @@ output "production-replay-consumer-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl21611" {
 	name="sc-qbol_acc4126_cl21611"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -1465,7 +1465,7 @@ output "sc-qbol_acc4126_cl21611-id" {
 resource "aws_security_group" "production-gateway" {
 	name="production-gateway"
 	description="production-gateway"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-gateway"
@@ -1511,7 +1511,7 @@ output "production-gateway-id" {
 resource "aws_security_group" "default" {
 	name="default"
 	description="default VPC security group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -1547,7 +1547,7 @@ output "default-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl35356" {
 	name="sc-qbol_acc4126_cl35356"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -1610,7 +1610,7 @@ output "sc-qbol_acc4126_cl35356-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl39344" {
 	name="sc-qbol_acc4126_cl39344"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Qubole="qbol_acc4126_cl39344"
@@ -1677,7 +1677,7 @@ output "sc-qbol_acc4126_cl39344-id" {
 resource "aws_security_group" "production-kibana-consumer" {
 	name="production-kibana-consumer"
 	description="production-kibana-consumer"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-kibana-consumer"
@@ -1723,7 +1723,7 @@ output "production-kibana-consumer-id" {
 resource "aws_security_group" "production-lambda" {
 	name="production-lambda"
 	description="production-lambda"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -1750,7 +1750,7 @@ output "production-lambda-id" {
 resource "aws_security_group" "production-replay-queue" {
 	name="production-replay-queue"
 	description="production-replay-queue"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -1813,7 +1813,7 @@ output "production-replay-queue-id" {
 resource "aws_security_group" "production-app-elb" {
 	name="production-app-elb"
 	description="production-app-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-app-elb"
@@ -1877,7 +1877,7 @@ output "production-app-elb-id" {
 resource "aws_security_group" "production-skynet-app-elb" {
 	name="production-skynet-app-elb"
 	description="production-skynet-app-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-skynet-app-elb"
@@ -1941,7 +1941,7 @@ output "production-skynet-app-elb-id" {
 resource "aws_security_group" "coeus-alb-sg" {
 	name="coeus-alb-sg"
 	description="coeus-alb-sg created on 2017-11-06T06:36:35.936+05:30"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -1986,7 +1986,7 @@ output "coeus-alb-sg-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl37583" {
 	name="sc-qbol_acc4126_cl37583"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Name="qbol_acc4126_cl37583"
@@ -2053,7 +2053,7 @@ output "sc-qbol_acc4126_cl37583-id" {
 resource "aws_security_group" "production-anthracite" {
 	name="production-anthracite"
 	description="production-anthracite"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -2134,7 +2134,7 @@ output "production-anthracite-id" {
 resource "aws_security_group" "production-batch" {
 	name="production-batch"
 	description="production-batch"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-batch"
@@ -2216,7 +2216,7 @@ output "production-batch-id" {
 resource "aws_security_group" "production-search-haproxy-elb" {
 	name="production-search-haproxy-elb"
 	description="production-search-haproxy-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-haproxy-elb"
@@ -2289,7 +2289,7 @@ output "production-search-haproxy-elb-id" {
 resource "aws_security_group" "production-ipsec-monitoring" {
 	name="production-ipsec-monitoring"
 	description="production-ipsec-monitoring"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-ipsec-monitoring"
@@ -2353,7 +2353,7 @@ output "production-ipsec-monitoring-id" {
 resource "aws_security_group" "production-redis-haproxy-elb" {
 	name="production-redis-haproxy-elb"
 	description="production-redis-haproxy-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-redis-haproxy-elb"
@@ -2714,7 +2714,7 @@ output "production-redis-haproxy-elb-id" {
 resource "aws_security_group" "production-cloudfront-app-elb" {
 	name="production-cloudfront-app-elb"
 	description="production-cloudfront-app-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-cloudfront-app-elb"
@@ -2760,7 +2760,7 @@ output "production-cloudfront-app-elb-id" {
 resource "aws_security_group" "production-squid" {
 	name="production-squid"
 	description="production-squid"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-squid"
@@ -2833,7 +2833,7 @@ output "production-squid-id" {
 resource "aws_security_group" "changelog-sg-elb" {
 	name="changelog-sg-elb"
 	description="sg for changelog elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -2878,7 +2878,7 @@ output "changelog-sg-elb-id" {
 resource "aws_security_group" "production-yaga-batch" {
 	name="production-yaga-batch"
 	description="production-yaga-batch"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-yaga-batch"
@@ -2924,7 +2924,7 @@ output "production-yaga-batch-id" {
 resource "aws_security_group" "benchmark-activity" {
 	name="benchmark-activity"
 	description="benchmark-activity"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -2960,7 +2960,7 @@ output "benchmark-activity-id" {
 resource "aws_security_group" "production-control" {
 	name="production-control"
 	description="production-control"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-control"
@@ -2997,7 +2997,7 @@ output "production-control-id" {
 resource "aws_security_group" "sc-qbol_acc7385_cl33225" {
 	name="sc-qbol_acc7385_cl33225"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -3060,7 +3060,7 @@ output "sc-qbol_acc7385_cl33225-id" {
 resource "aws_security_group" "skynet-credentials" {
 	name="skynet-credentials"
 	description="skynet-credentials"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="skynet-credentials"
@@ -3115,7 +3115,7 @@ output "skynet-credentials-id" {
 resource "aws_security_group" "secmonkey-elb-sg" {
 	name="secmonkey-elb-sg"
 	description="sg for sec monkey elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -3160,7 +3160,7 @@ output "secmonkey-elb-sg-id" {
 resource "aws_security_group" "production-s3-basin" {
 	name="production-s3-basin"
 	description="production-s3-basin"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -3205,7 +3205,7 @@ output "production-s3-basin-id" {
 resource "aws_security_group" "prod-sg-secmonkey" {
 	name="prod-sg-secmonkey"
 	description="sg for security monkey"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -3268,7 +3268,7 @@ output "prod-sg-secmonkey-id" {
 resource "aws_security_group" "production-rb-redis" {
 	name="production-rb-redis"
 	description="production-rb-redis"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-rb-redis"
@@ -3314,7 +3314,7 @@ output "production-rb-redis-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl31578" {
 	name="sc-qbol_acc4126_cl31578"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Type="qubole"
@@ -3381,7 +3381,7 @@ output "sc-qbol_acc4126_cl31578-id" {
 resource "aws_security_group" "test-elastic" {
 	name="test-elastic"
 	description="test-elastic"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -3417,7 +3417,7 @@ output "test-elastic-id" {
 resource "aws_security_group" "ElasticMapReduce-master" {
 	name="ElasticMapReduce-master"
 	description="Master group for Elastic MapReduce created on 2016-06-30T08:46:49.525Z"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -3543,7 +3543,7 @@ output "ElasticMapReduce-master-id" {
 resource "aws_security_group" "production-cloudfront-http" {
 	name="production-cloudfront-http"
 	description="production-cloudfront-http"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		AutoUpdate="true"
@@ -3582,7 +3582,7 @@ output "production-cloudfront-http-id" {
 resource "aws_security_group" "Production-poshcrew-ALB" {
 	name="Production-poshcrew-ALB"
 	description="SG for ALB to handle traffic for all poshcrew domains"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="Production-poshcrew-ALB"
@@ -3682,7 +3682,7 @@ output "Production-poshcrew-ALB-id" {
 resource "aws_security_group" "ElasticMapReduce-slave" {
 	name="ElasticMapReduce-slave"
 	description="Slave group for Elastic MapReduce created on 2016-06-30T08:46:49.525Z"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -3772,7 +3772,7 @@ output "ElasticMapReduce-slave-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl41005" {
 	name="sc-qbol_acc4126_cl41005"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Type="qubole"
@@ -3839,7 +3839,7 @@ output "sc-qbol_acc4126_cl41005-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl33408" {
 	name="sc-qbol_acc4126_cl33408"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -3902,7 +3902,7 @@ output "sc-qbol_acc4126_cl33408-id" {
 resource "aws_security_group" "poshfit-elb-sg" {
 	name="poshfit-elb-sg"
 	description="poshfit"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -3947,7 +3947,7 @@ output "poshfit-elb-sg-id" {
 resource "aws_security_group" "production-yaga-consumer" {
 	name="production-yaga-consumer"
 	description="production-yaga-consumer"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-yaga-consumer"
@@ -3993,7 +3993,7 @@ output "production-yaga-consumer-id" {
 resource "aws_security_group" "production-queue" {
 	name="production-queue"
 	description="production-queue"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-queue"
@@ -4075,7 +4075,7 @@ output "production-queue-id" {
 resource "aws_security_group" "production-maintenance" {
 	name="production-maintenance"
 	description="production-maintenance"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -4156,7 +4156,7 @@ output "production-maintenance-id" {
 resource "aws_security_group" "production-rb-app-elb" {
 	name="production-rb-app-elb"
 	description="production-rb-app-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-rb-app-elb"
@@ -4211,7 +4211,7 @@ output "production-rb-app-elb-id" {
 resource "aws_security_group" "spark-access" {
 	name="spark-access"
 	description="spark-access"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Name="spark-access"
@@ -4248,7 +4248,7 @@ output "spark-access-id" {
 resource "aws_security_group" "skynet-ad-partner" {
 	name="skynet-ad-partner"
 	description="skynet-ad-partner"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -4284,7 +4284,7 @@ output "skynet-ad-partner-id" {
 resource "aws_security_group" "production-changelog" {
 	name="production-changelog"
 	description="production-changelog"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -4329,7 +4329,7 @@ output "production-changelog-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl29259" {
 	name="sc-qbol_acc4126_cl29259"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -4392,7 +4392,7 @@ output "sc-qbol_acc4126_cl29259-id" {
 resource "aws_security_group" "sc-qbol_acc7385_cl31285" {
 	name="sc-qbol_acc7385_cl31285"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -4455,7 +4455,7 @@ output "sc-qbol_acc7385_cl31285-id" {
 resource "aws_security_group" "production-cloudfront-https" {
 	name="production-cloudfront-https"
 	description="production-cloudfront-https"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		AutoUpdate="true"
@@ -4494,7 +4494,7 @@ output "production-cloudfront-https-id" {
 resource "aws_security_group" "production-nat" {
 	name="production-nat"
 	description="production-nat"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-nat"
@@ -4540,7 +4540,7 @@ output "production-nat-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl25904" {
 	name="sc-qbol_acc4126_cl25904"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Type="qubole"
@@ -4607,7 +4607,7 @@ output "sc-qbol_acc4126_cl25904-id" {
 resource "aws_security_group" "production-elastalert-slave" {
 	name="production-elastalert-slave"
 	description="production-elastalert-slave"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -4652,7 +4652,7 @@ output "production-elastalert-slave-id" {
 resource "aws_security_group" "cerberus-temp" {
 	name="cerberus-temp"
 	description="cerberus-temp"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -4697,7 +4697,7 @@ output "cerberus-temp-id" {
 resource "aws_security_group" "production-intacct" {
 	name="production-intacct"
 	description="production-intacct"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -4742,7 +4742,7 @@ output "production-intacct-id" {
 resource "aws_security_group" "sc-qbol_acc7385_cl40149" {
 	name="sc-qbol_acc7385_cl40149"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		alias="qbol_acc7385_cl40149"
@@ -4809,7 +4809,7 @@ output "sc-qbol_acc7385_cl40149-id" {
 resource "aws_security_group" "production-mmsagent" {
 	name="production-mmsagent"
 	description="production-mmsagent"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-mmsagent"
@@ -4855,7 +4855,7 @@ output "production-mmsagent-id" {
 resource "aws_security_group" "production-rb-bastion" {
 	name="production-rb-bastion"
 	description="production-rb-bastion"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-rb-bastion"
@@ -4892,7 +4892,7 @@ output "production-rb-bastion-id" {
 resource "aws_security_group" "production-spark" {
 	name="production-spark"
 	description="production-spark"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-spark"
@@ -4938,7 +4938,7 @@ output "production-spark-id" {
 resource "aws_security_group" "production-testing-mocha" {
 	name="production-testing-mocha"
 	description="production-testing-mocha"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-testing-mocha"
@@ -4993,7 +4993,7 @@ output "production-testing-mocha-id" {
 resource "aws_security_group" "production-ato" {
 	name="production-ato"
 	description="production-ato"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -5020,7 +5020,7 @@ output "production-ato-id" {
 resource "aws_security_group" "metis-collector" {
 	name="metis-collector"
 	description="metis-collector"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 	}
@@ -5065,7 +5065,7 @@ output "metis-collector-id" {
 resource "aws_security_group" "production-redshift" {
 	name="production-redshift"
 	description="production-redshift"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-redshift"
@@ -5102,7 +5102,7 @@ output "production-redshift-id" {
 resource "aws_security_group" "production-mocha-elb" {
 	name="production-mocha-elb"
 	description="production-mocha-elb"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-mocha-elb"
@@ -5157,7 +5157,7 @@ output "production-mocha-elb-id" {
 resource "aws_security_group" "production-ipsec" {
 	name="production-ipsec"
 	description="production-ipsec"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-ipsec"
@@ -5257,7 +5257,7 @@ output "production-ipsec-id" {
 resource "aws_security_group" "production-yaga-worker" {
 	name="production-yaga-worker"
 	description="production-yaga-worker"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-yaga-worker"
@@ -5312,7 +5312,7 @@ output "production-yaga-worker-id" {
 resource "aws_security_group" "sc-qbol_acc4126_cl39298" {
 	name="sc-qbol_acc4126_cl39298"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		alias="qbol_acc4126_cl39298"
@@ -5379,7 +5379,7 @@ output "sc-qbol_acc4126_cl39298-id" {
 resource "aws_security_group" "prod-coeus-oauthproxy" {
 	name="prod-coeus-oauthproxy"
 	description="prod-coeus-oauthproxy created 2017-11-04T11:33:27.257+05:30"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 	}
@@ -5433,7 +5433,7 @@ output "prod-coeus-oauthproxy-id" {
 resource "aws_security_group" "sc-qbol_acc7385_cl40071" {
 	name="sc-qbol_acc7385_cl40071"
 	description="0.9999-Qubole_Temporary_Security_Group"
-	vpc_id="${module.vpc.Spark-EMR-id}"
+	vpc_id="${module.vpc.spark-emr-id}"
 
 	tags {
 		Qubole="qbol_acc7385_cl40071"
@@ -5500,7 +5500,7 @@ output "sc-qbol_acc7385_cl40071-id" {
 resource "aws_security_group" "default" {
 	name="default"
 	description="default VPC security group"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="default"
@@ -5537,7 +5537,7 @@ output "default-id" {
 resource "aws_security_group" "skynet-slave" {
 	name="skynet-slave"
 	description="skynet-slave"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="skynet-slave"

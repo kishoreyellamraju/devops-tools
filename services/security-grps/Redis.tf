@@ -1,7 +1,7 @@
 resource "aws_security_group" "sidekiq-redis-data" {
 	name="sidekiq-redis-data"
 	description="sidekiq-redis-data"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="sidekiq-redis-data"
@@ -92,7 +92,7 @@ output "sidekiq-redis-data-id" {
 resource "aws_security_group" "production-redis-data" {
 	name="production-redis-data"
 	description="production-redis-data"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-redis-data"
@@ -183,7 +183,7 @@ output "production-redis-data-id" {
 resource "aws_security_group" "production-redis-cache" {
 	name="production-redis-cache"
 	description="production-redis-cache"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-redis-cache"
@@ -247,7 +247,7 @@ output "production-redis-cache-id" {
 resource "aws_security_group" "production-redis-userdata" {
 	name="production-redis-userdata"
 	description="production-redis-userdata"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-redis-userdata"
@@ -311,7 +311,7 @@ output "production-redis-userdata-id" {
 resource "aws_security_group" "stormlight" {
 	name="stormlight"
 	description="stormlight"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="stormlight"
@@ -375,7 +375,7 @@ output "stormlight-id" {
 resource "aws_security_group" "cerberus" {
 	name="cerberus"
 	description="cerberus"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="cerberus"

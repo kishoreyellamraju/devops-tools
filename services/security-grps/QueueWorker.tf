@@ -1,7 +1,7 @@
 resource "aws_security_group" "production-qw" {
 	name="production-qw"
 	description="production-qw"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-qw"

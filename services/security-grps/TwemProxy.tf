@@ -1,7 +1,7 @@
 resource "aws_security_group" "production-twemproxy" {
 	name="production-twemproxy"
 	description="production-twemproxy"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-twemproxy"
@@ -101,7 +101,7 @@ output "production-twemproxy-id" {
 resource "aws_security_group" "cerberus-twemproxy" {
 	name="cerberus-twemproxy"
 	description="cerberus-twemproxy"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="cerberus-twemproxy"

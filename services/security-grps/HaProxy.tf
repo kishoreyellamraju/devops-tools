@@ -1,7 +1,7 @@
 resource "aws_security_group" "production-vault-haproxy" {
 	name="production-vault-haproxy"
 	description="production-vault-haproxy"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-vault-haproxy"
@@ -74,7 +74,7 @@ output "production-vault-haproxy-id" {
 resource "aws_security_group" "production-search-haproxy" {
 	name="production-search-haproxy"
 	description="production-search-haproxy"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-haproxy"
@@ -165,7 +165,7 @@ output "production-search-haproxy-id" {
 resource "aws_security_group" "production-redis-haproxy" {
 	name="production-redis-haproxy"
 	description="production-redis-haproxy"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-redis-haproxy"
@@ -625,7 +625,7 @@ output "production-redis-haproxy-id" {
 resource "aws_security_group" "production-mocha-haproxy" {
 	name="production-mocha-haproxy"
 	description="production-mocha-haproxy"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-mocha-haproxy"

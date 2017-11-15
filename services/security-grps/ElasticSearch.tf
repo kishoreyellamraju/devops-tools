@@ -1,7 +1,7 @@
 resource "aws_security_group" "production-search-latte" {
 	name="production-search-latte"
 	description="production-search-latte"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-latte"
@@ -101,7 +101,7 @@ output "production-search-latte-id" {
 resource "aws_security_group" "production-search-breve" {
 	name="production-search-breve"
 	description="production-search-breve"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-breve"
@@ -201,7 +201,7 @@ output "production-search-breve-id" {
 resource "aws_security_group" "production-search-ironbank" {
 	name="production-search-ironbank"
 	description="production-search-ironbank"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-ironbank"
@@ -292,7 +292,7 @@ output "production-search-ironbank-id" {
 resource "aws_security_group" "production-search-mocha" {
 	name="production-search-mocha"
 	description="production-search-mocha"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-mocha"
@@ -401,7 +401,7 @@ output "production-search-mocha-id" {
 resource "aws_security_group" "production-search-romano" {
 	name="production-search-romano"
 	description="production-search-romano"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-romano"
@@ -492,7 +492,7 @@ output "production-search-romano-id" {
 resource "aws_security_group" "production-search-doppio" {
 	name="production-search-doppio"
 	description="production-search-doppio"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-doppio"
@@ -592,7 +592,7 @@ output "production-search-doppio-id" {
 resource "aws_security_group" "production-search-kaapi" {
 	name="production-search-kaapi"
 	description="production-search-kaapi"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-kaapi"
@@ -692,7 +692,7 @@ output "production-search-kaapi-id" {
 resource "aws_security_group" "production-search-americano" {
 	name="production-search-americano"
 	description="production-search-americano"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-americano"
@@ -783,7 +783,7 @@ output "production-search-americano-id" {
 resource "aws_security_group" "production-search-espresso" {
 	name="production-search-espresso"
 	description="production-search-espresso"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-espresso"
@@ -883,7 +883,7 @@ output "production-search-espresso-id" {
 resource "aws_security_group" "production-search-mazagran" {
 	name="production-search-mazagran"
 	description="production-search-mazagran"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-search-mazagran"

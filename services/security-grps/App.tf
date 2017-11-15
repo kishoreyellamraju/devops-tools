@@ -1,7 +1,7 @@
 resource "aws_security_group" "production-vault-app" {
 	name="production-vault-app"
 	description="production-vault-app"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-vault-app"
@@ -56,7 +56,7 @@ output "production-vault-app-id" {
 resource "aws_security_group" "production-yaga-app" {
 	name="production-yaga-app"
 	description="production-yaga-app"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-yaga-app"
@@ -219,7 +219,7 @@ output "production-yaga-app-id" {
 resource "aws_security_group" "production-rb-app" {
 	name="production-rb-app"
 	description="production-rb-app"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-rb-app"
@@ -301,7 +301,7 @@ output "production-rb-app-id" {
 resource "aws_security_group" "production-app" {
 	name="production-app"
 	description="production-app"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-app"
@@ -410,7 +410,7 @@ output "production-app-id" {
 resource "aws_security_group" "produciton-ut-app-vpc" {
 	name="produciton-ut-app-vpc"
 	description="vpc admin app"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-ut-app-vpc"

@@ -1,7 +1,7 @@
 resource "aws_security_group" "production-vault-db" {
 	name="production-vault-db"
 	description="production-vault-"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-vault-db"
@@ -65,7 +65,7 @@ output "production-vault-db-id" {
 resource "aws_security_group" "production-db" {
 	name="production-db"
 	description="production-db"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-db"
@@ -201,7 +201,7 @@ output "production-db-id" {
 resource "aws_security_group" "production-configsvr" {
 	name="production-configsvr"
 	description="production-configsvr"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-configsvr"
@@ -310,7 +310,7 @@ output "production-configsvr-id" {
 resource "aws_security_group" "production-mongos" {
 	name="production-mongos"
 	description="production-mongos"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-mongos"
@@ -410,7 +410,7 @@ output "production-mongos-id" {
 resource "aws_security_group" "production-yaga-db" {
 	name="production-yaga-db"
 	description="production-yaga-db"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-yaga-db"
@@ -573,7 +573,7 @@ output "production-yaga-db-id" {
 resource "aws_security_group" "production-db-reporting" {
 	name="production-db-reporting"
 	description="production-db-reporting"
-	vpc_id="${module.vpc.Poshmark-id}"
+	vpc_id="${module.vpc.poshmark-id}"
 
 	tags {
 		Name="production-db-reporting"
