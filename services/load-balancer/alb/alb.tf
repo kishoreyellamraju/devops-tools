@@ -40,13 +40,13 @@ resource "aws_alb_target_group" "web-app" {
 
 /**
  * Target group and EC2 association
- */
+
 resource "aws_lb_target_group_attachment" "web-app-instance" {
   target_group_arn = "${aws_lb_target_group.web-app.arn}"
   target_id        = ["${split(",", module.app.prod-web-app-ids)}"]
   port             = 9292
 }
-
+ */
 /**
  * HTTP Listener for Web App ALB
  */
@@ -164,13 +164,13 @@ resource "aws_alb" "vpc-et-poshmark" {
 
 /**
  * Target group and EC2 association
- */
+
 resource "aws_lb_target_group_attachment" "et-app-instance" {
   target_group_arn = "${aws_lb_target_group.et-app.arn}"
   target_id        = ["${split(",", module.app.prod-et-app-ids)}"]
   port             = 9292
 }
-
+ */
 /**
  * Target group for ET ALB
  */
