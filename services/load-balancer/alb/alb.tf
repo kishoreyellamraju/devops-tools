@@ -188,7 +188,7 @@ resource "aws_alb_target_group" "et-app" {
 /**
  * HTTP Listener for ET ALB
  */
-resource "aws_alb_listener" "front_80" {
+resource "aws_alb_listener" "front_80-et" {
    load_balancer_arn = "${aws_alb.vpc-et-poshmark.arn}"
    port = "80"
    protocol = "HTTP"
@@ -201,7 +201,7 @@ resource "aws_alb_listener" "front_80" {
 /**
  * HTTPS Listener for ET ALB
  */
-resource "aws_alb_listener" "front_443" {
+resource "aws_alb_listener" "front_443-et" {
    load_balancer_arn = "${aws_alb.vpc-et-poshmark.arn}"
    port = "443"
    protocol = "HTTP"
