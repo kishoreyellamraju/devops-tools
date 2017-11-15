@@ -66,7 +66,7 @@ resource "aws_lb_listener_rule" "front_80-up-app" {
 
   action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.up-app.arn}"
+    target_group_arn = "${aws_alb_target_group.up-app.arn}"
   }
 
   condition {
@@ -81,7 +81,7 @@ resource "aws_lb_listener_rule" "front_80-mapp-app" {
 
   action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.mapp-app.arn}"
+    target_group_arn = "${aws_alb_target_group.mapp-app.arn}"
   }
 
   condition {
@@ -110,7 +110,7 @@ resource "aws_lb_listener_rule" "front_443-up-app" {
 
   action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.up-app.arn}"
+    target_group_arn = "${aws_alb_target_group.up-app.arn}"
   }
 
   condition {
@@ -125,7 +125,7 @@ resource "aws_lb_listener_rule" "front_443-mapp-app" {
 
   action {
     type             = "forward"
-    target_group_arn = "${aws_lb_target_group.mapp-app.arn}"
+    target_group_arn = "${aws_alb_target_group.mapp-app.arn}"
   }
 
   condition {
