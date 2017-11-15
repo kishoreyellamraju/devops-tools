@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "production-vault-haproxy_1" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-haproxy_2" {
@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "production-vault-haproxy_2" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-haproxy_3" {
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "production-vault-haproxy_3" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-haproxy_4" {
@@ -42,7 +42,7 @@ resource "aws_security_group_rule" "production-vault-haproxy_4" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-haproxy_5" {
@@ -51,7 +51,7 @@ resource "aws_security_group_rule" "production-vault-haproxy_5" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 
@@ -88,7 +88,7 @@ resource "aws_security_group_rule" "production-search-haproxy_1" {
 	to_port=8080
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-search-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-search-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-search-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-search-haproxy_2" {
@@ -97,7 +97,7 @@ resource "aws_security_group_rule" "production-search-haproxy_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-search-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-search-haproxy_3" {
@@ -106,7 +106,7 @@ resource "aws_security_group_rule" "production-search-haproxy_3" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-search-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-search-haproxy_4" {
@@ -115,7 +115,7 @@ resource "aws_security_group_rule" "production-search-haproxy_4" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-search-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-search-haproxy_5" {
@@ -124,7 +124,7 @@ resource "aws_security_group_rule" "production-search-haproxy_5" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-search-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-search-haproxy_6" {
@@ -133,7 +133,7 @@ resource "aws_security_group_rule" "production-search-haproxy_6" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-search-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-search-haproxy_7" {
@@ -142,7 +142,7 @@ resource "aws_security_group_rule" "production-search-haproxy_7" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-search-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-search-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-search-haproxy-elb.id}"
 }
 
 
@@ -179,7 +179,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_1" {
 	to_port=16379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_2" {
@@ -188,7 +188,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_2" {
 	to_port=16379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_3" {
@@ -197,7 +197,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_3" {
 	to_port=16379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_4" {
@@ -206,7 +206,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_4" {
 	to_port=16379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_5" {
@@ -215,7 +215,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_5" {
 	to_port=16379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-elastalert-slave.id}"
+	source_security_group_id="${module.vpc.production-elastalert-slave.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_6" {
@@ -224,7 +224,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_6" {
 	to_port=16379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_7" {
@@ -233,7 +233,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_7" {
 	to_port=22421
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_8" {
@@ -242,7 +242,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_8" {
 	to_port=22421
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_9" {
@@ -251,7 +251,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_9" {
 	to_port=22421
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_10" {
@@ -260,7 +260,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_10" {
 	to_port=22421
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_11" {
@@ -269,7 +269,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_11" {
 	to_port=8080
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_12" {
@@ -278,7 +278,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_12" {
 	to_port=8080
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_13" {
@@ -287,7 +287,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_13" {
 	to_port=22321
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_14" {
@@ -296,7 +296,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_14" {
 	to_port=22321
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_15" {
@@ -305,7 +305,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_15" {
 	to_port=22321
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_16" {
@@ -314,7 +314,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_16" {
 	to_port=22321
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_17" {
@@ -323,7 +323,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_17" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_18" {
@@ -332,7 +332,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_18" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_19" {
@@ -341,7 +341,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_19" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_20" {
@@ -350,7 +350,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_20" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_21" {
@@ -359,7 +359,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_21" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_22" {
@@ -368,7 +368,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_22" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_23" {
@@ -377,7 +377,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_23" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-elastalert-slave.id}"
+	source_security_group_id="${module.vpc.production-elastalert-slave.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_24" {
@@ -386,7 +386,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_24" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_25" {
@@ -395,7 +395,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_25" {
 	to_port=22121
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_26" {
@@ -404,7 +404,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_26" {
 	to_port=22121
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_27" {
@@ -413,7 +413,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_27" {
 	to_port=22121
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_28" {
@@ -422,7 +422,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_28" {
 	to_port=22121
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_29" {
@@ -431,7 +431,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_29" {
 	to_port=22621
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_30" {
@@ -440,7 +440,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_30" {
 	to_port=22621
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_31" {
@@ -449,7 +449,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_31" {
 	to_port=22621
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_32" {
@@ -458,7 +458,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_32" {
 	to_port=22621
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_33" {
@@ -467,7 +467,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_33" {
 	to_port=22721
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_34" {
@@ -476,7 +476,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_34" {
 	to_port=22721
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_35" {
@@ -485,7 +485,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_35" {
 	to_port=22721
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_36" {
@@ -494,7 +494,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_36" {
 	to_port=22721
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_37" {
@@ -503,7 +503,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_37" {
 	to_port=22821
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_38" {
@@ -512,7 +512,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_38" {
 	to_port=22821
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_39" {
@@ -521,7 +521,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_39" {
 	to_port=22821
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_40" {
@@ -530,7 +530,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_40" {
 	to_port=22821
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_41" {
@@ -539,7 +539,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_41" {
 	to_port=22521
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_42" {
@@ -548,7 +548,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_42" {
 	to_port=22521
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_43" {
@@ -557,7 +557,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_43" {
 	to_port=22521
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_44" {
@@ -566,7 +566,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_44" {
 	to_port=22521
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_45" {
@@ -575,7 +575,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_45" {
 	to_port=22221
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_46" {
@@ -584,7 +584,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_46" {
 	to_port=22221
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_47" {
@@ -593,7 +593,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_47" {
 	to_port=22221
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-haproxy_48" {
@@ -602,7 +602,7 @@ resource "aws_security_group_rule" "production-redis-haproxy_48" {
 	to_port=22221
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy-elb.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy-elb.id}"
 }
 
 
@@ -639,7 +639,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_1" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-mocha-elb.id}"
+	source_security_group_id="${module.vpc.production-mocha-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_2" {
@@ -648,7 +648,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_2" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
+	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_3" {
@@ -657,7 +657,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_3" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_4" {
@@ -666,7 +666,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_4" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_5" {
@@ -675,7 +675,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_5" {
 	to_port=5602
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_6" {
@@ -684,7 +684,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_6" {
 	to_port=3000
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_7" {
@@ -693,7 +693,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_7" {
 	to_port=6180
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-mocha-elb.id}"
+	source_security_group_id="${module.vpc.production-mocha-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_8" {
@@ -702,7 +702,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_8" {
 	to_port=443
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-mocha-elb.id}"
+	source_security_group_id="${module.vpc.production-mocha-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_9" {
@@ -711,7 +711,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_9" {
 	to_port=443
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
+	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_10" {
@@ -720,7 +720,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_10" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-kibana-consumer.id}"
+	source_security_group_id="${module.vpc.production-kibana-consumer.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_11" {
@@ -729,7 +729,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_11" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-yaga-app.id}"
+	source_security_group_id="${module.vpc.production-yaga-app.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_12" {
@@ -738,7 +738,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_12" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-yaga-batch.id}"
+	source_security_group_id="${module.vpc.production-yaga-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_13" {
@@ -747,7 +747,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_13" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-yaga-worker.id}"
+	source_security_group_id="${module.vpc.production-yaga-worker.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_14" {
@@ -756,7 +756,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_14" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-testing-mocha.id}"
+	source_security_group_id="${module.vpc.production-testing-mocha.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_15" {
@@ -765,7 +765,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_15" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_16" {
@@ -774,7 +774,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_16" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-elastalert-slave.id}"
+	source_security_group_id="${module.vpc.production-elastalert-slave.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_17" {
@@ -783,7 +783,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_17" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.production-ipsec.id}"
+	source_security_group_id="${module.vpc.production-ipsec.id}"
 }
 
 resource "aws_security_group_rule" "production-mocha-haproxy_18" {
@@ -792,7 +792,7 @@ resource "aws_security_group_rule" "production-mocha-haproxy_18" {
 	to_port=8008
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mocha-haproxy.id}"
-	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
+	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
 }
 
 
@@ -811,5 +811,3 @@ output "production-mocha-haproxy-id" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

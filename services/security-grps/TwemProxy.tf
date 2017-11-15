@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "production-twemproxy_1" {
 	to_port=22421
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-twemproxy_2" {
@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "production-twemproxy_2" {
 	to_port=22321
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-twemproxy_3" {
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "production-twemproxy_3" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-twemproxy_4" {
@@ -42,7 +42,7 @@ resource "aws_security_group_rule" "production-twemproxy_4" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-twemproxy_5" {
@@ -51,7 +51,7 @@ resource "aws_security_group_rule" "production-twemproxy_5" {
 	to_port=22121
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-twemproxy_6" {
@@ -60,7 +60,7 @@ resource "aws_security_group_rule" "production-twemproxy_6" {
 	to_port=22621
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-twemproxy_7" {
@@ -69,7 +69,7 @@ resource "aws_security_group_rule" "production-twemproxy_7" {
 	to_port=22521
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-twemproxy_8" {
@@ -78,7 +78,7 @@ resource "aws_security_group_rule" "production-twemproxy_8" {
 	to_port=22221
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 
@@ -115,7 +115,7 @@ resource "aws_security_group_rule" "cerberus-twemproxy_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "cerberus-twemproxy_2" {
@@ -124,7 +124,7 @@ resource "aws_security_group_rule" "cerberus-twemproxy_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "cerberus-twemproxy_3" {
@@ -133,7 +133,7 @@ resource "aws_security_group_rule" "cerberus-twemproxy_3" {
 	to_port=22121
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "cerberus-twemproxy_4" {
@@ -142,7 +142,7 @@ resource "aws_security_group_rule" "cerberus-twemproxy_4" {
 	to_port=22221
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus-twemproxy.id}"
-	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
+	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
 }
 
 
@@ -161,5 +161,3 @@ output "cerberus-twemproxy-id" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

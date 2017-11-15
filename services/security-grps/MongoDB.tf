@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "production-vault-db_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-db.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-db_2" {
@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "production-vault-db_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-db.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-db_3" {
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "production-vault-db_3" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-db.id}"
-	source_security_group_id="${aws_security_group.production-vault-app.id}"
+	source_security_group_id="${module.vpc.production-vault-app.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-db_4" {
@@ -42,7 +42,7 @@ resource "aws_security_group_rule" "production-vault-db_4" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-db.id}"
-	source_security_group_id="${aws_security_group.production-vault-db.id}"
+	source_security_group_id="${module.vpc.production-vault-db.id}"
 }
 
 
@@ -79,7 +79,7 @@ resource "aws_security_group_rule" "production-db_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-db_2" {
@@ -88,7 +88,7 @@ resource "aws_security_group_rule" "production-db_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-db_3" {
@@ -97,7 +97,7 @@ resource "aws_security_group_rule" "production-db_3" {
 	to_port=4949
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-db_4" {
@@ -106,7 +106,7 @@ resource "aws_security_group_rule" "production-db_4" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-db_5" {
@@ -115,7 +115,7 @@ resource "aws_security_group_rule" "production-db_5" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-db_6" {
@@ -124,7 +124,7 @@ resource "aws_security_group_rule" "production-db_6" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-db_7" {
@@ -133,7 +133,7 @@ resource "aws_security_group_rule" "production-db_7" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-db.id}"
+	source_security_group_id="${module.vpc.production-db.id}"
 }
 
 resource "aws_security_group_rule" "production-db_8" {
@@ -142,7 +142,7 @@ resource "aws_security_group_rule" "production-db_8" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-mongos.id}"
+	source_security_group_id="${module.vpc.production-mongos.id}"
 }
 
 resource "aws_security_group_rule" "production-db_9" {
@@ -151,7 +151,7 @@ resource "aws_security_group_rule" "production-db_9" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-configsvr.id}"
+	source_security_group_id="${module.vpc.production-configsvr.id}"
 }
 
 resource "aws_security_group_rule" "production-db_10" {
@@ -160,7 +160,7 @@ resource "aws_security_group_rule" "production-db_10" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-control.id}"
+	source_security_group_id="${module.vpc.production-control.id}"
 }
 
 resource "aws_security_group_rule" "production-db_11" {
@@ -169,7 +169,7 @@ resource "aws_security_group_rule" "production-db_11" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-db_12" {
@@ -178,7 +178,7 @@ resource "aws_security_group_rule" "production-db_12" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 
@@ -215,7 +215,7 @@ resource "aws_security_group_rule" "production-configsvr_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_2" {
@@ -224,7 +224,7 @@ resource "aws_security_group_rule" "production-configsvr_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_3" {
@@ -233,7 +233,7 @@ resource "aws_security_group_rule" "production-configsvr_3" {
 	to_port=4949
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_4" {
@@ -242,7 +242,7 @@ resource "aws_security_group_rule" "production-configsvr_4" {
 	to_port=27021
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_5" {
@@ -251,7 +251,7 @@ resource "aws_security_group_rule" "production-configsvr_5" {
 	to_port=27021
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-db.id}"
+	source_security_group_id="${module.vpc.production-db.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_6" {
@@ -260,7 +260,7 @@ resource "aws_security_group_rule" "production-configsvr_6" {
 	to_port=27021
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_7" {
@@ -269,7 +269,7 @@ resource "aws_security_group_rule" "production-configsvr_7" {
 	to_port=27021
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-mongos.id}"
+	source_security_group_id="${module.vpc.production-mongos.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_8" {
@@ -278,7 +278,7 @@ resource "aws_security_group_rule" "production-configsvr_8" {
 	to_port=27021
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-configsvr_9" {
@@ -287,7 +287,7 @@ resource "aws_security_group_rule" "production-configsvr_9" {
 	to_port=27021
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-configsvr.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 
@@ -324,7 +324,7 @@ resource "aws_security_group_rule" "production-mongos_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-mongos_2" {
@@ -333,7 +333,7 @@ resource "aws_security_group_rule" "production-mongos_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-mongos_3" {
@@ -342,7 +342,7 @@ resource "aws_security_group_rule" "production-mongos_3" {
 	to_port=27019
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-mongos_4" {
@@ -351,7 +351,7 @@ resource "aws_security_group_rule" "production-mongos_4" {
 	to_port=27019
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-mongos_5" {
@@ -360,7 +360,7 @@ resource "aws_security_group_rule" "production-mongos_5" {
 	to_port=27019
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-mongos_6" {
@@ -369,7 +369,7 @@ resource "aws_security_group_rule" "production-mongos_6" {
 	to_port=27019
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-db.id}"
+	source_security_group_id="${module.vpc.production-db.id}"
 }
 
 resource "aws_security_group_rule" "production-mongos_7" {
@@ -378,7 +378,7 @@ resource "aws_security_group_rule" "production-mongos_7" {
 	to_port=27019
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-mongos_8" {
@@ -387,7 +387,7 @@ resource "aws_security_group_rule" "production-mongos_8" {
 	to_port=4949
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-mongos.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 
@@ -424,7 +424,7 @@ resource "aws_security_group_rule" "production-yaga-db_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_2" {
@@ -433,7 +433,7 @@ resource "aws_security_group_rule" "production-yaga-db_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_3" {
@@ -442,7 +442,7 @@ resource "aws_security_group_rule" "production-yaga-db_3" {
 	to_port=4949
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_4" {
@@ -451,7 +451,7 @@ resource "aws_security_group_rule" "production-yaga-db_4" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-yaga-db.id}"
+	source_security_group_id="${module.vpc.production-yaga-db.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_5" {
@@ -460,7 +460,7 @@ resource "aws_security_group_rule" "production-yaga-db_5" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-app.id}"
+	source_security_group_id="${module.vpc.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_6" {
@@ -469,7 +469,7 @@ resource "aws_security_group_rule" "production-yaga-db_6" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-batch.id}"
+	source_security_group_id="${module.vpc.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_7" {
@@ -478,7 +478,7 @@ resource "aws_security_group_rule" "production-yaga-db_7" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-qw.id}"
+	source_security_group_id="${module.vpc.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_8" {
@@ -487,7 +487,7 @@ resource "aws_security_group_rule" "production-yaga-db_8" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-yaga-app.id}"
+	source_security_group_id="${module.vpc.production-yaga-app.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_9" {
@@ -496,7 +496,7 @@ resource "aws_security_group_rule" "production-yaga-db_9" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-yaga-batch.id}"
+	source_security_group_id="${module.vpc.production-yaga-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_10" {
@@ -505,7 +505,7 @@ resource "aws_security_group_rule" "production-yaga-db_10" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-yaga-consumer.id}"
+	source_security_group_id="${module.vpc.production-yaga-consumer.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_11" {
@@ -514,7 +514,7 @@ resource "aws_security_group_rule" "production-yaga-db_11" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-yaga-worker.id}"
+	source_security_group_id="${module.vpc.production-yaga-worker.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_12" {
@@ -523,7 +523,7 @@ resource "aws_security_group_rule" "production-yaga-db_12" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_13" {
@@ -532,7 +532,7 @@ resource "aws_security_group_rule" "production-yaga-db_13" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.skynet-slave.id}"
+	source_security_group_id="${module.vpc.skynet-slave.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_14" {
@@ -541,7 +541,7 @@ resource "aws_security_group_rule" "production-yaga-db_14" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-mmsagent.id}"
+	source_security_group_id="${module.vpc.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-db_15" {
@@ -550,7 +550,7 @@ resource "aws_security_group_rule" "production-yaga-db_15" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-db.id}"
-	source_security_group_id="${aws_security_group.production-replay-consumer.id}"
+	source_security_group_id="${module.vpc.production-replay-consumer.id}"
 }
 
 
@@ -587,7 +587,7 @@ resource "aws_security_group_rule" "production-db-reporting_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db-reporting.id}"
-	source_security_group_id="${aws_security_group.production-access.id}"
+	source_security_group_id="${module.vpc.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-db-reporting_2" {
@@ -596,7 +596,7 @@ resource "aws_security_group_rule" "production-db-reporting_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db-reporting.id}"
-	source_security_group_id="${aws_security_group.production-control.id}"
+	source_security_group_id="${module.vpc.production-control.id}"
 }
 
 resource "aws_security_group_rule" "production-db-reporting_3" {
@@ -605,7 +605,7 @@ resource "aws_security_group_rule" "production-db-reporting_3" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db-reporting.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-db-reporting_4" {
@@ -614,7 +614,7 @@ resource "aws_security_group_rule" "production-db-reporting_4" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db-reporting.id}"
-	source_security_group_id="${aws_security_group.production-gateway.id}"
+	source_security_group_id="${module.vpc.production-gateway.id}"
 }
 
 resource "aws_security_group_rule" "production-db-reporting_5" {
@@ -623,7 +623,7 @@ resource "aws_security_group_rule" "production-db-reporting_5" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db-reporting.id}"
-	source_security_group_id="${aws_security_group.production-rb-app.id}"
+	source_security_group_id="${module.vpc.production-rb-app.id}"
 }
 
 resource "aws_security_group_rule" "production-db-reporting_6" {
@@ -632,7 +632,7 @@ resource "aws_security_group_rule" "production-db-reporting_6" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db-reporting.id}"
-	source_security_group_id="${aws_security_group.production-jenkins.id}"
+	source_security_group_id="${module.vpc.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-db-reporting_7" {
@@ -641,7 +641,7 @@ resource "aws_security_group_rule" "production-db-reporting_7" {
 	to_port=27017
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-db-reporting.id}"
-	source_security_group_id="${aws_security_group.skynet-slave.id}"
+	source_security_group_id="${module.vpc.skynet-slave.id}"
 }
 
 
@@ -660,5 +660,3 @@ output "production-db-reporting-id" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-
