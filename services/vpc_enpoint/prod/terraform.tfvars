@@ -1,0 +1,5 @@
+region              =	"us-west-2"
+env                 =	"prod"
+appname             =	"poshmark"
+bu                  =	"it"
+service_name        = "com.amazonaws.us-west-2.s3"

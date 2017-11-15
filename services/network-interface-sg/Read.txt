@@ -1,0 +1,9 @@
+Network interface security groups Details :
+
+---------------------------------------------------
+TF_NAME  |  AWS_NAME                |  VPC        |
+---------------------------------------------------
+asg0     |  nat-gateway-sg-pub-uw2c |  Poshmark   |
+---------------------------------------------------
+asg1     |  nat-gateway-sg-pub-uw2b |  Poshmark   |
+---------------------------------------------------
