@@ -61,7 +61,7 @@ resource "aws_alb_listener" "front_80" {
 }
 
 resource "aws_lb_listener_rule" "front_80-up-app" {
-  listener_arn = "${aws_lb_listener.front_80.arn}"
+  listener_arn = "${aws_alb_listener.front_80.arn}"
   priority     = 100
 
   action {
@@ -76,7 +76,7 @@ resource "aws_lb_listener_rule" "front_80-up-app" {
 }
 
 resource "aws_lb_listener_rule" "front_80-mapp-app" {
-  listener_arn = "${aws_lb_listener.front_80.arn}"
+  listener_arn = "${aws_alb_listener.front_80.arn}"
   priority     = 100
 
   action {
@@ -105,7 +105,7 @@ resource "aws_alb_listener" "front_443" {
 }
 
 resource "aws_lb_listener_rule" "front_443-up-app" {
-  listener_arn = "${aws_lb_listener.front_443.arn}"
+  listener_arn = "${aws_alb_listener.front_443.arn}"
   priority     = 100
 
   action {
@@ -120,7 +120,7 @@ resource "aws_lb_listener_rule" "front_443-up-app" {
 }
 
 resource "aws_lb_listener_rule" "front_443-mapp-app" {
-  listener_arn = "${aws_lb_listener.front_443.arn}"
+  listener_arn = "${aws_alb_listener.front_443.arn}"
   priority     = 100
 
   action {
