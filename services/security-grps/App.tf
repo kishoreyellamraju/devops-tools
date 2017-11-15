@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "production-vault-app_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-app.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-app_2" {
@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "production-vault-app_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-app.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-vault-app_3" {
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "production-vault-app_3" {
 	to_port=9292
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-vault-app.id}"
-	source_security_group_id="${module.vpc.production-vault-haproxy.id}"
+	source_security_group_id="${aws_security_group.production-vault-haproxy.id}"
 }
 
 
@@ -70,7 +70,7 @@ resource "aws_security_group_rule" "production-yaga-app_1" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_2" {
@@ -79,7 +79,7 @@ resource "aws_security_group_rule" "production-yaga-app_2" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
+	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_3" {
@@ -88,7 +88,7 @@ resource "aws_security_group_rule" "production-yaga-app_3" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_4" {
@@ -97,7 +97,7 @@ resource "aws_security_group_rule" "production-yaga-app_4" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_5" {
@@ -106,7 +106,7 @@ resource "aws_security_group_rule" "production-yaga-app_5" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.skynet-master.id}"
+	source_security_group_id="${aws_security_group.skynet-master.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_6" {
@@ -115,7 +115,7 @@ resource "aws_security_group_rule" "production-yaga-app_6" {
 	to_port=3200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-app.id}"
+	source_security_group_id="${aws_security_group.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_7" {
@@ -124,7 +124,7 @@ resource "aws_security_group_rule" "production-yaga-app_7" {
 	to_port=3200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-qw.id}"
+	source_security_group_id="${aws_security_group.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_8" {
@@ -133,7 +133,7 @@ resource "aws_security_group_rule" "production-yaga-app_8" {
 	to_port=3200
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-batch.id}"
+	source_security_group_id="${aws_security_group.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_9" {
@@ -142,7 +142,7 @@ resource "aws_security_group_rule" "production-yaga-app_9" {
 	to_port=3000
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-yaga-worker.id}"
+	source_security_group_id="${aws_security_group.production-yaga-worker.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_10" {
@@ -151,7 +151,7 @@ resource "aws_security_group_rule" "production-yaga-app_10" {
 	to_port=3000
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-app.id}"
+	source_security_group_id="${aws_security_group.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_11" {
@@ -160,7 +160,7 @@ resource "aws_security_group_rule" "production-yaga-app_11" {
 	to_port=3000
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-yaga-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-yaga-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_12" {
@@ -169,7 +169,7 @@ resource "aws_security_group_rule" "production-yaga-app_12" {
 	to_port=3000
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-skynet-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-skynet-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_13" {
@@ -178,7 +178,7 @@ resource "aws_security_group_rule" "production-yaga-app_13" {
 	to_port=6180
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_14" {
@@ -187,7 +187,7 @@ resource "aws_security_group_rule" "production-yaga-app_14" {
 	to_port=443
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-yaga-app_15" {
@@ -196,7 +196,7 @@ resource "aws_security_group_rule" "production-yaga-app_15" {
 	to_port=8008
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-yaga-app.id}"
-	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
+	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
 }
 
 
@@ -233,7 +233,7 @@ resource "aws_security_group_rule" "production-rb-app_1" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-rb-app.id}"
-	source_security_group_id="${module.vpc.production-rb-bastion.id}"
+	source_security_group_id="${aws_security_group.production-rb-bastion.id}"
 }
 
 resource "aws_security_group_rule" "production-rb-app_2" {
@@ -242,7 +242,7 @@ resource "aws_security_group_rule" "production-rb-app_2" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-rb-app.id}"
-	source_security_group_id="${module.vpc.production-rb-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-rb-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-rb-app_3" {
@@ -251,7 +251,7 @@ resource "aws_security_group_rule" "production-rb-app_3" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-rb-app.id}"
-	source_security_group_id="${module.vpc.production-rb-bastion.id}"
+	source_security_group_id="${aws_security_group.production-rb-bastion.id}"
 }
 
 resource "aws_security_group_rule" "production-rb-app_4" {
@@ -260,7 +260,7 @@ resource "aws_security_group_rule" "production-rb-app_4" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-rb-app.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-rb-app_5" {
@@ -269,7 +269,7 @@ resource "aws_security_group_rule" "production-rb-app_5" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-rb-app.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-rb-app_6" {
@@ -315,7 +315,7 @@ resource "aws_security_group_rule" "production-app_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-app_2" {
@@ -324,7 +324,7 @@ resource "aws_security_group_rule" "production-app_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-app_3" {
@@ -333,7 +333,7 @@ resource "aws_security_group_rule" "production-app_3" {
 	to_port=27019
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-mmsagent.id}"
+	source_security_group_id="${aws_security_group.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-app_4" {
@@ -342,7 +342,7 @@ resource "aws_security_group_rule" "production-app_4" {
 	to_port=4949
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-mmsagent.id}"
+	source_security_group_id="${aws_security_group.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "production-app_5" {
@@ -351,7 +351,7 @@ resource "aws_security_group_rule" "production-app_5" {
 	to_port=9292
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-app_6" {
@@ -360,7 +360,7 @@ resource "aws_security_group_rule" "production-app_6" {
 	to_port=9292
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-app_7" {
@@ -369,7 +369,7 @@ resource "aws_security_group_rule" "production-app_7" {
 	to_port=9292
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-app_8" {
@@ -378,7 +378,7 @@ resource "aws_security_group_rule" "production-app_8" {
 	to_port=9292
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.production-cloudfront-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-cloudfront-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "production-app_9" {
@@ -387,7 +387,7 @@ resource "aws_security_group_rule" "production-app_9" {
 	to_port=9292
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-app.id}"
-	source_security_group_id="${module.vpc.launch-wizard-1.id}"
+	source_security_group_id="${aws_security_group.launch-wizard-1.id}"
 }
 
 
@@ -424,7 +424,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_1" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_2" {
@@ -433,7 +433,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_2" {
 	to_port=80
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
+	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_3" {
@@ -442,7 +442,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_3" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_4" {
@@ -451,7 +451,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_4" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_5" {
@@ -460,7 +460,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_5" {
 	to_port=27019
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-mmsagent.id}"
+	source_security_group_id="${aws_security_group.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_6" {
@@ -469,7 +469,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_6" {
 	to_port=4949
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-mmsagent.id}"
+	source_security_group_id="${aws_security_group.production-mmsagent.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_7" {
@@ -478,7 +478,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_7" {
 	to_port=5601
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_8" {
@@ -496,7 +496,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_9" {
 	to_port=9292
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_10" {
@@ -505,7 +505,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_10" {
 	to_port=6180
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_11" {
@@ -514,7 +514,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_11" {
 	to_port=443
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-app-elb.id}"
+	source_security_group_id="${aws_security_group.production-app-elb.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_12" {
@@ -523,7 +523,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_12" {
 	to_port=443
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
+	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_13" {
@@ -532,7 +532,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_13" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-kibana-consumer.id}"
+	source_security_group_id="${aws_security_group.production-kibana-consumer.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_14" {
@@ -541,7 +541,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_14" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-yaga-batch.id}"
+	source_security_group_id="${aws_security_group.production-yaga-batch.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_15" {
@@ -550,7 +550,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_15" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-yaga-app.id}"
+	source_security_group_id="${aws_security_group.production-yaga-app.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_16" {
@@ -559,7 +559,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_16" {
 	to_port=9200
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.production-yaga-worker.id}"
+	source_security_group_id="${aws_security_group.production-yaga-worker.id}"
 }
 
 resource "aws_security_group_rule" "produciton-ut-app-vpc_17" {
@@ -568,7 +568,7 @@ resource "aws_security_group_rule" "produciton-ut-app-vpc_17" {
 	to_port=8008
 	protocol="tcp"
 	security_group_id="${aws_security_group.produciton-ut-app-vpc.id}"
-	source_security_group_id="${module.vpc.Production-poshcrew-ALB.id}"
+	source_security_group_id="${aws_security_group.Production-poshcrew-ALB.id}"
 }
 
 

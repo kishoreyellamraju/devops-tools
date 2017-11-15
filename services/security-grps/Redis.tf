@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "sidekiq-redis-data_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.sidekiq-redis-data.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "sidekiq-redis-data_2" {
@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "sidekiq-redis-data_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.sidekiq-redis-data.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "sidekiq-redis-data_3" {
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "sidekiq-redis-data_3" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.sidekiq-redis-data.id}"
-	source_security_group_id="${module.vpc.production-batch.id}"
+	source_security_group_id="${aws_security_group.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "sidekiq-redis-data_4" {
@@ -42,7 +42,7 @@ resource "aws_security_group_rule" "sidekiq-redis-data_4" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.sidekiq-redis-data.id}"
-	source_security_group_id="${module.vpc.production-qw.id}"
+	source_security_group_id="${aws_security_group.production-qw.id}"
 }
 
 resource "aws_security_group_rule" "sidekiq-redis-data_5" {
@@ -51,7 +51,7 @@ resource "aws_security_group_rule" "sidekiq-redis-data_5" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.sidekiq-redis-data.id}"
-	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
+	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "sidekiq-redis-data_6" {
@@ -60,7 +60,7 @@ resource "aws_security_group_rule" "sidekiq-redis-data_6" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.sidekiq-redis-data.id}"
-	source_security_group_id="${module.vpc.production-app.id}"
+	source_security_group_id="${aws_security_group.production-app.id}"
 }
 
 resource "aws_security_group_rule" "sidekiq-redis-data_7" {
@@ -69,7 +69,7 @@ resource "aws_security_group_rule" "sidekiq-redis-data_7" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.sidekiq-redis-data.id}"
-	source_security_group_id="${module.vpc.sidekiq-redis-data.id}"
+	source_security_group_id="${aws_security_group.sidekiq-redis-data.id}"
 }
 
 
@@ -106,7 +106,7 @@ resource "aws_security_group_rule" "production-redis-data_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-data.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-data_2" {
@@ -115,7 +115,7 @@ resource "aws_security_group_rule" "production-redis-data_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-data.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-data_3" {
@@ -124,7 +124,7 @@ resource "aws_security_group_rule" "production-redis-data_3" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-data.id}"
-	source_security_group_id="${module.vpc.production-redis-haproxy.id}"
+	source_security_group_id="${aws_security_group.production-redis-haproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-data_4" {
@@ -133,7 +133,7 @@ resource "aws_security_group_rule" "production-redis-data_4" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-data.id}"
-	source_security_group_id="${module.vpc.production-redis-data.id}"
+	source_security_group_id="${aws_security_group.production-redis-data.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-data_5" {
@@ -142,7 +142,7 @@ resource "aws_security_group_rule" "production-redis-data_5" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-data.id}"
-	source_security_group_id="${module.vpc.production-app.id}"
+	source_security_group_id="${aws_security_group.production-app.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-data_6" {
@@ -151,7 +151,7 @@ resource "aws_security_group_rule" "production-redis-data_6" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-data.id}"
-	source_security_group_id="${module.vpc.production-batch.id}"
+	source_security_group_id="${aws_security_group.production-batch.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-data_7" {
@@ -160,7 +160,7 @@ resource "aws_security_group_rule" "production-redis-data_7" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-data.id}"
-	source_security_group_id="${module.vpc.production-qw.id}"
+	source_security_group_id="${aws_security_group.production-qw.id}"
 }
 
 
@@ -197,7 +197,7 @@ resource "aws_security_group_rule" "production-redis-cache_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-cache.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-cache_2" {
@@ -206,7 +206,7 @@ resource "aws_security_group_rule" "production-redis-cache_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-cache.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-cache_3" {
@@ -215,7 +215,7 @@ resource "aws_security_group_rule" "production-redis-cache_3" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-cache.id}"
-	source_security_group_id="${module.vpc.production-twemproxy.id}"
+	source_security_group_id="${aws_security_group.production-twemproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-cache_4" {
@@ -224,7 +224,7 @@ resource "aws_security_group_rule" "production-redis-cache_4" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-cache.id}"
-	source_security_group_id="${module.vpc.production-redis-cache.id}"
+	source_security_group_id="${aws_security_group.production-redis-cache.id}"
 }
 
 
@@ -261,7 +261,7 @@ resource "aws_security_group_rule" "production-redis-userdata_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-userdata.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-userdata_2" {
@@ -270,7 +270,7 @@ resource "aws_security_group_rule" "production-redis-userdata_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-userdata.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-userdata_3" {
@@ -279,7 +279,7 @@ resource "aws_security_group_rule" "production-redis-userdata_3" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-userdata.id}"
-	source_security_group_id="${module.vpc.production-twemproxy.id}"
+	source_security_group_id="${aws_security_group.production-twemproxy.id}"
 }
 
 resource "aws_security_group_rule" "production-redis-userdata_4" {
@@ -288,7 +288,7 @@ resource "aws_security_group_rule" "production-redis-userdata_4" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-redis-userdata.id}"
-	source_security_group_id="${module.vpc.production-redis-userdata.id}"
+	source_security_group_id="${aws_security_group.production-redis-userdata.id}"
 }
 
 
@@ -325,7 +325,7 @@ resource "aws_security_group_rule" "stormlight_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.stormlight.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "stormlight_2" {
@@ -334,7 +334,7 @@ resource "aws_security_group_rule" "stormlight_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.stormlight.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "stormlight_3" {
@@ -343,7 +343,7 @@ resource "aws_security_group_rule" "stormlight_3" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.stormlight.id}"
-	source_security_group_id="${module.vpc.production-twemproxy.id}"
+	source_security_group_id="${aws_security_group.production-twemproxy.id}"
 }
 
 resource "aws_security_group_rule" "stormlight_4" {
@@ -352,7 +352,7 @@ resource "aws_security_group_rule" "stormlight_4" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.stormlight.id}"
-	source_security_group_id="${module.vpc.stormlight.id}"
+	source_security_group_id="${aws_security_group.stormlight.id}"
 }
 
 
@@ -389,7 +389,7 @@ resource "aws_security_group_rule" "cerberus_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "cerberus_2" {
@@ -398,7 +398,7 @@ resource "aws_security_group_rule" "cerberus_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "cerberus_3" {
@@ -407,7 +407,7 @@ resource "aws_security_group_rule" "cerberus_3" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus.id}"
-	source_security_group_id="${module.vpc.cerberus.id}"
+	source_security_group_id="${aws_security_group.cerberus.id}"
 }
 
 resource "aws_security_group_rule" "cerberus_4" {
@@ -416,7 +416,7 @@ resource "aws_security_group_rule" "cerberus_4" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus.id}"
-	source_security_group_id="${module.vpc.cerberus-twemproxy.id}"
+	source_security_group_id="${aws_security_group.cerberus-twemproxy.id}"
 }
 
 resource "aws_security_group_rule" "cerberus_5" {
@@ -425,7 +425,7 @@ resource "aws_security_group_rule" "cerberus_5" {
 	to_port=6379
 	protocol="tcp"
 	security_group_id="${aws_security_group.cerberus.id}"
-	source_security_group_id="${module.vpc.cerberus-temp.id}"
+	source_security_group_id="${aws_security_group.cerberus-temp.id}"
 }
 
 

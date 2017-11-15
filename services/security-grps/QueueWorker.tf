@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "production-qw_1" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-qw.id}"
-	source_security_group_id="${module.vpc.production-access.id}"
+	source_security_group_id="${aws_security_group.production-access.id}"
 }
 
 resource "aws_security_group_rule" "production-qw_2" {
@@ -24,7 +24,7 @@ resource "aws_security_group_rule" "production-qw_2" {
 	to_port=22
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-qw.id}"
-	source_security_group_id="${module.vpc.production-jenkins.id}"
+	source_security_group_id="${aws_security_group.production-jenkins.id}"
 }
 
 resource "aws_security_group_rule" "production-qw_3" {
@@ -33,7 +33,7 @@ resource "aws_security_group_rule" "production-qw_3" {
 	to_port=4949
 	protocol="tcp"
 	security_group_id="${aws_security_group.production-qw.id}"
-	source_security_group_id="${module.vpc.production-mmsagent.id}"
+	source_security_group_id="${aws_security_group.production-mmsagent.id}"
 }
 
 
