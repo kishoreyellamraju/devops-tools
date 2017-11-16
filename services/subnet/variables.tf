@@ -33,7 +33,7 @@ variable "subnet_cidr"	{ type = "map"
    skynetprivatesubnetb         =""
    sparkemrpublic1c             =""
   }
-
+}
   variable "subnet_name"	{ type = "map"
     default = {
      sparkemrpublic1b             =""
