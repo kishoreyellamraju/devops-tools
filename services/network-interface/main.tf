@@ -20,7 +20,7 @@ module "network" {
   app = "${var.appname}"
 }
 
-
+/*
 resource "aws_network_interface" "ani0" {
   subnet_id       = "${module.network.publicsubnetc-id}"
   security_groups = ["${module.network.n-asg0-id}"]
@@ -30,7 +30,7 @@ resource "aws_network_interface" "ani1" {
   subnet_id       = "${module.network.publicsubnetb-id}"
   security_groups = ["${module.network.n-asg1-id}"]
 }
-
+*/
 resource "aws_network_interface" "ani2" {
   subnet_id       = "${module.network.publicsubnetb-id}"
   security_groups = ["${module.network.n-asg2-id}"]
