@@ -59,7 +59,6 @@ variable "subnet_cidr"	{ type = "map"
     }
 
  }
-variable "subnet_name"	{ type = "map" }
 variable "appname"			{}
 variable "bu"					  {}
 variable "az"           { type = "list" }
