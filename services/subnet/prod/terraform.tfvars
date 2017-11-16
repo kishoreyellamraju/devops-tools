@@ -6,7 +6,7 @@ az                                       =  ["NA","us-west-2a","us-west-2b","us-
 cluster                                  =  ["NA","Search","Database","Redis"]
 type                                     =  ["NA","Private","Public"]
 #############################Subnet name#######################################
-subnet_cidr.subnet_cidr.sparkemrpublic1b =  "10.0.0.0/24"
+subnet_cidr.sparkemrpublic1b             =  "10.0.0.0/24"
 subnet_cidr.sparkemrpublic1c             =  "10.0.1.0/24"
 subnet_cidr.publicsubnetb                =  "10.1.0.0/24"
 subnet_cidr.publicsubnetc                =  "10.1.1.0/24"
@@ -27,7 +27,7 @@ subnet_cidr.vpnmonitoringprivatesubnetc  =  "10.1.103.0/24"
 subnet_cidr.skynetprivatesubnetb         =  "10.1.104.0/21"
 
 #############################Subnet cidr#######################################
-subnet_name.subnet_name.sparkemrpublic1b =  "Public subnet"
+subnet_name.sparkemrpublic1b             =  "Public subnet"
 subnet_name.sparkemrpublic1c             =  "spark_emr-public-1c"
 subnet_name.publicsubnetb                =  "Public subnet (us-west-2b)"
 subnet_name.publicsubnetc                =  "Public subnet (us-west-2c)"
