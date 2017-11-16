@@ -13,6 +13,7 @@ variable "env"					{}
 variable "subnet_cidr"	{ type = "map"
   default = {
    sparkemrpublic1b             =""
+   sparkemrpublic1c             =""
    publicsubnetb                =""
    publicsubnetc                =""
    searchprivatesubnet1b        =""
@@ -31,12 +32,12 @@ variable "subnet_cidr"	{ type = "map"
    vpnmonitoringprivatesubnetb  =""
    vpnmonitoringprivatesubnetc  =""
    skynetprivatesubnetb         =""
-   sparkemrpublic1c             =""
   }
 }
   variable "subnet_name"	{ type = "map"
     default = {
      sparkemrpublic1b             =""
+     sparkemrpublic1c             =""
      publicsubnetb                =""
      publicsubnetc                =""
      searchprivatesubnet1b        =""
@@ -55,7 +56,6 @@ variable "subnet_cidr"	{ type = "map"
      vpnmonitoringprivatesubnetb  =""
      vpnmonitoringprivatesubnetc  =""
      skynetprivatesubnetb         =""
-     sparkemrpublic1c             =""
     }
 
  }
