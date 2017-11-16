@@ -28,12 +28,7 @@ resource "aws_subnet" "sparkemrpublic1b" {
 
     tags {
         Name 			    = "${lookup(var.subnet_name,"sparkemrpublic1b")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[2]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
+
   }
 }
 resource "aws_route_table_association" "arta0" {
@@ -48,12 +43,7 @@ resource "aws_subnet" "sparkemrpublic1c" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"sparkemrpublic1c")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[3]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
+
   }
 }
 
@@ -70,11 +60,8 @@ resource "aws_subnet" "publicsubnetb" {
   availability_zone       = "${var.az[2]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"publicsubnetb")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		= "${var.env}"
         AZ            = "${var.az[2]}"
-        Cluster       = "${var.cluster[0]}"
         Type          = "${var.type[2]}"
     }
 }
@@ -91,11 +78,8 @@ resource "aws_subnet" "publicsubnetc" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"publicsubnetc")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		         = "${var.env}"
         AZ            = "${var.az[3]}"
-        Cluster       = "${var.cluster[0]}"
         Type          = "${var.type[2]}"
 
   }
@@ -114,9 +98,7 @@ resource "aws_subnet" "searchprivatesubnet1b" {
 
     tags {
         Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet1b")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[2]}"
         Cluster       = "${var.cluster[1]}"
         Type          = "${var.type[1]}"
@@ -136,9 +118,7 @@ resource "aws_subnet" "searchprivatesubnet1c" {
 
     tags {
         Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet1c")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[3]}"
         Cluster       = "${var.cluster[1]}"
         Type          = "${var.type[1]}"
@@ -157,12 +137,6 @@ resource "aws_subnet" "apppublicsubnetb" {
   availability_zone       = "${var.az[2]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"apppublicsubnetb")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[2]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
   }
 }
 
@@ -178,12 +152,6 @@ resource "aws_subnet" "apppublicsubnetc" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"apppublicsubnetc")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[3]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
 
     }
 }
@@ -200,9 +168,7 @@ resource "aws_subnet" "databaseprivatesubnetb" {
   availability_zone       = "${var.az[2]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"databaseprivatesubnetb")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[2]}"
         Cluster       = "${var.cluster[2]}"
         Type          = "${var.type[1]}"
@@ -222,9 +188,7 @@ resource "aws_subnet" "databaseprivatesubnetc" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"databaseprivatesubnetc")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[3]}"
         Cluster       = "${var.cluster[2]}"
         Type          = "${var.type[1]}"
@@ -243,9 +207,7 @@ resource "aws_subnet" "redisprivatesubnetb" {
   availability_zone       = "${var.az[2]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"redisprivatesubnetb")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[2]}"
         Cluster       = "${var.cluster[3]}"
         Type          = "${var.type[1]}"
@@ -264,9 +226,7 @@ resource "aws_subnet" "redisprivatesubnetc" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"redisprivatesubnetc")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[3]}"
         Cluster       = "${var.cluster[3]}"
         Type          = "${var.type[1]}"
@@ -285,9 +245,7 @@ resource "aws_subnet" "searchprivatesubnet2b" {
   availability_zone       = "${var.az[2]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet2b")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[2]}"
         Cluster       = "${var.cluster[1]}"
         Type          = "${var.type[1]}"
@@ -306,9 +264,7 @@ resource "aws_subnet" "searchprivatesubnet2c" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet2c")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
+        Env		        = "${var.env}"
         AZ            = "${var.az[3]}"
         Cluster       = "${var.cluster[1]}"
         Type          = "${var.type[1]}"
@@ -327,12 +283,7 @@ resource "aws_subnet" "poshfit" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"poshfit")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[3]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
+
   }
 }
 
@@ -348,12 +299,6 @@ resource "aws_subnet" "other" {
   availability_zone       = "${var.az[2]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"other")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[2]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
   }
 }
 
@@ -369,12 +314,6 @@ resource "aws_subnet" "vpnmonitoringprivatesubnetb" {
   availability_zone       = "${var.az[2]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"vpnmonitoringprivatesubnetb")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[2]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
   }
 }
 
@@ -390,12 +329,7 @@ resource "aws_subnet" "vpnmonitoringprivatesubnetc" {
   availability_zone       = "${var.az[3]}"
     tags {
         Name 			    = "${lookup(var.subnet_name,"vpnmonitoringprivatesubnetc")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[3]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
+
   }
 }
 
@@ -412,12 +346,6 @@ resource "aws_subnet" "skynetprivatesubnetb" {
 
     tags {
         Name 			    = "${lookup(var.subnet_name,"skynetprivatesubnetb")}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[2]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
 
   }
 }

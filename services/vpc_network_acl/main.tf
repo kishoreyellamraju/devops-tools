@@ -45,9 +45,7 @@ resource "aws_network_acl" "poshmark-acl1" {
 
   tags {
     Name 			     = "${var.nacl_name[0]}"
-  	Environment		 = "${var.env}"
-  	Application		 = "${var.appname}"
-  	Bu				     = "${var.bu}"
+
   }
 }
 #######rc acl######################
@@ -74,9 +72,6 @@ resource "aws_network_acl" "poshmark-acl2" {
 
   tags {
     Name 			     = "${var.nacl_name[1]}"
-  	Environment		 = "${var.env}"
-  	Application		 = "${var.appname}"
-  	Bu				     = "${var.bu}"
   }
 }
 

@@ -25,9 +25,6 @@ resource "aws_route_table" "private2c-rt-id" {
 
   tags {
     Name          = "${var.routetable_name[0]}"
-    Environment		= "${var.env}"
-  	Application		= "${var.appname}"
-  	Bu				    = "${var.bu}"
   }
 }
 
@@ -36,9 +33,6 @@ resource "aws_route_table" "poshfit-rt-id" {
 
   tags {
     Name          = "${var.routetable_name[1]}"
-    Environment		= "${var.env}"
-  	Application		= "${var.appname}"
-  	Bu				    = "${var.bu}"
   }
 }
 
@@ -47,9 +41,7 @@ resource "aws_route_table" "public2c-rt-id" {
 
   tags {
     Name          = "${var.routetable_name[2]}"
-    Environment		= "${var.env}"
-  	Application		= "${var.appname}"
-  	Bu				    = "${var.bu}"
+
   }
 }
 
@@ -58,9 +50,7 @@ resource "aws_route_table" "private2b-rt-id" {
 
   tags {
     Name          = "${var.routetable_name[3]}"
-    Environment		= "${var.env}"
-  	Application		= "${var.appname}"
-  	Bu				    = "${var.bu}"
+
   }
 }
 
@@ -69,9 +59,7 @@ resource "aws_route_table" "sparkpublic-rt-id" {
 
   tags {
     Name          = "${var.routetable_name[4]}"
-    Environment		= "${var.env}"
-  	Application		= "${var.appname}"
-  	Bu				    = "${var.bu}"
+
   }
 }
 
@@ -80,9 +68,7 @@ resource "aws_route_table" "public2b-rt-id" {
 
   tags {
     Name          = "${var.routetable_name[5]}"
-    Environment		= "${var.env}"
-  	Application		= "${var.appname}"
-  	Bu				    = "${var.bu}"
+
   }
 }
 
@@ -91,9 +77,7 @@ resource "aws_route_table" "sparkprivate-rt-id" {
 
   tags {
     Name          = "${var.routetable_name[6]}"
-    Environment		= "${var.env}"
-  	Application		= "${var.appname}"
-  	Bu				    = "${var.bu}"
+  
   }
 }
 #########################################################
