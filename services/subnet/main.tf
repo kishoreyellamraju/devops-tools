@@ -216,8 +216,8 @@ resource "aws_route_table_association" "arta7" {
 
 ################################################################################
 resource "aws_subnet" "databaseprivatesubnetc" {
-  vpc_id                  = "${lookup(var.subnet_cidr,"databaseprivatesubnetc")}"
-  cidr_block              = "${var.subnet_cidr[8]}"
+  vpc_id                  = "${module.network.poshmark-id}"
+  cidr_block              = "${lookup(var.subnet_cidr,"databaseprivatesubnetc")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[3]}"
     tags {
