@@ -4,6 +4,7 @@ resource "aws_instance" "prod-nt-qw01-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -35,6 +36,7 @@ resource "aws_instance" "prod-nt-qw06-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -67,6 +69,7 @@ resource "aws_instance" "prod-nt-qw03-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -99,6 +102,7 @@ resource "aws_instance" "prod-nt-qw05-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -131,6 +135,7 @@ resource "aws_instance" "prod-nt-qw04-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -163,6 +168,7 @@ resource "aws_instance" "prod-nt-qw02-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -194,6 +200,7 @@ resource "aws_instance" "prod-nt-qw02-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -225,6 +232,7 @@ resource "aws_instance" "prod-nt-qw03-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -257,6 +265,7 @@ resource "aws_instance" "prod-nt-qw04-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -289,6 +298,7 @@ resource "aws_instance" "prod-nt-qw05-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -321,6 +331,7 @@ resource "aws_instance" "prod-nt-qw06-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -353,6 +364,7 @@ resource "aws_instance" "prod-nt-qw01-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -384,6 +396,7 @@ resource "aws_instance" "prod-nt-qw07-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -416,6 +429,7 @@ resource "aws_instance" "prod-nt-qw08-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -448,6 +462,7 @@ resource "aws_instance" "prod-nt-qw09-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -480,6 +495,7 @@ resource "aws_instance" "prod-nt-qw07-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -512,6 +528,7 @@ resource "aws_instance" "prod-nt-qw08-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -544,6 +561,7 @@ resource "aws_instance" "prod-nt-qw09-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true

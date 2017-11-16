@@ -4,6 +4,7 @@ resource "aws_instance" "prod-pb-qw10-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -36,6 +37,7 @@ resource "aws_instance" "prod-pb-qw12-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -68,6 +70,7 @@ resource "aws_instance" "prod-pb-qw11-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -100,6 +103,7 @@ resource "aws_instance" "prod-pb-qw12-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -132,6 +136,7 @@ resource "aws_instance" "prod-pb-qw10-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -164,6 +169,7 @@ resource "aws_instance" "prod-pb-qw11-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -196,6 +202,7 @@ resource "aws_instance" "prod-pb-qw09-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -228,6 +235,7 @@ resource "aws_instance" "prod-pb-qw05-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -260,6 +268,7 @@ resource "aws_instance" "prod-pb-qw06-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -292,6 +301,7 @@ resource "aws_instance" "prod-pb-qw07-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -324,6 +334,7 @@ resource "aws_instance" "prod-pb-qw08-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -356,6 +367,7 @@ resource "aws_instance" "prod-pb-qw01-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -387,6 +399,7 @@ resource "aws_instance" "prod-pb-qw02-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -418,6 +431,7 @@ resource "aws_instance" "prod-pb-qw03-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -450,6 +464,7 @@ resource "aws_instance" "prod-pb-qw04-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -482,6 +497,7 @@ resource "aws_instance" "prod-pb-qw02-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -513,6 +529,7 @@ resource "aws_instance" "prod-pb-qw01-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -544,6 +561,7 @@ resource "aws_instance" "prod-pb-qw09-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -576,6 +594,7 @@ resource "aws_instance" "prod-pb-qw08-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -608,6 +627,7 @@ resource "aws_instance" "prod-pb-qw07-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -640,6 +660,7 @@ resource "aws_instance" "prod-pb-qw06-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -672,6 +693,7 @@ resource "aws_instance" "prod-pb-qw05-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -704,6 +726,7 @@ resource "aws_instance" "prod-pb-qw04-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -736,6 +759,7 @@ resource "aws_instance" "prod-pb-qw03-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true

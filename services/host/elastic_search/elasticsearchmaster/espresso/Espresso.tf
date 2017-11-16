@@ -4,6 +4,7 @@ resource "aws_instance" "espresso-master03" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -35,6 +36,7 @@ resource "aws_instance" "espresso-master01" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -66,6 +68,7 @@ resource "aws_instance" "espresso-master02" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false

@@ -4,6 +4,7 @@ resource "aws_instance" "stormlight-a02" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.stormlight-id}"]
 	associate_public_ip_address = false
@@ -42,6 +43,7 @@ resource "aws_instance" "stormlight-a01" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.stormlight-id}"]
 	associate_public_ip_address = false

@@ -5,6 +5,7 @@ resource "aws_instance" "prod-ps-qw01-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -37,6 +38,7 @@ resource "aws_instance" "prod-ps-qw02-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -69,6 +71,7 @@ resource "aws_instance" "prod-ps-qw03-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -101,6 +104,7 @@ resource "aws_instance" "prod-ps-qw04-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -134,6 +138,7 @@ resource "aws_instance" "prod-ps-qw05-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -167,6 +172,7 @@ resource "aws_instance" "prod-ps-qw06-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -200,6 +206,7 @@ resource "aws_instance" "prod-ps-qw07-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -233,6 +240,7 @@ resource "aws_instance" "prod-ps-qw08-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -266,6 +274,7 @@ resource "aws_instance" "prod-ps-qw09-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -299,6 +308,7 @@ resource "aws_instance" "prod-ps-qw10-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -332,6 +342,7 @@ resource "aws_instance" "prod-ps-qw01-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -364,6 +375,7 @@ resource "aws_instance" "prod-ps-qw02-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -396,6 +408,7 @@ resource "aws_instance" "prod-ps-qw03-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -428,6 +441,7 @@ resource "aws_instance" "prod-ps-qw04-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -461,6 +475,7 @@ resource "aws_instance" "prod-ps-qw05-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -494,6 +509,7 @@ resource "aws_instance" "prod-ps-qw06-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -527,6 +543,7 @@ resource "aws_instance" "prod-ps-qw07-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -560,6 +577,7 @@ resource "aws_instance" "prod-ps-qw08-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -593,6 +611,7 @@ resource "aws_instance" "prod-ps-qw09-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -626,6 +645,7 @@ resource "aws_instance" "prod-ps-qw10-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -659,6 +679,7 @@ resource "aws_instance" "prod-ps-qw12-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -692,6 +713,7 @@ resource "aws_instance" "prod-ps-qw11-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -725,6 +747,7 @@ resource "aws_instance" "prod-ps-qw12-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -758,6 +781,7 @@ resource "aws_instance" "prod-ps-qw11-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true

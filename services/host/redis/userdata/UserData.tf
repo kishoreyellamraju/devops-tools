@@ -4,6 +4,7 @@ resource "aws_instance" "prod-redis-userdata-a03" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
@@ -42,6 +43,7 @@ resource "aws_instance" "prod-redis-userdata-a02" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
@@ -80,6 +82,7 @@ resource "aws_instance" "prod-redis-userdata-a01" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
@@ -118,6 +121,7 @@ resource "aws_instance" "prod-redis-userdata-a04" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
