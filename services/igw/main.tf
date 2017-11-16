@@ -25,10 +25,6 @@ resource "aws_internet_gateway" "sparkemr-igw" {
 
   tags {
   Name 			     = "${var.env}-${module.vpc.sparkemr-id}-igw"
-	Environment		 = "${var.env}"
-	Application		 = "${var.appname}"
-	Bu				     = "${var.bu}"
-
   }
 }
 resource "aws_internet_gateway" "poshmark-igw" {
@@ -36,10 +32,6 @@ resource "aws_internet_gateway" "poshmark-igw" {
 
   tags {
   Name 			     = "${var.env}-${module.vpc.poshmark-id}-igw"
-	Environment		 = "${var.env}"
-	Application		 = "${var.appname}"
-	Bu				     = "${var.bu}"
-
   }
 }
 

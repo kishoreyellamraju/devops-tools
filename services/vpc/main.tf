@@ -26,23 +26,14 @@ resource "aws_vpc" "sparkemr" {
   enable_classiclink_dns_support 	= "false"
 
   tags {
-    Name 			= "${var.vpc_name[0]}"
+    Name 			    = "${var.vpc_name[0]}"
 	  Environment		= "${var.env}"
-	  Application		= "${var.appname}"
-	  Bu				= "${var.bu}"
-
   }
 }
 
 resource "aws_default_route_table" "adrt0" {
   default_route_table_id = "${aws_vpc.sparkemr.default_route_table_id}"
 
-  tags {
-    Name 			= "${var.vpc_routetable_name[0]}"
-	Environment		= "${var.env}"
-	Application		= "${var.appname}"
-	Bu				= "${var.bu}"
-  }
 }
 
 resource "aws_vpc" "poshmark" {
@@ -54,23 +45,13 @@ resource "aws_vpc" "poshmark" {
   enable_classiclink_dns_support 	= "false"
 
   tags {
-    Name 			= "${var.vpc_name[1]}"
-	Environment		= "${var.env}"
-	Application		= "${var.appname}"
-	Bu				= "${var.bu}"
-
+    Name 			    = "${var.vpc_name[1]}"
+	  Environment		= "${var.env}"
   }
 }
 
 resource "aws_default_route_table" "adrt1" {
   default_route_table_id = "${aws_vpc.poshmark.default_route_table_id}"
-
-  tags {
-    Name 			= "${var.vpc_routetable_name[1]}"
-	Environment		= "${var.env}"
-	Application		= "${var.appname}"
-	Bu				= "${var.bu}"
-  }
 }
 
 #########################################################

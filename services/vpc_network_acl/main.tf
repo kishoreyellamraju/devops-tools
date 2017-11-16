@@ -21,10 +21,10 @@ module "network" {
   env = "${var.env}"
   app = "${var.appname}"
 }
-
+#######production acl######################
 resource "aws_network_acl" "poshmark-acl1" {
   vpc_id = "${module.network.poshmark-id}"
-
+  subnet_ids = ["${element(module.network.appsubnets, count.index)}"]
   ingress {
     protocol   = "all"
     rule_no    = 1000
@@ -50,10 +50,10 @@ resource "aws_network_acl" "poshmark-acl1" {
   	Bu				     = "${var.bu}"
   }
 }
-
+#######rc acl######################
 resource "aws_network_acl" "poshmark-acl2" {
   vpc_id = "${module.network.poshmark-id}"
-
+  subnet_ids = ["${module.network.publicsubnetc-id}"]
   ingress {
     protocol   = "all"
     rule_no    = 200
