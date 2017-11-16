@@ -1,30 +1,49 @@
-region                 =	"us-west-2"
-env                    =	"prod"
-subnet_cidr            =	["10.0.0.0/24","10.0.0.0/24",
-                           "10.0.1.0/24","10.0.2.0/24",
-                           "10.0.3.0/24","10.0.16.0/21",
-                           "10.0.24.0/21","10.0.32.0/21",
-                           "10.0.40.0/21","10.0.48.0/21",
-                           "10.0.56.0/21","10.0.64.0/21",
-                           "10.0.72.0/21","10.0.100.0/24",
-                           "10.0.101.0/24","10.0.102.0/24",
-                           "10.0.103.0/24","10.0.104.0/21",
-                           "10.0.1.0/24"
-                          ]
+region                                   =	"us-west-2"
+env                                      =	"prod"
 
-subnet_name            =	["Public subnet","Public subnet (us-west-2b)",
-                           "Public subnet (us-west-2c)","Search - private subnet (us-west-2b)",
-                           "Search - private subnet (us-west-2c)","App - Public subnet (us-west-2b)",
-                           "App - Public subnet (us-west-2c)","Database - Private subnet (us-west-2b)",
-                           "Database - Private subnet (us-west-2c)","Redis - Private subnet (us-west-2b)",
-                           "Redis - Private subnet (us-west-2c)","Search - Private subnet (us-west-2b)",
-                           "Search - Private subnet (us-west-2c)","poshfit",
-                           "unknow","VPN Monitoring - Private Subnet (us-west-2b)",
-                           "VPN Monitoring - Private Subnet (us-west-2c)","Skynet - Private Subnet (us-west-2b)",
-                           "spark_emr-public-1c"
-                          ]
-appname                =	"poshmark"
-bu                     =	"it"
-az                     =  ["NA","us-west-2a","us-west-2b","us-west-2c"]
-cluster                =  ["NA","Search","Database","Redis"]
-type                   =  ["NA","Private","Public"]
+appname                                  ="poshmark"
+bu                                       ="it"
+az                                       =["NA","us-west-2a","us-west-2b","us-west-2c"]
+cluster                                  =["NA","Search","Database","Redis"]
+type                                     =["NA","Private","Public"]
+#############################Subnet name#######################################
+subnet_cidr.subnet_cidr.sparkemrpublic1b ="10.0.0.0/24"
+subnet_cidr.sparkemrpublic1c             ="10.0.1.0/24"
+subnet_cidr.publicsubnetb                ="10.1.0.0/24"
+subnet_cidr.publicsubnetc                ="10.1.1.0/24"
+subnet_cidr.searchprivatesubnet1b        ="10.1.2.0/24"
+subnet_cidr.searchprivatesubnet1c        ="10.1.3.0/24"
+subnet_cidr.apppublicsubnetb             ="10.1.16.0/21"
+subnet_cidr.apppublicsubnetc             ="10.1.24.0/21"
+subnet_cidr.databaseprivatesubnetb       ="10.1.32.0/21"
+subnet_cidr.databaseprivatesubnetc       ="10.1.40.0/21"
+subnet_cidr.redisprivatesubnetb          ="10.1.48.0/21"
+subnet_cidr.redisprivatesubnetc          ="10.1.56.0/21"
+subnet_cidr.searchprivatesubnet2b        ="10.1.64.0/21"
+subnet_cidr.searchprivatesubnet2c        ="10.1.72.0/21"
+subnet_cidr.poshfit                      ="10.1.100.0/24"
+subnet_cidr.other                        ="10.1.101.0/24"
+subnet_cidr.vpnmonitoringprivatesubnetb  ="10.1.102.0/24"
+subnet_cidr.vpnmonitoringprivatesubnetc  ="10.1.103.0/24"
+subnet_cidr.skynetprivatesubnetb         ="10.1.104.0/21"
+
+#############################Subnet cidr#######################################
+subnet_name.subnet_name.sparkemrpublic1b ="Public subnet"
+subnet_name.sparkemrpublic1c             ="spark_emr-public-1c"
+subnet_name.publicsubnetb                ="Public subnet (us-west-2b)"
+subnet_name.publicsubnetc                ="Public subnet (us-west-2c)"
+subnet_name.searchprivatesubnet1b        ="Search - private subnet (us-west-2b)"
+subnet_name.searchprivatesubnet1c        ="Search - private subnet (us-west-2c)"
+subnet_name.apppublicsubnetb             ="App - Public subnet (us-west-2b)"
+subnet_name.apppublicsubnetc             ="App - Public subnet (us-west-2c)"
+subnet_name.databaseprivatesubnetb       ="Database - Private subnet (us-west-2b)"
+subnet_name.databaseprivatesubnetc       ="Database - Private subnet (us-west-2c)"
+subnet_name.redisprivatesubnetb          ="Redis - Private subnet (us-west-2b)"
+subnet_name.redisprivatesubnetc          ="Redis - Private subnet (us-west-2c)"
+subnet_name.searchprivatesubnet2b        ="Search - Private subnet (us-west-2b)"
+subnet_name.searchprivatesubnet2c        ="Search - Private subnet (us-west-2c)"
+subnet_name.poshfit                      ="poshfit"
+subnet_name.other                        ="other"
+subnet_name.vpnmonitoringprivatesubnetb  ="VPN Monitoring - Private Subnet (us-west-2b)"
+subnet_name.vpnmonitoringprivatesubnetc  ="VPN Monitoring - Private Subnet (us-west-2c)"
+subnet_name.skynetprivatesubnetb         ="Skynet - Private Subnet (us-west-2b)"

@@ -22,12 +22,12 @@ module "network" {
 
 resource "aws_subnet" "sparkemrpublic1b" {
   vpc_id                  = "${module.network.sparkemr-id}"
-  cidr_block              = "${var.subnet_cidr[0]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"sparkemrpublic1b")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
 
     tags {
-        Name 			    = "${var.subnet_name[0]}"
+        Name 			    = "${lookup(var.subnet_name,"sparkemrpublic1b")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -40,14 +40,36 @@ resource "aws_route_table_association" "arta0" {
   subnet_id      = "${aws_subnet.sparkemrpublic1b.id}"
   route_table_id = "${module.network.sparkpublic-rt-id}"
 }
+#########################################################################
+resource "aws_subnet" "sparkemrpublic1c" {
+  vpc_id                  = "${module.network.sparkemr-id}"
+  cidr_block              = "${lookup(var.subnet_cidr,"sparkemrpublic1c")}"
+  map_public_ip_on_launch = "false"
+  availability_zone       = "${var.az[3]}"
+    tags {
+        Name 			    = "${lookup(var.subnet_name,"sparkemrpublic1c")}"
+        Environment		= "${var.env}"
+        Application		= "${var.appname}"
+        Bu				    = "${var.bu}"
+        AZ            = "${var.az[3]}"
+        Cluster       = "${var.cluster[0]}"
+        Type          = "${var.type[0]}"
+  }
+}
+
+resource "aws_route_table_association" "arta18" {
+  subnet_id      = "${aws_subnet.sparkemrpublic1c.id}"
+  route_table_id = "${module.network.sparkprivate-rt-id}"
+}
+
 ###############################################################################
 resource "aws_subnet" "publicsubnetb" {
   vpc_id     = "${module.network.poshmark-id}"
-  cidr_block = "${var.subnet_cidr[1]}"
+  cidr_block = "${lookup(var.subnet_cidr,"publicsubnetb")}"
   map_public_ip_on_launch = "true"
   availability_zone       = "${var.az[2]}"
     tags {
-        Name 			    = "${var.subnet_name[1]}"
+        Name 			    = "${lookup(var.subnet_name,"publicsubnetb")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -64,11 +86,11 @@ resource "aws_route_table_association" "arta1" {
 ###############################################################################
 resource "aws_subnet" "publicsubnetc" {
   vpc_id     = "${module.network.poshmark-id}"
-  cidr_block = "${var.subnet_cidr[2]}"
+  cidr_block = "${lookup(var.subnet_cidr,"publicsubnetc")}"
   map_public_ip_on_launch = "true"
   availability_zone       = "${var.az[3]}"
     tags {
-        Name 			    = "${var.subnet_name[2]}"
+        Name 			    = "${lookup(var.subnet_name,"publicsubnetc")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -86,12 +108,12 @@ resource "aws_route_table_association" "arta2" {
 ###############################################################################
 resource "aws_subnet" "searchprivatesubnet1b" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[3]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"searchprivatesubnet1b")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
 
     tags {
-        Name 			    = "${var.subnet_name[3]}"
+        Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet1b")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -108,12 +130,12 @@ resource "aws_route_table_association" "arta3" {
 ###############################################################################
 resource "aws_subnet" "searchprivatesubnet1c" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[4]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"searchprivatesubnet1c")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[3]}"
 
     tags {
-        Name 			    = "${var.subnet_name[4]}"
+        Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet1c")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -130,11 +152,11 @@ resource "aws_route_table_association" "arta4" {
 ################################################################################
 resource "aws_subnet" "apppublicsubnetb" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[5]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"apppublicsubnetb")}"
   map_public_ip_on_launch = "true"
   availability_zone       = "${var.az[2]}"
     tags {
-        Name 			    = "${var.subnet_name[5]}"
+        Name 			    = "${lookup(var.subnet_name,"apppublicsubnetb")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -151,11 +173,11 @@ resource "aws_route_table_association" "arta5" {
 ################################################################################
 resource "aws_subnet" "apppublicsubnetc" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[6]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"apppublicsubnetc")}"
   map_public_ip_on_launch = "true"
   availability_zone       = "${var.az[3]}"
     tags {
-        Name 			    = "${var.subnet_name[6]}"
+        Name 			    = "${lookup(var.subnet_name,"apppublicsubnetc")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -173,11 +195,11 @@ resource "aws_route_table_association" "arta6" {
 ################################################################################
 resource "aws_subnet" "databaseprivatesubnetb" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[7]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"databaseprivatesubnetb")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
     tags {
-        Name 			    = "${var.subnet_name[7]}"
+        Name 			    = "${lookup(var.subnet_name,"databaseprivatesubnetb")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -194,12 +216,12 @@ resource "aws_route_table_association" "arta7" {
 
 ################################################################################
 resource "aws_subnet" "databaseprivatesubnetc" {
-  vpc_id                  = "${module.network.poshmark-id}"
+  vpc_id                  = "${lookup(var.subnet_cidr,"databaseprivatesubnetc")}"
   cidr_block              = "${var.subnet_cidr[8]}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[3]}"
     tags {
-        Name 			    = "${var.subnet_name[8]}"
+        Name 			    = "${lookup(var.subnet_name,"databaseprivatesubnetc")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -216,11 +238,11 @@ resource "aws_route_table_association" "arta8" {
 ###############################################################################
 resource "aws_subnet" "redisprivatesubnetb" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[9]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"redisprivatesubnetb")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
     tags {
-        Name 			    = "${var.subnet_name[9]}"
+        Name 			    = "${lookup(var.subnet_name,"redisprivatesubnetb")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -237,11 +259,11 @@ resource "aws_route_table_association" "arta9" {
 ###############################################################################
 resource "aws_subnet" "redisprivatesubnetc" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[10]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"redisprivatesubnetc")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[3]}"
     tags {
-        Name 			    = "${var.subnet_name[10]}"
+        Name 			    = "${lookup(var.subnet_name,"redisprivatesubnetc")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -258,11 +280,11 @@ resource "aws_route_table_association" "arta10" {
 ################################################################################
 resource "aws_subnet" "searchprivatesubnet2b" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[11]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"searchprivatesubnet2b")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
     tags {
-        Name 			    = "${var.subnet_name[11]}"
+        Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet2b")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -279,11 +301,11 @@ resource "aws_route_table_association" "arta11" {
 ################################################################################
 resource "aws_subnet" "searchprivatesubnet2c" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[12]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"searchprivatesubnet2c")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[3]}"
     tags {
-        Name 			    = "${var.subnet_name[12]}"
+        Name 			    = "${lookup(var.subnet_name,"searchprivatesubnet2c")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -300,11 +322,11 @@ resource "aws_route_table_association" "arta12" {
 ################################################################################
 resource "aws_subnet" "poshfit" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[13]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"poshfit")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[3]}"
     tags {
-        Name 			    = "${var.subnet_name[13]}"
+        Name 			    = "${lookup(var.subnet_name,"poshfit")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -321,11 +343,11 @@ resource "aws_route_table_association" "arta13" {
 ###############################################################################
 resource "aws_subnet" "other" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[14]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"other")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
     tags {
-        Name 			    = "${var.subnet_name[14]}"
+        Name 			    = "${lookup(var.subnet_name,"other")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -342,11 +364,11 @@ resource "aws_route_table_association" "arta14" {
 ################################################################################
 resource "aws_subnet" "vpnmonitoringprivatesubnetb" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[15]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"vpnmonitoringprivatesubnetb")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
     tags {
-        Name 			    = "${var.subnet_name[15]}"
+        Name 			    = "${lookup(var.subnet_name,"vpnmonitoringprivatesubnetb")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -363,11 +385,11 @@ resource "aws_route_table_association" "arta15" {
 ###############################################################################
 resource "aws_subnet" "vpnmonitoringprivatesubnetc" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[16]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"vpnmonitoringprivatesubnetc")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[3]}"
     tags {
-        Name 			    = "${var.subnet_name[16]}"
+        Name 			    = "${lookup(var.subnet_name,"vpnmonitoringprivatesubnetc")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -384,12 +406,12 @@ resource "aws_route_table_association" "arta16" {
 
 resource "aws_subnet" "skynetprivatesubnetb" {
   vpc_id                  = "${module.network.poshmark-id}"
-  cidr_block              = "${var.subnet_cidr[17]}"
+  cidr_block              = "${lookup(var.subnet_cidr,"skynetprivatesubnetb")}"
   map_public_ip_on_launch = "false"
   availability_zone       = "${var.az[2]}"
 
     tags {
-        Name 			    = "${var.subnet_name[17]}"
+        Name 			    = "${lookup(var.subnet_name,"skynetprivatesubnetb")}"
         Environment		= "${var.env}"
         Application		= "${var.appname}"
         Bu				    = "${var.bu}"
@@ -406,29 +428,6 @@ resource "aws_route_table_association" "arta17" {
 }
 
 ################################################################################
-
-resource "aws_subnet" "sparkemrpublic1c" {
-  vpc_id                  = "${module.network.sparkemr-id}"
-  cidr_block              = "${var.subnet_cidr[18]}"
-  map_public_ip_on_launch = "false"
-  availability_zone       = "${var.az[3]}"
-    tags {
-        Name 			    = "${var.subnet_name[18]}"
-        Environment		= "${var.env}"
-        Application		= "${var.appname}"
-        Bu				    = "${var.bu}"
-        AZ            = "${var.az[3]}"
-        Cluster       = "${var.cluster[0]}"
-        Type          = "${var.type[0]}"
-  }
-}
-
-resource "aws_route_table_association" "arta18" {
-  subnet_id      = "${aws_subnet.sparkemrpublic1c.id}"
-  route_table_id = "${module.network.sparkprivate-rt-id}"
-}
-
-
 
 #########################################################
 #  				Outputs
