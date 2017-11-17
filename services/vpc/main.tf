@@ -31,11 +31,11 @@ resource "aws_vpc" "sparkemr" {
   }
 }
 
-resource "aws_default_route_table" "adrt0" {
+/*resource "aws_default_route_table" "adrt0" {
   default_route_table_id = "${aws_vpc.sparkemr.default_route_table_id}"
 
 }
-
+*/
 resource "aws_vpc" "poshmark" {
   cidr_block         				= "${var.vpc_cidr[1]}"
   instance_tenancy   				= "default"
@@ -49,11 +49,11 @@ resource "aws_vpc" "poshmark" {
 	  Env          	= "${var.env}"
   }
 }
-
+/*
 resource "aws_default_route_table" "adrt1" {
   default_route_table_id = "${aws_vpc.poshmark.default_route_table_id}"
 }
-
+*/
 #########################################################
 #  				Outputs
 #########################################################
