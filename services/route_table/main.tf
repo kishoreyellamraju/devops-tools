@@ -85,13 +85,18 @@ resource "aws_route_table" "sparkprivate-rt-id" {
 # change default route table in vpc
 ######################################################
 
-resource "aws_default_route_table" "poshmark-adrt0" {
-  default_route_table_id = "${aws_route_table.public2b-rt-id.id}"
+
+resource "aws_main_route_table_association" "poshmark-amrta" {
+  vpc_id         = "${module.vpc.poshmark-id}"
+  route_table_id = "${aws_route_table.public2b-rt-id.id}"
 }
 
-resource "aws_default_route_table" "spark-emr-adrt0" {
-  default_route_table_id = "${aws_route_table.sparkprivate-rt-id.id}"
+
+resource "aws_main_route_table_association" "spark-emr-amrta" {
+  vpc_id         = "${module.vpc.sparkemr-id}"
+  route_table_id = "${aws_route_table.sparkprivate-rt-id.id}"
 }
+
 
 
 #########################################################
