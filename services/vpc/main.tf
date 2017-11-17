@@ -31,7 +31,7 @@ resource "aws_vpc" "sparkemr" {
   }
 }
 
-/resource "aws_default_route_table" "adrt0" {
+resource "aws_default_route_table" "adrt0" {
   default_route_table_id = "${aws_vpc.sparkemr.default_route_table_id}"
 
 }
