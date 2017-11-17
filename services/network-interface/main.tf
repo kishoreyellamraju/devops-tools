@@ -41,7 +41,7 @@ resource "aws_network_interface" "ani2" {
 #########################################################
 #  				Outputs
 #########################################################
-
+/*
 output "ani0-id" {
   value = "${aws_network_interface.ani0.id}"
 }
@@ -49,7 +49,7 @@ output "ani0-id" {
 output "ani1-id" {
   value = "${aws_network_interface.ani1.id}"
 }
-
+*/
 output "ani2-id" {
   value = "${aws_network_interface.ani2.id}"
 }
