@@ -27,7 +27,7 @@ resource "aws_vpc" "sparkemr" {
 
   tags {
     Name 			    = "${var.vpc_name[0]}"
-	  Environment		= "${var.env}"
+	  Env		        = "${var.env}"
   }
 }
 
@@ -46,7 +46,7 @@ resource "aws_vpc" "poshmark" {
 
   tags {
     Name 			    = "${var.vpc_name[1]}"
-	  Environment		= "${var.env}"
+	  Env          	= "${var.env}"
   }
 }
 
