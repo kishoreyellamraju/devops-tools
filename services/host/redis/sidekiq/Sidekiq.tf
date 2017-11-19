@@ -4,7 +4,6 @@ resource "aws_instance" "sidekiq-redis-data01" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false
@@ -31,6 +30,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "sidekiq-redis-data01"
+			Cluster               = "Sidekiq"
+			Type                  = "Redis"
+		}
 }
 
 ###################################################################################################
@@ -43,7 +48,6 @@ resource "aws_instance" "sidekiq-redis-data02" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false
@@ -70,8 +74,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Sidekiq"
+			Type                  = "Redis"
+			Env                   = "Prod"
+			Name                  = "sidekiq-redis-data02"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

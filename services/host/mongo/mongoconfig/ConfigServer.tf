@@ -4,7 +4,6 @@ resource "aws_instance" "prod-configsvr2" {
 	instance_type               = "m3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-configsvr-id}"]
 	associate_public_ip_address = false
@@ -31,6 +30,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "prod-configsvr2"
+			Cluster               = "ConfigServer"
+			Env                   = "Prod"
+			Type                  = "MongoConfigsvr"
+		}
 }
 
 ###################################################################################################
@@ -43,7 +48,6 @@ resource "aws_instance" "prod-configsvr1" {
 	instance_type               = "m3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-configsvr-id}"]
 	associate_public_ip_address = false
@@ -70,6 +74,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoConfigsvr"
+			Name                  = "prod-configsvr1"
+			Cluster               = "ConfigServer"
+		}
 }
 
 ###################################################################################################
@@ -82,7 +92,6 @@ resource "aws_instance" "prod-configsvr3" {
 	instance_type               = "m3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-configsvr-id}"]
 	associate_public_ip_address = false
@@ -109,8 +118,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "prod-configsvr3"
+			Cluster               = "ConfigServer"
+			Type                  = "MongoConfigsvr"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

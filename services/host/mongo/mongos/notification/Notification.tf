@@ -4,7 +4,6 @@ resource "aws_instance" "prod-nt-mongos01-b" {
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -24,6 +23,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Notification"
+			Type                  = "MongoS"
+			Env                   = "Prod"
+			Name                  = "prod-nt-mongos01-b"
+		}
 }
 
 ###################################################################################################
@@ -36,7 +41,6 @@ resource "aws_instance" "prod-nt-mongos02-b" {
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -56,6 +60,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "MongoS"
+			Name                  = "prod-nt-mongos02-b"
+			Env                   = "Prod"
+			Cluster               = "Notification"
+		}
 }
 
 ###################################################################################################
@@ -68,7 +78,6 @@ resource "aws_instance" "prod-nt-mongos02-c" {
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -88,6 +97,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nt-mongos02-c"
+			Env                   = "Prod"
+			Cluster               = "Notification"
+			Type                  = "MongoS"
+		}
 }
 
 ###################################################################################################
@@ -100,7 +115,6 @@ resource "aws_instance" "prod-nt-mongos01-c" {
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -120,8 +134,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "MongoS"
+			Name                  = "prod-nt-mongos01-c"
+			Cluster               = "Notification"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

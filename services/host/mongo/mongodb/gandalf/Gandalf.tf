@@ -4,7 +4,6 @@ resource "aws_instance" "gandalf-m3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -32,6 +31,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-m3"
+		}
 }
 
 ###################################################################################################
@@ -44,7 +49,6 @@ resource "aws_instance" "gandalf-p3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -72,6 +76,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "gandalf-p3"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -84,7 +94,6 @@ resource "aws_instance" "gandalf-o3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -112,6 +121,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-o3"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -124,7 +139,6 @@ resource "aws_instance" "gandalf-r3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -152,6 +166,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-r3"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -164,7 +184,6 @@ resource "aws_instance" "gandalf-q3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -192,6 +211,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-q3"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -204,7 +229,6 @@ resource "aws_instance" "gandalf-n3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -232,6 +256,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-n3"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -244,8 +274,8 @@ resource "aws_instance" "gandalf-q2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -272,85 +302,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-m1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
+		volume_tags {
 			Cluster               = "Gandalf"
-			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-m1"
-			MongoDbMemberState    = "Secondary"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-n1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			MongoDbMemberState    = "Primary"
 			Env                   = "Prod"
-			Name                  = "gandalf-n1"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
+			Name                  = "gandalf-q2"
 		}
 }
 
@@ -364,8 +320,8 @@ resource "aws_instance" "gandalf-q1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -392,6 +348,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-q1"
+		}
 }
 
 ###################################################################################################
@@ -404,8 +366,8 @@ resource "aws_instance" "gandalf-r2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -432,6 +394,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-r2"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -444,8 +412,8 @@ resource "aws_instance" "gandalf-r1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -472,6 +440,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-r1"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -484,8 +458,8 @@ resource "aws_instance" "gandalf-o2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -512,6 +486,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-o2"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -524,8 +504,8 @@ resource "aws_instance" "gandalf-o1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -552,6 +532,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-o1"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -564,8 +550,8 @@ resource "aws_instance" "gandalf-p2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -592,6 +578,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-p2"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -604,8 +596,8 @@ resource "aws_instance" "gandalf-p1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -632,6 +624,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-p1"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -644,8 +642,8 @@ resource "aws_instance" "gandalf-m2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -672,6 +670,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-m2"
+			Type                  = "MongoDb"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-m1" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-m1"
+			MongoDbMemberState    = "Secondary"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-m1"
+		}
 }
 
 ###################################################################################################
@@ -684,8 +734,8 @@ resource "aws_instance" "gandalf-n2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -712,6 +762,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-n2"
+			Cluster               = "Gandalf"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-n1" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			MongoDbMemberState    = "Primary"
+			Env                   = "Prod"
+			Name                  = "gandalf-n1"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-n1"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -724,8 +826,8 @@ resource "aws_instance" "gandalf-h4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -752,6 +854,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-h4"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -764,8 +872,8 @@ resource "aws_instance" "gandalf-j4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -792,6 +900,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-j4"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -804,8 +918,8 @@ resource "aws_instance" "gandalf-f4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -832,205 +946,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-d4" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "Gandalf"
-			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-d4"
+		volume_tags {
 			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-08c0e6bd6598e2df1"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-a4" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			MongoDbMemberState    = "Secondary"
-			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-a4"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-0fcfe8a145b8b1aae"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-g4" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-g4"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-0014f04ec14a67245"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-l4" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Cluster               = "Gandalf"
-			Name                  = "gandalf-l4"
-			MongoDbMemberState    = "Secondary"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-0dc807d5467a37665"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-o4" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			MongoDbMemberState    = "Secondary"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Name                  = "gandalf-o4"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-08d2279c005cfdd0f"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
+			Name                  = "gandalf-f4"
 		}
 }
 
@@ -1044,8 +964,8 @@ resource "aws_instance" "gandalf-p4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1072,6 +992,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Name                  = "gandalf-p4"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -1084,8 +1010,8 @@ resource "aws_instance" "gandalf-b4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1112,6 +1038,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-b4"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -1124,8 +1056,8 @@ resource "aws_instance" "gandalf-c4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1152,6 +1084,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-c4"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -1164,8 +1102,8 @@ resource "aws_instance" "gandalf-i4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1192,6 +1130,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-i4"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-d4" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Cluster               = "Gandalf"
+			MongoDbMemberState    = "Secondary"
+			Name                  = "gandalf-d4"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-08c0e6bd6598e2df1"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-d4"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -1204,8 +1194,8 @@ resource "aws_instance" "gandalf-r4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1232,6 +1222,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-r4"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-a4" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			MongoDbMemberState    = "Secondary"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-a4"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-0fcfe8a145b8b1aae"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-a4"
+		}
 }
 
 ###################################################################################################
@@ -1244,8 +1286,8 @@ resource "aws_instance" "gandalf-e4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1272,6 +1314,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-e4"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -1284,8 +1332,8 @@ resource "aws_instance" "gandalf-k4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1312,6 +1360,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-k4"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-g4" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			MongoDbMemberState    = "Secondary"
+			Name                  = "gandalf-g4"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-0014f04ec14a67245"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Name                  = "gandalf-g4"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -1324,8 +1424,8 @@ resource "aws_instance" "gandalf-n4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1352,6 +1452,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-n4"
+		}
 }
 
 ###################################################################################################
@@ -1364,8 +1470,8 @@ resource "aws_instance" "gandalf-m4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1392,6 +1498,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-m4"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -1404,8 +1516,8 @@ resource "aws_instance" "gandalf-q4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1432,6 +1544,104 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-q4"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-l4" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-l4"
+			MongoDbMemberState    = "Secondary"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-0dc807d5467a37665"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-l4"
+			Type                  = "MongoDb"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-o4" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.gandalf-c-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			MongoDbMemberState    = "Secondary"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+			Name                  = "gandalf-o4"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-08d2279c005cfdd0f"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-o4"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -1444,8 +1654,8 @@ resource "aws_instance" "gandalf-a1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1472,205 +1682,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-c2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "Gandalf"
-			Vpc                   = "Yes"
+		volume_tags {
 			Env                   = "Prod"
-			Type                  = "MongoDb"
-			Name                  = "gandalf-c2"
-			MongoDbMemberState    = "Secondary"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-2add72e8"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-e1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Name                  = "gandalf-e1"
-			MongoDbMemberState    = "Primary"
+			Name                  = "gandalf-a1"
 			Cluster               = "Gandalf"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-9901a05b"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-f2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Cluster               = "Gandalf"
-			MongoDbMemberState    = "Primary"
-			Name                  = "gandalf-f2"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-c2b01c07"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-g2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-			Env                   = "Prod"
-			Name                  = "gandalf-g2"
-			MongoDbMemberState    = "Primary"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-c7682d05"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-j2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			MongoDbMemberState    = "Secondary"
-			Vpc                   = "Yes"
-			Name                  = "gandalf-j2"
-			Env                   = "Prod"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
 		}
 }
 
@@ -1684,8 +1700,8 @@ resource "aws_instance" "gandalf-b1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1712,6 +1728,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Name                  = "gandalf-b1"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-c2" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Cluster               = "Gandalf"
+			Vpc                   = "Yes"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-c2"
+			MongoDbMemberState    = "Secondary"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-2add72e8"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-c2"
+		}
 }
 
 ###################################################################################################
@@ -1724,8 +1792,8 @@ resource "aws_instance" "gandalf-d1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1752,6 +1820,150 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-d1"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-e1" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Name                  = "gandalf-e1"
+			MongoDbMemberState    = "Primary"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-9901a05b"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Name                  = "gandalf-e1"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-f2" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			MongoDbMemberState    = "Primary"
+			Name                  = "gandalf-f2"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-c2b01c07"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-f2"
+			Type                  = "MongoDb"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-g2" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-g2"
+			MongoDbMemberState    = "Primary"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-c7682d05"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-g2"
+		}
 }
 
 ###################################################################################################
@@ -1764,8 +1976,8 @@ resource "aws_instance" "gandalf-h2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1792,6 +2004,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-h2"
+		}
 }
 
 ###################################################################################################
@@ -1804,8 +2022,8 @@ resource "aws_instance" "gandalf-i2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1832,6 +2050,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-i2"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-j2" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			MongoDbMemberState    = "Secondary"
+			Vpc                   = "Yes"
+			Name                  = "gandalf-j2"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Name                  = "gandalf-j2"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -1844,8 +2114,8 @@ resource "aws_instance" "gandalf-k1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1872,6 +2142,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-k1"
+		}
 }
 
 ###################################################################################################
@@ -1884,8 +2160,8 @@ resource "aws_instance" "gandalf-l1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1912,6 +2188,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-l1"
+		}
 }
 
 ###################################################################################################
@@ -1924,7 +2206,6 @@ resource "aws_instance" "gandalf-i3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1952,6 +2233,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-i3"
+		}
 }
 
 ###################################################################################################
@@ -1964,7 +2251,6 @@ resource "aws_instance" "gandalf-j3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -1992,6 +2278,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-j3"
+		}
 }
 
 ###################################################################################################
@@ -2004,7 +2296,6 @@ resource "aws_instance" "gandalf-b3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2032,6 +2323,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "gandalf-b3"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -2044,7 +2341,6 @@ resource "aws_instance" "gandalf-c3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2072,6 +2368,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "gandalf-c3"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -2084,7 +2386,6 @@ resource "aws_instance" "gandalf-d3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2112,85 +2413,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-g3" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.4xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "Gandalf"
-			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-g3"
+		volume_tags {
 			Type                  = "MongoDb"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-9a6129bc"
-			volume_type           = "gp2"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-h3" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.4xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Name                  = "gandalf-h3"
-			MongoDbMemberState    = "Secondary"
+			Name                  = "gandalf-d3"
 			Cluster               = "Gandalf"
-			Type                  = "MongoDb"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-15f8c236"
-			volume_type           = "gp2"
-			volume_size           = 2048
-			delete_on_termination = false
+			Env                   = "Prod"
 		}
 }
 
@@ -2204,7 +2431,6 @@ resource "aws_instance" "gandalf-a3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2232,6 +2458,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-a3"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -2244,7 +2476,6 @@ resource "aws_instance" "gandalf-e3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2272,6 +2503,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-e3"
+		}
 }
 
 ###################################################################################################
@@ -2284,7 +2521,6 @@ resource "aws_instance" "gandalf-k3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2312,6 +2548,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-k3"
+		}
 }
 
 ###################################################################################################
@@ -2324,7 +2566,6 @@ resource "aws_instance" "gandalf-l3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2352,6 +2593,57 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Name                  = "gandalf-l3"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-g3" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.4xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Cluster               = "Gandalf"
+			MongoDbMemberState    = "Secondary"
+			Name                  = "gandalf-g3"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-9a6129bc"
+			volume_type           = "gp2"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-g3"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -2364,7 +2656,6 @@ resource "aws_instance" "gandalf-f3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2392,6 +2683,57 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-f3"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-h3" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.4xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-h3"
+			MongoDbMemberState    = "Secondary"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+			Vpc                   = "Yes"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-15f8c236"
+			volume_type           = "gp2"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-h3"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -2404,8 +2746,8 @@ resource "aws_instance" "gandalf-e2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2432,6 +2774,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-e2"
+		}
 }
 
 ###################################################################################################
@@ -2444,8 +2792,8 @@ resource "aws_instance" "gandalf-c1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2472,205 +2820,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-j1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Name                  = "gandalf-j1"
-			Env                   = "Prod"
-			MongoDbMemberState    = "Secondary"
-			Cluster               = "Gandalf"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-b2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-			Name                  = "gandalf-b2"
-			Env                   = "Prod"
-			MongoDbMemberState    = "Primary"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-689120aa"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-d2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "Gandalf"
+		volume_tags {
+			Name                  = "gandalf-c1"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Vpc                   = "Yes"
-			Name                  = "gandalf-d2"
-			MongoDbMemberState    = "Secondary"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-7d9120bf"
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-g1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Name                  = "gandalf-g1"
 			Cluster               = "Gandalf"
-			MongoDbMemberState    = "Secondary"
-			Type                  = "MongoDb"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-l2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			MongoDbMemberState    = "Primary"
-			Cluster               = "Gandalf"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Name                  = "gandalf-l2"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
 		}
 }
 
@@ -2684,8 +2838,8 @@ resource "aws_instance" "gandalf-h1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2712,6 +2866,58 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "gandalf-h1"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-j1" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-j1"
+			Env                   = "Prod"
+			MongoDbMemberState    = "Secondary"
+			Cluster               = "Gandalf"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-j1"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+		}
 }
 
 ###################################################################################################
@@ -2724,8 +2930,8 @@ resource "aws_instance" "gandalf-a2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2752,6 +2958,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "gandalf-a2"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -2764,8 +2976,8 @@ resource "aws_instance" "gandalf-k2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2792,6 +3004,104 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-k2"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-b2" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-b2"
+			Env                   = "Prod"
+			MongoDbMemberState    = "Primary"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-689120aa"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-b2"
+			Env                   = "Prod"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-d2" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Vpc                   = "Yes"
+			Name                  = "gandalf-d2"
+			MongoDbMemberState    = "Secondary"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = "snap-7d9120bf"
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-d2"
+		}
 }
 
 ###################################################################################################
@@ -2804,8 +3114,8 @@ resource "aws_instance" "gandalf-i1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2832,6 +3142,104 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-i1"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-g1" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Name                  = "gandalf-g1"
+			Cluster               = "Gandalf"
+			MongoDbMemberState    = "Secondary"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Name                  = "gandalf-g1"
+			Cluster               = "Gandalf"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-l2" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			MongoDbMemberState    = "Primary"
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-l2"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-l2"
+		}
 }
 
 ###################################################################################################
@@ -2844,8 +3252,8 @@ resource "aws_instance" "gandalf-f1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2872,8 +3280,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-f1"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

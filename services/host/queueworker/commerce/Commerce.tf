@@ -4,7 +4,6 @@ resource "aws_instance" "prod-co-qw19-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -25,6 +24,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-co-qw19-b"
+			Cluster               = "Commerce"
+		}
 }
 
 ###################################################################################################
@@ -37,7 +42,6 @@ resource "aws_instance" "prod-co-qw18-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -58,6 +62,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-co-qw18-c"
+			Cluster               = "Commerce"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -70,7 +80,6 @@ resource "aws_instance" "prod-co-qw19-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -91,6 +100,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-co-qw19-c"
+			Type                  = "QueueWorker"
+			Cluster               = "Commerce"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -103,7 +118,6 @@ resource "aws_instance" "prod-co-qw11-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -123,6 +137,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Commerce"
+			Name                  = "prod-co-qw11-b"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -135,7 +155,6 @@ resource "aws_instance" "prod-co-qw12-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -155,6 +174,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "Commerce"
+			Env                   = "Prod"
+			Name                  = "prod-co-qw12-b"
+		}
 }
 
 ###################################################################################################
@@ -167,7 +192,6 @@ resource "aws_instance" "prod-co-qw13-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -187,6 +211,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-co-qw13-b"
+			Cluster               = "Commerce"
+		}
 }
 
 ###################################################################################################
@@ -199,7 +229,6 @@ resource "aws_instance" "prod-co-qw14-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -220,6 +249,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-co-qw14-b"
+			Cluster               = "Commerce"
+		}
 }
 
 ###################################################################################################
@@ -232,7 +267,6 @@ resource "aws_instance" "prod-co-qw15-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -253,6 +287,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-co-qw15-b"
+			Cluster               = "Commerce"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -265,7 +305,6 @@ resource "aws_instance" "prod-co-qw16-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -286,6 +325,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "Commerce"
+			Name                  = "prod-co-qw16-b"
+		}
 }
 
 ###################################################################################################
@@ -298,7 +343,6 @@ resource "aws_instance" "prod-co-qw17-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -319,6 +363,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-co-qw17-b"
+			Type                  = "QueueWorker"
+			Cluster               = "Commerce"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -331,7 +381,6 @@ resource "aws_instance" "prod-co-qw18-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -352,6 +401,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-co-qw18-b"
+			Cluster               = "Commerce"
+		}
 }
 
 ###################################################################################################
@@ -364,7 +419,6 @@ resource "aws_instance" "prod-co-qw11-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -384,6 +438,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-co-qw11-c"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "Commerce"
+		}
 }
 
 ###################################################################################################
@@ -396,7 +456,6 @@ resource "aws_instance" "prod-co-qw13-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -416,6 +475,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "Commerce"
+			Name                  = "prod-co-qw13-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -428,7 +493,6 @@ resource "aws_instance" "prod-co-qw14-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -449,6 +513,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-co-qw14-c"
+			Cluster               = "Commerce"
+		}
 }
 
 ###################################################################################################
@@ -461,7 +531,6 @@ resource "aws_instance" "prod-co-qw15-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -482,6 +551,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "Commerce"
+			Name                  = "prod-co-qw15-c"
+		}
 }
 
 ###################################################################################################
@@ -494,7 +569,6 @@ resource "aws_instance" "prod-co-qw16-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -515,6 +589,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-co-qw16-c"
+			Type                  = "QueueWorker"
+			Cluster               = "Commerce"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -527,7 +607,6 @@ resource "aws_instance" "prod-co-qw17-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -548,6 +627,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-co-qw17-c"
+			Cluster               = "Commerce"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -560,7 +645,6 @@ resource "aws_instance" "prod-co-qw12-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -580,6 +664,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-co-qw12-c"
+			Cluster               = "Commerce"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -592,7 +682,6 @@ resource "aws_instance" "prod-co-qw20-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -613,8 +702,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-co-qw20-b"
+			Cluster               = "Commerce"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

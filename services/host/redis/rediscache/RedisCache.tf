@@ -4,8 +4,8 @@ resource "aws_instance" "prod-redis-cache-a01" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -31,6 +31,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "prod-redis-cache-a01"
+			Type                  = "Redis"
+			Env                   = "Prod"
+			Cluster               = "RedisCache"
+		}
 }
 
 ###################################################################################################
@@ -43,8 +49,8 @@ resource "aws_instance" "prod-redis-cache-a02" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -70,6 +76,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "RedisCache"
+			Env                   = "Prod"
+			Type                  = "Redis"
+			Name                  = "prod-redis-cache-a02"
+		}
 }
 
 ###################################################################################################
@@ -82,8 +94,8 @@ resource "aws_instance" "prod-redis-cache-b01" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -109,6 +121,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "RedisCache"
+			Env                   = "Prod"
+			Name                  = "prod-redis-cache-b01"
+			Type                  = "Redis"
+		}
 }
 
 ###################################################################################################
@@ -121,8 +139,8 @@ resource "aws_instance" "prod-redis-cache-b02" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -148,6 +166,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "prod-redis-cache-b02"
+			Cluster               = "RedisCache"
+			Env                   = "Prod"
+			Type                  = "Redis"
+		}
 }
 
 ###################################################################################################
@@ -160,8 +184,8 @@ resource "aws_instance" "prod-redis-cache-c04" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -187,6 +211,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 250
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "prod-redis-cache-c04"
+			Cluster               = "RedisCache"
+			Type                  = "Redis"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -199,8 +229,8 @@ resource "aws_instance" "prod-redis-cache-c03" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -226,8 +256,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 250
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "RedisCache"
+			Env                   = "Prod"
+			Name                  = "prod-redis-cache-c03"
+			Type                  = "Redis"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

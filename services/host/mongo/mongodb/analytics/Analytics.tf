@@ -4,8 +4,8 @@ resource "aws_instance" "prod-analytics-db6" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.merlin-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Analytics"
+			Name                  = "prod-analytics-db6"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -44,8 +50,8 @@ resource "aws_instance" "prod-analytics-db5-old" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.merlin-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +78,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Analytics"
+			Name                  = "prod-analytics-db5-old"
+		}
 }
 
 ###################################################################################################
@@ -84,8 +96,8 @@ resource "aws_instance" "prod-analytics-db5" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.merlin-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +124,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Analytics"
+			Env                   = "Prod"
+			Name                  = "prod-analytics-db5"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -124,7 +142,6 @@ resource "aws_instance" "prod-analytics-db7" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -152,6 +169,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "prod-analytics-db7"
+			Cluster               = "Analytics"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -164,7 +187,6 @@ resource "aws_instance" "prod-analytics-db8" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -192,8 +214,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Analytics"
+			Name                  = "prod-analytics-db8"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

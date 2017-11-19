@@ -4,8 +4,8 @@ resource "aws_instance" "circe-db4" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.circe-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Circe"
+			Env                   = "Prod"
+			Name                  = "circe-db4"
+		}
 }
 
 ###################################################################################################
@@ -44,7 +50,6 @@ resource "aws_instance" "circe-db3" {
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -72,6 +77,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Name                  = "circe-db3"
+			Cluster               = "Circe"
+		}
 }
 
 ###################################################################################################
@@ -84,8 +95,8 @@ resource "aws_instance" "circe-db1" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.circe-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +123,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Name                  = "circe-db1"
+			Cluster               = "Circe"
+		}
 }
 
 ###################################################################################################
@@ -124,8 +141,8 @@ resource "aws_instance" "circe-db2" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.circe-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -159,6 +176,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 250
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "circe-db2"
+			Env                   = "Prod"
+			Cluster               = "Circe"
+		}
 }
 
 ###################################################################################################
@@ -171,8 +194,8 @@ resource "aws_instance" "circe-db4-old" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.circe-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -199,8 +222,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Circe"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "circe-db4-old"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

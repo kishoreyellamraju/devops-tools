@@ -4,8 +4,8 @@ resource "aws_instance" "sauron-db4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "sauron-db4"
+			Type                  = "MongoDb"
+			Cluster               = "Sauron"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -44,8 +50,8 @@ resource "aws_instance" "sauron-db5" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +78,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "sauron-db5"
+			Type                  = "MongoDb"
+			Cluster               = "Sauron"
+		}
 }
 
 ###################################################################################################
@@ -84,8 +96,8 @@ resource "aws_instance" "sauron-db1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +124,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "sauron-db1"
+			Cluster               = "Sauron"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -124,8 +142,8 @@ resource "aws_instance" "sauron-db2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -152,6 +170,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "sauron-db2"
+			Cluster               = "Sauron"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -164,7 +188,6 @@ resource "aws_instance" "sauron-db3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -192,8 +215,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Name                  = "sauron-db3"
+			Cluster               = "Sauron"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

@@ -1,17 +1,9 @@
-/*
- ########################################################
- Author: Sarvesh Shetty
- Date :5th July,2017
- description : main file to create VPC
- ########################################################
-*/
 resource "aws_instance" "prod-yaga-queue1" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-logs-queue-id}"]
 	associate_public_ip_address = true
@@ -38,8 +30,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 250
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "prod-yaga-queue1"
+			Type                  = "LogsQueue"
+			Cluster               = "Yaga"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

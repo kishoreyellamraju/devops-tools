@@ -4,8 +4,8 @@ resource "aws_instance" "prod-redis-userdata-a03" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -31,6 +31,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 250
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "Redis"
+			Env                   = "Prod"
+			Cluster               = "UserData"
+			Name                  = "prod-redis-userdata-a03"
+		}
 }
 
 ###################################################################################################
@@ -43,8 +49,8 @@ resource "aws_instance" "prod-redis-userdata-a02" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -70,6 +76,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 500
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "Redis"
+			Env                   = "Prod"
+			Name                  = "prod-redis-userdata-a02"
+			Cluster               = "UserData"
+		}
 }
 
 ###################################################################################################
@@ -82,8 +94,8 @@ resource "aws_instance" "prod-redis-userdata-a01" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -109,6 +121,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 500
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "prod-redis-userdata-a01"
+			Type                  = "Redis"
+			Cluster               = "UserData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -121,8 +139,8 @@ resource "aws_instance" "prod-redis-userdata-a04" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -141,8 +159,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-redis-userdata-a04"
+			Cluster               = "UserData"
+			Type                  = "Redis"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

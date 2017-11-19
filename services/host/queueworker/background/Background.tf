@@ -4,7 +4,6 @@ resource "aws_instance" "prod-bg-qw04-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -25,6 +24,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-bg-qw04-c"
+			Cluster               = "Background"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -37,7 +42,6 @@ resource "aws_instance" "prod-bg-qw02-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -57,6 +61,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-bg-qw02-c"
+			Cluster               = "Background"
+		}
 }
 
 ###################################################################################################
@@ -69,7 +79,6 @@ resource "aws_instance" "prod-bg-qw03-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -89,6 +98,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Background"
+			Name                  = "prod-bg-qw03-c"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -101,7 +116,6 @@ resource "aws_instance" "prod-bg-qw01-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -121,6 +135,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Background"
+			Name                  = "prod-bg-qw01-c"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -133,7 +153,6 @@ resource "aws_instance" "prod-bg-qw06-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -154,6 +173,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-bg-qw06-c"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "Background"
+		}
 }
 
 ###################################################################################################
@@ -166,7 +191,6 @@ resource "aws_instance" "prod-bg-qw05-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -187,6 +211,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-bg-qw05-c"
+			Cluster               = "Background"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -199,7 +229,6 @@ resource "aws_instance" "prod-bg-qw07-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -220,6 +249,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Background"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-bg-qw07-b"
+		}
 }
 
 ###################################################################################################
@@ -232,7 +267,6 @@ resource "aws_instance" "prod-bg-qw06-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -253,6 +287,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-bg-qw06-b"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "Background"
+		}
 }
 
 ###################################################################################################
@@ -265,7 +305,6 @@ resource "aws_instance" "prod-bg-qw07-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -286,6 +325,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-bg-qw07-c"
+			Env                   = "Prod"
+			Cluster               = "Background"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -298,7 +343,6 @@ resource "aws_instance" "prod-bg-qw01-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -318,6 +362,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-bg-qw01-b"
+			Env                   = "Prod"
+			Cluster               = "Background"
+		}
 }
 
 ###################################################################################################
@@ -330,7 +380,6 @@ resource "aws_instance" "prod-bg-qw02-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -350,6 +399,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-bg-qw02-b"
+			Cluster               = "Background"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -362,7 +417,6 @@ resource "aws_instance" "prod-bg-qw04-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -383,6 +437,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-bg-qw04-b"
+			Cluster               = "Background"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -395,7 +455,6 @@ resource "aws_instance" "prod-bg-qw05-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -416,6 +475,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Background"
+			Name                  = "prod-bg-qw05-b"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -428,7 +493,6 @@ resource "aws_instance" "prod-bg-qw03-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -448,6 +512,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-bg-qw03-b"
+			Cluster               = "Background"
+		}
 }
 
 ###################################################################################################
@@ -460,7 +530,6 @@ resource "aws_instance" "prod-bg-qw09-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -481,6 +550,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-bg-qw09-c"
+			Cluster               = "Background"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -493,7 +568,6 @@ resource "aws_instance" "prod-bg-qw08-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -514,6 +588,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Background"
+			Name                  = "prod-bg-qw08-c"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -526,7 +606,6 @@ resource "aws_instance" "prod-bg-qw09-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -547,6 +626,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Background"
+			Name                  = "prod-bg-qw09-b"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -559,7 +644,6 @@ resource "aws_instance" "prod-bg-qw08-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -580,8 +664,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-bg-qw08-b"
+			Type                  = "QueueWorker"
+			Cluster               = "Background"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

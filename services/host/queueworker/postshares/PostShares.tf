@@ -5,7 +5,6 @@ resource "aws_instance" "prod-ps-qw01-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -25,6 +24,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-ps-qw01-b"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "PostShares"
+		}
 }
 
 ###################################################################################################
@@ -38,7 +43,6 @@ resource "aws_instance" "prod-ps-qw02-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -58,6 +62,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-ps-qw02-b"
+			Cluster               = "PostShares"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -71,7 +81,6 @@ resource "aws_instance" "prod-ps-qw03-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -91,6 +100,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-ps-qw03-b"
+			Type                  = "QueueWorker"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -104,7 +119,6 @@ resource "aws_instance" "prod-ps-qw04-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -125,6 +139,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "PostShares"
+			Name                  = "prod-ps-qw04-b"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -138,7 +158,6 @@ resource "aws_instance" "prod-ps-qw05-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -159,6 +178,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "PostShares"
+			Name                  = "prod-ps-qw05-b"
+		}
 }
 
 ###################################################################################################
@@ -172,7 +197,6 @@ resource "aws_instance" "prod-ps-qw06-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -193,6 +217,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw06-b"
+		}
 }
 
 ###################################################################################################
@@ -206,7 +236,6 @@ resource "aws_instance" "prod-ps-qw07-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -227,6 +256,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw07-b"
+		}
 }
 
 ###################################################################################################
@@ -240,7 +275,6 @@ resource "aws_instance" "prod-ps-qw08-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -261,6 +295,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw08-b"
+			Cluster               = "PostShares"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -274,7 +314,6 @@ resource "aws_instance" "prod-ps-qw09-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -295,6 +334,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw09-b"
+			Type                  = "QueueWorker"
+			Cluster               = "PostShares"
+		}
 }
 
 ###################################################################################################
@@ -308,7 +353,6 @@ resource "aws_instance" "prod-ps-qw10-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -329,6 +373,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-ps-qw10-b"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -342,7 +392,6 @@ resource "aws_instance" "prod-ps-qw01-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -362,6 +411,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-ps-qw01-c"
+		}
 }
 
 ###################################################################################################
@@ -375,7 +430,6 @@ resource "aws_instance" "prod-ps-qw02-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -395,6 +449,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "PostShares"
+			Name                  = "prod-ps-qw02-c"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -408,7 +468,6 @@ resource "aws_instance" "prod-ps-qw03-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -428,6 +487,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-ps-qw03-c"
+			Env                   = "Prod"
+			Cluster               = "PostShares"
+		}
 }
 
 ###################################################################################################
@@ -441,7 +506,6 @@ resource "aws_instance" "prod-ps-qw04-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -462,6 +526,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw04-c"
+			Cluster               = "PostShares"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -475,7 +545,6 @@ resource "aws_instance" "prod-ps-qw05-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -496,6 +565,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "PostShares"
+			Name                  = "prod-ps-qw05-c"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -509,7 +584,6 @@ resource "aws_instance" "prod-ps-qw06-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -530,6 +604,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw06-c"
+			Cluster               = "PostShares"
+		}
 }
 
 ###################################################################################################
@@ -543,7 +623,6 @@ resource "aws_instance" "prod-ps-qw07-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -564,6 +643,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "PostShares"
+			Name                  = "prod-ps-qw07-c"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -577,7 +662,6 @@ resource "aws_instance" "prod-ps-qw08-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -598,6 +682,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "PostShares"
+			Name                  = "prod-ps-qw08-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -611,7 +701,6 @@ resource "aws_instance" "prod-ps-qw09-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -632,6 +721,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-ps-qw09-c"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -645,7 +740,6 @@ resource "aws_instance" "prod-ps-qw10-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -666,6 +760,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw10-c"
+			Cluster               = "PostShares"
+		}
 }
 
 ###################################################################################################
@@ -679,7 +779,6 @@ resource "aws_instance" "prod-ps-qw12-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -700,6 +799,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-ps-qw12-c"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -713,7 +818,6 @@ resource "aws_instance" "prod-ps-qw11-c" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -734,6 +838,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "PostShares"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-ps-qw11-c"
+		}
 }
 
 ###################################################################################################
@@ -747,7 +857,6 @@ resource "aws_instance" "prod-ps-qw12-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -768,6 +877,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-ps-qw12-b"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -781,7 +896,6 @@ resource "aws_instance" "prod-ps-qw11-b" {
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -802,8 +916,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-ps-qw11-b"
+			Cluster               = "PostShares"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

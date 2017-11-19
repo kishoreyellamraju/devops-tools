@@ -4,7 +4,6 @@ resource "aws_instance" "prod-nt-qw01-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -24,6 +23,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Notification"
+			Type                  = "QueueWorker"
+			Name                  = "prod-nt-qw01-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -36,7 +41,6 @@ resource "aws_instance" "prod-nt-qw06-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -57,6 +61,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Notification"
+			Name                  = "prod-nt-qw06-c"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -69,7 +79,6 @@ resource "aws_instance" "prod-nt-qw03-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -90,6 +99,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nt-qw03-c"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "Notification"
+		}
 }
 
 ###################################################################################################
@@ -102,7 +117,6 @@ resource "aws_instance" "prod-nt-qw05-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -123,6 +137,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Notification"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-nt-qw05-c"
+		}
 }
 
 ###################################################################################################
@@ -135,7 +155,6 @@ resource "aws_instance" "prod-nt-qw04-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -156,6 +175,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-nt-qw04-c"
+			Type                  = "QueueWorker"
+			Cluster               = "Notification"
+		}
 }
 
 ###################################################################################################
@@ -168,7 +193,6 @@ resource "aws_instance" "prod-nt-qw02-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -188,6 +212,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Notification"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-nt-qw02-c"
+		}
 }
 
 ###################################################################################################
@@ -200,7 +230,6 @@ resource "aws_instance" "prod-nt-qw02-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -220,6 +249,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Notification"
+			Type                  = "QueueWorker"
+			Name                  = "prod-nt-qw02-b"
+		}
 }
 
 ###################################################################################################
@@ -232,7 +267,6 @@ resource "aws_instance" "prod-nt-qw03-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -253,6 +287,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "Notification"
+			Env                   = "Prod"
+			Name                  = "prod-nt-qw03-b"
+		}
 }
 
 ###################################################################################################
@@ -265,7 +305,6 @@ resource "aws_instance" "prod-nt-qw04-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -286,6 +325,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Notification"
+			Type                  = "QueueWorker"
+			Name                  = "prod-nt-qw04-b"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -298,7 +343,6 @@ resource "aws_instance" "prod-nt-qw05-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -319,6 +363,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nt-qw05-b"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "Notification"
+		}
 }
 
 ###################################################################################################
@@ -331,7 +381,6 @@ resource "aws_instance" "prod-nt-qw06-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -352,6 +401,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-nt-qw06-b"
+			Cluster               = "Notification"
+		}
 }
 
 ###################################################################################################
@@ -364,7 +419,6 @@ resource "aws_instance" "prod-nt-qw01-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -384,6 +438,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-nt-qw01-b"
+			Cluster               = "Notification"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -396,7 +456,6 @@ resource "aws_instance" "prod-nt-qw07-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -417,6 +476,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "Notification"
+			Name                  = "prod-nt-qw07-c"
+		}
 }
 
 ###################################################################################################
@@ -429,7 +494,6 @@ resource "aws_instance" "prod-nt-qw08-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -450,6 +514,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-nt-qw08-c"
+			Env                   = "Prod"
+			Cluster               = "Notification"
+		}
 }
 
 ###################################################################################################
@@ -462,7 +532,6 @@ resource "aws_instance" "prod-nt-qw09-c" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -483,6 +552,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "Notification"
+			Name                  = "prod-nt-qw09-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -495,7 +570,6 @@ resource "aws_instance" "prod-nt-qw07-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -516,6 +590,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nt-qw07-b"
+			Cluster               = "Notification"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -528,7 +608,6 @@ resource "aws_instance" "prod-nt-qw08-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -549,6 +628,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-nt-qw08-b"
+			Cluster               = "Notification"
+		}
 }
 
 ###################################################################################################
@@ -561,7 +646,6 @@ resource "aws_instance" "prod-nt-qw09-b" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -582,8 +666,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-nt-qw09-b"
+			Cluster               = "Notification"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

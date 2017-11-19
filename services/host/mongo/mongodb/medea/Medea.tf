@@ -4,7 +4,6 @@ resource "aws_instance" "medea-db3" {
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -32,6 +31,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "medea-db3"
+			Cluster               = "Medea"
+		}
 }
 
 ###################################################################################################
@@ -44,8 +49,8 @@ resource "aws_instance" "medea-db4" {
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.medea-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +77,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Medea"
+			Name                  = "medea-db4"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -84,8 +95,8 @@ resource "aws_instance" "medea-db1" {
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.medea-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +123,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "medea-db1"
+			Env                   = "Prod"
+			Cluster               = "Medea"
+		}
 }
 
 ###################################################################################################
@@ -124,8 +141,8 @@ resource "aws_instance" "medea-db2" {
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.medea-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -152,8 +169,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 1024
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Medea"
+			Name                  = "medea-db2"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

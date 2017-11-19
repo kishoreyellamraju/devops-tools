@@ -4,7 +4,6 @@ resource "aws_instance" "prod-nrt-qw01-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -24,6 +23,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nrt-qw01-b"
+			Type                  = "QueueWorker"
+			Cluster               = "NearRealTime"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -36,7 +41,6 @@ resource "aws_instance" "prod-nrt-qw02-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -56,6 +60,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "NearRealTime"
+			Env                   = "Prod"
+			Name                  = "prod-nrt-qw02-b"
+		}
 }
 
 ###################################################################################################
@@ -68,7 +78,6 @@ resource "aws_instance" "prod-nrt-qw03-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -89,6 +98,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nrt-qw03-b"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "NearRealTime"
+		}
 }
 
 ###################################################################################################
@@ -101,7 +116,6 @@ resource "aws_instance" "prod-nrt-qw04-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -122,6 +136,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nrt-qw04-b"
+			Env                   = "Prod"
+			Cluster               = "NearRealTime"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -134,7 +154,6 @@ resource "aws_instance" "prod-nrt-qw01-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -154,6 +173,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "NearRealTime"
+			Name                  = "prod-nrt-qw01-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -166,7 +191,6 @@ resource "aws_instance" "prod-nrt-qw02-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -186,6 +210,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nrt-qw02-c"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "NearRealTime"
+		}
 }
 
 ###################################################################################################
@@ -198,7 +228,6 @@ resource "aws_instance" "prod-nrt-qw03-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -219,6 +248,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-nrt-qw03-c"
+			Env                   = "Prod"
+			Cluster               = "NearRealTime"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -231,7 +266,6 @@ resource "aws_instance" "prod-nrt-qw04-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -252,8 +286,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "NearRealTime"
+			Name                  = "prod-nrt-qw04-c"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

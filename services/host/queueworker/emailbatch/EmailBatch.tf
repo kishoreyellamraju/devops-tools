@@ -4,7 +4,6 @@ resource "aws_instance" "prod-eb-qw12-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -25,6 +24,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-eb-qw12-c"
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -37,7 +42,6 @@ resource "aws_instance" "prod-eb-qw10-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -58,6 +62,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw10-c"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -70,7 +80,6 @@ resource "aws_instance" "prod-eb-qw12-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -91,6 +100,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw12-b"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -103,7 +117,6 @@ resource "aws_instance" "prod-eb-qw10-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -124,6 +137,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw10-b"
+			Cluster               = "EmailBatch"
+		}
 }
 
 ###################################################################################################
@@ -136,7 +154,6 @@ resource "aws_instance" "prod-eb-qw11-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -157,6 +174,11 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw11-b"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -169,7 +191,6 @@ resource "aws_instance" "prod-eb-qw13-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -190,6 +211,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw13-b"
+		}
 }
 
 ###################################################################################################
@@ -202,7 +229,6 @@ resource "aws_instance" "prod-eb-qw15-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -223,6 +249,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-eb-qw15-c"
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -235,7 +267,6 @@ resource "aws_instance" "prod-eb-qw14-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -256,6 +287,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw14-b"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -268,7 +305,6 @@ resource "aws_instance" "prod-eb-qw15-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -289,6 +325,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw15-b"
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -301,7 +343,6 @@ resource "aws_instance" "prod-eb-qw11-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -322,6 +363,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-eb-qw11-c"
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+		}
 }
 
 ###################################################################################################
@@ -334,7 +381,6 @@ resource "aws_instance" "prod-eb-qw05-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -355,6 +401,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw05-b"
+			Cluster               = "EmailBatch"
+		}
 }
 
 ###################################################################################################
@@ -367,7 +419,6 @@ resource "aws_instance" "prod-eb-qw06-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -388,6 +439,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw06-b"
+		}
 }
 
 ###################################################################################################
@@ -400,7 +457,6 @@ resource "aws_instance" "prod-eb-qw07-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -421,6 +477,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-eb-qw07-b"
+			Cluster               = "EmailBatch"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -433,7 +495,6 @@ resource "aws_instance" "prod-eb-qw08-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -454,6 +515,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-eb-qw08-b"
+		}
 }
 
 ###################################################################################################
@@ -466,7 +533,6 @@ resource "aws_instance" "prod-eb-qw01-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -486,6 +552,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Name                  = "prod-eb-qw01-b"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -498,7 +570,6 @@ resource "aws_instance" "prod-eb-qw02-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -518,6 +589,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-eb-qw02-b"
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -530,7 +607,6 @@ resource "aws_instance" "prod-eb-qw03-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -551,6 +627,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-eb-qw03-b"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "EmailBatch"
+		}
 }
 
 ###################################################################################################
@@ -563,7 +645,6 @@ resource "aws_instance" "prod-eb-qw04-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -584,6 +665,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw04-b"
+		}
 }
 
 ###################################################################################################
@@ -596,7 +683,6 @@ resource "aws_instance" "prod-eb-qw09-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -617,6 +703,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw09-b"
+		}
 }
 
 ###################################################################################################
@@ -629,7 +721,6 @@ resource "aws_instance" "prod-eb-qw03-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -650,6 +741,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Name                  = "prod-eb-qw03-c"
+			Cluster               = "EmailBatch"
+		}
 }
 
 ###################################################################################################
@@ -662,7 +759,6 @@ resource "aws_instance" "prod-eb-qw02-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -682,6 +778,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-eb-qw02-c"
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "EmailBatch"
+		}
 }
 
 ###################################################################################################
@@ -694,7 +796,6 @@ resource "aws_instance" "prod-eb-qw01-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -714,6 +815,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw01-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -726,7 +833,6 @@ resource "aws_instance" "prod-eb-qw09-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -747,6 +853,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Name                  = "prod-eb-qw09-c"
+		}
 }
 
 ###################################################################################################
@@ -759,7 +871,6 @@ resource "aws_instance" "prod-eb-qw08-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -780,6 +891,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "prod-eb-qw08-c"
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+		}
 }
 
 ###################################################################################################
@@ -792,7 +909,6 @@ resource "aws_instance" "prod-eb-qw07-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -813,6 +929,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw07-c"
+		}
 }
 
 ###################################################################################################
@@ -825,7 +947,6 @@ resource "aws_instance" "prod-eb-qw06-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -846,6 +967,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "prod-eb-qw06-c"
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+		}
 }
 
 ###################################################################################################
@@ -858,7 +985,6 @@ resource "aws_instance" "prod-eb-qw05-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -879,6 +1005,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw05-c"
+		}
 }
 
 ###################################################################################################
@@ -891,7 +1023,6 @@ resource "aws_instance" "prod-eb-qw04-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -912,6 +1043,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw04-c"
+			Cluster               = "EmailBatch"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -924,7 +1061,6 @@ resource "aws_instance" "prod-eb-qw14-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -945,6 +1081,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw14-c"
+		}
 }
 
 ###################################################################################################
@@ -957,7 +1099,6 @@ resource "aws_instance" "prod-eb-qw13-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -978,6 +1119,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Env                   = "Prod"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw13-c"
+		}
 }
 
 ###################################################################################################
@@ -990,7 +1137,6 @@ resource "aws_instance" "prod-eb-qw16-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -1011,6 +1157,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "EmailBatch"
+			Type                  = "QueueWorker"
+			Name                  = "prod-eb-qw16-b"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -1023,7 +1175,6 @@ resource "aws_instance" "prod-eb-qw16-c" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -1044,8 +1195,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "QueueWorker"
+			Cluster               = "EmailBatch"
+			Name                  = "prod-eb-qw16-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

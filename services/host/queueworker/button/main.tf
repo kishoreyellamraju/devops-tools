@@ -31,3 +31,9 @@ module "subnet" {
   env = "${var.env}"
   app = "${var.appname}"
 }
+
+module "placementgroup" {
+  source = "../../../../../ec2-lib"
+  env = "${var.env}"
+  app = "${var.appname}"
+}

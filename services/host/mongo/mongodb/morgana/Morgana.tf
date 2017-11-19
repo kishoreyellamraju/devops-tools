@@ -4,8 +4,8 @@ resource "aws_instance" "morgana-db5" {
 	instance_type               = "r4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.morgana-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "morgana-db5"
+			Cluster               = "Morgana"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -44,8 +50,8 @@ resource "aws_instance" "morgana-db6" {
 	instance_type               = "r4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.morgana-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +78,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "morgana-db6"
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Morgana"
+		}
 }
 
 ###################################################################################################
@@ -84,8 +96,8 @@ resource "aws_instance" "morgana-db4" {
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
+	placement_group             = "${module.placementgroup.morgana-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +124,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "morgana-db4"
+			Env                   = "Prod"
+			Cluster               = "Morgana"
+			Type                  = "MongoDb"
+		}
 }
 
 ###################################################################################################
@@ -124,8 +142,8 @@ resource "aws_instance" "morgana-db2" {
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -152,6 +170,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Morgana"
+			Name                  = "morgana-db2"
+		}
 }
 
 ###################################################################################################
@@ -164,8 +188,8 @@ resource "aws_instance" "morgana-db1" {
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -192,6 +216,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Cluster               = "Morgana"
+			Name                  = "morgana-db1"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -204,8 +234,8 @@ resource "aws_instance" "morgana-db4-old" {
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -232,6 +262,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "morgana-db4-old"
+			Cluster               = "Morgana"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -244,8 +280,8 @@ resource "aws_instance" "morgana-db3" {
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -272,8 +308,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 2048
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Cluster               = "Morgana"
+			Name                  = "morgana-db3"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+
