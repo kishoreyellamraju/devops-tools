@@ -4,6 +4,7 @@ resource "aws_instance" "prod-kibana-queue1" {
 	instance_type               = "r4.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-logs-queue-id}"]
 	associate_public_ip_address = true
@@ -41,5 +42,3 @@ resource "aws_instance" "prod-kibana-queue1" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

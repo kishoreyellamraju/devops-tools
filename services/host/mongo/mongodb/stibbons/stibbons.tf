@@ -4,6 +4,7 @@ resource "aws_instance" "stibbons-b3" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -49,6 +50,7 @@ resource "aws_instance" "stibbons-a3" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -94,6 +96,7 @@ resource "aws_instance" "stibbons-c3" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -139,6 +142,7 @@ resource "aws_instance" "stibbons-d3" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -184,6 +188,7 @@ resource "aws_instance" "stibbons-f3" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -229,6 +234,7 @@ resource "aws_instance" "stibbons-e3" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -274,6 +280,7 @@ resource "aws_instance" "stibbons-e2" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -320,6 +327,7 @@ resource "aws_instance" "stibbons-b1" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -366,6 +374,7 @@ resource "aws_instance" "stibbons-f2" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -412,6 +421,7 @@ resource "aws_instance" "stibbons-c1" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -458,6 +468,7 @@ resource "aws_instance" "stibbons-a1" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -504,6 +515,7 @@ resource "aws_instance" "stibbons-d2" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -550,6 +562,7 @@ resource "aws_instance" "stibbons-a2" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -595,6 +608,7 @@ resource "aws_instance" "stibbons-b2" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -640,6 +654,7 @@ resource "aws_instance" "stibbons-c2" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -685,6 +700,7 @@ resource "aws_instance" "stibbons-d1" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -730,6 +746,7 @@ resource "aws_instance" "stibbons-e1" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stibbons-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -768,5 +785,3 @@ resource "aws_instance" "stibbons-e1" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

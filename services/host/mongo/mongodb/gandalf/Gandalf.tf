@@ -4,6 +4,7 @@ resource "aws_instance" "gandalf-m3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -49,6 +50,7 @@ resource "aws_instance" "gandalf-p3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -94,6 +96,7 @@ resource "aws_instance" "gandalf-o3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -139,6 +142,7 @@ resource "aws_instance" "gandalf-r3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -184,6 +188,7 @@ resource "aws_instance" "gandalf-q3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -229,6 +234,7 @@ resource "aws_instance" "gandalf-n3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -274,6 +280,7 @@ resource "aws_instance" "gandalf-q2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -320,6 +327,7 @@ resource "aws_instance" "gandalf-q1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -366,6 +374,7 @@ resource "aws_instance" "gandalf-r2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -412,6 +421,7 @@ resource "aws_instance" "gandalf-r1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -458,6 +468,7 @@ resource "aws_instance" "gandalf-o2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -504,6 +515,7 @@ resource "aws_instance" "gandalf-o1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -550,6 +562,7 @@ resource "aws_instance" "gandalf-p2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -596,6 +609,7 @@ resource "aws_instance" "gandalf-p1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -642,6 +656,7 @@ resource "aws_instance" "gandalf-m2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -688,6 +703,7 @@ resource "aws_instance" "gandalf-m1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -734,6 +750,7 @@ resource "aws_instance" "gandalf-n2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -780,6 +797,7 @@ resource "aws_instance" "gandalf-n1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -826,6 +844,7 @@ resource "aws_instance" "gandalf-h4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -872,6 +891,7 @@ resource "aws_instance" "gandalf-j4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -918,6 +938,7 @@ resource "aws_instance" "gandalf-f4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -964,6 +985,7 @@ resource "aws_instance" "gandalf-p4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1010,6 +1032,7 @@ resource "aws_instance" "gandalf-b4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1056,6 +1079,7 @@ resource "aws_instance" "gandalf-c4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1102,6 +1126,7 @@ resource "aws_instance" "gandalf-i4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1148,6 +1173,7 @@ resource "aws_instance" "gandalf-d4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1194,6 +1220,7 @@ resource "aws_instance" "gandalf-r4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1240,6 +1267,7 @@ resource "aws_instance" "gandalf-a4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1286,6 +1314,7 @@ resource "aws_instance" "gandalf-e4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1332,6 +1361,7 @@ resource "aws_instance" "gandalf-k4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1378,6 +1408,7 @@ resource "aws_instance" "gandalf-g4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1424,6 +1455,7 @@ resource "aws_instance" "gandalf-n4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1470,6 +1502,7 @@ resource "aws_instance" "gandalf-m4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1516,6 +1549,7 @@ resource "aws_instance" "gandalf-q4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1562,6 +1596,7 @@ resource "aws_instance" "gandalf-l4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1608,6 +1643,7 @@ resource "aws_instance" "gandalf-o4" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1654,6 +1690,7 @@ resource "aws_instance" "gandalf-a1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1700,6 +1737,7 @@ resource "aws_instance" "gandalf-b1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1746,6 +1784,7 @@ resource "aws_instance" "gandalf-c2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1792,6 +1831,7 @@ resource "aws_instance" "gandalf-d1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1838,6 +1878,7 @@ resource "aws_instance" "gandalf-e1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1884,6 +1925,7 @@ resource "aws_instance" "gandalf-f2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1930,6 +1972,7 @@ resource "aws_instance" "gandalf-g2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1976,6 +2019,7 @@ resource "aws_instance" "gandalf-h2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2022,6 +2066,7 @@ resource "aws_instance" "gandalf-i2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2068,6 +2113,7 @@ resource "aws_instance" "gandalf-j2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2114,6 +2160,7 @@ resource "aws_instance" "gandalf-k1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2160,6 +2207,7 @@ resource "aws_instance" "gandalf-l1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2206,6 +2254,7 @@ resource "aws_instance" "gandalf-i3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2251,6 +2300,7 @@ resource "aws_instance" "gandalf-j3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2296,6 +2346,7 @@ resource "aws_instance" "gandalf-b3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2341,6 +2392,7 @@ resource "aws_instance" "gandalf-c3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2386,6 +2438,7 @@ resource "aws_instance" "gandalf-d3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2431,6 +2484,7 @@ resource "aws_instance" "gandalf-a3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2476,6 +2530,7 @@ resource "aws_instance" "gandalf-e3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2521,6 +2576,7 @@ resource "aws_instance" "gandalf-k3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2566,6 +2622,7 @@ resource "aws_instance" "gandalf-l3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2611,6 +2668,7 @@ resource "aws_instance" "gandalf-g3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2656,6 +2714,7 @@ resource "aws_instance" "gandalf-f3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2701,6 +2760,7 @@ resource "aws_instance" "gandalf-h3" {
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2746,6 +2806,7 @@ resource "aws_instance" "gandalf-e2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2792,6 +2853,7 @@ resource "aws_instance" "gandalf-c1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2838,6 +2900,7 @@ resource "aws_instance" "gandalf-h1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2884,6 +2947,7 @@ resource "aws_instance" "gandalf-j1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2930,6 +2994,7 @@ resource "aws_instance" "gandalf-a2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2976,6 +3041,7 @@ resource "aws_instance" "gandalf-k2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3022,6 +3088,7 @@ resource "aws_instance" "gandalf-b2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3068,6 +3135,7 @@ resource "aws_instance" "gandalf-d2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3114,6 +3182,7 @@ resource "aws_instance" "gandalf-i1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3160,6 +3229,7 @@ resource "aws_instance" "gandalf-g1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3206,6 +3276,7 @@ resource "aws_instance" "gandalf-l2" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3252,6 +3323,7 @@ resource "aws_instance" "gandalf-f1" {
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3291,5 +3363,3 @@ resource "aws_instance" "gandalf-f1" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

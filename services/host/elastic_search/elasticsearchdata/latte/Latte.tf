@@ -5,6 +5,7 @@ resource "aws_instance" "latte-data01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -51,6 +52,7 @@ resource "aws_instance" "latte-data02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -97,6 +99,7 @@ resource "aws_instance" "latte-data01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -143,6 +146,7 @@ resource "aws_instance" "latte-data02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -189,6 +193,7 @@ resource "aws_instance" "latte-data11-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -235,6 +240,7 @@ resource "aws_instance" "latte-data34-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -281,6 +287,7 @@ resource "aws_instance" "latte-data43-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -327,6 +334,7 @@ resource "aws_instance" "latte-data38-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -373,6 +381,7 @@ resource "aws_instance" "latte-data36-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -419,6 +428,7 @@ resource "aws_instance" "latte-data39-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -465,6 +475,7 @@ resource "aws_instance" "latte-data47-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -511,6 +522,7 @@ resource "aws_instance" "latte-data45-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -557,6 +569,7 @@ resource "aws_instance" "latte-data42-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -603,6 +616,7 @@ resource "aws_instance" "latte-data40-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -649,6 +663,7 @@ resource "aws_instance" "latte-data46-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -695,6 +710,7 @@ resource "aws_instance" "latte-data35-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -741,6 +757,7 @@ resource "aws_instance" "latte-data44-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -787,6 +804,7 @@ resource "aws_instance" "latte-data48-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -833,6 +851,7 @@ resource "aws_instance" "latte-data41-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -879,6 +898,7 @@ resource "aws_instance" "latte-data37-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -925,6 +945,7 @@ resource "aws_instance" "latte-data33-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -971,6 +992,7 @@ resource "aws_instance" "latte-data07-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1017,6 +1039,7 @@ resource "aws_instance" "latte-data14-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1063,6 +1086,7 @@ resource "aws_instance" "latte-data26-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1109,6 +1133,7 @@ resource "aws_instance" "latte-data17-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1155,6 +1180,7 @@ resource "aws_instance" "latte-data20-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1201,6 +1227,7 @@ resource "aws_instance" "latte-data13-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1247,6 +1274,7 @@ resource "aws_instance" "latte-data32-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1293,6 +1321,7 @@ resource "aws_instance" "latte-data21-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1339,6 +1368,7 @@ resource "aws_instance" "latte-data10-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1385,6 +1415,7 @@ resource "aws_instance" "latte-data09-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1431,6 +1462,7 @@ resource "aws_instance" "latte-data15-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1477,6 +1509,7 @@ resource "aws_instance" "latte-data04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1523,6 +1556,7 @@ resource "aws_instance" "latte-data23-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1569,6 +1603,7 @@ resource "aws_instance" "latte-data18-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1615,6 +1650,7 @@ resource "aws_instance" "latte-data31-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1661,6 +1697,7 @@ resource "aws_instance" "latte-data05-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1707,6 +1744,7 @@ resource "aws_instance" "latte-data25-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1753,6 +1791,7 @@ resource "aws_instance" "latte-data27-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1799,6 +1838,7 @@ resource "aws_instance" "latte-data11-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1845,6 +1885,7 @@ resource "aws_instance" "latte-data28-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1891,6 +1932,7 @@ resource "aws_instance" "latte-data06-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1937,6 +1979,7 @@ resource "aws_instance" "latte-data29-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -1983,6 +2026,7 @@ resource "aws_instance" "latte-data16-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2029,6 +2073,7 @@ resource "aws_instance" "latte-data03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2075,6 +2120,7 @@ resource "aws_instance" "latte-data22-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2121,6 +2167,7 @@ resource "aws_instance" "latte-data19-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2167,6 +2214,7 @@ resource "aws_instance" "latte-data30-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2213,6 +2261,7 @@ resource "aws_instance" "latte-data24-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2259,6 +2308,7 @@ resource "aws_instance" "latte-data12-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2305,6 +2355,7 @@ resource "aws_instance" "latte-data08-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2351,6 +2402,7 @@ resource "aws_instance" "latte-data42-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2397,6 +2449,7 @@ resource "aws_instance" "latte-data37-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2443,6 +2496,7 @@ resource "aws_instance" "latte-data46-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2489,6 +2543,7 @@ resource "aws_instance" "latte-data33-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2535,6 +2590,7 @@ resource "aws_instance" "latte-data35-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2581,6 +2637,7 @@ resource "aws_instance" "latte-data40-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2627,6 +2684,7 @@ resource "aws_instance" "latte-data41-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2673,6 +2731,7 @@ resource "aws_instance" "latte-data34-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2719,6 +2778,7 @@ resource "aws_instance" "latte-data48-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2765,6 +2825,7 @@ resource "aws_instance" "latte-data44-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2811,6 +2872,7 @@ resource "aws_instance" "latte-data39-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2857,6 +2919,7 @@ resource "aws_instance" "latte-data36-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2903,6 +2966,7 @@ resource "aws_instance" "latte-data45-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2949,6 +3013,7 @@ resource "aws_instance" "latte-data47-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -2995,6 +3060,7 @@ resource "aws_instance" "latte-data43-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3041,6 +3107,7 @@ resource "aws_instance" "latte-data38-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3087,6 +3154,7 @@ resource "aws_instance" "latte-data03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3133,6 +3201,7 @@ resource "aws_instance" "latte-data04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3179,6 +3248,7 @@ resource "aws_instance" "latte-data05-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3225,6 +3295,7 @@ resource "aws_instance" "latte-data06-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3271,6 +3342,7 @@ resource "aws_instance" "latte-data07-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3317,6 +3389,7 @@ resource "aws_instance" "latte-data08-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3363,6 +3436,7 @@ resource "aws_instance" "latte-data09-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3409,6 +3483,7 @@ resource "aws_instance" "latte-data10-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3455,6 +3530,7 @@ resource "aws_instance" "latte-data12-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3501,6 +3577,7 @@ resource "aws_instance" "latte-data13-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3547,6 +3624,7 @@ resource "aws_instance" "latte-data14-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3593,6 +3671,7 @@ resource "aws_instance" "latte-data15-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3639,6 +3718,7 @@ resource "aws_instance" "latte-data16-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3685,6 +3765,7 @@ resource "aws_instance" "latte-data17-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3731,6 +3812,7 @@ resource "aws_instance" "latte-data18-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3777,6 +3859,7 @@ resource "aws_instance" "latte-data19-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3823,6 +3906,7 @@ resource "aws_instance" "latte-data20-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3869,6 +3953,7 @@ resource "aws_instance" "latte-data21-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3915,6 +4000,7 @@ resource "aws_instance" "latte-data22-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -3961,6 +4047,7 @@ resource "aws_instance" "latte-data23-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4007,6 +4094,7 @@ resource "aws_instance" "latte-data24-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4053,6 +4141,7 @@ resource "aws_instance" "latte-data25-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4099,6 +4188,7 @@ resource "aws_instance" "latte-data26-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4145,6 +4235,7 @@ resource "aws_instance" "latte-data27-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4191,6 +4282,7 @@ resource "aws_instance" "latte-data28-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4237,6 +4329,7 @@ resource "aws_instance" "latte-data29-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4283,6 +4376,7 @@ resource "aws_instance" "latte-data30-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4329,6 +4423,7 @@ resource "aws_instance" "latte-data31-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4375,6 +4470,7 @@ resource "aws_instance" "latte-data32-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -4413,5 +4509,3 @@ resource "aws_instance" "latte-data32-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

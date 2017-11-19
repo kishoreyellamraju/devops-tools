@@ -4,6 +4,7 @@ resource "aws_instance" "cerberus-b01" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -49,6 +50,7 @@ resource "aws_instance" "cerberus-b02" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -94,6 +96,7 @@ resource "aws_instance" "cerberus-a01" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -139,6 +142,7 @@ resource "aws_instance" "cerberus-a02" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -177,5 +181,3 @@ resource "aws_instance" "cerberus-a02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

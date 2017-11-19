@@ -4,6 +4,7 @@ resource "aws_instance" "prod-twemproxy01" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -48,6 +49,7 @@ resource "aws_instance" "prod-twemproxy02" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -92,6 +94,7 @@ resource "aws_instance" "prod-twemproxy03" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -136,6 +139,7 @@ resource "aws_instance" "prod-twemproxy04" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -180,6 +184,7 @@ resource "aws_instance" "cerberus-twemproxy06" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-twemproxy-id}"]
@@ -225,6 +230,7 @@ resource "aws_instance" "cerberus-twemproxy05" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-twemproxy-id}"]
@@ -263,5 +269,3 @@ resource "aws_instance" "cerberus-twemproxy05" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

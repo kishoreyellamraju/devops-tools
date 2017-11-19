@@ -4,6 +4,7 @@ resource "aws_instance" "prod-fb-dpa-qw01-b" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -34,5 +35,3 @@ resource "aws_instance" "prod-fb-dpa-qw01-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-

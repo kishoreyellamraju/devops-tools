@@ -4,6 +4,7 @@ resource "aws_instance" "prod-vault-db-a01" {
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.vault-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
@@ -50,6 +51,7 @@ resource "aws_instance" "prod-vault-db-a02" {
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.vault-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
@@ -96,6 +98,7 @@ resource "aws_instance" "prod-vault-db-a03" {
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
 	associate_public_ip_address = false
@@ -141,6 +144,7 @@ resource "aws_instance" "prod-vault-db-a04" {
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.vault-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
@@ -180,5 +184,3 @@ resource "aws_instance" "prod-vault-db-a04" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
-
-
