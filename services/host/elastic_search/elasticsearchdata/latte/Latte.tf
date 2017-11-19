@@ -5,8 +5,8 @@ resource "aws_instance" "latte-data01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "latte-data01-c"
+		}
 }
 
 ###################################################################################################
@@ -45,8 +51,8 @@ resource "aws_instance" "latte-data02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +78,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data02-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -85,8 +97,8 @@ resource "aws_instance" "latte-data01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +124,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data01-b"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -125,8 +143,8 @@ resource "aws_instance" "latte-data02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -152,6 +170,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data02-b"
+		}
 }
 
 ###################################################################################################
@@ -165,8 +189,8 @@ resource "aws_instance" "latte-data11-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -192,6 +216,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data11-c"
+		}
 }
 
 ###################################################################################################
@@ -205,8 +235,8 @@ resource "aws_instance" "latte-data34-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -232,6 +262,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data34-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -245,8 +281,8 @@ resource "aws_instance" "latte-data43-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -272,6 +308,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data43-c"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -285,8 +327,8 @@ resource "aws_instance" "latte-data38-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -312,6 +354,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "latte-data38-c"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -325,8 +373,8 @@ resource "aws_instance" "latte-data36-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -352,6 +400,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data36-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -365,8 +419,8 @@ resource "aws_instance" "latte-data39-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -392,6 +446,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "latte-data39-c"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -405,8 +465,8 @@ resource "aws_instance" "latte-data47-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -432,6 +492,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "latte-data47-c"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -445,8 +511,8 @@ resource "aws_instance" "latte-data45-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -472,6 +538,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data45-c"
+		}
 }
 
 ###################################################################################################
@@ -485,8 +557,8 @@ resource "aws_instance" "latte-data42-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -512,6 +584,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "latte-data42-c"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -525,8 +603,8 @@ resource "aws_instance" "latte-data40-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -552,6 +630,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data40-c"
+		}
 }
 
 ###################################################################################################
@@ -565,8 +649,8 @@ resource "aws_instance" "latte-data46-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -592,6 +676,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data46-c"
+		}
 }
 
 ###################################################################################################
@@ -605,8 +695,8 @@ resource "aws_instance" "latte-data35-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -632,6 +722,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "latte-data35-c"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -645,8 +741,8 @@ resource "aws_instance" "latte-data44-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -672,6 +768,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "latte-data44-c"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -685,8 +787,8 @@ resource "aws_instance" "latte-data48-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -712,6 +814,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "latte-data48-c"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -725,8 +833,8 @@ resource "aws_instance" "latte-data41-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -752,6 +860,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Name                  = "latte-data41-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -765,8 +879,8 @@ resource "aws_instance" "latte-data37-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -792,6 +906,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data37-c"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -805,8 +925,8 @@ resource "aws_instance" "latte-data33-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -832,6 +952,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "latte-data33-c"
+		}
 }
 
 ###################################################################################################
@@ -845,8 +971,8 @@ resource "aws_instance" "latte-data07-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -872,6 +998,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "latte-data07-b"
+		}
 }
 
 ###################################################################################################
@@ -885,8 +1017,8 @@ resource "aws_instance" "latte-data14-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -912,6 +1044,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data14-b"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -925,8 +1063,8 @@ resource "aws_instance" "latte-data26-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -952,6 +1090,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data26-b"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -965,8 +1109,8 @@ resource "aws_instance" "latte-data17-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -992,6 +1136,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data17-b"
+		}
 }
 
 ###################################################################################################
@@ -1005,8 +1155,8 @@ resource "aws_instance" "latte-data20-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1032,6 +1182,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data20-b"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -1045,8 +1201,8 @@ resource "aws_instance" "latte-data13-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1072,6 +1228,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data13-b"
+		}
 }
 
 ###################################################################################################
@@ -1085,8 +1247,8 @@ resource "aws_instance" "latte-data32-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1112,6 +1274,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data32-b"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1125,8 +1293,8 @@ resource "aws_instance" "latte-data21-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1152,6 +1320,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data21-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -1165,8 +1339,8 @@ resource "aws_instance" "latte-data10-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1192,6 +1366,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data10-b"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1205,8 +1385,8 @@ resource "aws_instance" "latte-data09-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1232,6 +1412,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data09-b"
+		}
 }
 
 ###################################################################################################
@@ -1245,8 +1431,8 @@ resource "aws_instance" "latte-data15-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1272,6 +1458,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data15-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -1285,8 +1477,8 @@ resource "aws_instance" "latte-data04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1312,6 +1504,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data04-b"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -1325,8 +1523,8 @@ resource "aws_instance" "latte-data23-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1352,6 +1550,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data23-b"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1365,8 +1569,8 @@ resource "aws_instance" "latte-data18-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1392,6 +1596,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data18-b"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -1405,8 +1615,8 @@ resource "aws_instance" "latte-data31-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1432,6 +1642,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data31-b"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -1445,8 +1661,8 @@ resource "aws_instance" "latte-data05-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1472,6 +1688,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Name                  = "latte-data05-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1485,8 +1707,8 @@ resource "aws_instance" "latte-data25-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1512,6 +1734,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data25-b"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1525,8 +1753,8 @@ resource "aws_instance" "latte-data27-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1552,6 +1780,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data27-b"
+		}
 }
 
 ###################################################################################################
@@ -1565,8 +1799,8 @@ resource "aws_instance" "latte-data11-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1592,6 +1826,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "latte-data11-b"
+		}
 }
 
 ###################################################################################################
@@ -1605,8 +1845,8 @@ resource "aws_instance" "latte-data28-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1632,6 +1872,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Name                  = "latte-data28-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1645,8 +1891,8 @@ resource "aws_instance" "latte-data06-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1672,6 +1918,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Name                  = "latte-data06-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1685,8 +1937,8 @@ resource "aws_instance" "latte-data29-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1712,6 +1964,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data29-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -1725,8 +1983,8 @@ resource "aws_instance" "latte-data16-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1752,6 +2010,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data16-b"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -1765,8 +2029,8 @@ resource "aws_instance" "latte-data03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1792,6 +2056,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data03-b"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1805,8 +2075,8 @@ resource "aws_instance" "latte-data22-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1832,6 +2102,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Name                  = "latte-data22-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -1845,8 +2121,8 @@ resource "aws_instance" "latte-data19-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1872,6 +2148,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data19-b"
+		}
 }
 
 ###################################################################################################
@@ -1885,8 +2167,8 @@ resource "aws_instance" "latte-data30-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1912,6 +2194,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data30-b"
+		}
 }
 
 ###################################################################################################
@@ -1925,8 +2213,8 @@ resource "aws_instance" "latte-data24-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1952,6 +2240,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data24-b"
+		}
 }
 
 ###################################################################################################
@@ -1965,8 +2259,8 @@ resource "aws_instance" "latte-data12-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -1992,6 +2286,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data12-b"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -2005,8 +2305,8 @@ resource "aws_instance" "latte-data08-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2032,6 +2332,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data08-b"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -2045,8 +2351,8 @@ resource "aws_instance" "latte-data42-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2072,6 +2378,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "latte-data42-b"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -2085,8 +2397,8 @@ resource "aws_instance" "latte-data37-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2112,6 +2424,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data37-b"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -2125,8 +2443,8 @@ resource "aws_instance" "latte-data46-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2152,6 +2470,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data46-b"
+		}
 }
 
 ###################################################################################################
@@ -2165,8 +2489,8 @@ resource "aws_instance" "latte-data33-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2192,6 +2516,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data33-b"
+		}
 }
 
 ###################################################################################################
@@ -2205,8 +2535,8 @@ resource "aws_instance" "latte-data35-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2232,6 +2562,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data35-b"
+		}
 }
 
 ###################################################################################################
@@ -2245,8 +2581,8 @@ resource "aws_instance" "latte-data40-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2272,6 +2608,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data40-b"
+		}
 }
 
 ###################################################################################################
@@ -2285,8 +2627,8 @@ resource "aws_instance" "latte-data41-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2312,6 +2654,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "latte-data41-b"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -2325,8 +2673,8 @@ resource "aws_instance" "latte-data34-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2352,6 +2700,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data34-b"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -2365,8 +2719,8 @@ resource "aws_instance" "latte-data48-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2392,6 +2746,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data48-b"
+		}
 }
 
 ###################################################################################################
@@ -2405,8 +2765,8 @@ resource "aws_instance" "latte-data44-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2432,6 +2792,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Name                  = "latte-data44-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -2445,8 +2811,8 @@ resource "aws_instance" "latte-data39-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2472,6 +2838,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data39-b"
+		}
 }
 
 ###################################################################################################
@@ -2485,8 +2857,8 @@ resource "aws_instance" "latte-data36-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2512,6 +2884,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data36-b"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -2525,8 +2903,8 @@ resource "aws_instance" "latte-data45-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2552,6 +2930,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "latte-data45-b"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -2565,8 +2949,8 @@ resource "aws_instance" "latte-data47-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2592,6 +2976,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data47-b"
+		}
 }
 
 ###################################################################################################
@@ -2605,8 +2995,8 @@ resource "aws_instance" "latte-data43-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2632,6 +3022,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "latte-data43-b"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -2645,8 +3041,8 @@ resource "aws_instance" "latte-data38-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2672,6 +3068,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data38-b"
+		}
 }
 
 ###################################################################################################
@@ -2685,8 +3087,8 @@ resource "aws_instance" "latte-data03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2712,6 +3114,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data03-c"
+		}
 }
 
 ###################################################################################################
@@ -2725,8 +3133,8 @@ resource "aws_instance" "latte-data04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2752,6 +3160,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data04-c"
+		}
 }
 
 ###################################################################################################
@@ -2765,8 +3179,8 @@ resource "aws_instance" "latte-data05-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2792,6 +3206,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data05-c"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -2805,8 +3225,8 @@ resource "aws_instance" "latte-data06-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2832,6 +3252,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data06-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -2845,8 +3271,8 @@ resource "aws_instance" "latte-data07-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2872,6 +3298,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data07-c"
+		}
 }
 
 ###################################################################################################
@@ -2885,8 +3317,8 @@ resource "aws_instance" "latte-data08-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2912,6 +3344,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data08-c"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -2925,8 +3363,8 @@ resource "aws_instance" "latte-data09-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2952,6 +3390,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data09-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -2965,8 +3409,8 @@ resource "aws_instance" "latte-data10-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -2992,6 +3436,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data10-c"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -3005,8 +3455,8 @@ resource "aws_instance" "latte-data12-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3032,6 +3482,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data12-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -3045,8 +3501,8 @@ resource "aws_instance" "latte-data13-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3072,6 +3528,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data13-c"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -3085,8 +3547,8 @@ resource "aws_instance" "latte-data14-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3112,6 +3574,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data14-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -3125,8 +3593,8 @@ resource "aws_instance" "latte-data15-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3152,6 +3620,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data15-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -3165,8 +3639,8 @@ resource "aws_instance" "latte-data16-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3192,6 +3666,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data16-c"
+		}
 }
 
 ###################################################################################################
@@ -3205,8 +3685,8 @@ resource "aws_instance" "latte-data17-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3232,6 +3712,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Name                  = "latte-data17-c"
+		}
 }
 
 ###################################################################################################
@@ -3245,8 +3731,8 @@ resource "aws_instance" "latte-data18-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3272,6 +3758,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "latte-data18-c"
+		}
 }
 
 ###################################################################################################
@@ -3285,8 +3777,8 @@ resource "aws_instance" "latte-data19-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3312,6 +3804,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data19-c"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -3325,8 +3823,8 @@ resource "aws_instance" "latte-data20-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3352,6 +3850,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data20-c"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -3365,8 +3869,8 @@ resource "aws_instance" "latte-data21-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3392,6 +3896,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data21-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -3405,8 +3915,8 @@ resource "aws_instance" "latte-data22-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3432,6 +3942,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data22-c"
+		}
 }
 
 ###################################################################################################
@@ -3445,8 +3961,8 @@ resource "aws_instance" "latte-data23-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3472,6 +3988,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-data23-c"
+		}
 }
 
 ###################################################################################################
@@ -3485,8 +4007,8 @@ resource "aws_instance" "latte-data24-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3512,6 +4034,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data24-c"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -3525,8 +4053,8 @@ resource "aws_instance" "latte-data25-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3552,6 +4080,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data25-c"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -3565,8 +4099,8 @@ resource "aws_instance" "latte-data26-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3592,6 +4126,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Name                  = "latte-data26-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -3605,8 +4145,8 @@ resource "aws_instance" "latte-data27-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3632,6 +4172,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data27-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -3645,8 +4191,8 @@ resource "aws_instance" "latte-data28-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3672,6 +4218,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data28-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -3685,8 +4237,8 @@ resource "aws_instance" "latte-data29-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3712,6 +4264,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data29-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Latte"
+		}
 }
 
 ###################################################################################################
@@ -3725,8 +4283,8 @@ resource "aws_instance" "latte-data30-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3752,6 +4310,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "latte-data30-c"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -3765,8 +4329,8 @@ resource "aws_instance" "latte-data31-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3792,6 +4356,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Latte"
+			Name                  = "latte-data31-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -3805,8 +4375,8 @@ resource "aws_instance" "latte-data32-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -3832,8 +4402,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Name                  = "latte-data32-c"
+			Cluster               = "Latte"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

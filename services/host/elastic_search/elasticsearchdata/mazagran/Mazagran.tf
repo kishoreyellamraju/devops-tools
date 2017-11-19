@@ -5,8 +5,8 @@ resource "aws_instance" "mazagran-data04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mazagran-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "mazagran-data04-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Mazagran"
+		}
 }
 
 ###################################################################################################
@@ -45,8 +51,8 @@ resource "aws_instance" "mazagran-data01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mazagran-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +78,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "mazagran-data01-b"
+			Cluster               = "Mazagran"
+		}
 }
 
 ###################################################################################################
@@ -85,8 +97,8 @@ resource "aws_instance" "mazagran-data02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mazagran-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +124,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Mazagran"
+			Name                  = "mazagran-data02-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -125,8 +143,8 @@ resource "aws_instance" "mazagran-data03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mazagran-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -152,6 +170,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Mazagran"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "mazagran-data03-b"
+		}
 }
 
 ###################################################################################################
@@ -165,8 +189,8 @@ resource "aws_instance" "mazagran-data02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mazagran-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -192,6 +216,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Name                  = "mazagran-data02-c"
+			Cluster               = "Mazagran"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -205,8 +235,8 @@ resource "aws_instance" "mazagran-data01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mazagran-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -232,6 +262,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Mazagran"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "mazagran-data01-c"
+		}
 }
 
 ###################################################################################################
@@ -245,8 +281,8 @@ resource "aws_instance" "mazagran-data03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mazagran-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -272,6 +308,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "mazagran-data03-c"
+			Cluster               = "Mazagran"
+		}
 }
 
 ###################################################################################################
@@ -285,8 +327,8 @@ resource "aws_instance" "mazagran-data04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mazagran-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -312,8 +354,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = true
 		}
+		volume_tags {
+			Cluster               = "Mazagran"
+			Env                   = "Prod"
+			Name                  = "mazagran-data04-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

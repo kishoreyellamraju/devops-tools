@@ -2,11 +2,11 @@ resource "aws_instance" "ironbank-client01-c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
-	iam_instance_profile        = "elasticsearch"
+	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -25,6 +25,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "IronBank"
+			Name                  = "ironbank-client01-c"
+			Type                  = "ElasticSearchClient"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -38,8 +44,8 @@ resource "aws_instance" "ironbank-client02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -58,6 +64,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "ironbank-client02-c"
+			Type                  = "ElasticSearchClient"
+			Cluster               = "IronBank"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -71,8 +83,8 @@ resource "aws_instance" "ironbank-client01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -91,6 +103,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "ironbank-client01-b"
+			Cluster               = "IronBank"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchClient"
+		}
 }
 
 ###################################################################################################
@@ -104,8 +122,8 @@ resource "aws_instance" "ironbank-client02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -124,8 +142,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "IronBank"
+			Env                   = "Prod"
+			Name                  = "ironbank-client02-b"
+			Type                  = "ElasticSearchClient"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

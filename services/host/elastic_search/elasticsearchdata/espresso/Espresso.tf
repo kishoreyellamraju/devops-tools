@@ -4,7 +4,6 @@ resource "aws_instance" "espresso-data01-b" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -31,6 +30,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Espresso"
+			Name                  = "espresso-data01-b"
+		}
 }
 
 ###################################################################################################
@@ -43,7 +48,6 @@ resource "aws_instance" "espresso-data02-b" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -70,6 +74,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Espresso"
+			Name                  = "espresso-data02-b"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -82,7 +92,6 @@ resource "aws_instance" "espresso-data01-c" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -109,6 +118,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "espresso-data01-c"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Espresso"
+		}
 }
 
 ###################################################################################################
@@ -121,7 +136,6 @@ resource "aws_instance" "espresso-data02-c" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -148,8 +162,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "espresso-data02-c"
+			Cluster               = "Espresso"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

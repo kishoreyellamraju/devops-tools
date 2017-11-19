@@ -5,7 +5,6 @@ resource "aws_instance" "mazagran-master02" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -25,6 +24,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Mazagran"
+			Name                  = "mazagran-master02"
+			Type                  = "ElasticSearchMaster"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -38,7 +43,6 @@ resource "aws_instance" "mazagran-master01" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -58,6 +62,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Mazagran"
+			Type                  = "ElasticSearchMaster"
+			Name                  = "mazagran-master01"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -71,7 +81,6 @@ resource "aws_instance" "mazagran-master03" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -91,8 +100,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "ElasticSearchMaster"
+			Name                  = "mazagran-master03"
+			Env                   = "Prod"
+			Cluster               = "Mazagran"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

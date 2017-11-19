@@ -6,6 +6,7 @@ resource "aws_instance" "kaapi-data01-c" {
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2c-id}"
+	placement_group             = "${module.placementgroup.kaapi-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -31,6 +32,12 @@ resource "aws_instance" "kaapi-data01-c" {
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Kaapi"
+			Env                   = "Prod"
+			Name                  = "kaapi-data01-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -45,6 +52,7 @@ resource "aws_instance" "kaapi-data02-c" {
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2c-id}"
+	placement_group             = "${module.placementgroup.kaapi-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -70,6 +78,12 @@ resource "aws_instance" "kaapi-data02-c" {
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Kaapi"
+			Env                   = "Prod"
+			Name                  = "kaapi-data02-c"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -84,6 +98,7 @@ resource "aws_instance" "kaapi-data01-b" {
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2b-id}"
+	placement_group             = "${module.placementgroup.kaapi-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -109,6 +124,12 @@ resource "aws_instance" "kaapi-data01-b" {
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "kaapi-data01-b"
+			Cluster               = "Kaapi"
+		}
 }
 
 ###################################################################################################
@@ -123,6 +144,7 @@ resource "aws_instance" "kaapi-data02-b" {
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2b-id}"
+	placement_group             = "${module.placementgroup.kaapi-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -148,8 +170,16 @@ resource "aws_instance" "kaapi-data02-b" {
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Kaapi"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "kaapi-data02-b"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

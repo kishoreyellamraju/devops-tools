@@ -5,7 +5,6 @@ resource "aws_instance" "doppio-master01" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
@@ -25,6 +24,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "doppio-master01"
+			Type                  = "ElasticSearchMaster"
+			Cluster               = "Doppio"
+		}
 }
 
 ###################################################################################################
@@ -38,7 +43,6 @@ resource "aws_instance" "doppio-master02" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
@@ -58,6 +62,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Doppio"
+			Type                  = "ElasticSearchMaster"
+			Name                  = "doppio-master02"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -71,7 +81,6 @@ resource "aws_instance" "doppio-master03" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
@@ -91,8 +100,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Type                  = "ElasticSearchMaster"
+			Cluster               = "Doppio"
+			Name                  = "doppio-master03"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

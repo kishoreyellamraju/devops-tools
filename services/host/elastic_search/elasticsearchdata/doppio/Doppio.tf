@@ -5,8 +5,8 @@ resource "aws_instance" "doppio-data03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.doppio-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Doppio"
+			Type                  = "ElasticSearchData"
+			Name                  = "doppio-data03-c"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -45,8 +51,8 @@ resource "aws_instance" "doppio-data04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.doppio-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +78,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Doppio"
+			Name                  = "doppio-data04-c"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -85,8 +97,8 @@ resource "aws_instance" "doppio-data01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.doppio-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +124,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Doppio"
+			Name                  = "doppio-data01-c"
+		}
 }
 
 ###################################################################################################
@@ -125,8 +143,8 @@ resource "aws_instance" "doppio-data02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.doppio-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -152,6 +170,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "doppio-data02-c"
+			Env                   = "Prod"
+			Cluster               = "Doppio"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -165,8 +189,8 @@ resource "aws_instance" "doppio-data02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.doppio-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -192,6 +216,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Doppio"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "doppio-data02-b"
+		}
 }
 
 ###################################################################################################
@@ -205,8 +235,8 @@ resource "aws_instance" "doppio-data04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.doppio-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -232,6 +262,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Doppio"
+			Name                  = "doppio-data04-b"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -245,8 +281,8 @@ resource "aws_instance" "doppio-data03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.doppio-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -272,6 +308,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Doppio"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "doppio-data03-b"
+		}
 }
 
 ###################################################################################################
@@ -285,8 +327,8 @@ resource "aws_instance" "doppio-data01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.doppio-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -312,8 +354,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 100
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Doppio"
+			Name                  = "doppio-data01-b"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

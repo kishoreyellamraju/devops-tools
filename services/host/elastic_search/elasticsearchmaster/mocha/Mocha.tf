@@ -5,7 +5,6 @@ resource "aws_instance" "mocha-master03" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -25,6 +24,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Name                  = "mocha-master03"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchMaster"
+			Cluster               = "Mocha"
+		}
 }
 
 ###################################################################################################
@@ -38,7 +43,6 @@ resource "aws_instance" "mocha-master01" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -58,6 +62,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Cluster               = "Mocha"
+			Type                  = "ElasticSearchMaster"
+			Name                  = "mocha-master01"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -71,7 +81,6 @@ resource "aws_instance" "mocha-master02" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -91,8 +100,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			delete_on_termination = true
 		}
 
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "mocha-master02"
+			Type                  = "ElasticSearchMaster"
+			Cluster               = "Mocha"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

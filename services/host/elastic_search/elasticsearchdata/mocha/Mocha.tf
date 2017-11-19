@@ -5,8 +5,8 @@ resource "aws_instance" "mocha-data01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -32,6 +32,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Mocha"
+			Name                  = "mocha-data01-b"
+		}
 }
 
 ###################################################################################################
@@ -45,8 +51,8 @@ resource "aws_instance" "mocha-data02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -72,6 +78,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Name                  = "mocha-data02-b"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -85,8 +97,8 @@ resource "aws_instance" "mocha-data03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -112,6 +124,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "mocha-data03-b"
+			Cluster               = "Mocha"
+		}
 }
 
 ###################################################################################################
@@ -125,8 +143,8 @@ resource "aws_instance" "mocha-data04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -152,6 +170,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "mocha-data04-b"
+			Cluster               = "Mocha"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -165,8 +189,8 @@ resource "aws_instance" "mocha-data05-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -192,6 +216,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Name                  = "mocha-data05-b"
+			Cluster               = "Mocha"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -205,8 +235,8 @@ resource "aws_instance" "mocha-data06-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -232,6 +262,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "mocha-data06-b"
+			Cluster               = "Mocha"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -245,8 +281,8 @@ resource "aws_instance" "mocha-data07-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -272,6 +308,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "mocha-data07-b"
+			Cluster               = "Mocha"
+		}
 }
 
 ###################################################################################################
@@ -285,8 +327,8 @@ resource "aws_instance" "mocha-data08-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -312,6 +354,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Cluster               = "Mocha"
+			Env                   = "Prod"
+			Name                  = "mocha-data08-b"
+		}
 }
 
 ###################################################################################################
@@ -325,8 +373,8 @@ resource "aws_instance" "mocha-data09-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -352,6 +400,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Name                  = "mocha-data09-b"
+			Cluster               = "Mocha"
+		}
 }
 
 ###################################################################################################
@@ -365,8 +419,8 @@ resource "aws_instance" "mocha-data10-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -392,6 +446,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "mocha-data10-b"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Mocha"
+		}
 }
 
 ###################################################################################################
@@ -405,8 +465,8 @@ resource "aws_instance" "mocha-data01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -432,6 +492,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Name                  = "mocha-data01-c"
+			Cluster               = "Mocha"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -445,8 +511,8 @@ resource "aws_instance" "mocha-data02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -472,6 +538,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Name                  = "mocha-data02-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -485,8 +557,8 @@ resource "aws_instance" "mocha-data03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -512,6 +584,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "mocha-data03-c"
+		}
 }
 
 ###################################################################################################
@@ -525,8 +603,8 @@ resource "aws_instance" "mocha-data04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -552,6 +630,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Name                  = "mocha-data04-c"
+		}
 }
 
 ###################################################################################################
@@ -565,8 +649,8 @@ resource "aws_instance" "mocha-data05-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -592,6 +676,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 3072
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Name                  = "mocha-data05-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -605,8 +695,8 @@ resource "aws_instance" "mocha-data07-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -632,6 +722,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Name                  = "mocha-data07-c"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
@@ -645,8 +741,8 @@ resource "aws_instance" "mocha-data08-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -672,6 +768,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Name                  = "mocha-data08-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+			Cluster               = "Mocha"
+		}
 }
 
 ###################################################################################################
@@ -685,8 +787,8 @@ resource "aws_instance" "mocha-data09-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -712,6 +814,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Name                  = "mocha-data09-c"
+			Env                   = "Prod"
+			Type                  = "ElasticSearchData"
+		}
 }
 
 ###################################################################################################
@@ -725,8 +833,8 @@ resource "aws_instance" "mocha-data06-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -752,6 +860,12 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+			Cluster               = "Mocha"
+			Name                  = "mocha-data06-c"
+		}
 }
 
 ###################################################################################################
@@ -765,8 +879,8 @@ resource "aws_instance" "mocha-data10-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
+	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
@@ -792,8 +906,16 @@ user_data 					= "${file("${path.root}/userdata.sh")}"
 			volume_size           = 6144
 			delete_on_termination = false
 		}
+		volume_tags {
+			Cluster               = "Mocha"
+			Name                  = "mocha-data10-c"
+			Type                  = "ElasticSearchData"
+			Env                   = "Prod"
+		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+
