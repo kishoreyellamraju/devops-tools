@@ -5,7 +5,7 @@ resource "aws_instance" "mocha-client02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-c.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -44,7 +44,7 @@ resource "aws_instance" "mocha-client03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -84,7 +84,7 @@ resource "aws_instance" "mocha-client04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -124,7 +124,7 @@ resource "aws_instance" "mocha-client01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-c.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -163,7 +163,7 @@ resource "aws_instance" "mocha-client01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -203,7 +203,7 @@ resource "aws_instance" "mocha-client02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -243,7 +243,7 @@ resource "aws_instance" "mocha-client04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-c.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -282,7 +282,7 @@ resource "aws_instance" "mocha-client03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-c.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false

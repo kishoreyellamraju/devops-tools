@@ -5,7 +5,7 @@ resource "aws_instance" "ironbank-data02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -52,7 +52,7 @@ resource "aws_instance" "ironbank-data03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -99,7 +99,7 @@ resource "aws_instance" "ironbank-data04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -146,7 +146,7 @@ resource "aws_instance" "ironbank-data01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -193,7 +193,7 @@ resource "aws_instance" "ironbank-data03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -240,7 +240,7 @@ resource "aws_instance" "ironbank-data02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -287,7 +287,7 @@ resource "aws_instance" "ironbank-data04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -334,7 +334,7 @@ resource "aws_instance" "ironbank-data01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]

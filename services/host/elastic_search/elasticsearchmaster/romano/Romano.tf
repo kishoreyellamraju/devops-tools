@@ -5,7 +5,6 @@ resource "aws_instance" "romano-master03" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-	user_data 					        = "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-romano-id}"]
 	associate_public_ip_address = false
@@ -44,7 +43,6 @@ resource "aws_instance" "romano-master02" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-	user_data 					        = "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-romano-id}"]
 	associate_public_ip_address = false
@@ -83,7 +81,6 @@ resource "aws_instance" "romano-master01" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-	user_data 					        = "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-romano-id}"]
 	associate_public_ip_address = false
@@ -114,3 +111,5 @@ resource "aws_instance" "romano-master01" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

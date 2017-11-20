@@ -50,7 +50,7 @@ resource "aws_instance" "americano-data02-c" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-c.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.americano-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-americano-id}"]
@@ -96,7 +96,7 @@ resource "aws_instance" "americano-data01-b" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.americano-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-americano-id}"]
@@ -142,7 +142,7 @@ resource "aws_instance" "americano-data02-b" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.americano-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-americano-id}"]

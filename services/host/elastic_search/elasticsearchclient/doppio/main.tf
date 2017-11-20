@@ -37,14 +37,3 @@ module "placementgroup" {
   env = "${var.env}"
   app = "${var.appname}"
 }
-
-data "template_file" "userdata" {
-  template = "${file("../../../userdata.sh")}"
-    vars {
-      type                  = "${var.tag-type}"
-      env                   = "${var.env}"
-      cluster               = "${var.tag-cluster}"
-      vpc                   = "${var.tag-vpc}"
-      name                  = "${var.tag-name}-${count.index}"
-	}
-}

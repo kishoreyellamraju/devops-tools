@@ -4,7 +4,7 @@ resource "aws_instance" "search-haproxy01-b" {
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-haproxy-id}"]
 	associate_public_ip_address = false
@@ -42,7 +42,7 @@ resource "aws_instance" "redis-haproxy02" {
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-haproxy-id}"]
 	associate_public_ip_address = false
@@ -80,7 +80,7 @@ resource "aws_instance" "search-haproxy01-c" {
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-haproxy-id}"]
 	associate_public_ip_address = false
@@ -118,7 +118,7 @@ resource "aws_instance" "redis-haproxy01" {
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-haproxy-id}"]
 	associate_public_ip_address = false
@@ -156,7 +156,7 @@ resource "aws_instance" "mocha-haproxy02" {
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mocha-haproxy-id}"]
 	associate_public_ip_address = true
@@ -193,7 +193,7 @@ resource "aws_instance" "prod-vault-haproxy01" {
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					        = "${data.template_file.userdata.rendered}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.publicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-haproxy-id}"]
 	associate_public_ip_address = true
