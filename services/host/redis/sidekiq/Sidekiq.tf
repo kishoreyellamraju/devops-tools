@@ -4,7 +4,7 @@ resource "aws_instance" "sidekiq-redis-data01" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata-master.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false
@@ -49,7 +49,7 @@ resource "aws_instance" "sidekiq-redis-data02" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata-slave.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false

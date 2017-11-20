@@ -4,7 +4,7 @@ resource "aws_instance" "prod-redis-data03" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata-master.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-data-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-data-id}"]
@@ -50,7 +50,7 @@ resource "aws_instance" "prod-redis-data04" {
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata-slave.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-data-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-data-id}"]
