@@ -5,7 +5,7 @@ resource "aws_instance" "mocha-data01-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -52,7 +52,7 @@ resource "aws_instance" "mocha-data02-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -99,7 +99,7 @@ resource "aws_instance" "mocha-data03-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -146,7 +146,7 @@ resource "aws_instance" "mocha-data04-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -193,7 +193,7 @@ resource "aws_instance" "mocha-data05-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -240,7 +240,7 @@ resource "aws_instance" "mocha-data06-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -287,7 +287,7 @@ resource "aws_instance" "mocha-data07-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -334,7 +334,7 @@ resource "aws_instance" "mocha-data08-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -381,7 +381,7 @@ resource "aws_instance" "mocha-data09-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -428,7 +428,7 @@ resource "aws_instance" "mocha-data10-b" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.mocha-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -475,7 +475,7 @@ resource "aws_instance" "mocha-data01-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -522,7 +522,7 @@ resource "aws_instance" "mocha-data02-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -569,7 +569,7 @@ resource "aws_instance" "mocha-data03-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -616,7 +616,7 @@ resource "aws_instance" "mocha-data04-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -663,7 +663,7 @@ resource "aws_instance" "mocha-data05-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-hot.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -710,7 +710,7 @@ resource "aws_instance" "mocha-data07-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -757,7 +757,7 @@ resource "aws_instance" "mocha-data08-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -804,7 +804,7 @@ resource "aws_instance" "mocha-data09-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -851,7 +851,7 @@ resource "aws_instance" "mocha-data06-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
@@ -898,7 +898,7 @@ resource "aws_instance" "mocha-data10-c" {
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c-warm.sh")}"
+  user_data 					 				= "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.mocha-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
