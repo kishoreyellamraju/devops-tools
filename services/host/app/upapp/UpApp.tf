@@ -5,7 +5,7 @@ resource "aws_instance" "prod-up-app" {
 	instance_type               = "${var.instance_type}"
 	monitoring                  = "${var.monitoring}"
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+  user_data 					 				= "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${element(module.subnet.appsubnets, count.index)}"
 	vpc_security_group_ids      = ["${module.sg.production-app-id}"]
 	associate_public_ip_address = "${var.associate_public_ip_address}"

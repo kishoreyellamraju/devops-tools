@@ -31,3 +31,15 @@ module "subnet" {
   env = "${var.env}"
   app = "${var.appname}"
 }
+
+data "template_file" "userdata" {
+  template = "${file("../../userdata.sh")}"
+
+    vars {
+      type                  = "${aws_instance.tags.type}"
+      env                   = "${aws_instance.tags.env}"
+      cluster               = "${aws_instance.tags.cluster}"
+      vpc                   = "${aws_instance.tags.vpc}"
+      name                  = "${aws_instance.tags.name}"
+	}
+}

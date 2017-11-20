@@ -4,7 +4,7 @@ resource "aws_instance" "espresso-data01-b" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
+  user_data 					        = "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -49,7 +49,7 @@ resource "aws_instance" "espresso-data02-b" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-b.sh")}"
+  user_data 					        = "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -94,7 +94,7 @@ resource "aws_instance" "espresso-data01-c" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c.sh")}"
+  user_data 					        = "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -139,7 +139,7 @@ resource "aws_instance" "espresso-data02-c" {
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata-c.sh")}"
+  user_data 					        = "${data.template_file.userdata.rendered}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
