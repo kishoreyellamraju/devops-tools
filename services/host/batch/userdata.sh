@@ -25,21 +25,21 @@ TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INST
 
 #####################################################################################
 if [[ $TAG_NAME_VALUE =~ prod-batch01 ]]; then
-  sudo puppet apply --certname=batch1.poshmark.com inherits baseapp { --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp }
+  sudo puppet apply --certname=batch1.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
 if [[ $TAG_NAME_VALUE =~ prod-co-batch01 ]]; then
-   sudo puppet apply --certname=batch2.poshmark.com inherits baseapp { --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp }
+   sudo puppet apply --certname=batch2.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
 if [[ $TAG_NAME_VALUE =~ prod-co-batch03 ]]; then
-  sudo puppet apply --certname=batch-redemptions.poshmark.com inherits baseapp { --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp }
+  sudo puppet apply --certname=batch-redemptions.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
 if [[ $TAG_NAME_VALUE =~ sidekiq-batch[0][1-2]$ ]]; then
-  sudo puppet apply --certname=sidekiq-batch.poshmark.com inherits baseapp { --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp }
+  sudo puppet apply --certname=sidekiq-batch.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
 if [[ $TAG_NAME_VALUE =~ prod-co-batch02 ]]; then
-  sudo puppet apply --certname=sidekiq-batch-commerce.poshmark.com inherits baseapp { --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
+  sudo puppet apply --certname=sidekiq-batch-commerce.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
