@@ -16,14 +16,14 @@ REGION="`wget -qO- http://instance-data/latest/meta-data/placement/availability-
 TAG_NAME_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --region $REGION --output=text | cut -f5`"
 TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_TYPE" --region $REGION --output=text | cut -f5`"
 ######################################master##################################
-if [ "TAG_NAME_VALUE"=~"cerberus-[a-b]01" ]; then
+if [[ $TAG_NAME_VALUE =~ cerberus-[a-b]01 ]]; then
    sudo puppet apply --certname=cerberus.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################slave##################################
-if [ "TAG_NAME_VALUE"=~"cerberus-a02" ]; then
+if [[ $TAG_NAME_VALUE =~ cerberus-a02 ]]; then
    sudo puppet apply --certname=cerberus-a-slave.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################slave##################################
-if [ "TAG_NAME_VALUE"=~"cerberus-b02" ]; then
+if [[ $TAG_NAME_VALUE =~ cerberus-b02 ]]; then
    sudo puppet apply --certname=cerberus-b-slave.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi

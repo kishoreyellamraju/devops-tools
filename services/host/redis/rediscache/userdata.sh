@@ -16,18 +16,18 @@ REGION="`wget -qO- http://instance-data/latest/meta-data/placement/availability-
 TAG_NAME_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --region $REGION --output=text | cut -f5`"
 TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_TYPE" --region $REGION --output=text | cut -f5`"
 ######################################master##################################
-if [ "TAG_NAME_VALUE"=~"prod-redis-cache-[a-c]01" ]; then
+if [[ $TAG_NAME_VALUE =~ prod-redis-cache-[a-c]01 ]]; then
    sudo puppet apply --certname=prod-redis-cache-master.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################slave a ##################################
-if [ "TAG_NAME_VALUE"=~"prod-redis-cache-a02" ]; then
+if [[ $TAG_NAME_VALUE =~ prod-redis-cache-a02 ]]; then
    sudo puppet apply --certname=prod-redis-cache-a-slave.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################slave b ##################################
-if [ "TAG_NAME_VALUE"=~"prod-redis-cache-b02" ]; then
+if [[ $TAG_NAME_VALUE =~ prod-redis-cache-b02 ]]; then
    sudo puppet apply --certname=prod-redis-cache-b-slave.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################slave c ##################################
-if [ "TAG_NAME_VALUE"=~"prod-redis-cache-c02" ]; then
+if [[ $TAG_NAME_VALUE =~ prod-redis-cache-c02 ]]; then
    sudo puppet apply --certname=prod-redis-cache-c-slave.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
