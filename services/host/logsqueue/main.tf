@@ -33,7 +33,7 @@ module "subnet" {
 }
 
 module "placementgroup" {
-  source = "../../../../../ec2-lib"
+  source = "../../../ec2-lib"
   env = "${var.env}"
   app = "${var.appname}"
 }
