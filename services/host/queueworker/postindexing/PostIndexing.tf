@@ -1,309 +1,45 @@
-resource "aws_instance" "prod-pi-qw03-b" {
+resource "aws_instance" "prod-pi-qw" {
+	count                       = "${var.count}"
 	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
+	ebs_optimized               = "${var.ebs_optimized}"
+	instance_type               = "${var.instance_type}"
+	iam_instance_profile        = "${var.iam_instance_profile}"
+	monitoring                  = "${var.monitoring}"
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${element(list(module.subnet.apppublicsubnetb-id,module.subnet.apppublicsubnetc-id), count.index)}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
+	associate_public_ip_address = "${var.associate_public_ip_address}"
+	source_dest_check           = "${var.source_dest_check}"
 
 		tags {
-			Vpc                   = "Yes"
-			Elastic               = "Afternoon"
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw03-b"
-			Env                   = "Prod"
-			Cluster               = "PostIndexing"
+			Vpc                   = "${var.tag-vpc}"
+			Elastic               = "${var.tag-elastic}"
+			Type                  = "${var.tag-type}"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Env                   = "${var.tag-env}"
+			Cluster               = "${var.tag-cluster}"
 		}
 
 		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
+			volume_type           = "${var.root-volume_type}"
+			volume_size           = "${var.root-volume_size}"
+			delete_on_termination = "${var.root-delete_on_termination}"
 		}
 
 		volume_tags {
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw03-b"
-			Env                   = "Prod"
-			Cluster               = "PostIndexing"
+			Type                  = "${var.tag-type}"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Env                   = "${var.tag-env}"
+			Cluster               = "${var.tag-cluster}"
 		}
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
+#########################################################
+# Outputs
+#########################################################
 
-resource "aws_instance" "prod-pi-qw04-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Type                  = "QueueWorker"
-			Cluster               = "PostIndexing"
-			Elastic               = "Afternoon"
-			Name                  = "prod-pi-qw04-b"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Type                  = "QueueWorker"
-			Cluster               = "PostIndexing"
-			Name                  = "prod-pi-qw04-b"
-			Env                   = "Prod"
-		}
+output "prod-pi-qw-ids" {
+	value="${aws_instance.prod-pi-qw.*.id}"
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-pi-qw02-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "PostIndexing"
-			Elastic               = "Morning"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw02-c"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw02-c"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-pi-qw04-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw04-c"
-			Elastic               = "Afternoon"
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw04-c"
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-pi-qw03-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Name                  = "prod-pi-qw03-c"
-			Cluster               = "PostIndexing"
-			Vpc                   = "Yes"
-			Elastic               = "Afternoon"
-			Type                  = "QueueWorker"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Name                  = "prod-pi-qw03-c"
-			Cluster               = "PostIndexing"
-			Type                  = "QueueWorker"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-pi-qw02-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Vpc                   = "Yes"
-			Elastic               = "Morning"
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-			Name                  = "prod-pi-qw02-b"
-			Type                  = "QueueWorker"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-			Name                  = "prod-pi-qw02-b"
-			Type                  = "QueueWorker"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-pi-qw01-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw01-c"
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw01-c"
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-pi-qw01-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Vpc                   = "Yes"
-			Name                  = "prod-pi-qw01-b"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Cluster               = "PostIndexing"
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Name                  = "prod-pi-qw01-b"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################

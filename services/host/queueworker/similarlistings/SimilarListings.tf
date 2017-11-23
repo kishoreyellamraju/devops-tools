@@ -1,227 +1,44 @@
-resource "aws_instance" "prod-sl-qw02-b" {
+resource "aws_instance" "prod-sl-qw" {
+	count                       = "${var.count}"
 	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.large"
-	monitoring                  = false
+	ebs_optimized               = "${var.ebs_optimized}"
+	instance_type               = "${var.instance_type}"
+	iam_instance_profile        = "${var.iam_instance_profile}"
+	monitoring                  = "${var.monitoring}"
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${element(list(module.subnet.apppublicsubnetb-id,module.subnet.apppublicsubnetc-id), count.index)}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
+	associate_public_ip_address = "${var.associate_public_ip_address}"
+	source_dest_check           = "${var.source_dest_check}"
 
 		tags {
-			Name                  = "prod-sl-qw02-b"
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Cluster               = "SimilarListings"
-			Vpc                   = "Yes"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Env                   = "${var.tag-env}"
+			Type                  = "${var.tag-type}"
+			Cluster               = "${var.tag-cluster}"
+			Vpc                   = "${var.tag-vpc}"
 		}
 
 		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
+			volume_type           = "${var.root-volume_type}"
+			volume_size           = "${var.root-volume_size}"
+			delete_on_termination = "${var.root-delete_on_termination}"
 		}
 
 		volume_tags {
-			Name                  = "prod-sl-qw02-b"
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Cluster               = "SimilarListings"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Env                   = "${var.tag-env}"
+			Type                  = "${var.tag-type}"
+			Cluster               = "${var.tag-cluster}"
 		}
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
+#########################################################
+# Outputs
+#########################################################
 
-resource "aws_instance" "prod-sl-qw01-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.large"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Name                  = "prod-sl-qw01-b"
-			Cluster               = "SimilarListings"
-			Vpc                   = "Yes"
-			Type                  = "QueueWorker"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Name                  = "prod-sl-qw01-b"
-			Cluster               = "SimilarListings"
-			Type                  = "QueueWorker"
-		}
+output "prod-sl-qw-ids" {
+	value="${aws_instance.prod-sl-qw.*.id}"
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-sl-qw03-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.large"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Name                  = "prod-sl-qw03-b"
-			Type                  = "QueueWorker"
-			Cluster               = "SimilarListings"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Name                  = "prod-sl-qw03-b"
-			Type                  = "QueueWorker"
-			Cluster               = "SimilarListings"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-sl-qw03-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.large"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Type                  = "QueueWorker"
-			Env                   = "Prod"
-			Cluster               = "SimilarListings"
-			Vpc                   = "Yes"
-			Name                  = "prod-sl-qw03-c"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Type                  = "QueueWorker"
-			Env                   = "Prod"
-			Cluster               = "SimilarListings"
-			Name                  = "prod-sl-qw03-c"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-sl-qw01-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.large"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Name                  = "prod-sl-qw01-c"
-			Type                  = "QueueWorker"
-			Cluster               = "SimilarListings"
-			Vpc                   = "Yes"
-			Env                   = "Prod"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Name                  = "prod-sl-qw01-c"
-			Type                  = "QueueWorker"
-			Cluster               = "SimilarListings"
-			Env                   = "Prod"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-sl-qw02-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.large"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Type                  = "QueueWorker"
-			Name                  = "prod-sl-qw02-c"
-			Cluster               = "SimilarListings"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Type                  = "QueueWorker"
-			Name                  = "prod-sl-qw02-c"
-			Cluster               = "SimilarListings"
-			Env                   = "Prod"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################

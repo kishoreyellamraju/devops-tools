@@ -36,4 +36,4 @@ terraform init -backend=true -force-copy \
 
 #cd ../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/${ENV}
 echo `pwd`
-terraform apply -var-file="../${ENV}/terraform.tfvars"
+terraform apply -var-file="./${ENV}/terraform.tfvars"

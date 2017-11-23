@@ -1,307 +1,44 @@
-resource "aws_instance" "prod-ff-qw01-b" {
+resource "aws_instance" "prod-ff-qw" {
+	count                       = "${var.count}"
 	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
+	ebs_optimized               = "${var.ebs_optimized}"
+	instance_type               = "${var.instance_type}"
+	iam_instance_profile        = "${var.iam_instance_profile}"
+	monitoring                  = "${var.monitoring}"
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${element(list(module.subnet.apppublicsubnetb-id,module.subnet.apppublicsubnetc-id), count.index)}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
+	associate_public_ip_address = "${var.associate_public_ip_address}"
+	source_dest_check           = "${var.source_dest_check}"
 
 		tags {
-			Cluster               = "FriendFinder"
-			Type                  = "QueueWorker"
-			Name                  = "prod-ff-qw01-b"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
+			Cluster               = "${var.tag-cluster}"
+			Type                  = "${var.tag-type}"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Env                   = "${var.tag-env}"
+			Vpc                   = "${var.tag-vpc}"
 		}
 
 		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
+			volume_type           = "${var.root-volume_type}"
+			volume_size           = "${var.root-volume_size}"
+			delete_on_termination = "${var.root-delete_on_termination}"
 		}
 
 		volume_tags {
-			Cluster               = "FriendFinder"
-			Type                  = "QueueWorker"
-			Name                  = "prod-ff-qw01-b"
-			Env                   = "Prod"
+			Cluster               = "${var.tag-cluster}"
+			Type                  = "${var.tag-type}"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Env                   = "${var.tag-env}"
 		}
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
+#########################################################
+# Outputs
+#########################################################
 
-resource "aws_instance" "prod-ff-qw02-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Vpc                   = "Yes"
-			Cluster               = "FriendFinder"
-			Name                  = "prod-ff-qw02-b"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Cluster               = "FriendFinder"
-			Name                  = "prod-ff-qw02-b"
-		}
+output "prod-ff-qw-ids" {
+	value="${aws_instance.prod-ff-qw.*.id}"
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-ff-qw03-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Type                  = "QueueWorker"
-			Elastic               = "Morning"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Name                  = "prod-ff-qw03-b"
-			Cluster               = "FriendFinder"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Type                  = "QueueWorker"
-			Env                   = "Prod"
-			Name                  = "prod-ff-qw03-b"
-			Cluster               = "FriendFinder"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-ff-qw04-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "FriendFinder"
-			Env                   = "Prod"
-			Name                  = "prod-ff-qw04-b"
-			Vpc                   = "Yes"
-			Type                  = "QueueWorker"
-			Elastic               = "Afternoon"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Cluster               = "FriendFinder"
-			Env                   = "Prod"
-			Name                  = "prod-ff-qw04-b"
-			Type                  = "QueueWorker"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-ff-qw01-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Vpc                   = "Yes"
-			Name                  = "prod-ff-qw01-c"
-			Type                  = "QueueWorker"
-			Cluster               = "FriendFinder"
-			Env                   = "Prod"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Name                  = "prod-ff-qw01-c"
-			Type                  = "QueueWorker"
-			Cluster               = "FriendFinder"
-			Env                   = "Prod"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-ff-qw02-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Name                  = "prod-ff-qw02-c"
-			Type                  = "QueueWorker"
-			Cluster               = "FriendFinder"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Name                  = "prod-ff-qw02-c"
-			Type                  = "QueueWorker"
-			Cluster               = "FriendFinder"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-ff-qw03-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Elastic               = "Morning"
-			Type                  = "QueueWorker"
-			Name                  = "prod-ff-qw03-c"
-			Vpc                   = "Yes"
-			Cluster               = "FriendFinder"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Type                  = "QueueWorker"
-			Name                  = "prod-ff-qw03-c"
-			Cluster               = "FriendFinder"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-ff-qw04-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "m3.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
-	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
-
-		tags {
-			Elastic               = "Afternoon"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			Cluster               = "FriendFinder"
-			Name                  = "prod-ff-qw04-c"
-			Type                  = "QueueWorker"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Cluster               = "FriendFinder"
-			Name                  = "prod-ff-qw04-c"
-			Type                  = "QueueWorker"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
