@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-vault-db-a01" {
+resource "aws_instance" "prod-vault-db-a01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.vault-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
@@ -17,7 +17,7 @@ resource "aws_instance" "prod-vault-db-a01" {
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Primary"
-			Name                  = "prod-vault-db-a01"
+			Name                  = "prod-vault-db-a01-2b"
 		}
 
 		root_block_device {
@@ -37,7 +37,7 @@ resource "aws_instance" "prod-vault-db-a01" {
 			Cluster               = "Vault"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "prod-vault-db-a01"
+			Name                  = "prod-vault-db-a01-2b"
 		}
 }
 
@@ -45,13 +45,13 @@ resource "aws_instance" "prod-vault-db-a01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-vault-db-a02" {
+resource "aws_instance" "prod-vault-db-a02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.vault-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
@@ -64,7 +64,7 @@ resource "aws_instance" "prod-vault-db-a02" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "prod-vault-db-a02"
+			Name                  = "prod-vault-db-a02-2b"
 		}
 
 		root_block_device {
@@ -84,7 +84,7 @@ resource "aws_instance" "prod-vault-db-a02" {
 			Cluster               = "Vault"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "prod-vault-db-a02"
+			Name                  = "prod-vault-db-a02-2b"
 		}
 }
 
@@ -92,13 +92,13 @@ resource "aws_instance" "prod-vault-db-a02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-vault-db-a03" {
+resource "aws_instance" "prod-vault-db-a03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
 	associate_public_ip_address = false
@@ -110,7 +110,7 @@ resource "aws_instance" "prod-vault-db-a03" {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Vault"
-			Name                  = "prod-vault-db-a03"
+			Name                  = "prod-vault-db-a03-2c"
 		}
 
 		root_block_device {
@@ -130,7 +130,7 @@ resource "aws_instance" "prod-vault-db-a03" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Vault"
-			Name                  = "prod-vault-db-a03"
+			Name                  = "prod-vault-db-a03-2c"
 		}
 }
 
@@ -138,13 +138,13 @@ resource "aws_instance" "prod-vault-db-a03" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-vault-db-a04" {
+resource "aws_instance" "prod-vault-db-a04-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.vault-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-db-id}"]
@@ -156,7 +156,7 @@ resource "aws_instance" "prod-vault-db-a04" {
 			Cluster               = "Vault"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "prod-vault-db-a04"
+			Name                  = "prod-vault-db-a04-2c"
 			Vpc                   = "Yes"
 		}
 
@@ -177,10 +177,12 @@ resource "aws_instance" "prod-vault-db-a04" {
 			Cluster               = "Vault"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "prod-vault-db-a04"
+			Name                  = "prod-vault-db-a04-2c"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

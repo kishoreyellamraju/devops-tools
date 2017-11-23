@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-sl-mongos01-b" {
+resource "aws_instance" "prod-sl-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -14,7 +14,7 @@ resource "aws_instance" "prod-sl-mongos01-b" {
 			Vpc                   = "Yes"
 			Cluster               = "SimilarListings"
 			Type                  = "MongoS"
-			Name                  = "prod-sl-mongos01-b"
+			Name                  = "prod-sl-mongos01-2b"
 			Env                   = "Prod"
 		}
 
@@ -27,7 +27,7 @@ resource "aws_instance" "prod-sl-mongos01-b" {
 		volume_tags {
 			Cluster               = "SimilarListings"
 			Type                  = "MongoS"
-			Name                  = "prod-sl-mongos01-b"
+			Name                  = "prod-sl-mongos01-2b"
 			Env                   = "Prod"
 		}
 }
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-sl-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-sl-mongos01-c" {
+resource "aws_instance" "prod-sl-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -50,7 +50,7 @@ resource "aws_instance" "prod-sl-mongos01-c" {
 
 		tags {
 			Cluster               = "SimilarListings"
-			Name                  = "prod-sl-mongos01-c"
+			Name                  = "prod-sl-mongos01-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoS"
@@ -64,7 +64,7 @@ resource "aws_instance" "prod-sl-mongos01-c" {
 
 		volume_tags {
 			Cluster               = "SimilarListings"
-			Name                  = "prod-sl-mongos01-c"
+			Name                  = "prod-sl-mongos01-2c"
 			Env                   = "Prod"
 			Type                  = "MongoS"
 		}
@@ -73,3 +73,5 @@ resource "aws_instance" "prod-sl-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

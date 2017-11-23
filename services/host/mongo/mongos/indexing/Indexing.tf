@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-ind-mongos01-b" {
+resource "aws_instance" "prod-ind-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -15,7 +15,7 @@ resource "aws_instance" "prod-ind-mongos01-b" {
 			Vpc                   = "Yes"
 			Cluster               = "Indexing"
 			Env                   = "Prod"
-			Name                  = "prod-ind-mongos01-b"
+			Name                  = "prod-ind-mongos01-2b"
 		}
 
 		root_block_device {
@@ -28,7 +28,7 @@ resource "aws_instance" "prod-ind-mongos01-b" {
 			Type                  = "MongoS"
 			Cluster               = "Indexing"
 			Env                   = "Prod"
-			Name                  = "prod-ind-mongos01-b"
+			Name                  = "prod-ind-mongos01-2b"
 		}
 }
 
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-ind-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-ind-mongos01-c" {
+resource "aws_instance" "prod-ind-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -53,7 +53,7 @@ resource "aws_instance" "prod-ind-mongos01-c" {
 			Cluster               = "Indexing"
 			Type                  = "MongoS"
 			Vpc                   = "Yes"
-			Name                  = "prod-ind-mongos01-c"
+			Name                  = "prod-ind-mongos01-2c"
 		}
 
 		root_block_device {
@@ -66,10 +66,12 @@ resource "aws_instance" "prod-ind-mongos01-c" {
 			Env                   = "Prod"
 			Cluster               = "Indexing"
 			Type                  = "MongoS"
-			Name                  = "prod-ind-mongos01-c"
+			Name                  = "prod-ind-mongos01-2c"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

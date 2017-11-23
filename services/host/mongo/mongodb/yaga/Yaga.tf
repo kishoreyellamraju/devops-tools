@@ -1,10 +1,10 @@
-resource "aws_instance" "yaga-a2" {
+resource "aws_instance" "yaga-a2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.yaga-id}"
 	vpc_security_group_ids      = ["${module.sg.production-yaga-db-id}"]
@@ -13,7 +13,7 @@ resource "aws_instance" "yaga-a2" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "yaga-a2"
+			Name                  = "yaga-a2-2b"
 			Cluster               = "Yaga"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -35,7 +35,7 @@ resource "aws_instance" "yaga-a2" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "yaga-a2"
+			Name                  = "yaga-a2-2b"
 			Cluster               = "Yaga"
 			Type                  = "MongoDb"
 		}
@@ -45,13 +45,13 @@ resource "aws_instance" "yaga-a2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "yaga-a1" {
+resource "aws_instance" "yaga-a1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.yaga-id}"
 	vpc_security_group_ids      = ["${module.sg.production-yaga-db-id}"]
@@ -61,7 +61,7 @@ resource "aws_instance" "yaga-a1" {
 		tags {
 			Env                   = "Prod"
 			MongoDbMemberState    = "Primary"
-			Name                  = "yaga-a1"
+			Name                  = "yaga-a1-2b"
 			Cluster               = "Yaga"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -82,7 +82,7 @@ resource "aws_instance" "yaga-a1" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "yaga-a1"
+			Name                  = "yaga-a1-2b"
 			Cluster               = "Yaga"
 			Type                  = "MongoDb"
 		}
@@ -92,13 +92,13 @@ resource "aws_instance" "yaga-a1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "yaga-a3" {
+resource "aws_instance" "yaga-a3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-yaga-db-id}","${module.sg.production-db-reporting-id}"]
 	associate_public_ip_address = false
@@ -106,7 +106,7 @@ resource "aws_instance" "yaga-a3" {
 
 		tags {
 			MongoDbMemberState    = "Secondary"
-			Name                  = "yaga-a3"
+			Name                  = "yaga-a3-2c"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Yaga"
@@ -127,7 +127,7 @@ resource "aws_instance" "yaga-a3" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "yaga-a3"
+			Name                  = "yaga-a3-2c"
 			Type                  = "MongoDb"
 			Cluster               = "Yaga"
 			Env                   = "Prod"
@@ -137,3 +137,5 @@ resource "aws_instance" "yaga-a3" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

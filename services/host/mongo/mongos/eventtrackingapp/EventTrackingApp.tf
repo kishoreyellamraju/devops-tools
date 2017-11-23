@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-et-app-mongos01-c" {
+resource "aws_instance" "prod-et-app-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -15,7 +15,7 @@ resource "aws_instance" "prod-et-app-mongos01-c" {
 			Type                  = "MongoS"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
-			Name                  = "prod-et-app-mongos01-c"
+			Name                  = "prod-et-app-mongos01-2c"
 		}
 
 		root_block_device {
@@ -28,7 +28,7 @@ resource "aws_instance" "prod-et-app-mongos01-c" {
 			Cluster               = "EventTrackingApp"
 			Type                  = "MongoS"
 			Env                   = "Prod"
-			Name                  = "prod-et-app-mongos01-c"
+			Name                  = "prod-et-app-mongos01-2c"
 		}
 }
 
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-et-app-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-et-app-mongos01-b" {
+resource "aws_instance" "prod-et-app-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -50,7 +50,7 @@ resource "aws_instance" "prod-et-app-mongos01-b" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "prod-et-app-mongos01-b"
+			Name                  = "prod-et-app-mongos01-2b"
 			Vpc                   = "Yes"
 			Type                  = "MongoS"
 			Cluster               = "EventTrackingApp"
@@ -64,7 +64,7 @@ resource "aws_instance" "prod-et-app-mongos01-b" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-et-app-mongos01-b"
+			Name                  = "prod-et-app-mongos01-2b"
 			Type                  = "MongoS"
 			Cluster               = "EventTrackingApp"
 		}
@@ -73,3 +73,5 @@ resource "aws_instance" "prod-et-app-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

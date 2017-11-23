@@ -1,17 +1,17 @@
-resource "aws_instance" "prod-ps-mongos01-b" {
+resource "aws_instance" "prod-ps-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-ps-mongos01-b"
+			Name                  = "prod-ps-mongos01-2b"
 			Cluster               = "PostShares"
 			Type                  = "MongoS"
 			Vpc                   = "Yes"
@@ -25,7 +25,7 @@ resource "aws_instance" "prod-ps-mongos01-b" {
 		}
 
 		volume_tags {
-			Name                  = "prod-ps-mongos01-b"
+			Name                  = "prod-ps-mongos01-2b"
 			Cluster               = "PostShares"
 			Type                  = "MongoS"
 			Env                   = "Prod"
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-ps-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-ps-mongos02-b" {
+resource "aws_instance" "prod-ps-mongos02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -52,7 +52,7 @@ resource "aws_instance" "prod-ps-mongos02-b" {
 			Vpc                   = "Yes"
 			Cluster               = "PostShares"
 			Env                   = "Prod"
-			Name                  = "prod-ps-mongos02-b"
+			Name                  = "prod-ps-mongos02-2b"
 			Type                  = "MongoS"
 		}
 
@@ -65,7 +65,7 @@ resource "aws_instance" "prod-ps-mongos02-b" {
 		volume_tags {
 			Cluster               = "PostShares"
 			Env                   = "Prod"
-			Name                  = "prod-ps-mongos02-b"
+			Name                  = "prod-ps-mongos02-2b"
 			Type                  = "MongoS"
 		}
 }
@@ -74,13 +74,13 @@ resource "aws_instance" "prod-ps-mongos02-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-ps-mongos01-c" {
+resource "aws_instance" "prod-ps-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -88,7 +88,7 @@ resource "aws_instance" "prod-ps-mongos01-c" {
 
 		tags {
 			Type                  = "MongoS"
-			Name                  = "prod-ps-mongos01-c"
+			Name                  = "prod-ps-mongos01-2c"
 			Cluster               = "PostShares"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -102,7 +102,7 @@ resource "aws_instance" "prod-ps-mongos01-c" {
 
 		volume_tags {
 			Type                  = "MongoS"
-			Name                  = "prod-ps-mongos01-c"
+			Name                  = "prod-ps-mongos01-2c"
 			Cluster               = "PostShares"
 			Env                   = "Prod"
 		}
@@ -112,13 +112,13 @@ resource "aws_instance" "prod-ps-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-ps-mongos02-c" {
+resource "aws_instance" "prod-ps-mongos02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -126,7 +126,7 @@ resource "aws_instance" "prod-ps-mongos02-c" {
 
 		tags {
 			Vpc                   = "Yes"
-			Name                  = "prod-ps-mongos02-c"
+			Name                  = "prod-ps-mongos02-2c"
 			Type                  = "MongoS"
 			Cluster               = "PostShares"
 			Env                   = "Prod"
@@ -139,7 +139,7 @@ resource "aws_instance" "prod-ps-mongos02-c" {
 		}
 
 		volume_tags {
-			Name                  = "prod-ps-mongos02-c"
+			Name                  = "prod-ps-mongos02-2c"
 			Type                  = "MongoS"
 			Cluster               = "PostShares"
 			Env                   = "Prod"
@@ -149,3 +149,5 @@ resource "aws_instance" "prod-ps-mongos02-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

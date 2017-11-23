@@ -1,10 +1,10 @@
-resource "aws_instance" "morgana-db5" {
+resource "aws_instance" "morgana-db5-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.morgana-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
@@ -14,7 +14,7 @@ resource "aws_instance" "morgana-db5" {
 		tags {
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "morgana-db5"
+			Name                  = "morgana-db5-2c"
 			Cluster               = "Morgana"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
@@ -35,7 +35,7 @@ resource "aws_instance" "morgana-db5" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "morgana-db5"
+			Name                  = "morgana-db5-2c"
 			Cluster               = "Morgana"
 			Type                  = "MongoDb"
 		}
@@ -45,13 +45,13 @@ resource "aws_instance" "morgana-db5" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "morgana-db6" {
+resource "aws_instance" "morgana-db6-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.morgana-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
@@ -60,7 +60,7 @@ resource "aws_instance" "morgana-db6" {
 
 		tags {
 			MongoDbMemberState    = "Secondary"
-			Name                  = "morgana-db6"
+			Name                  = "morgana-db6-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -81,7 +81,7 @@ resource "aws_instance" "morgana-db6" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "morgana-db6"
+			Name                  = "morgana-db6-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Morgana"
@@ -92,13 +92,13 @@ resource "aws_instance" "morgana-db6" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "morgana-db4" {
+resource "aws_instance" "morgana-db4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.morgana-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -108,7 +108,7 @@ resource "aws_instance" "morgana-db4" {
 		tags {
 			Vpc                   = "Yes"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "morgana-db4"
+			Name                  = "morgana-db4-2c"
 			Env                   = "Prod"
 			Cluster               = "Morgana"
 			Type                  = "MongoDb"
@@ -128,7 +128,7 @@ resource "aws_instance" "morgana-db4" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "morgana-db4"
+			Name                  = "morgana-db4-2c"
 			Env                   = "Prod"
 			Cluster               = "Morgana"
 			Type                  = "MongoDb"
@@ -139,13 +139,13 @@ resource "aws_instance" "morgana-db4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "morgana-db2" {
+resource "aws_instance" "morgana-db2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -158,7 +158,7 @@ resource "aws_instance" "morgana-db2" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Morgana"
-			Name                  = "morgana-db2"
+			Name                  = "morgana-db2-2b"
 		}
 
 		root_block_device {
@@ -178,7 +178,7 @@ resource "aws_instance" "morgana-db2" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Morgana"
-			Name                  = "morgana-db2"
+			Name                  = "morgana-db2-2b"
 		}
 }
 
@@ -186,13 +186,13 @@ resource "aws_instance" "morgana-db2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "morgana-db1" {
+resource "aws_instance" "morgana-db1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -204,7 +204,7 @@ resource "aws_instance" "morgana-db1" {
 			Type                  = "MongoDb"
 			Cluster               = "Morgana"
 			MongoDbMemberState    = "Primary"
-			Name                  = "morgana-db1"
+			Name                  = "morgana-db1-2b"
 			Env                   = "Prod"
 		}
 
@@ -224,7 +224,7 @@ resource "aws_instance" "morgana-db1" {
 		volume_tags {
 			Type                  = "MongoDb"
 			Cluster               = "Morgana"
-			Name                  = "morgana-db1"
+			Name                  = "morgana-db1-2b"
 			Env                   = "Prod"
 		}
 }
@@ -233,13 +233,13 @@ resource "aws_instance" "morgana-db1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "morgana-db4-old" {
+resource "aws_instance" "morgana-db4-old-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -247,7 +247,7 @@ resource "aws_instance" "morgana-db4-old" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "morgana-db4-old"
+			Name                  = "morgana-db4-old-2b"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Morgana"
 			Type                  = "MongoDb"
@@ -269,7 +269,7 @@ resource "aws_instance" "morgana-db4-old" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "morgana-db4-old"
+			Name                  = "morgana-db4-old-2b"
 			Cluster               = "Morgana"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
@@ -280,13 +280,13 @@ resource "aws_instance" "morgana-db4-old" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "morgana-db3" {
+resource "aws_instance" "morgana-db3-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.morgana-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -299,7 +299,7 @@ resource "aws_instance" "morgana-db3" {
 			Type                  = "MongoDb"
 			Cluster               = "Morgana"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "morgana-db3"
+			Name                  = "morgana-db3-2b"
 		}
 
 		root_block_device {
@@ -319,10 +319,12 @@ resource "aws_instance" "morgana-db3" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Morgana"
-			Name                  = "morgana-db3"
+			Name                  = "morgana-db3-2b"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

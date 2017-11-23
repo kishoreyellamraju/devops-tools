@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-nt-mongos01-b" {
+resource "aws_instance" "prod-nt-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -15,7 +15,7 @@ resource "aws_instance" "prod-nt-mongos01-b" {
 			Type                  = "MongoS"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "prod-nt-mongos01-b"
+			Name                  = "prod-nt-mongos01-2b"
 		}
 
 		root_block_device {
@@ -28,7 +28,7 @@ resource "aws_instance" "prod-nt-mongos01-b" {
 			Cluster               = "Notification"
 			Type                  = "MongoS"
 			Env                   = "Prod"
-			Name                  = "prod-nt-mongos01-b"
+			Name                  = "prod-nt-mongos01-2b"
 		}
 }
 
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-nt-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-nt-mongos02-b" {
+resource "aws_instance" "prod-nt-mongos02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -51,7 +51,7 @@ resource "aws_instance" "prod-nt-mongos02-b" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "MongoS"
-			Name                  = "prod-nt-mongos02-b"
+			Name                  = "prod-nt-mongos02-2b"
 			Env                   = "Prod"
 			Cluster               = "Notification"
 		}
@@ -64,7 +64,7 @@ resource "aws_instance" "prod-nt-mongos02-b" {
 
 		volume_tags {
 			Type                  = "MongoS"
-			Name                  = "prod-nt-mongos02-b"
+			Name                  = "prod-nt-mongos02-2b"
 			Env                   = "Prod"
 			Cluster               = "Notification"
 		}
@@ -74,20 +74,20 @@ resource "aws_instance" "prod-nt-mongos02-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-nt-mongos02-c" {
+resource "aws_instance" "prod-nt-mongos02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-nt-mongos02-c"
+			Name                  = "prod-nt-mongos02-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "Notification"
@@ -101,7 +101,7 @@ resource "aws_instance" "prod-nt-mongos02-c" {
 		}
 
 		volume_tags {
-			Name                  = "prod-nt-mongos02-c"
+			Name                  = "prod-nt-mongos02-2c"
 			Env                   = "Prod"
 			Cluster               = "Notification"
 			Type                  = "MongoS"
@@ -112,13 +112,13 @@ resource "aws_instance" "prod-nt-mongos02-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-nt-mongos01-c" {
+resource "aws_instance" "prod-nt-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -127,7 +127,7 @@ resource "aws_instance" "prod-nt-mongos01-c" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "MongoS"
-			Name                  = "prod-nt-mongos01-c"
+			Name                  = "prod-nt-mongos01-2c"
 			Cluster               = "Notification"
 			Env                   = "Prod"
 		}
@@ -140,7 +140,7 @@ resource "aws_instance" "prod-nt-mongos01-c" {
 
 		volume_tags {
 			Type                  = "MongoS"
-			Name                  = "prod-nt-mongos01-c"
+			Name                  = "prod-nt-mongos01-2c"
 			Cluster               = "Notification"
 			Env                   = "Prod"
 		}
@@ -149,3 +149,5 @@ resource "aws_instance" "prod-nt-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

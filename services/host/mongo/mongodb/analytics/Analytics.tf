@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-analytics-db6" {
+resource "aws_instance" "prod-analytics-db6-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.merlin-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -13,7 +13,7 @@ resource "aws_instance" "prod-analytics-db6" {
 
 		tags {
 			Cluster               = "Analytics"
-			Name                  = "prod-analytics-db6"
+			Name                  = "prod-analytics-db6-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -35,7 +35,7 @@ resource "aws_instance" "prod-analytics-db6" {
 		}
 		volume_tags {
 			Cluster               = "Analytics"
-			Name                  = "prod-analytics-db6"
+			Name                  = "prod-analytics-db6-2b"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -45,13 +45,13 @@ resource "aws_instance" "prod-analytics-db6" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-analytics-db5-old" {
+resource "aws_instance" "prod-analytics-db5-old-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.merlin-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -63,7 +63,7 @@ resource "aws_instance" "prod-analytics-db5-old" {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Analytics"
-			Name                  = "prod-analytics-db5-old"
+			Name                  = "prod-analytics-db5-old-2b"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -84,7 +84,7 @@ resource "aws_instance" "prod-analytics-db5-old" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Analytics"
-			Name                  = "prod-analytics-db5-old"
+			Name                  = "prod-analytics-db5-old-2b"
 		}
 }
 
@@ -92,13 +92,13 @@ resource "aws_instance" "prod-analytics-db5-old" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-analytics-db5" {
+resource "aws_instance" "prod-analytics-db5-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.merlin-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -108,7 +108,7 @@ resource "aws_instance" "prod-analytics-db5" {
 		tags {
 			Cluster               = "Analytics"
 			Env                   = "Prod"
-			Name                  = "prod-analytics-db5"
+			Name                  = "prod-analytics-db5-2c"
 			MongoDbMemberState    = "Secondary"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -130,7 +130,7 @@ resource "aws_instance" "prod-analytics-db5" {
 		volume_tags {
 			Cluster               = "Analytics"
 			Env                   = "Prod"
-			Name                  = "prod-analytics-db5"
+			Name                  = "prod-analytics-db5-2c"
 			Type                  = "MongoDb"
 		}
 }
@@ -139,13 +139,13 @@ resource "aws_instance" "prod-analytics-db5" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-analytics-db7" {
+resource "aws_instance" "prod-analytics-db7-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -155,7 +155,7 @@ resource "aws_instance" "prod-analytics-db7" {
 			Vpc                   = "Yes"
 			MongoDbMemberState    = "Secondary"
 			Type                  = "MongoDb"
-			Name                  = "prod-analytics-db7"
+			Name                  = "prod-analytics-db7-2c"
 			Cluster               = "Analytics"
 			Env                   = "Prod"
 		}
@@ -175,7 +175,7 @@ resource "aws_instance" "prod-analytics-db7" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "prod-analytics-db7"
+			Name                  = "prod-analytics-db7-2c"
 			Cluster               = "Analytics"
 			Env                   = "Prod"
 		}
@@ -185,13 +185,13 @@ resource "aws_instance" "prod-analytics-db7" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-analytics-db8" {
+resource "aws_instance" "prod-analytics-db8-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -203,7 +203,7 @@ resource "aws_instance" "prod-analytics-db8" {
 			Type                  = "MongoDb"
 			Cluster               = "Analytics"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "prod-analytics-db8"
+			Name                  = "prod-analytics-db8-2c"
 		}
 
 		root_block_device {
@@ -223,10 +223,12 @@ resource "aws_instance" "prod-analytics-db8" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Analytics"
-			Name                  = "prod-analytics-db8"
+			Name                  = "prod-analytics-db8-2c"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

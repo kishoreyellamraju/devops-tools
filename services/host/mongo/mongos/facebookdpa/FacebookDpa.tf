@@ -1,9 +1,10 @@
-resource "aws_instance" "prod-fb-dpa-mongos01-b" {
+resource "aws_instance" "prod-fb-dpa-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -12,7 +13,7 @@ resource "aws_instance" "prod-fb-dpa-mongos01-b" {
 		tags {
 			Type                  = "MongoS"
 			Cluster               = "FacebookDpa"
-			Name                  = "prod-fb-dpa-mongos01-b"
+			Name                  = "prod-fb-dpa-mongos01-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 		}
@@ -26,7 +27,7 @@ resource "aws_instance" "prod-fb-dpa-mongos01-b" {
 		volume_tags {
 			Type                  = "MongoS"
 			Cluster               = "FacebookDpa"
-			Name                  = "prod-fb-dpa-mongos01-b"
+			Name                  = "prod-fb-dpa-mongos01-2b"
 			Env                   = "Prod"
 		}
 }

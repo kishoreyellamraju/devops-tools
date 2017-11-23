@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-is-mongos01-b" {
+resource "aws_instance" "prod-is-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -14,7 +14,7 @@ resource "aws_instance" "prod-is-mongos01-b" {
 			Env                   = "Prod"
 			Type                  = "MongoS"
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-mongos01-b"
+			Name                  = "prod-is-mongos01-2b"
 			Vpc                   = "Yes"
 		}
 
@@ -28,7 +28,7 @@ resource "aws_instance" "prod-is-mongos01-b" {
 			Env                   = "Prod"
 			Type                  = "MongoS"
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-mongos01-b"
+			Name                  = "prod-is-mongos01-2b"
 		}
 }
 
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-is-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-mongos01-c" {
+resource "aws_instance" "prod-is-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -50,7 +50,7 @@ resource "aws_instance" "prod-is-mongos01-c" {
 
 		tags {
 			Type                  = "MongoS"
-			Name                  = "prod-is-mongos01-c"
+			Name                  = "prod-is-mongos01-2c"
 			Cluster               = "ImplicitShare"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
@@ -64,7 +64,7 @@ resource "aws_instance" "prod-is-mongos01-c" {
 
 		volume_tags {
 			Type                  = "MongoS"
-			Name                  = "prod-is-mongos01-c"
+			Name                  = "prod-is-mongos01-2c"
 			Cluster               = "ImplicitShare"
 			Env                   = "Prod"
 		}
@@ -73,3 +73,5 @@ resource "aws_instance" "prod-is-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

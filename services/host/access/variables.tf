@@ -2,9 +2,9 @@ variable "region"				               {}
 variable "env"					               {}
 variable "appname"			               {}
 variable "bu"					                 {}
-variable "key_name"                    {}
 variable "az"                          {}
 #####################################################
+variable "spark_key_name"                    {}
 variable "spark_ami"                         {}
 variable "spark_count"                       {}
 variable "spark_ebs_optimized"               {}
@@ -21,6 +21,7 @@ variable "spark_tag-vpc"                     {}
 variable "spark_tag-name"                    {}
 variable "spark_instance_type"               {}
 ##########################################################
+variable "poshmark_key_name"                    {}
 variable "poshmark_ami"                         {}
 variable "poshmark_count"                       {}
 variable "poshmark_ebs_optimized"               {}
@@ -37,6 +38,7 @@ variable "poshmark_tag-vpc"                     {}
 variable "poshmark_tag-name"                    {}
 variable "poshmark_instance_type"               {}
 ############################################################
+variable "poshmark_gateway_key_name"                    {}
 variable "poshmark_gateway_ami"                         {}
 variable "poshmark_gateway_count"                       {}
 variable "poshmark_gateway_ebs_optimized"               {}

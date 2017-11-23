@@ -1,17 +1,17 @@
-resource "aws_instance" "prod-ff-mongos01-b" {
+resource "aws_instance" "prod-ff-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-ff-mongos01-b"
+			Name                  = "prod-ff-mongos01-2b"
 			Cluster               = "FriendFinder"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -25,7 +25,7 @@ resource "aws_instance" "prod-ff-mongos01-b" {
 		}
 
 		volume_tags {
-			Name                  = "prod-ff-mongos01-b"
+			Name                  = "prod-ff-mongos01-2b"
 			Cluster               = "FriendFinder"
 			Env                   = "Prod"
 			Type                  = "MongoS"
@@ -36,20 +36,20 @@ resource "aws_instance" "prod-ff-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-ff-mongos01-c" {
+resource "aws_instance" "prod-ff-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-ff-mongos01-c"
+			Name                  = "prod-ff-mongos01-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "FriendFinder"
@@ -63,7 +63,7 @@ resource "aws_instance" "prod-ff-mongos01-c" {
 		}
 
 		volume_tags {
-			Name                  = "prod-ff-mongos01-c"
+			Name                  = "prod-ff-mongos01-2c"
 			Env                   = "Prod"
 			Cluster               = "FriendFinder"
 			Type                  = "MongoS"
@@ -73,3 +73,5 @@ resource "aws_instance" "prod-ff-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

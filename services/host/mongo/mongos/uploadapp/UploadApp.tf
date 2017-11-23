@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-up-app-mongos01-c" {
+resource "aws_instance" "prod-up-app-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -14,7 +14,7 @@ resource "aws_instance" "prod-up-app-mongos01-c" {
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "UploadApp"
-			Name                  = "prod-up-app-mongos01-c"
+			Name                  = "prod-up-app-mongos01-2c"
 			Type                  = "MongoS"
 		}
 
@@ -27,7 +27,7 @@ resource "aws_instance" "prod-up-app-mongos01-c" {
 		volume_tags {
 			Env                   = "Prod"
 			Cluster               = "UploadApp"
-			Name                  = "prod-up-app-mongos01-c"
+			Name                  = "prod-up-app-mongos01-2c"
 			Type                  = "MongoS"
 		}
 }
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-up-app-mongos01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-up-app-mongos02-b" {
+resource "aws_instance" "prod-up-app-mongos02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -50,7 +50,7 @@ resource "aws_instance" "prod-up-app-mongos02-b" {
 
 		tags {
 			Type                  = "MongoS"
-			Name                  = "prod-up-app-mongos02-b"
+			Name                  = "prod-up-app-mongos02-2b"
 			Env                   = "Prod"
 			Cluster               = "UploadApp"
 			Vpc                   = "Yes"
@@ -64,7 +64,7 @@ resource "aws_instance" "prod-up-app-mongos02-b" {
 
 		volume_tags {
 			Type                  = "MongoS"
-			Name                  = "prod-up-app-mongos02-b"
+			Name                  = "prod-up-app-mongos02-2b"
 			Env                   = "Prod"
 			Cluster               = "UploadApp"
 		}
@@ -74,13 +74,13 @@ resource "aws_instance" "prod-up-app-mongos02-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-up-app-mongos03-b" {
+resource "aws_instance" "prod-up-app-mongos03-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -89,7 +89,7 @@ resource "aws_instance" "prod-up-app-mongos03-b" {
 		tags {
 			Type                  = "MongoS"
 			Cluster               = "UploadApp"
-			Name                  = "prod-up-app-mongos03-b"
+			Name                  = "prod-up-app-mongos03-2b"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 		}
@@ -103,7 +103,7 @@ resource "aws_instance" "prod-up-app-mongos03-b" {
 		volume_tags {
 			Type                  = "MongoS"
 			Cluster               = "UploadApp"
-			Name                  = "prod-up-app-mongos03-b"
+			Name                  = "prod-up-app-mongos03-2b"
 			Env                   = "Prod"
 		}
 }
@@ -112,13 +112,13 @@ resource "aws_instance" "prod-up-app-mongos03-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-up-app-mongos01-b" {
+resource "aws_instance" "prod-up-app-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -127,7 +127,7 @@ resource "aws_instance" "prod-up-app-mongos01-b" {
 		tags {
 			Cluster               = "UploadApp"
 			Env                   = "Prod"
-			Name                  = "prod-up-app-mongos01-b"
+			Name                  = "prod-up-app-mongos01-2b"
 			Type                  = "MongoS"
 			Vpc                   = "Yes"
 		}
@@ -141,7 +141,7 @@ resource "aws_instance" "prod-up-app-mongos01-b" {
 		volume_tags {
 			Cluster               = "UploadApp"
 			Env                   = "Prod"
-			Name                  = "prod-up-app-mongos01-b"
+			Name                  = "prod-up-app-mongos01-2b"
 			Type                  = "MongoS"
 		}
 }
@@ -150,13 +150,13 @@ resource "aws_instance" "prod-up-app-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-up-app-mongos02-c" {
+resource "aws_instance" "prod-up-app-mongos02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -164,7 +164,7 @@ resource "aws_instance" "prod-up-app-mongos02-c" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "prod-up-app-mongos02-c"
+			Name                  = "prod-up-app-mongos02-2c"
 			Vpc                   = "Yes"
 			Type                  = "MongoS"
 			Cluster               = "UploadApp"
@@ -178,7 +178,7 @@ resource "aws_instance" "prod-up-app-mongos02-c" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-up-app-mongos02-c"
+			Name                  = "prod-up-app-mongos02-2c"
 			Type                  = "MongoS"
 			Cluster               = "UploadApp"
 		}
@@ -188,13 +188,13 @@ resource "aws_instance" "prod-up-app-mongos02-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-up-app-mongos03-c" {
+resource "aws_instance" "prod-up-app-mongos03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -203,7 +203,7 @@ resource "aws_instance" "prod-up-app-mongos03-c" {
 		tags {
 			Type                  = "MongoS"
 			Cluster               = "UploadApp"
-			Name                  = "prod-up-app-mongos03-c"
+			Name                  = "prod-up-app-mongos03-2c"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 		}
@@ -217,7 +217,7 @@ resource "aws_instance" "prod-up-app-mongos03-c" {
 		volume_tags {
 			Type                  = "MongoS"
 			Cluster               = "UploadApp"
-			Name                  = "prod-up-app-mongos03-c"
+			Name                  = "prod-up-app-mongos03-2c"
 			Env                   = "Prod"
 		}
 }
@@ -225,3 +225,5 @@ resource "aws_instance" "prod-up-app-mongos03-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

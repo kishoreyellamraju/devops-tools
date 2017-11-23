@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-sidekiq-mongos01-b" {
+resource "aws_instance" "prod-sidekiq-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -13,7 +13,7 @@ resource "aws_instance" "prod-sidekiq-mongos01-b" {
 		tags {
 			Env                   = "Prod"
 			Cluster               = "Sidekiq"
-			Name                  = "prod-sidekiq-mongos01-b"
+			Name                  = "prod-sidekiq-mongos01-2b"
 			Type                  = "MongoS"
 			Vpc                   = "Yes"
 		}
@@ -27,7 +27,7 @@ resource "aws_instance" "prod-sidekiq-mongos01-b" {
 		volume_tags {
 			Env                   = "Prod"
 			Cluster               = "Sidekiq"
-			Name                  = "prod-sidekiq-mongos01-b"
+			Name                  = "prod-sidekiq-mongos01-2b"
 			Type                  = "MongoS"
 		}
 }
@@ -36,20 +36,20 @@ resource "aws_instance" "prod-sidekiq-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-sidekiq-mongos02-b" {
+resource "aws_instance" "prod-sidekiq-mongos02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-sidekiq-mongos02-b"
+			Name                  = "prod-sidekiq-mongos02-2b"
 			Type                  = "MongoS"
 			Cluster               = "Sidekiq"
 			Env                   = "Prod"
@@ -63,7 +63,7 @@ resource "aws_instance" "prod-sidekiq-mongos02-b" {
 		}
 
 		volume_tags {
-			Name                  = "prod-sidekiq-mongos02-b"
+			Name                  = "prod-sidekiq-mongos02-2b"
 			Type                  = "MongoS"
 			Cluster               = "Sidekiq"
 			Env                   = "Prod"
@@ -73,3 +73,5 @@ resource "aws_instance" "prod-sidekiq-mongos02-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

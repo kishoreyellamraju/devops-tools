@@ -1,10 +1,10 @@
-resource "aws_instance" "medea-db3" {
+resource "aws_instance" "medea-db3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -14,7 +14,7 @@ resource "aws_instance" "medea-db3" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
-			Name                  = "medea-db3"
+			Name                  = "medea-db3-2c"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Medea"
 		}
@@ -35,7 +35,7 @@ resource "aws_instance" "medea-db3" {
 		volume_tags {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "medea-db3"
+			Name                  = "medea-db3-2c"
 			Cluster               = "Medea"
 		}
 }
@@ -44,13 +44,13 @@ resource "aws_instance" "medea-db3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "medea-db4" {
+resource "aws_instance" "medea-db4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.medea-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -59,7 +59,7 @@ resource "aws_instance" "medea-db4" {
 
 		tags {
 			Cluster               = "Medea"
-			Name                  = "medea-db4"
+			Name                  = "medea-db4-2c"
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -81,7 +81,7 @@ resource "aws_instance" "medea-db4" {
 		}
 		volume_tags {
 			Cluster               = "Medea"
-			Name                  = "medea-db4"
+			Name                  = "medea-db4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -91,13 +91,13 @@ resource "aws_instance" "medea-db4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "medea-db1" {
+resource "aws_instance" "medea-db1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.medea-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -107,7 +107,7 @@ resource "aws_instance" "medea-db1" {
 		tags {
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
-			Name                  = "medea-db1"
+			Name                  = "medea-db1-2b"
 			MongoDbMemberState    = "Primary"
 			Env                   = "Prod"
 			Cluster               = "Medea"
@@ -128,7 +128,7 @@ resource "aws_instance" "medea-db1" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "medea-db1"
+			Name                  = "medea-db1-2b"
 			Env                   = "Prod"
 			Cluster               = "Medea"
 		}
@@ -138,13 +138,13 @@ resource "aws_instance" "medea-db1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "medea-db2" {
+resource "aws_instance" "medea-db2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.medea-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -155,7 +155,7 @@ resource "aws_instance" "medea-db2" {
 			Env                   = "Prod"
 			Cluster               = "Medea"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "medea-db2"
+			Name                  = "medea-db2-2b"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 		}
@@ -176,7 +176,7 @@ resource "aws_instance" "medea-db2" {
 		volume_tags {
 			Env                   = "Prod"
 			Cluster               = "Medea"
-			Name                  = "medea-db2"
+			Name                  = "medea-db2-2b"
 			Type                  = "MongoDb"
 		}
 }
@@ -184,3 +184,5 @@ resource "aws_instance" "medea-db2" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

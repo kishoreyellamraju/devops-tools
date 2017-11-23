@@ -1,10 +1,10 @@
-resource "aws_instance" "sauron-db4" {
+resource "aws_instance" "sauron-db4-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -12,7 +12,7 @@ resource "aws_instance" "sauron-db4" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "sauron-db4"
+			Name                  = "sauron-db4-2b"
 			MongoDbMemberState    = "Secondary"
 			Type                  = "MongoDb"
 			Cluster               = "Sauron"
@@ -34,7 +34,7 @@ resource "aws_instance" "sauron-db4" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "sauron-db4"
+			Name                  = "sauron-db4-2b"
 			Type                  = "MongoDb"
 			Cluster               = "Sauron"
 			Env                   = "Prod"
@@ -45,13 +45,13 @@ resource "aws_instance" "sauron-db4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "sauron-db5" {
+resource "aws_instance" "sauron-db5-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -60,7 +60,7 @@ resource "aws_instance" "sauron-db5" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "sauron-db5"
+			Name                  = "sauron-db5-2b"
 			Vpc                   = "Yes"
 			MongoDbMemberState    = "Secondary"
 			Type                  = "MongoDb"
@@ -82,7 +82,7 @@ resource "aws_instance" "sauron-db5" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "sauron-db5"
+			Name                  = "sauron-db5-2b"
 			Type                  = "MongoDb"
 			Cluster               = "Sauron"
 		}
@@ -92,13 +92,13 @@ resource "aws_instance" "sauron-db5" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "sauron-db1" {
+resource "aws_instance" "sauron-db1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -106,7 +106,7 @@ resource "aws_instance" "sauron-db1" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "sauron-db1"
+			Name                  = "sauron-db1-2b"
 			Cluster               = "Sauron"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
@@ -128,7 +128,7 @@ resource "aws_instance" "sauron-db1" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "sauron-db1"
+			Name                  = "sauron-db1-2b"
 			Cluster               = "Sauron"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
@@ -139,13 +139,13 @@ resource "aws_instance" "sauron-db1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "sauron-db2" {
+resource "aws_instance" "sauron-db2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.sauron-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -156,7 +156,7 @@ resource "aws_instance" "sauron-db2" {
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "sauron-db2"
+			Name                  = "sauron-db2-2b"
 			Cluster               = "Sauron"
 			Type                  = "MongoDb"
 		}
@@ -176,7 +176,7 @@ resource "aws_instance" "sauron-db2" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "sauron-db2"
+			Name                  = "sauron-db2-2b"
 			Cluster               = "Sauron"
 			Type                  = "MongoDb"
 		}
@@ -186,13 +186,13 @@ resource "aws_instance" "sauron-db2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "sauron-db3" {
+resource "aws_instance" "sauron-db3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -202,7 +202,7 @@ resource "aws_instance" "sauron-db3" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "sauron-db3"
+			Name                  = "sauron-db3-2c"
 			Cluster               = "Sauron"
 			MongoDbMemberState    = "Secondary"
 		}
@@ -223,7 +223,7 @@ resource "aws_instance" "sauron-db3" {
 		volume_tags {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "sauron-db3"
+			Name                  = "sauron-db3-2c"
 			Cluster               = "Sauron"
 		}
 }
@@ -231,3 +231,5 @@ resource "aws_instance" "sauron-db3" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

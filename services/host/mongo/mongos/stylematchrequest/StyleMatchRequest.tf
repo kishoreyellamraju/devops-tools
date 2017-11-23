@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-smr-mongos01-b" {
+resource "aws_instance" "prod-smr-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -13,7 +13,7 @@ resource "aws_instance" "prod-smr-mongos01-b" {
 		tags {
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "prod-smr-mongos01-b"
+			Name                  = "prod-smr-mongos01-2b"
 			Cluster               = "StyleMatchRequest"
 			Type                  = "MongoS"
 		}
@@ -26,7 +26,7 @@ resource "aws_instance" "prod-smr-mongos01-b" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-smr-mongos01-b"
+			Name                  = "prod-smr-mongos01-2b"
 			Cluster               = "StyleMatchRequest"
 			Type                  = "MongoS"
 		}
@@ -36,13 +36,13 @@ resource "aws_instance" "prod-smr-mongos01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-smr-mongos01-c" {
+resource "aws_instance" "prod-smr-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mongos-id}"]
 	associate_public_ip_address = false
@@ -53,7 +53,7 @@ resource "aws_instance" "prod-smr-mongos01-c" {
 			Cluster               = "StyleMatchRequest"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "prod-smr-mongos01-c"
+			Name                  = "prod-smr-mongos01-2c"
 		}
 
 		root_block_device {
@@ -66,10 +66,12 @@ resource "aws_instance" "prod-smr-mongos01-c" {
 			Type                  = "MongoS"
 			Cluster               = "StyleMatchRequest"
 			Env                   = "Prod"
-			Name                  = "prod-smr-mongos01-c"
+			Name                  = "prod-smr-mongos01-2c"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

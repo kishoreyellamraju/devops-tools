@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-user-db8" {
+resource "aws_instance" "prod-user-db8-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.prod-user-db-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -13,7 +13,7 @@ resource "aws_instance" "prod-user-db8" {
 
 		tags {
 			Cluster               = "UserDb"
-			Name                  = "prod-user-db8"
+			Name                  = "prod-user-db8-2b"
 			MongoDbMemberState    = "Secondary"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
@@ -35,7 +35,7 @@ resource "aws_instance" "prod-user-db8" {
 		}
 		volume_tags {
 			Cluster               = "UserDb"
-			Name                  = "prod-user-db8"
+			Name                  = "prod-user-db8-2b"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -45,13 +45,13 @@ resource "aws_instance" "prod-user-db8" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-user-db7" {
+resource "aws_instance" "prod-user-db7-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.prod-user-db-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -61,7 +61,7 @@ resource "aws_instance" "prod-user-db7" {
 		tags {
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "prod-user-db7"
+			Name                  = "prod-user-db7-2b"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "UserDb"
@@ -82,7 +82,7 @@ resource "aws_instance" "prod-user-db7" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-user-db7"
+			Name                  = "prod-user-db7-2b"
 			Type                  = "MongoDb"
 			Cluster               = "UserDb"
 		}
@@ -92,13 +92,13 @@ resource "aws_instance" "prod-user-db7" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-user-db4" {
+resource "aws_instance" "prod-user-db4-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.prod-user-db-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -111,7 +111,7 @@ resource "aws_instance" "prod-user-db4" {
 			Cluster               = "UserDb"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
-			Name                  = "prod-user-db4"
+			Name                  = "prod-user-db4-2b"
 		}
 
 		root_block_device {
@@ -131,7 +131,7 @@ resource "aws_instance" "prod-user-db4" {
 			Env                   = "Prod"
 			Cluster               = "UserDb"
 			Type                  = "MongoDb"
-			Name                  = "prod-user-db4"
+			Name                  = "prod-user-db4-2b"
 		}
 }
 
@@ -139,13 +139,13 @@ resource "aws_instance" "prod-user-db4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-user-db5" {
+resource "aws_instance" "prod-user-db5-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -157,7 +157,7 @@ resource "aws_instance" "prod-user-db5" {
 			Cluster               = "UserDb"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "prod-user-db5"
+			Name                  = "prod-user-db5-2c"
 		}
 
 		root_block_device {
@@ -177,7 +177,7 @@ resource "aws_instance" "prod-user-db5" {
 			Cluster               = "UserDb"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "prod-user-db5"
+			Name                  = "prod-user-db5-2c"
 		}
 }
 
@@ -185,13 +185,13 @@ resource "aws_instance" "prod-user-db5" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-user-db6" {
+resource "aws_instance" "prod-user-db6-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.prod-user-db-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -202,7 +202,7 @@ resource "aws_instance" "prod-user-db6" {
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "prod-user-db6"
+			Name                  = "prod-user-db6-2c"
 			Type                  = "MongoDb"
 			Cluster               = "UserDb"
 		}
@@ -222,7 +222,7 @@ resource "aws_instance" "prod-user-db6" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-user-db6"
+			Name                  = "prod-user-db6-2c"
 			Type                  = "MongoDb"
 			Cluster               = "UserDb"
 		}
@@ -232,13 +232,13 @@ resource "aws_instance" "prod-user-db6" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-user-db6-old" {
+resource "aws_instance" "prod-user-db6-old-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.prod-user-db-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -248,7 +248,7 @@ resource "aws_instance" "prod-user-db6-old" {
 		tags {
 			Vpc                   = "Yes"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "prod-user-db6-old"
+			Name                  = "prod-user-db6-old-2b"
 			Cluster               = "UserDb"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
@@ -268,7 +268,7 @@ resource "aws_instance" "prod-user-db6-old" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "prod-user-db6-old"
+			Name                  = "prod-user-db6-old-2b"
 			Cluster               = "UserDb"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
@@ -279,13 +279,13 @@ resource "aws_instance" "prod-user-db6-old" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-user-db3" {
+resource "aws_instance" "prod-user-db3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -296,7 +296,7 @@ resource "aws_instance" "prod-user-db3" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
-			Name                  = "prod-user-db3"
+			Name                  = "prod-user-db3-2c"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -324,10 +324,12 @@ resource "aws_instance" "prod-user-db3" {
 			Cluster               = "UserDb"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "prod-user-db3"
+			Name                  = "prod-user-db3-2c"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

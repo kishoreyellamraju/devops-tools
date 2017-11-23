@@ -1,10 +1,10 @@
-resource "aws_instance" "circe-db4" {
+resource "aws_instance" "circe-db4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.circe-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -16,7 +16,7 @@ resource "aws_instance" "circe-db4" {
 			Type                  = "MongoDb"
 			Cluster               = "Circe"
 			Env                   = "Prod"
-			Name                  = "circe-db4"
+			Name                  = "circe-db4-2c"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -37,7 +37,7 @@ resource "aws_instance" "circe-db4" {
 			Type                  = "MongoDb"
 			Cluster               = "Circe"
 			Env                   = "Prod"
-			Name                  = "circe-db4"
+			Name                  = "circe-db4-2c"
 		}
 }
 
@@ -45,13 +45,13 @@ resource "aws_instance" "circe-db4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "circe-db3" {
+resource "aws_instance" "circe-db3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -61,7 +61,7 @@ resource "aws_instance" "circe-db3" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "circe-db3"
+			Name                  = "circe-db3-2c"
 			Cluster               = "Circe"
 			MongoDbMemberState    = "Secondary"
 		}
@@ -82,7 +82,7 @@ resource "aws_instance" "circe-db3" {
 		volume_tags {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "circe-db3"
+			Name                  = "circe-db3-2c"
 			Cluster               = "Circe"
 		}
 }
@@ -91,13 +91,13 @@ resource "aws_instance" "circe-db3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "circe-db1" {
+resource "aws_instance" "circe-db1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.circe-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -108,7 +108,7 @@ resource "aws_instance" "circe-db1" {
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
-			Name                  = "circe-db1"
+			Name                  = "circe-db1-2b"
 			Cluster               = "Circe"
 			MongoDbMemberState    = "Primary"
 		}
@@ -129,7 +129,7 @@ resource "aws_instance" "circe-db1" {
 		volume_tags {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "circe-db1"
+			Name                  = "circe-db1-2b"
 			Cluster               = "Circe"
 		}
 }
@@ -138,13 +138,13 @@ resource "aws_instance" "circe-db1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "circe-db2" {
+resource "aws_instance" "circe-db2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.circe-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -154,7 +154,7 @@ resource "aws_instance" "circe-db2" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "circe-db2"
+			Name                  = "circe-db2-2b"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Circe"
@@ -182,7 +182,7 @@ resource "aws_instance" "circe-db2" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "circe-db2"
+			Name                  = "circe-db2-2b"
 			Env                   = "Prod"
 			Cluster               = "Circe"
 		}
@@ -192,13 +192,13 @@ resource "aws_instance" "circe-db2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "circe-db4-old" {
+resource "aws_instance" "circe-db4-old-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.circe-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -211,7 +211,7 @@ resource "aws_instance" "circe-db4-old" {
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "circe-db4-old"
+			Name                  = "circe-db4-old-2b"
 		}
 
 		root_block_device {
@@ -231,10 +231,12 @@ resource "aws_instance" "circe-db4-old" {
 			Cluster               = "Circe"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "circe-db4-old"
+			Name                  = "circe-db4-old-2b"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

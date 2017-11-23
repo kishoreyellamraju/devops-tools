@@ -1,10 +1,10 @@
-resource "aws_instance" "gandalf-m3" {
+resource "aws_instance" "gandalf-m3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -15,7 +15,7 @@ resource "aws_instance" "gandalf-m3" {
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-m3"
+			Name                  = "gandalf-m3-2c"
 			Vpc                   = "Yes"
 		}
 
@@ -36,7 +36,7 @@ resource "aws_instance" "gandalf-m3" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-m3"
+			Name                  = "gandalf-m3-2c"
 		}
 }
 
@@ -44,20 +44,20 @@ resource "aws_instance" "gandalf-m3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-p3" {
+resource "aws_instance" "gandalf-p3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "gandalf-p3"
+			Name                  = "gandalf-p3-2c"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
@@ -79,7 +79,7 @@ resource "aws_instance" "gandalf-p3" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-p3"
+			Name                  = "gandalf-p3-2c"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
@@ -90,13 +90,13 @@ resource "aws_instance" "gandalf-p3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-o3" {
+resource "aws_instance" "gandalf-o3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -105,7 +105,7 @@ resource "aws_instance" "gandalf-o3" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-o3"
+			Name                  = "gandalf-o3-2c"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
@@ -126,7 +126,7 @@ resource "aws_instance" "gandalf-o3" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "gandalf-o3"
+			Name                  = "gandalf-o3-2c"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 		}
@@ -136,13 +136,13 @@ resource "aws_instance" "gandalf-o3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-r3" {
+resource "aws_instance" "gandalf-r3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -151,7 +151,7 @@ resource "aws_instance" "gandalf-r3" {
 		tags {
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-r3"
+			Name                  = "gandalf-r3-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -172,7 +172,7 @@ resource "aws_instance" "gandalf-r3" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-r3"
+			Name                  = "gandalf-r3-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -182,13 +182,13 @@ resource "aws_instance" "gandalf-r3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-q3" {
+resource "aws_instance" "gandalf-q3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -196,7 +196,7 @@ resource "aws_instance" "gandalf-q3" {
 
 		tags {
 			Type                  = "MongoDb"
-			Name                  = "gandalf-q3"
+			Name                  = "gandalf-q3-2c"
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
@@ -218,7 +218,7 @@ resource "aws_instance" "gandalf-q3" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "gandalf-q3"
+			Name                  = "gandalf-q3-2c"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 		}
@@ -228,13 +228,13 @@ resource "aws_instance" "gandalf-q3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-n3" {
+resource "aws_instance" "gandalf-n3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -242,7 +242,7 @@ resource "aws_instance" "gandalf-n3" {
 
 		tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-n3"
+			Name                  = "gandalf-n3-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -264,7 +264,7 @@ resource "aws_instance" "gandalf-n3" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-n3"
+			Name                  = "gandalf-n3-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 		}
@@ -274,13 +274,13 @@ resource "aws_instance" "gandalf-n3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-q2" {
+resource "aws_instance" "gandalf-q2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -292,7 +292,7 @@ resource "aws_instance" "gandalf-q2" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-q2"
+			Name                  = "gandalf-q2-2b"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -313,7 +313,7 @@ resource "aws_instance" "gandalf-q2" {
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "gandalf-q2"
+			Name                  = "gandalf-q2-2b"
 		}
 }
 
@@ -321,13 +321,13 @@ resource "aws_instance" "gandalf-q2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-q1" {
+resource "aws_instance" "gandalf-q1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -340,7 +340,7 @@ resource "aws_instance" "gandalf-q1" {
 			MongoDbMemberState    = "Primary"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-q1"
+			Name                  = "gandalf-q1-2b"
 		}
 
 		root_block_device {
@@ -360,7 +360,7 @@ resource "aws_instance" "gandalf-q1" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-q1"
+			Name                  = "gandalf-q1-2b"
 		}
 }
 
@@ -368,13 +368,13 @@ resource "aws_instance" "gandalf-q1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-r2" {
+resource "aws_instance" "gandalf-r2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -384,7 +384,7 @@ resource "aws_instance" "gandalf-r2" {
 		tags {
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-r2"
+			Name                  = "gandalf-r2-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -405,7 +405,7 @@ resource "aws_instance" "gandalf-r2" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-r2"
+			Name                  = "gandalf-r2-2b"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -415,13 +415,13 @@ resource "aws_instance" "gandalf-r2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-r1" {
+resource "aws_instance" "gandalf-r1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -432,7 +432,7 @@ resource "aws_instance" "gandalf-r1" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Primary"
-			Name                  = "gandalf-r1"
+			Name                  = "gandalf-r1-2b"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 		}
@@ -453,7 +453,7 @@ resource "aws_instance" "gandalf-r1" {
 		volume_tags {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-r1"
+			Name                  = "gandalf-r1-2b"
 			Type                  = "MongoDb"
 		}
 }
@@ -462,13 +462,13 @@ resource "aws_instance" "gandalf-r1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-o2" {
+resource "aws_instance" "gandalf-o2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -479,243 +479,8 @@ resource "aws_instance" "gandalf-o2" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-o2"
+			Name                  = "gandalf-o2-2b"
 			Type                  = "MongoDb"
-			MongoDbMemberState    = "Secondary"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-		volume_tags {
-			Cluster               = "Gandalf"
-			Env                   = "Prod"
-			Name                  = "gandalf-o2"
-			Type                  = "MongoDb"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-o1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	placement_group             = "${module.placementgroup.gandalf-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Type                  = "MongoDb"
-			Name                  = "gandalf-o1"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-			MongoDbMemberState    = "Primary"
-			Cluster               = "Gandalf"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-		volume_tags {
-			Type                  = "MongoDb"
-			Name                  = "gandalf-o1"
-			Env                   = "Prod"
-			Cluster               = "Gandalf"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-p2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	placement_group             = "${module.placementgroup.gandalf-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-p2"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-		volume_tags {
-			Env                   = "Prod"
-			Name                  = "gandalf-p2"
-			Type                  = "MongoDb"
-			Cluster               = "Gandalf"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-p1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	placement_group             = "${module.placementgroup.gandalf-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "Gandalf"
-			MongoDbMemberState    = "Primary"
-			Name                  = "gandalf-p1"
-			Type                  = "MongoDb"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-		volume_tags {
-			Cluster               = "Gandalf"
-			Name                  = "gandalf-p1"
-			Type                  = "MongoDb"
-			Env                   = "Prod"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-m2" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	placement_group             = "${module.placementgroup.gandalf-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			MongoDbMemberState    = "Primary"
-			Env                   = "Prod"
-			Cluster               = "Gandalf"
-			Name                  = "gandalf-m2"
-			Type                  = "MongoDb"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = ""
-			volume_type           = "io1"
-			volume_size           = 2048
-			delete_on_termination = false
-		}
-		volume_tags {
-			Env                   = "Prod"
-			Cluster               = "Gandalf"
-			Name                  = "gandalf-m2"
-			Type                  = "MongoDb"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "gandalf-m1" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "r3.8xlarge"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
-	placement_group             = "${module.placementgroup.gandalf-id}"
-	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Cluster               = "Gandalf"
-			Vpc                   = "Yes"
-			Type                  = "MongoDb"
-			Name                  = "gandalf-m1"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -733,10 +498,10 @@ resource "aws_instance" "gandalf-m1" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Env                   = "Prod"
 			Cluster               = "Gandalf"
+			Env                   = "Prod"
+			Name                  = "gandalf-o2-2b"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-m1"
 		}
 }
 
@@ -744,13 +509,60 @@ resource "aws_instance" "gandalf-m1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-n2" {
+resource "aws_instance" "gandalf-o1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-o1-2b"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+			MongoDbMemberState    = "Primary"
+			Cluster               = "Gandalf"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Type                  = "MongoDb"
+			Name                  = "gandalf-o1-2b"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-p2-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -759,10 +571,151 @@ resource "aws_instance" "gandalf-n2" {
 
 		tags {
 			Env                   = "Prod"
-			Type                  = "MongoDb"
-			Name                  = "gandalf-n2"
+			MongoDbMemberState    = "Secondary"
+			Name                  = "gandalf-p2-2b"
 			Vpc                   = "Yes"
+			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Name                  = "gandalf-p2-2b"
+			Type                  = "MongoDb"
+			Cluster               = "Gandalf"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-p1-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Cluster               = "Gandalf"
+			MongoDbMemberState    = "Primary"
+			Name                  = "gandalf-p1-2b"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-p1-2b"
+			Type                  = "MongoDb"
+			Env                   = "Prod"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-m2-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			MongoDbMemberState    = "Primary"
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-m2-2b"
+			Type                  = "MongoDb"
+			Vpc                   = "Yes"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Name                  = "gandalf-m2-2b"
+			Type                  = "MongoDb"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-m1-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			Cluster               = "Gandalf"
+			Vpc                   = "Yes"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-m1-2b"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -781,8 +734,55 @@ resource "aws_instance" "gandalf-n2" {
 		}
 		volume_tags {
 			Env                   = "Prod"
+			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-n2"
+			Name                  = "gandalf-m1-2b"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "gandalf-n2-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = false
+	instance_type               = "r3.8xlarge"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
+	placement_group             = "${module.placementgroup.gandalf-id}"
+	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-n2-2b"
+			Vpc                   = "Yes"
+			Cluster               = "Gandalf"
+			MongoDbMemberState    = "Secondary"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		ebs_block_device {
+			device_name           = "/dev/sdf"
+			snapshot_id           = ""
+			volume_type           = "io1"
+			volume_size           = 2048
+			delete_on_termination = false
+		}
+		volume_tags {
+			Env                   = "Prod"
+			Type                  = "MongoDb"
+			Name                  = "gandalf-n2-2b"
 			Cluster               = "Gandalf"
 		}
 }
@@ -791,13 +791,13 @@ resource "aws_instance" "gandalf-n2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-n1" {
+resource "aws_instance" "gandalf-n1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -807,7 +807,7 @@ resource "aws_instance" "gandalf-n1" {
 		tags {
 			MongoDbMemberState    = "Primary"
 			Env                   = "Prod"
-			Name                  = "gandalf-n1"
+			Name                  = "gandalf-n1-2b"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
@@ -828,7 +828,7 @@ resource "aws_instance" "gandalf-n1" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-n1"
+			Name                  = "gandalf-n1-2b"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 		}
@@ -838,13 +838,13 @@ resource "aws_instance" "gandalf-n1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-h4" {
+resource "aws_instance" "gandalf-h4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -854,7 +854,7 @@ resource "aws_instance" "gandalf-h4" {
 		tags {
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-h4"
+			Name                  = "gandalf-h4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
@@ -875,7 +875,7 @@ resource "aws_instance" "gandalf-h4" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-h4"
+			Name                  = "gandalf-h4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -885,13 +885,13 @@ resource "aws_instance" "gandalf-h4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-j4" {
+resource "aws_instance" "gandalf-j4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -900,7 +900,7 @@ resource "aws_instance" "gandalf-j4" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-j4"
+			Name                  = "gandalf-j4-2c"
 			Cluster               = "Gandalf"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -922,7 +922,7 @@ resource "aws_instance" "gandalf-j4" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-j4"
+			Name                  = "gandalf-j4-2c"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 		}
@@ -932,13 +932,13 @@ resource "aws_instance" "gandalf-j4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-f4" {
+resource "aws_instance" "gandalf-f4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -951,7 +951,7 @@ resource "aws_instance" "gandalf-f4" {
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-f4"
+			Name                  = "gandalf-f4-2c"
 		}
 
 		root_block_device {
@@ -971,7 +971,7 @@ resource "aws_instance" "gandalf-f4" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-f4"
+			Name                  = "gandalf-f4-2c"
 		}
 }
 
@@ -979,13 +979,13 @@ resource "aws_instance" "gandalf-f4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-p4" {
+resource "aws_instance" "gandalf-p4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -995,7 +995,7 @@ resource "aws_instance" "gandalf-p4" {
 		tags {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "gandalf-p4"
+			Name                  = "gandalf-p4-2c"
 			Vpc                   = "Yes"
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
@@ -1017,7 +1017,7 @@ resource "aws_instance" "gandalf-p4" {
 		volume_tags {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "gandalf-p4"
+			Name                  = "gandalf-p4-2c"
 			Cluster               = "Gandalf"
 		}
 }
@@ -1026,13 +1026,13 @@ resource "aws_instance" "gandalf-p4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-b4" {
+resource "aws_instance" "gandalf-b4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1042,7 +1042,7 @@ resource "aws_instance" "gandalf-b4" {
 		tags {
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-b4"
+			Name                  = "gandalf-b4-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -1063,7 +1063,7 @@ resource "aws_instance" "gandalf-b4" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-b4"
+			Name                  = "gandalf-b4-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 		}
@@ -1073,13 +1073,13 @@ resource "aws_instance" "gandalf-b4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-c4" {
+resource "aws_instance" "gandalf-c4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1089,7 +1089,7 @@ resource "aws_instance" "gandalf-c4" {
 		tags {
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-c4"
+			Name                  = "gandalf-c4-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -1110,7 +1110,7 @@ resource "aws_instance" "gandalf-c4" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-c4"
+			Name                  = "gandalf-c4-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 		}
@@ -1120,13 +1120,13 @@ resource "aws_instance" "gandalf-c4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-i4" {
+resource "aws_instance" "gandalf-i4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1139,7 +1139,7 @@ resource "aws_instance" "gandalf-i4" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-i4"
+			Name                  = "gandalf-i4-2c"
 		}
 
 		root_block_device {
@@ -1159,7 +1159,7 @@ resource "aws_instance" "gandalf-i4" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-i4"
+			Name                  = "gandalf-i4-2c"
 		}
 }
 
@@ -1167,13 +1167,13 @@ resource "aws_instance" "gandalf-i4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-d4" {
+resource "aws_instance" "gandalf-d4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1183,7 +1183,7 @@ resource "aws_instance" "gandalf-d4" {
 		tags {
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-d4"
+			Name                  = "gandalf-d4-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -1204,7 +1204,7 @@ resource "aws_instance" "gandalf-d4" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-d4"
+			Name                  = "gandalf-d4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -1214,13 +1214,13 @@ resource "aws_instance" "gandalf-d4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-r4" {
+resource "aws_instance" "gandalf-r4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1233,7 +1233,7 @@ resource "aws_instance" "gandalf-r4" {
 			MongoDbMemberState    = "Secondary"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-r4"
+			Name                  = "gandalf-r4-2c"
 		}
 
 		root_block_device {
@@ -1253,7 +1253,7 @@ resource "aws_instance" "gandalf-r4" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-r4"
+			Name                  = "gandalf-r4-2c"
 		}
 }
 
@@ -1261,13 +1261,13 @@ resource "aws_instance" "gandalf-r4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-a4" {
+resource "aws_instance" "gandalf-a4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1280,7 +1280,7 @@ resource "aws_instance" "gandalf-a4" {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-a4"
+			Name                  = "gandalf-a4-2c"
 		}
 
 		root_block_device {
@@ -1300,7 +1300,7 @@ resource "aws_instance" "gandalf-a4" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-a4"
+			Name                  = "gandalf-a4-2c"
 		}
 }
 
@@ -1308,13 +1308,13 @@ resource "aws_instance" "gandalf-a4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-e4" {
+resource "aws_instance" "gandalf-e4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1324,7 +1324,7 @@ resource "aws_instance" "gandalf-e4" {
 		tags {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-e4"
+			Name                  = "gandalf-e4-2c"
 			Vpc                   = "Yes"
 			MongoDbMemberState    = "Secondary"
 			Type                  = "MongoDb"
@@ -1346,7 +1346,7 @@ resource "aws_instance" "gandalf-e4" {
 		volume_tags {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-e4"
+			Name                  = "gandalf-e4-2c"
 			Type                  = "MongoDb"
 		}
 }
@@ -1355,13 +1355,13 @@ resource "aws_instance" "gandalf-e4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-k4" {
+resource "aws_instance" "gandalf-k4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1370,7 +1370,7 @@ resource "aws_instance" "gandalf-k4" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-k4"
+			Name                  = "gandalf-k4-2c"
 			MongoDbMemberState    = "Secondary"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -1392,7 +1392,7 @@ resource "aws_instance" "gandalf-k4" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-k4"
+			Name                  = "gandalf-k4-2c"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 		}
@@ -1402,13 +1402,13 @@ resource "aws_instance" "gandalf-k4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-g4" {
+resource "aws_instance" "gandalf-g4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1417,7 +1417,7 @@ resource "aws_instance" "gandalf-g4" {
 
 		tags {
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-g4"
+			Name                  = "gandalf-g4-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -1438,7 +1438,7 @@ resource "aws_instance" "gandalf-g4" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-g4"
+			Name                  = "gandalf-g4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
@@ -1449,13 +1449,13 @@ resource "aws_instance" "gandalf-g4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-n4" {
+resource "aws_instance" "gandalf-n4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1467,7 +1467,7 @@ resource "aws_instance" "gandalf-n4" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-n4"
+			Name                  = "gandalf-n4-2c"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -1488,7 +1488,7 @@ resource "aws_instance" "gandalf-n4" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-n4"
+			Name                  = "gandalf-n4-2c"
 		}
 }
 
@@ -1496,13 +1496,13 @@ resource "aws_instance" "gandalf-n4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-m4" {
+resource "aws_instance" "gandalf-m4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1511,7 +1511,7 @@ resource "aws_instance" "gandalf-m4" {
 
 		tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-m4"
+			Name                  = "gandalf-m4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
@@ -1533,7 +1533,7 @@ resource "aws_instance" "gandalf-m4" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-m4"
+			Name                  = "gandalf-m4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -1543,13 +1543,13 @@ resource "aws_instance" "gandalf-m4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-q4" {
+resource "aws_instance" "gandalf-q4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1559,7 +1559,7 @@ resource "aws_instance" "gandalf-q4" {
 		tags {
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-q4"
+			Name                  = "gandalf-q4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
@@ -1580,7 +1580,7 @@ resource "aws_instance" "gandalf-q4" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-q4"
+			Name                  = "gandalf-q4-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -1590,13 +1590,13 @@ resource "aws_instance" "gandalf-q4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-l4" {
+resource "aws_instance" "gandalf-l4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1606,7 +1606,7 @@ resource "aws_instance" "gandalf-l4" {
 		tags {
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-l4"
+			Name                  = "gandalf-l4-2c"
 			MongoDbMemberState    = "Secondary"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
@@ -1628,7 +1628,7 @@ resource "aws_instance" "gandalf-l4" {
 		volume_tags {
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-l4"
+			Name                  = "gandalf-l4-2c"
 			Type                  = "MongoDb"
 		}
 }
@@ -1637,13 +1637,13 @@ resource "aws_instance" "gandalf-l4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-o4" {
+resource "aws_instance" "gandalf-o4-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	placement_group             = "${module.placementgroup.gandalf-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1654,7 +1654,7 @@ resource "aws_instance" "gandalf-o4" {
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-o4"
+			Name                  = "gandalf-o4-2c"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 		}
@@ -1674,7 +1674,7 @@ resource "aws_instance" "gandalf-o4" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-o4"
+			Name                  = "gandalf-o4-2c"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 		}
@@ -1684,13 +1684,13 @@ resource "aws_instance" "gandalf-o4" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-a1" {
+resource "aws_instance" "gandalf-a1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1699,7 +1699,7 @@ resource "aws_instance" "gandalf-a1" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-a1"
+			Name                  = "gandalf-a1-2b"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
@@ -1721,7 +1721,7 @@ resource "aws_instance" "gandalf-a1" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-a1"
+			Name                  = "gandalf-a1-2b"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 		}
@@ -1731,13 +1731,13 @@ resource "aws_instance" "gandalf-a1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-b1" {
+resource "aws_instance" "gandalf-b1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1749,7 +1749,7 @@ resource "aws_instance" "gandalf-b1" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-b1"
+			Name                  = "gandalf-b1-2b"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -1770,7 +1770,7 @@ resource "aws_instance" "gandalf-b1" {
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "gandalf-b1"
+			Name                  = "gandalf-b1-2b"
 		}
 }
 
@@ -1778,13 +1778,13 @@ resource "aws_instance" "gandalf-b1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-c2" {
+resource "aws_instance" "gandalf-c2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1796,7 +1796,7 @@ resource "aws_instance" "gandalf-c2" {
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-c2"
+			Name                  = "gandalf-c2-2b"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -1817,7 +1817,7 @@ resource "aws_instance" "gandalf-c2" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-c2"
+			Name                  = "gandalf-c2-2b"
 		}
 }
 
@@ -1825,13 +1825,13 @@ resource "aws_instance" "gandalf-c2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-d1" {
+resource "aws_instance" "gandalf-d1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1844,7 +1844,7 @@ resource "aws_instance" "gandalf-d1" {
 			MongoDbMemberState    = "Primary"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-d1"
+			Name                  = "gandalf-d1-2b"
 		}
 
 		root_block_device {
@@ -1864,7 +1864,7 @@ resource "aws_instance" "gandalf-d1" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-d1"
+			Name                  = "gandalf-d1-2b"
 		}
 }
 
@@ -1872,13 +1872,13 @@ resource "aws_instance" "gandalf-d1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-e1" {
+resource "aws_instance" "gandalf-e1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1886,7 +1886,7 @@ resource "aws_instance" "gandalf-e1" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "gandalf-e1"
+			Name                  = "gandalf-e1-2b"
 			MongoDbMemberState    = "Primary"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
@@ -1908,7 +1908,7 @@ resource "aws_instance" "gandalf-e1" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-e1"
+			Name                  = "gandalf-e1-2b"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
@@ -1919,13 +1919,13 @@ resource "aws_instance" "gandalf-e1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-f2" {
+resource "aws_instance" "gandalf-f2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1936,7 +1936,7 @@ resource "aws_instance" "gandalf-f2" {
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Primary"
-			Name                  = "gandalf-f2"
+			Name                  = "gandalf-f2-2b"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 		}
@@ -1957,7 +1957,7 @@ resource "aws_instance" "gandalf-f2" {
 		volume_tags {
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-f2"
+			Name                  = "gandalf-f2-2b"
 			Type                  = "MongoDb"
 		}
 }
@@ -1966,13 +1966,13 @@ resource "aws_instance" "gandalf-f2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-g2" {
+resource "aws_instance" "gandalf-g2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -1984,7 +1984,7 @@ resource "aws_instance" "gandalf-g2" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-g2"
+			Name                  = "gandalf-g2-2b"
 			MongoDbMemberState    = "Primary"
 		}
 
@@ -2005,7 +2005,7 @@ resource "aws_instance" "gandalf-g2" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-g2"
+			Name                  = "gandalf-g2-2b"
 		}
 }
 
@@ -2013,13 +2013,13 @@ resource "aws_instance" "gandalf-g2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-h2" {
+resource "aws_instance" "gandalf-h2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2032,7 +2032,7 @@ resource "aws_instance" "gandalf-h2" {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			MongoDbMemberState    = "Primary"
-			Name                  = "gandalf-h2"
+			Name                  = "gandalf-h2-2b"
 		}
 
 		root_block_device {
@@ -2052,7 +2052,7 @@ resource "aws_instance" "gandalf-h2" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-h2"
+			Name                  = "gandalf-h2-2b"
 		}
 }
 
@@ -2060,13 +2060,13 @@ resource "aws_instance" "gandalf-h2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-i2" {
+resource "aws_instance" "gandalf-i2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2076,7 +2076,7 @@ resource "aws_instance" "gandalf-i2" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-i2"
+			Name                  = "gandalf-i2-2b"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
@@ -2097,7 +2097,7 @@ resource "aws_instance" "gandalf-i2" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "gandalf-i2"
+			Name                  = "gandalf-i2-2b"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 		}
@@ -2107,13 +2107,13 @@ resource "aws_instance" "gandalf-i2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-j2" {
+resource "aws_instance" "gandalf-j2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2123,7 +2123,7 @@ resource "aws_instance" "gandalf-j2" {
 		tags {
 			MongoDbMemberState    = "Secondary"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-j2"
+			Name                  = "gandalf-j2-2b"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
@@ -2143,7 +2143,7 @@ resource "aws_instance" "gandalf-j2" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-j2"
+			Name                  = "gandalf-j2-2b"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
@@ -2154,13 +2154,13 @@ resource "aws_instance" "gandalf-j2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-k1" {
+resource "aws_instance" "gandalf-k1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2173,7 +2173,7 @@ resource "aws_instance" "gandalf-k1" {
 			MongoDbMemberState    = "Primary"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-k1"
+			Name                  = "gandalf-k1-2b"
 		}
 
 		root_block_device {
@@ -2193,7 +2193,7 @@ resource "aws_instance" "gandalf-k1" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-k1"
+			Name                  = "gandalf-k1-2b"
 		}
 }
 
@@ -2201,13 +2201,13 @@ resource "aws_instance" "gandalf-k1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-l1" {
+resource "aws_instance" "gandalf-l1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2219,7 +2219,7 @@ resource "aws_instance" "gandalf-l1" {
 			Vpc                   = "Yes"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-l1"
+			Name                  = "gandalf-l1-2b"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -2240,7 +2240,7 @@ resource "aws_instance" "gandalf-l1" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-l1"
+			Name                  = "gandalf-l1-2b"
 		}
 }
 
@@ -2248,13 +2248,13 @@ resource "aws_instance" "gandalf-l1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-i3" {
+resource "aws_instance" "gandalf-i3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2265,7 +2265,7 @@ resource "aws_instance" "gandalf-i3" {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-i3"
+			Name                  = "gandalf-i3-2c"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -2286,7 +2286,7 @@ resource "aws_instance" "gandalf-i3" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-i3"
+			Name                  = "gandalf-i3-2c"
 		}
 }
 
@@ -2294,13 +2294,13 @@ resource "aws_instance" "gandalf-i3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-j3" {
+resource "aws_instance" "gandalf-j3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2312,7 +2312,7 @@ resource "aws_instance" "gandalf-j3" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-j3"
+			Name                  = "gandalf-j3-2c"
 		}
 
 		root_block_device {
@@ -2332,7 +2332,7 @@ resource "aws_instance" "gandalf-j3" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-j3"
+			Name                  = "gandalf-j3-2c"
 		}
 }
 
@@ -2340,20 +2340,20 @@ resource "aws_instance" "gandalf-j3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-b3" {
+resource "aws_instance" "gandalf-b3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "gandalf-b3"
+			Name                  = "gandalf-b3-2c"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
@@ -2375,7 +2375,7 @@ resource "aws_instance" "gandalf-b3" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-b3"
+			Name                  = "gandalf-b3-2c"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
@@ -2386,20 +2386,20 @@ resource "aws_instance" "gandalf-b3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-c3" {
+resource "aws_instance" "gandalf-c3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "gandalf-c3"
+			Name                  = "gandalf-c3-2c"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
@@ -2421,7 +2421,7 @@ resource "aws_instance" "gandalf-c3" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-c3"
+			Name                  = "gandalf-c3-2c"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
@@ -2432,13 +2432,13 @@ resource "aws_instance" "gandalf-c3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-d3" {
+resource "aws_instance" "gandalf-d3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2447,7 +2447,7 @@ resource "aws_instance" "gandalf-d3" {
 		tags {
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-d3"
+			Name                  = "gandalf-d3-2c"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
@@ -2468,7 +2468,7 @@ resource "aws_instance" "gandalf-d3" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "gandalf-d3"
+			Name                  = "gandalf-d3-2c"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 		}
@@ -2478,13 +2478,13 @@ resource "aws_instance" "gandalf-d3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-a3" {
+resource "aws_instance" "gandalf-a3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2493,7 +2493,7 @@ resource "aws_instance" "gandalf-a3" {
 		tags {
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-a3"
+			Name                  = "gandalf-a3-2c"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
@@ -2514,7 +2514,7 @@ resource "aws_instance" "gandalf-a3" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-a3"
+			Name                  = "gandalf-a3-2c"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 		}
@@ -2524,13 +2524,13 @@ resource "aws_instance" "gandalf-a3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-e3" {
+resource "aws_instance" "gandalf-e3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2542,7 +2542,7 @@ resource "aws_instance" "gandalf-e3" {
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-e3"
+			Name                  = "gandalf-e3-2c"
 		}
 
 		root_block_device {
@@ -2562,7 +2562,7 @@ resource "aws_instance" "gandalf-e3" {
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-e3"
+			Name                  = "gandalf-e3-2c"
 		}
 }
 
@@ -2570,13 +2570,13 @@ resource "aws_instance" "gandalf-e3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-k3" {
+resource "aws_instance" "gandalf-k3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2588,7 +2588,7 @@ resource "aws_instance" "gandalf-k3" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-k3"
+			Name                  = "gandalf-k3-2c"
 		}
 
 		root_block_device {
@@ -2608,7 +2608,7 @@ resource "aws_instance" "gandalf-k3" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-k3"
+			Name                  = "gandalf-k3-2c"
 		}
 }
 
@@ -2616,13 +2616,13 @@ resource "aws_instance" "gandalf-k3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-l3" {
+resource "aws_instance" "gandalf-l3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2634,7 +2634,7 @@ resource "aws_instance" "gandalf-l3" {
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-l3"
+			Name                  = "gandalf-l3-2c"
 		}
 
 		root_block_device {
@@ -2654,7 +2654,7 @@ resource "aws_instance" "gandalf-l3" {
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
-			Name                  = "gandalf-l3"
+			Name                  = "gandalf-l3-2c"
 		}
 }
 
@@ -2662,13 +2662,13 @@ resource "aws_instance" "gandalf-l3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-g3" {
+resource "aws_instance" "gandalf-g3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2677,7 +2677,7 @@ resource "aws_instance" "gandalf-g3" {
 		tags {
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-g3"
+			Name                  = "gandalf-g3-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -2698,7 +2698,7 @@ resource "aws_instance" "gandalf-g3" {
 		}
 		volume_tags {
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-g3"
+			Name                  = "gandalf-g3-2c"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
 		}
@@ -2708,13 +2708,13 @@ resource "aws_instance" "gandalf-g3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-f3" {
+resource "aws_instance" "gandalf-f3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2726,7 +2726,7 @@ resource "aws_instance" "gandalf-f3" {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-f3"
+			Name                  = "gandalf-f3-2c"
 		}
 
 		root_block_device {
@@ -2746,7 +2746,7 @@ resource "aws_instance" "gandalf-f3" {
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-f3"
+			Name                  = "gandalf-f3-2c"
 		}
 }
 
@@ -2754,13 +2754,13 @@ resource "aws_instance" "gandalf-f3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-h3" {
+resource "aws_instance" "gandalf-h3-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-reporting-id}","${module.sg.production-db-id}"]
 	associate_public_ip_address = false
@@ -2768,7 +2768,7 @@ resource "aws_instance" "gandalf-h3" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-h3"
+			Name                  = "gandalf-h3-2c"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
@@ -2790,7 +2790,7 @@ resource "aws_instance" "gandalf-h3" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "gandalf-h3"
+			Name                  = "gandalf-h3-2c"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 		}
@@ -2800,13 +2800,13 @@ resource "aws_instance" "gandalf-h3" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-e2" {
+resource "aws_instance" "gandalf-e2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2819,7 +2819,7 @@ resource "aws_instance" "gandalf-e2" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-e2"
+			Name                  = "gandalf-e2-2b"
 		}
 
 		root_block_device {
@@ -2839,7 +2839,7 @@ resource "aws_instance" "gandalf-e2" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-e2"
+			Name                  = "gandalf-e2-2b"
 		}
 }
 
@@ -2847,13 +2847,13 @@ resource "aws_instance" "gandalf-e2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-c1" {
+resource "aws_instance" "gandalf-c1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2862,7 +2862,7 @@ resource "aws_instance" "gandalf-c1" {
 
 		tags {
 			Vpc                   = "Yes"
-			Name                  = "gandalf-c1"
+			Name                  = "gandalf-c1-2b"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
@@ -2883,7 +2883,7 @@ resource "aws_instance" "gandalf-c1" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-c1"
+			Name                  = "gandalf-c1-2b"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
@@ -2894,13 +2894,13 @@ resource "aws_instance" "gandalf-c1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-h1" {
+resource "aws_instance" "gandalf-h1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2909,7 +2909,7 @@ resource "aws_instance" "gandalf-h1" {
 
 		tags {
 			MongoDbMemberState    = "Secondary"
-			Name                  = "gandalf-h1"
+			Name                  = "gandalf-h1-2b"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
@@ -2930,7 +2930,7 @@ resource "aws_instance" "gandalf-h1" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-h1"
+			Name                  = "gandalf-h1-2b"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
@@ -2941,13 +2941,13 @@ resource "aws_instance" "gandalf-h1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-j1" {
+resource "aws_instance" "gandalf-j1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -2957,7 +2957,7 @@ resource "aws_instance" "gandalf-j1" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-j1"
+			Name                  = "gandalf-j1-2b"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
@@ -2978,7 +2978,7 @@ resource "aws_instance" "gandalf-j1" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "gandalf-j1"
+			Name                  = "gandalf-j1-2b"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 		}
@@ -2988,13 +2988,13 @@ resource "aws_instance" "gandalf-j1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-a2" {
+resource "aws_instance" "gandalf-a2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3002,7 +3002,7 @@ resource "aws_instance" "gandalf-a2" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "gandalf-a2"
+			Name                  = "gandalf-a2-2b"
 			MongoDbMemberState    = "Secondary"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
@@ -3024,7 +3024,7 @@ resource "aws_instance" "gandalf-a2" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-a2"
+			Name                  = "gandalf-a2-2b"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
@@ -3035,13 +3035,13 @@ resource "aws_instance" "gandalf-a2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-k2" {
+resource "aws_instance" "gandalf-k2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3054,7 +3054,7 @@ resource "aws_instance" "gandalf-k2" {
 			MongoDbMemberState    = "Secondary"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-k2"
+			Name                  = "gandalf-k2-2b"
 		}
 
 		root_block_device {
@@ -3074,7 +3074,7 @@ resource "aws_instance" "gandalf-k2" {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-k2"
+			Name                  = "gandalf-k2-2b"
 		}
 }
 
@@ -3082,13 +3082,13 @@ resource "aws_instance" "gandalf-k2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-b2" {
+resource "aws_instance" "gandalf-b2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3099,7 +3099,7 @@ resource "aws_instance" "gandalf-b2" {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-b2"
+			Name                  = "gandalf-b2-2b"
 			Env                   = "Prod"
 			MongoDbMemberState    = "Primary"
 		}
@@ -3120,7 +3120,7 @@ resource "aws_instance" "gandalf-b2" {
 		volume_tags {
 			Type                  = "MongoDb"
 			Cluster               = "Gandalf"
-			Name                  = "gandalf-b2"
+			Name                  = "gandalf-b2-2b"
 			Env                   = "Prod"
 		}
 }
@@ -3129,13 +3129,13 @@ resource "aws_instance" "gandalf-b2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-d2" {
+resource "aws_instance" "gandalf-d2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3147,7 +3147,7 @@ resource "aws_instance" "gandalf-d2" {
 			Env                   = "Prod"
 			Type                  = "MongoDb"
 			Vpc                   = "Yes"
-			Name                  = "gandalf-d2"
+			Name                  = "gandalf-d2-2b"
 			MongoDbMemberState    = "Secondary"
 		}
 
@@ -3168,7 +3168,7 @@ resource "aws_instance" "gandalf-d2" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-d2"
+			Name                  = "gandalf-d2-2b"
 		}
 }
 
@@ -3176,13 +3176,13 @@ resource "aws_instance" "gandalf-d2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-i1" {
+resource "aws_instance" "gandalf-i1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3192,7 +3192,7 @@ resource "aws_instance" "gandalf-i1" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-i1"
+			Name                  = "gandalf-i1-2b"
 			MongoDbMemberState    = "Primary"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
@@ -3213,7 +3213,7 @@ resource "aws_instance" "gandalf-i1" {
 		}
 		volume_tags {
 			Type                  = "MongoDb"
-			Name                  = "gandalf-i1"
+			Name                  = "gandalf-i1-2b"
 			Env                   = "Prod"
 			Cluster               = "Gandalf"
 		}
@@ -3223,13 +3223,13 @@ resource "aws_instance" "gandalf-i1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-g1" {
+resource "aws_instance" "gandalf-g1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3237,7 +3237,7 @@ resource "aws_instance" "gandalf-g1" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "gandalf-g1"
+			Name                  = "gandalf-g1-2b"
 			Cluster               = "Gandalf"
 			MongoDbMemberState    = "Secondary"
 			Type                  = "MongoDb"
@@ -3259,7 +3259,7 @@ resource "aws_instance" "gandalf-g1" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "gandalf-g1"
+			Name                  = "gandalf-g1-2b"
 			Cluster               = "Gandalf"
 			Type                  = "MongoDb"
 			Env                   = "Prod"
@@ -3270,13 +3270,13 @@ resource "aws_instance" "gandalf-g1" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-l2" {
+resource "aws_instance" "gandalf-l2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3289,7 +3289,7 @@ resource "aws_instance" "gandalf-l2" {
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-l2"
+			Name                  = "gandalf-l2-2b"
 		}
 
 		root_block_device {
@@ -3309,7 +3309,7 @@ resource "aws_instance" "gandalf-l2" {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
 			Type                  = "MongoDb"
-			Name                  = "gandalf-l2"
+			Name                  = "gandalf-l2-2b"
 		}
 }
 
@@ -3317,13 +3317,13 @@ resource "aws_instance" "gandalf-l2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "gandalf-f1" {
+resource "aws_instance" "gandalf-f1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.gandalf-id}"
 	vpc_security_group_ids      = ["${module.sg.production-db-id}"]
@@ -3333,7 +3333,7 @@ resource "aws_instance" "gandalf-f1" {
 		tags {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-f1"
+			Name                  = "gandalf-f1-2b"
 			Vpc                   = "Yes"
 			Type                  = "MongoDb"
 			MongoDbMemberState    = "Secondary"
@@ -3355,7 +3355,7 @@ resource "aws_instance" "gandalf-f1" {
 		volume_tags {
 			Cluster               = "Gandalf"
 			Env                   = "Prod"
-			Name                  = "gandalf-f1"
+			Name                  = "gandalf-f1-2b"
 			Type                  = "MongoDb"
 		}
 }
@@ -3363,3 +3363,5 @@ resource "aws_instance" "gandalf-f1" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+
