@@ -16,10 +16,10 @@ REGION="`wget -qO- http://instance-data/latest/meta-data/placement/availability-
 TAG_NAME_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --region $REGION --output=text | cut -f5`"
 TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_TYPE" --region $REGION --output=text | cut -f5`"
 ######################################master##################################
-if [[ $TAG_NAME_VALUE =~ cerberus-twemproxy[0][5-6]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ cerberus-twemproxy[0][5-6]-2[b-c] ]]; then
    sudo puppet apply --certname=cerberus-twemproxy.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################slave##################################
-if [[ $TAG_NAME_VALUE =~ prod-twemproxy[0][1-2]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ prod-twemproxy[0][1-2]-2[b-c] ]]; then
    sudo puppet apply --certname=prod-twemproxy.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi

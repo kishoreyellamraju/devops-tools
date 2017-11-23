@@ -1,17 +1,17 @@
-resource "aws_instance" "prod-twemproxy01" {
+resource "aws_instance" "prod-twemproxy01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-twemproxy01"
+			Name                  = "prod-twemproxy01-2b"
 			Type                  = "TwemProxy"
 			Cluster               = "TwemProxy"
 			Vpc                   = "Yes"
@@ -28,11 +28,11 @@ resource "aws_instance" "prod-twemproxy01" {
 			device_name           = "/dev/sdf"
 			snapshot_id           = ""
 			volume_type           = "gp2"
-			volume_size           = 100
+			volume_size           = 160
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "prod-twemproxy01"
+			Name                  = "prod-twemproxy01-2b"
 			Type                  = "TwemProxy"
 			Cluster               = "TwemProxy"
 			Env                   = "Prod"
@@ -43,13 +43,13 @@ resource "aws_instance" "prod-twemproxy01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-twemproxy02" {
+resource "aws_instance" "prod-twemproxy02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -57,7 +57,7 @@ resource "aws_instance" "prod-twemproxy02" {
 
 		tags {
 			Type                  = "TwemProxy"
-			Name                  = "prod-twemproxy02"
+			Name                  = "prod-twemproxy02-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "TwemProxy"
@@ -73,12 +73,12 @@ resource "aws_instance" "prod-twemproxy02" {
 			device_name           = "/dev/sdf"
 			snapshot_id           = ""
 			volume_type           = "gp2"
-			volume_size           = 100
+			volume_size           = 160
 			delete_on_termination = false
 		}
 		volume_tags {
 			Type                  = "TwemProxy"
-			Name                  = "prod-twemproxy02"
+			Name                  = "prod-twemproxy02-2b"
 			Env                   = "Prod"
 			Cluster               = "TwemProxy"
 		}
@@ -88,13 +88,13 @@ resource "aws_instance" "prod-twemproxy02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-twemproxy03" {
+resource "aws_instance" "prod-twemproxy03-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -104,7 +104,7 @@ resource "aws_instance" "prod-twemproxy03" {
 			Vpc                   = "Yes"
 			Cluster               = "TwemProxy"
 			Env                   = "Prod"
-			Name                  = "prod-twemproxy03"
+			Name                  = "prod-twemproxy03-2b"
 			Type                  = "TwemProxy"
 		}
 
@@ -124,7 +124,7 @@ resource "aws_instance" "prod-twemproxy03" {
 		volume_tags {
 			Cluster               = "TwemProxy"
 			Env                   = "Prod"
-			Name                  = "prod-twemproxy03"
+			Name                  = "prod-twemproxy03-2b"
 			Type                  = "TwemProxy"
 		}
 }
@@ -133,13 +133,13 @@ resource "aws_instance" "prod-twemproxy03" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-twemproxy04" {
+resource "aws_instance" "prod-twemproxy04-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-twemproxy-id}"]
 	associate_public_ip_address = false
@@ -149,7 +149,7 @@ resource "aws_instance" "prod-twemproxy04" {
 			Type                  = "TwemProxy"
 			Cluster               = "TwemProxy"
 			Env                   = "Prod"
-			Name                  = "prod-twemproxy04"
+			Name                  = "prod-twemproxy04-2b"
 			Vpc                   = "Yes"
 		}
 
@@ -170,7 +170,7 @@ resource "aws_instance" "prod-twemproxy04" {
 			Type                  = "TwemProxy"
 			Cluster               = "TwemProxy"
 			Env                   = "Prod"
-			Name                  = "prod-twemproxy04"
+			Name                  = "prod-twemproxy04-2b"
 		}
 }
 
@@ -178,13 +178,13 @@ resource "aws_instance" "prod-twemproxy04" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "cerberus-twemproxy06" {
+resource "aws_instance" "cerberus-twemproxy06-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-twemproxy-id}"]
@@ -196,7 +196,7 @@ resource "aws_instance" "cerberus-twemproxy06" {
 			Type                  = "TwemProxy"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "cerberus-twemproxy06"
+			Name                  = "cerberus-twemproxy06-2b"
 		}
 
 		root_block_device {
@@ -216,7 +216,7 @@ resource "aws_instance" "cerberus-twemproxy06" {
 			Cluster               = "Cerberus"
 			Type                  = "TwemProxy"
 			Env                   = "Prod"
-			Name                  = "cerberus-twemproxy06"
+			Name                  = "cerberus-twemproxy06-2b"
 		}
 }
 
@@ -224,13 +224,13 @@ resource "aws_instance" "cerberus-twemproxy06" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "cerberus-twemproxy05" {
+resource "aws_instance" "cerberus-twemproxy05-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-twemproxy-id}"]
@@ -238,7 +238,7 @@ resource "aws_instance" "cerberus-twemproxy05" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "cerberus-twemproxy05"
+			Name                  = "cerberus-twemproxy05-2b"
 			Env                   = "Prod"
 			Type                  = "TwemProxy"
 			Cluster               = "Cerberus"
@@ -259,7 +259,7 @@ resource "aws_instance" "cerberus-twemproxy05" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "cerberus-twemproxy05"
+			Name                  = "cerberus-twemproxy05-2b"
 			Env                   = "Prod"
 			Type                  = "TwemProxy"
 			Cluster               = "Cerberus"
@@ -269,3 +269,5 @@ resource "aws_instance" "cerberus-twemproxy05" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+
