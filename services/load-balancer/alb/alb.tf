@@ -40,13 +40,14 @@ resource "aws_alb_target_group" "web-app" {
 
 /**
  * Target group and EC2 association
-
+*/
 resource "aws_lb_target_group_attachment" "web-app-instance" {
+  count            = "${length(split(module.app.prod-web-app-ids))}"
   target_group_arn = "${aws_lb_target_group.web-app.arn}"
-  target_id        = ["${split(",", module.app.prod-web-app-ids)}"]
+  target_id        = "${element(list(module.app.prod-web-app-ids), count.index)}"
   port             = 9292
 }
- */
+
 /**
  * HTTP Listener for Web App ALB
  */
