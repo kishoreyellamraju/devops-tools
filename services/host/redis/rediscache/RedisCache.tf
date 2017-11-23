@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-redis-cache-a01" {
+resource "aws_instance" "prod-redis-cache-a01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
@@ -12,7 +12,7 @@ resource "aws_instance" "prod-redis-cache-a01" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-redis-cache-a01"
+			Name                  = "prod-redis-cache-a01-2b"
 			Type                  = "Redis"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -33,7 +33,7 @@ resource "aws_instance" "prod-redis-cache-a01" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "prod-redis-cache-a01"
+			Name                  = "prod-redis-cache-a01-2b"
 			Type                  = "Redis"
 			Env                   = "Prod"
 			Cluster               = "RedisCache"
@@ -44,13 +44,13 @@ resource "aws_instance" "prod-redis-cache-a01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-cache-a02" {
+resource "aws_instance" "prod-redis-cache-a02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
@@ -62,7 +62,7 @@ resource "aws_instance" "prod-redis-cache-a02" {
 			Env                   = "Prod"
 			Type                  = "Redis"
 			Vpc                   = "Yes"
-			Name                  = "prod-redis-cache-a02"
+			Name                  = "prod-redis-cache-a02-2b"
 		}
 
 		root_block_device {
@@ -82,7 +82,7 @@ resource "aws_instance" "prod-redis-cache-a02" {
 			Cluster               = "RedisCache"
 			Env                   = "Prod"
 			Type                  = "Redis"
-			Name                  = "prod-redis-cache-a02"
+			Name                  = "prod-redis-cache-a02-2b"
 		}
 }
 
@@ -90,13 +90,13 @@ resource "aws_instance" "prod-redis-cache-a02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-cache-b01" {
+resource "aws_instance" "prod-redis-cache-b01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
@@ -106,7 +106,7 @@ resource "aws_instance" "prod-redis-cache-b01" {
 		tags {
 			Cluster               = "RedisCache"
 			Env                   = "Prod"
-			Name                  = "prod-redis-cache-b01"
+			Name                  = "prod-redis-cache-b01-2b"
 			Type                  = "Redis"
 			Vpc                   = "Yes"
 		}
@@ -127,7 +127,7 @@ resource "aws_instance" "prod-redis-cache-b01" {
 		volume_tags {
 			Cluster               = "RedisCache"
 			Env                   = "Prod"
-			Name                  = "prod-redis-cache-b01"
+			Name                  = "prod-redis-cache-b01-2b"
 			Type                  = "Redis"
 		}
 }
@@ -136,13 +136,13 @@ resource "aws_instance" "prod-redis-cache-b01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-cache-b02" {
+resource "aws_instance" "prod-redis-cache-b02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
@@ -150,7 +150,7 @@ resource "aws_instance" "prod-redis-cache-b02" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-redis-cache-b02"
+			Name                  = "prod-redis-cache-b02-2b"
 			Cluster               = "RedisCache"
 			Env                   = "Prod"
 			Type                  = "Redis"
@@ -171,7 +171,7 @@ resource "aws_instance" "prod-redis-cache-b02" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "prod-redis-cache-b02"
+			Name                  = "prod-redis-cache-b02-2b"
 			Cluster               = "RedisCache"
 			Env                   = "Prod"
 			Type                  = "Redis"
@@ -182,13 +182,13 @@ resource "aws_instance" "prod-redis-cache-b02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-cache-c04" {
+resource "aws_instance" "prod-redis-cache-c04-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
@@ -196,7 +196,7 @@ resource "aws_instance" "prod-redis-cache-c04" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-redis-cache-c04"
+			Name                  = "prod-redis-cache-c04-2b"
 			Vpc                   = "Yes"
 			Cluster               = "RedisCache"
 			Type                  = "Redis"
@@ -217,7 +217,7 @@ resource "aws_instance" "prod-redis-cache-c04" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "prod-redis-cache-c04"
+			Name                  = "prod-redis-cache-c04-2b"
 			Cluster               = "RedisCache"
 			Type                  = "Redis"
 			Env                   = "Prod"
@@ -228,13 +228,13 @@ resource "aws_instance" "prod-redis-cache-c04" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-cache-c03" {
+resource "aws_instance" "prod-redis-cache-c03-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-cache-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-cache-id}"]
@@ -244,7 +244,7 @@ resource "aws_instance" "prod-redis-cache-c03" {
 		tags {
 			Cluster               = "RedisCache"
 			Env                   = "Prod"
-			Name                  = "prod-redis-cache-c03"
+			Name                  = "prod-redis-cache-c03-2b"
 			Vpc                   = "Yes"
 			Type                  = "Redis"
 		}
@@ -265,7 +265,7 @@ resource "aws_instance" "prod-redis-cache-c03" {
 		volume_tags {
 			Cluster               = "RedisCache"
 			Env                   = "Prod"
-			Name                  = "prod-redis-cache-c03"
+			Name                  = "prod-redis-cache-c03-2b"
 			Type                  = "Redis"
 		}
 }
@@ -273,3 +273,5 @@ resource "aws_instance" "prod-redis-cache-c03" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

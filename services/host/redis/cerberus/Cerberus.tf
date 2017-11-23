@@ -1,10 +1,10 @@
-resource "aws_instance" "cerberus-b01" {
+resource "aws_instance" "cerberus-b01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -16,7 +16,7 @@ resource "aws_instance" "cerberus-b01" {
 			Vpc                   = "Yes"
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "cerberus-b01"
+			Name                  = "cerberus-b01-2b"
 		}
 
 		root_block_device {
@@ -36,7 +36,7 @@ resource "aws_instance" "cerberus-b01" {
 			Cluster               = "Cerberus"
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "cerberus-b01"
+			Name                  = "cerberus-b01-2b"
 		}
 }
 
@@ -44,13 +44,13 @@ resource "aws_instance" "cerberus-b01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "cerberus-b02" {
+resource "aws_instance" "cerberus-b02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -61,7 +61,7 @@ resource "aws_instance" "cerberus-b02" {
 			Type                  = "Redis"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "cerberus-b02"
+			Name                  = "cerberus-b02-2b"
 			Cluster               = "Cerberus"
 		}
 
@@ -81,7 +81,7 @@ resource "aws_instance" "cerberus-b02" {
 		volume_tags {
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "cerberus-b02"
+			Name                  = "cerberus-b02-2b"
 			Cluster               = "Cerberus"
 		}
 }
@@ -90,13 +90,13 @@ resource "aws_instance" "cerberus-b02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "cerberus-a01" {
+resource "aws_instance" "cerberus-a01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -108,7 +108,7 @@ resource "aws_instance" "cerberus-a01" {
 			Type                  = "Redis"
 			Vpc                   = "Yes"
 			Cluster               = "Cerberus"
-			Name                  = "cerberus-a01"
+			Name                  = "cerberus-a01-2b"
 		}
 
 		root_block_device {
@@ -128,7 +128,7 @@ resource "aws_instance" "cerberus-a01" {
 			Env                   = "Prod"
 			Type                  = "Redis"
 			Cluster               = "Cerberus"
-			Name                  = "cerberus-a01"
+			Name                  = "cerberus-a01-2b"
 		}
 }
 
@@ -136,13 +136,13 @@ resource "aws_instance" "cerberus-a01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "cerberus-a02" {
+resource "aws_instance" "cerberus-a02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.cerberus-id}"
 	vpc_security_group_ids      = ["${module.sg.cerberus-id}"]
@@ -153,7 +153,7 @@ resource "aws_instance" "cerberus-a02" {
 			Type                  = "Redis"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "cerberus-a02"
+			Name                  = "cerberus-a02-2b"
 			Cluster               = "Cerberus"
 		}
 
@@ -173,7 +173,7 @@ resource "aws_instance" "cerberus-a02" {
 		volume_tags {
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "cerberus-a02"
+			Name                  = "cerberus-a02-2b"
 			Cluster               = "Cerberus"
 		}
 }
@@ -181,3 +181,5 @@ resource "aws_instance" "cerberus-a02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

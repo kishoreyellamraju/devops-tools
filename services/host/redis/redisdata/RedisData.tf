@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-redis-data03" {
+resource "aws_instance" "prod-redis-data03-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-data-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-data-id}"]
@@ -12,7 +12,7 @@ resource "aws_instance" "prod-redis-data03" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-redis-data03"
+			Name                  = "prod-redis-data03-2b"
 			Cluster               = "RedisData"
 			Env                   = "Prod"
 			Type                  = "Redis"
@@ -33,7 +33,7 @@ resource "aws_instance" "prod-redis-data03" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "prod-redis-data03"
+			Name                  = "prod-redis-data03-2b"
 			Cluster               = "RedisData"
 			Env                   = "Prod"
 			Type                  = "Redis"
@@ -44,13 +44,13 @@ resource "aws_instance" "prod-redis-data03" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-data04" {
+resource "aws_instance" "prod-redis-data04-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-data-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-data-id}"]
@@ -61,7 +61,7 @@ resource "aws_instance" "prod-redis-data04" {
 			Vpc                   = "Yes"
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "prod-redis-data04"
+			Name                  = "prod-redis-data04-2b"
 			Cluster               = "RedisData"
 		}
 
@@ -81,7 +81,7 @@ resource "aws_instance" "prod-redis-data04" {
 		volume_tags {
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "prod-redis-data04"
+			Name                  = "prod-redis-data04-2b"
 			Cluster               = "RedisData"
 		}
 }
@@ -89,3 +89,5 @@ resource "aws_instance" "prod-redis-data04" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

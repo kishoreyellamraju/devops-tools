@@ -1,10 +1,10 @@
-resource "aws_instance" "sidekiq-redis-data01" {
+resource "aws_instance" "sidekiq-redis-data01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false
@@ -12,7 +12,7 @@ resource "aws_instance" "sidekiq-redis-data01" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "sidekiq-redis-data01"
+			Name                  = "sidekiq-redis-data01-2b"
 			Cluster               = "Sidekiq"
 			Vpc                   = "Yes"
 			Type                  = "Redis"
@@ -33,7 +33,7 @@ resource "aws_instance" "sidekiq-redis-data01" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "sidekiq-redis-data01"
+			Name                  = "sidekiq-redis-data01-2b"
 			Cluster               = "Sidekiq"
 			Type                  = "Redis"
 		}
@@ -43,13 +43,13 @@ resource "aws_instance" "sidekiq-redis-data01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "sidekiq-redis-data02" {
+resource "aws_instance" "sidekiq-redis-data02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.sidekiq-redis-data-id}"]
 	associate_public_ip_address = false
@@ -60,7 +60,7 @@ resource "aws_instance" "sidekiq-redis-data02" {
 			Type                  = "Redis"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "sidekiq-redis-data02"
+			Name                  = "sidekiq-redis-data02-2c"
 		}
 
 		root_block_device {
@@ -80,10 +80,12 @@ resource "aws_instance" "sidekiq-redis-data02" {
 			Cluster               = "Sidekiq"
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "sidekiq-redis-data02"
+			Name                  = "sidekiq-redis-data02-2c"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

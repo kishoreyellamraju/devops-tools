@@ -1,10 +1,10 @@
-resource "aws_instance" "stormlight-a02" {
+resource "aws_instance" "stormlight-a02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stormlight-id}"
 	vpc_security_group_ids      = ["${module.sg.stormlight-id}"]
@@ -15,7 +15,7 @@ resource "aws_instance" "stormlight-a02" {
 			Env                   = "Prod"
 			Cluster               = "Stormlight"
 			Vpc                   = "Yes"
-			Name                  = "stormlight-a02"
+			Name                  = "stormlight-a02-2b"
 			Type                  = "Redis"
 		}
 
@@ -35,7 +35,7 @@ resource "aws_instance" "stormlight-a02" {
 		volume_tags {
 			Env                   = "Prod"
 			Cluster               = "Stormlight"
-			Name                  = "stormlight-a02"
+			Name                  = "stormlight-a02-2b"
 			Type                  = "Redis"
 		}
 }
@@ -44,13 +44,13 @@ resource "aws_instance" "stormlight-a02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "stormlight-a01" {
+resource "aws_instance" "stormlight-a01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.stormlight-id}"
 	vpc_security_group_ids      = ["${module.sg.stormlight-id}"]
@@ -61,7 +61,7 @@ resource "aws_instance" "stormlight-a01" {
 			Cluster               = "Stormlight"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "stormlight-a01"
+			Name                  = "stormlight-a01-2b"
 			Type                  = "Redis"
 		}
 
@@ -81,7 +81,7 @@ resource "aws_instance" "stormlight-a01" {
 		volume_tags {
 			Cluster               = "Stormlight"
 			Env                   = "Prod"
-			Name                  = "stormlight-a01"
+			Name                  = "stormlight-a01-2b"
 			Type                  = "Redis"
 		}
 }
@@ -89,3 +89,5 @@ resource "aws_instance" "stormlight-a01" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

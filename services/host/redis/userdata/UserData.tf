@@ -1,10 +1,10 @@
-resource "aws_instance" "prod-redis-userdata-a03" {
+resource "aws_instance" "prod-redis-userdata-a03-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
@@ -16,7 +16,7 @@ resource "aws_instance" "prod-redis-userdata-a03" {
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Cluster               = "UserData"
-			Name                  = "prod-redis-userdata-a03"
+			Name                  = "prod-redis-userdata-a03-2b"
 		}
 
 		root_block_device {
@@ -36,7 +36,7 @@ resource "aws_instance" "prod-redis-userdata-a03" {
 			Type                  = "Redis"
 			Env                   = "Prod"
 			Cluster               = "UserData"
-			Name                  = "prod-redis-userdata-a03"
+			Name                  = "prod-redis-userdata-a03-2b"
 		}
 }
 
@@ -44,13 +44,13 @@ resource "aws_instance" "prod-redis-userdata-a03" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-userdata-a02" {
+resource "aws_instance" "prod-redis-userdata-a02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
@@ -61,7 +61,7 @@ resource "aws_instance" "prod-redis-userdata-a02" {
 			Type                  = "Redis"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
-			Name                  = "prod-redis-userdata-a02"
+			Name                  = "prod-redis-userdata-a02-2b"
 			Cluster               = "UserData"
 		}
 
@@ -81,7 +81,7 @@ resource "aws_instance" "prod-redis-userdata-a02" {
 		volume_tags {
 			Type                  = "Redis"
 			Env                   = "Prod"
-			Name                  = "prod-redis-userdata-a02"
+			Name                  = "prod-redis-userdata-a02-2b"
 			Cluster               = "UserData"
 		}
 }
@@ -90,13 +90,13 @@ resource "aws_instance" "prod-redis-userdata-a02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-userdata-a01" {
+resource "aws_instance" "prod-redis-userdata-a01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.8xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
@@ -104,7 +104,7 @@ resource "aws_instance" "prod-redis-userdata-a01" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-redis-userdata-a01"
+			Name                  = "prod-redis-userdata-a01-2b"
 			Vpc                   = "Yes"
 			Type                  = "Redis"
 			Cluster               = "UserData"
@@ -125,7 +125,7 @@ resource "aws_instance" "prod-redis-userdata-a01" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "prod-redis-userdata-a01"
+			Name                  = "prod-redis-userdata-a01-2b"
 			Type                  = "Redis"
 			Cluster               = "UserData"
 			Env                   = "Prod"
@@ -136,13 +136,13 @@ resource "aws_instance" "prod-redis-userdata-a01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-redis-userdata-a04" {
+resource "aws_instance" "prod-redis-userdata-a04-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	placement_group             = "${module.placementgroup.redis-userdata-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-userdata-id}"]
@@ -150,7 +150,7 @@ resource "aws_instance" "prod-redis-userdata-a04" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-redis-userdata-a04"
+			Name                  = "prod-redis-userdata-a04-2b"
 			Cluster               = "UserData"
 			Type                  = "Redis"
 			Env                   = "Prod"
@@ -164,7 +164,7 @@ resource "aws_instance" "prod-redis-userdata-a04" {
 		}
 
 		volume_tags {
-			Name                  = "prod-redis-userdata-a04"
+			Name                  = "prod-redis-userdata-a04-2b"
 			Cluster               = "UserData"
 			Type                  = "Redis"
 			Env                   = "Prod"
@@ -174,3 +174,5 @@ resource "aws_instance" "prod-redis-userdata-a04" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+
