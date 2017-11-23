@@ -99,5 +99,9 @@ output "sparkemrpublic1c-id" {
 }
 
 output "appsubnets"{
-     value =["${data.terraform_remote_state.subnet.apppublicsubnetb-id}","${data.terraform_remote_state.subnet.apppublicsubnetc-id}"]
+     value =["${data.terraform_remote_state.subnet.publicsubnetb-id}","${data.terraform_remote_state.subnet.publicsubnetc-id}"]
+}
+
+output "accesssubnets"{
+     value =["${data.terraform_remote_state.subnet.publicsubnetb-id}","${data.terraform_remote_state.subnet.publicsubnetc-id}"]
 }

@@ -1,127 +1,102 @@
-resource "aws_instance" "spark-access01-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.large"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.sparkemrpublic1b-id}"
-	vpc_security_group_ids      = ["${module.sg.spark-access-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
+
+resource "aws_instance" "spark-access" {
+	count 											= "${var.spark_count}"
+	ami                         = "${var.spark_ami}"
+	ebs_optimized               = "${var.spark_ebs_optimized}"
+	instance_type               = "${var.spark_instance_type}"
+	monitoring                  = "${var.spark_monitoring}"
+	key_name                    = "${var.spark_key_name}"
+  user_data 									= "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.spark-access-id}"
+	vpc_security_group_ids      = ["${module.sg.production-app-id}"]
+	associate_public_ip_address = "${var.spark_associate_public_ip_address}"
+	source_dest_check           = "${var.spark_source_dest_check}"
 
 		tags {
-			Vpc                   = "Yes"
-			Name                  = "spark-access01-b"
-			Env                   = "Spark"
-			Type                  = "Access"
-			Cluster               = "Access"
+			Type                  = "${var.spark_tag-type}"
+			Env                   = "${var.spark_env}"
+			Cluster               = "${var.spark_tag-cluster}"
+			Vpc                   = "${var.spark_tag-vpc}"
+			Name                  = "${var.spark_tag-name}-${count.index}${element(var.az, count.index)}"
 		}
 
 		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Name                  = "spark-access01-b"
-			Env                   = "Spark"
-			Type                  = "Access"
-			Cluster               = "Access"
+			volume_type           = "${var.root-volume_type}"
+			volume_size           = "${var.root-volume_size}"
+			delete_on_termination = "${var.root-volume-delete_on_termination}"
 		}
 }
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-access01-c" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "t2.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.publicsubnetc-id}"
+###############################POSHMARK#####################################3
+resource "aws_instance" "poshmark-access" {
+	count 											= "${var.poshmark_count}"
+	ami                         = "${var.poshmark_ami}"
+	ebs_optimized               = "${var.poshmark_ebs_optimized}"
+	instance_type               = "${var.poshmark_instance_type}"
+	monitoring                  = "${var.poshmark_monitoring}"
+	key_name                    = "${var.poshmark_key_name}"
+  user_data 									= "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${element(module.subnet.accesssubnets, count.index)}"
 	vpc_security_group_ids      = ["${module.sg.production-access-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
+	associate_public_ip_address = "${var.poshmark_associate_public_ip_address}"
+	source_dest_check           = "${var.poshmark_source_dest_check}"
 
 		tags {
-			Vpc                   = "Yes"
-			Env                   = "Prod"
-			Name                  = "prod-access01-c"
-			Cluster               = "Access"
-			Type                  = "Access"
+			Type                  = "${var.poshmark_tag-type}"
+			Env                   = "${var.poshmark_env}"
+			Cluster               = "${var.poshmark_tag-cluster}"
+			Vpc                   = "${var.poshmark_tag-vpc}"
+			Name                  = "${var.poshmark_tag-name}-${count.index}${element(var.az, count.index)}"
 		}
 
 		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-85db6847"
-			volume_type           = "standard"
-			volume_size           = 32
-			delete_on_termination = false
-		}
-		volume_tags {
-			Env                   = "Prod"
-			Name                  = "prod-access01-c"
-			Cluster               = "Access"
-			Type                  = "Access"
+			volume_type           = "${var.root-volume_type}"
+			volume_size           = "${var.root-volume_size}"
+			delete_on_termination = "${var.root-volume-delete_on_termination}"
 		}
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "prod-access01-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = false
-	instance_type               = "t2.medium"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.publicsubnetb-id}"
-	vpc_security_group_ids      = ["${module.sg.production-access-id}"]
-	associate_public_ip_address = true
-	source_dest_check           = true
+###############################################################################
+resource "aws_instance" "poshmark-gateway" {
+	count 											= "${var.poshmark_gateway_count}"
+	ami                         = "${var.poshmark_gateway_ami}"
+	ebs_optimized               = "${var.poshmark_gateway_ebs_optimized}"
+	instance_type               = "${var.poshmark_gateway_instance_type}"
+	monitoring                  = "${var.poshmark_gateway_monitoring}"
+	key_name                    = "${var.poshmark_gateway_key_name}"
+  user_data 									= "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${element(module.subnet.appsubnets, count.index)}"
+	vpc_security_group_ids      = ["${module.sg.production-gateway-id}","${module.sg.production-reporting-gateway-id}"]
+	associate_public_ip_address = "${var.poshmark_gateway_associate_public_ip_address}"
+	source_dest_check           = "${var.poshmark_gateway_source_dest_check}"
 
 		tags {
-			Vpc                   = "Yes"
-			Name                  = "prod-access01-b"
-			Env                   = "Prod"
-			Type                  = "Access"
-			Cluster               = "Access"
+			Type                  = "${var.poshmark_gateway_tag-type}"
+			Env                   = "${var.poshmark_gateway_env}"
+			Cluster               = "${var.poshmark_gateway_tag-cluster}"
+			Vpc                   = "${var.poshmark_gateway_tag-vpc}"
+			Name                  = "${var.poshmark_gateway_tag-name}-${count.index}${element(var.az, count.index)}"
 		}
 
 		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		ebs_block_device {
-			device_name           = "/dev/sdf"
-			snapshot_id           = "snap-85db6847"
-			volume_type           = "standard"
-			volume_size           = 32
-			delete_on_termination = false
-		}
-		volume_tags {
-			Name                  = "prod-access01-b"
-			Env                   = "Prod"
-			Type                  = "Access"
-			Cluster               = "Access"
+			volume_type           = "${var.poshmark_gateway_root-volume_type}"
+			volume_size           = "${var.poshmark_gateway_root-volume_size}"
+			delete_on_termination = "${var.poshmark_gateway_root-volume-delete_on_termination}"
 		}
 }
 
-###################################################################################################
-###################################################################################################
-###################################################################################################
+
+#########################################################
+#  				Outputs
+#########################################################
+
+output "spark-access-ids" {
+  value = "${join(",", aws_instance.spark-access.*.id)}"
+}
+
+output "poshmark-access-ids" {
+  value = "${join(",", aws_instance.poshmark-access.*.id)}"
+}
+
+output "poshmark-gateway-ids" {
+  value = "${join(",", aws_instance.poshmark-gateway.*.id)}"
+}

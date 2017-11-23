@@ -4,7 +4,6 @@ variable "appname"			               {}
 variable "bu"					                 {}
 variable "key_name"                    {}
 variable "ami"                         {}
-variable "subnets"                     { type="list"}
 variable "count"                       {}
 variable "ebs_optimized"               {}
 variable "monitoring"                  {}
@@ -18,5 +17,4 @@ variable "tag-type"                    {}
 variable "tag-cluster"                 {}
 variable "tag-vpc"                     {}
 variable "tag-name"                    {}
-variable "security_group"              {}
 variable "instance_type"               {}
