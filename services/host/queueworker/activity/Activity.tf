@@ -16,7 +16,7 @@ resource "aws_instance" "prod-act-qw" {
 			Env                   = "${var.env}"
 			Cluster               = "${var.tag-cluster}"
 			Vpc                   = "${var.tag-vpc}"
-			Name                  = "${count.index} < 10 ? ${var.tag-name}-${count.index} : ${var.tag-name}-${count.index}"
+			Name                  = "${count.index} < 10 ? ${var.tag-name}-0${count.index}-${element(var.az, count.index)} : ${var.tag-name}-${count.index}-${element(var.az, count.index)}"
 		}
 
 		root_block_device {
