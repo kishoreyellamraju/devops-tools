@@ -1,10 +1,10 @@
-resource "aws_instance" "flopsy-queue2" {
+resource "aws_instance" "flopsy-queue2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-queue-id}"]
 	associate_public_ip_address = true
@@ -13,7 +13,7 @@ resource "aws_instance" "flopsy-queue2" {
 		tags {
 			Type                  = "Queue"
 			Cluster               = "Flopsy"
-			Name                  = "flopsy-queue2"
+			Name                  = "flopsy-queue2-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 		}
@@ -27,7 +27,7 @@ resource "aws_instance" "flopsy-queue2" {
 		volume_tags {
 			Type                  = "Queue"
 			Cluster               = "Flopsy"
-			Name                  = "flopsy-queue2"
+			Name                  = "flopsy-queue2-2b"
 			Env                   = "Prod"
 		}
 }
@@ -36,13 +36,13 @@ resource "aws_instance" "flopsy-queue2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "flopsy-queue1" {
+resource "aws_instance" "flopsy-queue1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "r3.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-queue-id}"]
 	associate_public_ip_address = true
@@ -51,7 +51,7 @@ resource "aws_instance" "flopsy-queue1" {
 		tags {
 			Vpc                   = "Yes"
 			Type                  = "Queue"
-			Name                  = "flopsy-queue1"
+			Name                  = "flopsy-queue1-2b"
 			Env                   = "Prod"
 			Cluster               = "Flopsy"
 		}
@@ -64,7 +64,7 @@ resource "aws_instance" "flopsy-queue1" {
 
 		volume_tags {
 			Type                  = "Queue"
-			Name                  = "flopsy-queue1"
+			Name                  = "flopsy-queue1-2b"
 			Env                   = "Prod"
 			Cluster               = "Flopsy"
 		}
@@ -73,3 +73,5 @@ resource "aws_instance" "flopsy-queue1" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

@@ -1,17 +1,17 @@
-resource "aws_instance" "prod-yaga-queue1" {
+resource "aws_instance" "prod-yaga-queue1-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "r4.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-logs-queue-id}"]
 	associate_public_ip_address = true
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-yaga-queue1"
+			Name                  = "prod-yaga-queue1-2b"
 			Type                  = "LogsQueue"
 			Vpc                   = "Yes"
 			Cluster               = "Yaga"
@@ -32,7 +32,7 @@ resource "aws_instance" "prod-yaga-queue1" {
 			delete_on_termination = true
 		}
 		volume_tags {
-			Name                  = "prod-yaga-queue1"
+			Name                  = "prod-yaga-queue1-2b"
 			Type                  = "LogsQueue"
 			Cluster               = "Yaga"
 			Env                   = "Prod"
@@ -42,3 +42,5 @@ resource "aws_instance" "prod-yaga-queue1" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+
