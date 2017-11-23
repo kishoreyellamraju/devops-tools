@@ -24,7 +24,3 @@ data "terraform_remote_state" "webapp" {
 output "prod-web-app-ids" {
   value = "${data.terraform_remote_state.webapp.prod-web-app-ids}"
 }
-
-output "prod-web-app-ids-count" {
-  value = "${length(data.terraform_remote_state.webapp.prod-web-app-ids)}"
-}

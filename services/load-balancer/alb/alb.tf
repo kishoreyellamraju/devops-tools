@@ -42,7 +42,7 @@ resource "aws_alb_target_group" "web-app" {
  * Target group and EC2 association
 */
 resource "aws_lb_target_group_attachment" "web-app-instance" {
-  count            = "${module.app.prod-web-app-ids-count}"
+  count            = "${var.webapp_count}"
   target_group_arn = "${aws_alb_target_group.web-app.arn}"
   target_id        = "${element(list(module.app.prod-web-app-ids), count.index)}"
   port             = 9292
@@ -165,13 +165,14 @@ resource "aws_alb" "vpc-et-poshmark" {
 
 /**
  * Target group and EC2 association
-
+*/
 resource "aws_lb_target_group_attachment" "et-app-instance" {
-  target_group_arn = "${aws_lb_target_group.et-app.arn}"
-  target_id        = ["${split(",", module.app.prod-et-app-ids)}"]
+    count            = "${var.etapp_count}"
+  target_group_arn = "${aws_alb_target_group.et-app.arn}"
+  target_id        = "${element(list(module.app.prod-et-app-ids), count.index)}"
   port             = 9292
 }
- */
+
 /**
  * Target group for ET ALB
  */
@@ -233,13 +234,15 @@ resource "aws_alb_target_group" "mapp-app" {
 
 /**
  * Target group and EC2 association
-
+*/
 resource "aws_lb_target_group_attachment" "mapp-app-instance" {
-  target_group_arn = "${aws_lb_target_group.mapp-app.arn}"
-  target_id        = "${aws_instance.prod-mapp-app.*.id}"
+  count            = "${var.mapapp_count}"
+  target_group_arn = "${aws_alb_target_group.mapp-app.arn}"
+  target_id        = "${element(list(module.app.prod-mapp-app-ids), count.index)}"
   port             = 9292
 }
- */
+
+
 ############################################################ Mapp ALB ############################################################
 
 
@@ -261,11 +264,13 @@ resource "aws_alb_target_group" "up-app" {
 
 /**
  * Target group and EC2 association
-
+*/
 resource "aws_lb_target_group_attachment" "up-app-instance" {
+  count            = "${var.upapp_count}"
   target_group_arn = "${aws_lb_target_group.up-app.arn}"
-  target_id        = ["${split(",", module.app.prod-up-app-ids)}"]
+  target_id        = "${element(list(module.app.prod-up-app-ids), count.index)}"
   port             = 9292
 }
- */
+
+
 ############################################################ Mapp ALB ############################################################

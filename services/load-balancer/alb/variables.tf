@@ -12,3 +12,7 @@ variable "region"				{}
 variable "env"					{}
 variable "appname"			{}
 variable "bu"					  {}
+variable "webapp_count" {}
+variable "etapp_count"  {}
+variable "upapp_count"  {}
+variable "mapapp_count" {}
