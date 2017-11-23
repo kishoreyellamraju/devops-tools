@@ -25,6 +25,13 @@ resource "aws_instance" "prod-act-qw" {
 			volume_size           = "${var.root-volume_size}"
 			delete_on_termination = "${var.root-volume-delete_on_termination}"
 		}
+
+		volume_tags {
+			Cluster               = "${var.tag-cluster}"
+			Env                   = "${var.env}"
+			Name                  = "${var.tag-name}-${count.index}${element(var.az, count.index)}"
+			Type                  = "${var.tag-type}"
+		}
 }
 
 #########################################################
