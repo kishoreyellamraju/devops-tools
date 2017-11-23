@@ -1,10 +1,10 @@
-resource "aws_instance" "search-haproxy01-b" {
+resource "aws_instance" "search-haproxy01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-haproxy-id}"]
 	associate_public_ip_address = false
@@ -13,7 +13,7 @@ resource "aws_instance" "search-haproxy01-b" {
 		tags {
 			Cluster               = "Search"
 			Type                  = "HaProxy"
-			Name                  = "search-haproxy01-b"
+			Name                  = "search-haproxy01-2b"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 		}
@@ -27,7 +27,7 @@ resource "aws_instance" "search-haproxy01-b" {
 		volume_tags {
 			Cluster               = "Search"
 			Type                  = "HaProxy"
-			Name                  = "search-haproxy01-b"
+			Name                  = "search-haproxy01-2b"
 			Env                   = "Prod"
 		}
 }
@@ -36,13 +36,13 @@ resource "aws_instance" "search-haproxy01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "redis-haproxy02" {
+resource "aws_instance" "redis-haproxy02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-haproxy-id}"]
 	associate_public_ip_address = false
@@ -50,7 +50,7 @@ resource "aws_instance" "redis-haproxy02" {
 
 		tags {
 			Type                  = "HaProxy"
-			Name                  = "redis-haproxy02"
+			Name                  = "redis-haproxy02-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "Redis"
@@ -64,7 +64,7 @@ resource "aws_instance" "redis-haproxy02" {
 
 		volume_tags {
 			Type                  = "HaProxy"
-			Name                  = "redis-haproxy02"
+			Name                  = "redis-haproxy02-2b"
 			Env                   = "Prod"
 			Cluster               = "Redis"
 		}
@@ -74,13 +74,13 @@ resource "aws_instance" "redis-haproxy02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "search-haproxy01-c" {
+resource "aws_instance" "search-haproxy01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-haproxy-id}"]
 	associate_public_ip_address = false
@@ -91,7 +91,7 @@ resource "aws_instance" "search-haproxy01-c" {
 			Vpc                   = "Yes"
 			Cluster               = "Search"
 			Type                  = "HaProxy"
-			Name                  = "search-haproxy01-c"
+			Name                  = "search-haproxy01-2c"
 		}
 
 		root_block_device {
@@ -104,7 +104,7 @@ resource "aws_instance" "search-haproxy01-c" {
 			Env                   = "Prod"
 			Cluster               = "Search"
 			Type                  = "HaProxy"
-			Name                  = "search-haproxy01-c"
+			Name                  = "search-haproxy01-2c"
 		}
 }
 
@@ -112,20 +112,20 @@ resource "aws_instance" "search-haproxy01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "redis-haproxy01" {
+resource "aws_instance" "redis-haproxy01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-redis-haproxy-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "redis-haproxy01"
+			Name                  = "redis-haproxy01-2b"
 			Type                  = "HaProxy"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -139,7 +139,7 @@ resource "aws_instance" "redis-haproxy01" {
 		}
 
 		volume_tags {
-			Name                  = "redis-haproxy01"
+			Name                  = "redis-haproxy01-2b"
 			Type                  = "HaProxy"
 			Env                   = "Prod"
 			Cluster               = "Redis"
@@ -150,20 +150,20 @@ resource "aws_instance" "redis-haproxy01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "mocha-haproxy02" {
+resource "aws_instance" "mocha-haproxy02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mocha-haproxy-id}"]
 	associate_public_ip_address = true
 	source_dest_check           = true
 
 		tags {
-			Name                  = "mocha-haproxy02"
+			Name                  = "mocha-haproxy02-2b"
 			Env                   = "Prod"
 			Type                  = "HaProxy"
 			Cluster               = "Mocha"
@@ -176,7 +176,7 @@ resource "aws_instance" "mocha-haproxy02" {
 		}
 
 		volume_tags {
-			Name                  = "mocha-haproxy02"
+			Name                  = "mocha-haproxy02-2b"
 			Env                   = "Prod"
 			Type                  = "HaProxy"
 			Cluster               = "Mocha"
@@ -187,20 +187,20 @@ resource "aws_instance" "mocha-haproxy02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-vault-haproxy01" {
+resource "aws_instance" "prod-vault-haproxy01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.publicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-vault-haproxy-id}"]
 	associate_public_ip_address = true
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-vault-haproxy01"
+			Name                  = "prod-vault-haproxy01-2b"
 			Cluster               = "Vault"
 			Env                   = "Prod"
 			Type                  = "HaProxy"
@@ -214,7 +214,7 @@ resource "aws_instance" "prod-vault-haproxy01" {
 		}
 
 		volume_tags {
-			Name                  = "prod-vault-haproxy01"
+			Name                  = "prod-vault-haproxy01-2b"
 			Cluster               = "Vault"
 			Env                   = "Prod"
 			Type                  = "HaProxy"
@@ -224,3 +224,5 @@ resource "aws_instance" "prod-vault-haproxy01" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+
