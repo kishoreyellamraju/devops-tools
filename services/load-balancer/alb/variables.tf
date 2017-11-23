@@ -12,4 +12,3 @@ variable "region"				{}
 variable "env"					{}
 variable "appname"			{}
 variable "bu"					  {}
-variable "web-app-instance-count" {}
