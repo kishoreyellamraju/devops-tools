@@ -267,7 +267,7 @@ resource "aws_alb_target_group" "up-app" {
 */
 resource "aws_lb_target_group_attachment" "up-app-instance" {
   count            = "${var.upapp_count}"
-  target_group_arn = "${aws_lb_target_group.up-app.arn}"
+  target_group_arn = "${aws_alb_target_group.up-app.arn}"
   target_id        = "${element(list(module.app.prod-up-app-ids), count.index)}"
   port             = 9292
 }
