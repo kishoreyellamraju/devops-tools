@@ -1,4 +1,5 @@
 variable "region"                            {}
+variable "env"					                     {}
 variable "count"                             {}
 variable "ami"                               {}
 variable "ebs_optimized"                     {}
@@ -17,4 +18,3 @@ variable "tag-type"                          {}
 variable "tag-name"                          {}
 variable "tag-cluster"                       {}
 variable "az"                                { type="list" }
-

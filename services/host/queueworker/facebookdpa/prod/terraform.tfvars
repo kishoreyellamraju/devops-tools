@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "1"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -16,4 +17,3 @@ tag-vpc                            = "Yes"
 tag-cluster                        = "FacebookDpa"
 tag-type                           = "QueueWorker"
 az                                 = ["2b", "2c"]
-

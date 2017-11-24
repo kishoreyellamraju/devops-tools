@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "19"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -17,4 +18,3 @@ tag-name                           = "prod-co-qw"
 tag-vpc                            = "Yes"
 tag-cluster                        = "Commerce"
 az                                 = ["2b", "2c"]
-

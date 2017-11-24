@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "8"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -17,4 +18,3 @@ tag-name                           = "prod-pi-qw"
 tag-env                            = "Prod"
 tag-cluster                        = "PostIndexing"
 az                                 = ["2b", "2c"]
-

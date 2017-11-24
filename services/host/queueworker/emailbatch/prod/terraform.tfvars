@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "32"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -17,4 +18,3 @@ tag-cluster                        = "EmailBatch"
 tag-env                            = "Prod"
 tag-type                           = "QueueWorker"
 az                                 = ["2b", "2c"]
-

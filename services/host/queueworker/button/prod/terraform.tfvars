@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "4"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -16,4 +17,3 @@ tag-cluster                        = "Button"
 tag-vpc                            = "Yes"
 tag-type                           = "QueueWorker"
 az                                 = ["2b", "2c"]
-

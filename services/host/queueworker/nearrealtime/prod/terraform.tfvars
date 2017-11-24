@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "8"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -16,4 +17,3 @@ tag-cluster                        = "NearRealTime"
 tag-env                            = "Prod"
 tag-vpc                            = "Yes"
 az                                 = ["2b", "2c"]
-

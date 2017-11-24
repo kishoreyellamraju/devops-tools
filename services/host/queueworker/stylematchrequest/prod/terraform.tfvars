@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "2"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -16,4 +17,3 @@ tag-name                           = "prod-smr-qw"
 tag-vpc                            = "Yes"
 tag-type                           = "QueueWorker"
 az                                 = ["2b", "2c"]
-

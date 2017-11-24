@@ -1,5 +1,5 @@
 region                      =	"us-west-2"
-env                         =	"Prod"
+env                         =	"prod"
 appname                     =	"poshmark"
 bu                          =	"it"
 az                          = ["2b","2c"]

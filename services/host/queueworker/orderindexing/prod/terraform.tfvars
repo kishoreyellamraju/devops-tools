@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "2"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -16,4 +17,3 @@ tag-env                            = "Prod"
 tag-vpc                            = "Yes"
 tag-name                           = "prod-oi-qw"
 az                                 = ["2b", "2c"]
-

@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "16"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -17,4 +18,3 @@ tag-type                           = "QueueWorker"
 tag-name                           = "prod-ip-qw"
 tag-cluster                        = "ImageProcessing"
 az                                 = ["2b", "2c"]
-

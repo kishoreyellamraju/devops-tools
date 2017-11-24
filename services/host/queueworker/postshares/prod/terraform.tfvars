@@ -1,4 +1,5 @@
 region                             = "us-west-2"
+env                                =	"prod"
 count                              = "24"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
@@ -17,4 +18,3 @@ tag-env                            = "Prod"
 tag-cluster                        = "PostShares"
 iam_instance_profile               = "arn:aws:iam::666737672436:instance-profile/implicit-share-worker"
 az                                 = ["2b", "2c"]
-
