@@ -18,5 +18,4 @@ variable "tag-vpc"                           {}
 variable "tag-type"                          {}
 variable "tag-env"                           {}
 variable "tag-cluster"                       {}
-variable "iam_instance_profile"              {}
 variable "az"                                { type="list" }
