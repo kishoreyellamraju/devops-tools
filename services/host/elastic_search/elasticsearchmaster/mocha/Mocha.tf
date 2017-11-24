@@ -1,18 +1,18 @@
-resource "aws_instance" "mocha-master03" {
+resource "aws_instance" "mocha-master03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "mocha-master03"
+			Name                  = "mocha-master03-2c"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchMaster"
@@ -26,7 +26,7 @@ resource "aws_instance" "mocha-master03" {
 		}
 
 		volume_tags {
-			Name                  = "mocha-master03"
+			Name                  = "mocha-master03-2c"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Mocha"
@@ -37,14 +37,14 @@ resource "aws_instance" "mocha-master03" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "mocha-master01" {
+resource "aws_instance" "mocha-master01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -54,7 +54,7 @@ resource "aws_instance" "mocha-master01" {
 			Vpc                   = "Yes"
 			Cluster               = "Mocha"
 			Type                  = "ElasticSearchMaster"
-			Name                  = "mocha-master01"
+			Name                  = "mocha-master01-2b"
 			Env                   = "Prod"
 		}
 
@@ -67,7 +67,7 @@ resource "aws_instance" "mocha-master01" {
 		volume_tags {
 			Cluster               = "Mocha"
 			Type                  = "ElasticSearchMaster"
-			Name                  = "mocha-master01"
+			Name                  = "mocha-master01-2b"
 			Env                   = "Prod"
 		}
 }
@@ -76,14 +76,14 @@ resource "aws_instance" "mocha-master01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "mocha-master02" {
+resource "aws_instance" "mocha-master02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "m4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mocha-id}"]
 	associate_public_ip_address = false
@@ -91,7 +91,7 @@ resource "aws_instance" "mocha-master02" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "mocha-master02"
+			Name                  = "mocha-master02-2b"
 			Type                  = "ElasticSearchMaster"
 			Vpc                   = "Yes"
 			Cluster               = "Mocha"
@@ -105,7 +105,7 @@ resource "aws_instance" "mocha-master02" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "mocha-master02"
+			Name                  = "mocha-master02-2b"
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Mocha"
 		}
@@ -114,3 +114,5 @@ resource "aws_instance" "mocha-master02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

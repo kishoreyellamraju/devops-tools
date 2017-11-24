@@ -1,11 +1,11 @@
-resource "aws_instance" "latte-client01-c" {
+resource "aws_instance" "latte-client01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -16,7 +16,7 @@ resource "aws_instance" "latte-client01-c" {
 			Cluster               = "Latte"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchClient"
-			Name                  = "latte-client01-c"
+			Name                  = "latte-client01-2c"
 			Vpc                   = "Yes"
 		}
 
@@ -30,7 +30,7 @@ resource "aws_instance" "latte-client01-c" {
 			Cluster               = "Latte"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchClient"
-			Name                  = "latte-client01-c"
+			Name                  = "latte-client01-2c"
 		}
 }
 
@@ -38,14 +38,14 @@ resource "aws_instance" "latte-client01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client02-c" {
+resource "aws_instance" "latte-client02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -55,7 +55,7 @@ resource "aws_instance" "latte-client02-c" {
 		tags {
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "latte-client02-c"
+			Name                  = "latte-client02-2c"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchClient"
 		}
@@ -68,7 +68,7 @@ resource "aws_instance" "latte-client02-c" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "latte-client02-c"
+			Name                  = "latte-client02-2c"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchClient"
 		}
@@ -78,14 +78,14 @@ resource "aws_instance" "latte-client02-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client03-c" {
+resource "aws_instance" "latte-client03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -95,7 +95,7 @@ resource "aws_instance" "latte-client03-c" {
 		tags {
 			Vpc                   = "Yes"
 			Env                   = "Prod"
-			Name                  = "latte-client03-c"
+			Name                  = "latte-client03-2c"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchClient"
 		}
@@ -108,7 +108,7 @@ resource "aws_instance" "latte-client03-c" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "latte-client03-c"
+			Name                  = "latte-client03-2c"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchClient"
 		}
@@ -118,14 +118,14 @@ resource "aws_instance" "latte-client03-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client04-c" {
+resource "aws_instance" "latte-client04-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -137,7 +137,7 @@ resource "aws_instance" "latte-client04-c" {
 			Type                  = "ElasticSearchClient"
 			Cluster               = "Latte"
 			Env                   = "Prod"
-			Name                  = "latte-client04-c"
+			Name                  = "latte-client04-2c"
 		}
 
 		root_block_device {
@@ -150,7 +150,7 @@ resource "aws_instance" "latte-client04-c" {
 			Type                  = "ElasticSearchClient"
 			Cluster               = "Latte"
 			Env                   = "Prod"
-			Name                  = "latte-client04-c"
+			Name                  = "latte-client04-2c"
 		}
 }
 
@@ -158,14 +158,14 @@ resource "aws_instance" "latte-client04-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client05-c" {
+resource "aws_instance" "latte-client05-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -177,7 +177,7 @@ resource "aws_instance" "latte-client05-c" {
 			Vpc                   = "Yes"
 			Cluster               = "Latte"
 			Env                   = "Prod"
-			Name                  = "latte-client05-c"
+			Name                  = "latte-client05-2c"
 		}
 
 		root_block_device {
@@ -190,7 +190,7 @@ resource "aws_instance" "latte-client05-c" {
 			Type                  = "ElasticSearchClient"
 			Cluster               = "Latte"
 			Env                   = "Prod"
-			Name                  = "latte-client05-c"
+			Name                  = "latte-client05-2c"
 		}
 }
 
@@ -198,14 +198,14 @@ resource "aws_instance" "latte-client05-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client06-c" {
+resource "aws_instance" "latte-client06-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.latte-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -213,7 +213,7 @@ resource "aws_instance" "latte-client06-c" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "latte-client06-c"
+			Name                  = "latte-client06-2c"
 			Cluster               = "Latte"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -227,7 +227,7 @@ resource "aws_instance" "latte-client06-c" {
 		}
 
 		volume_tags {
-			Name                  = "latte-client06-c"
+			Name                  = "latte-client06-2c"
 			Cluster               = "Latte"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchClient"
@@ -238,14 +238,14 @@ resource "aws_instance" "latte-client06-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client01-b" {
+resource "aws_instance" "latte-client01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -253,7 +253,7 @@ resource "aws_instance" "latte-client01-b" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "latte-client01-b"
+			Name                  = "latte-client01-2b"
 			Type                  = "ElasticSearchClient"
 			Env                   = "Prod"
 			Cluster               = "Latte"
@@ -267,7 +267,7 @@ resource "aws_instance" "latte-client01-b" {
 		}
 
 		volume_tags {
-			Name                  = "latte-client01-b"
+			Name                  = "latte-client01-2b"
 			Type                  = "ElasticSearchClient"
 			Env                   = "Prod"
 			Cluster               = "Latte"
@@ -278,134 +278,14 @@ resource "aws_instance" "latte-client01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client02-b" {
+resource "aws_instance" "latte-client02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	placement_group             = "${module.placementgroup.latte-b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Cluster               = "Latte"
-			Type                  = "ElasticSearchClient"
-			Name                  = "latte-client02-b"
-			Env                   = "Prod"
-			Vpc                   = "Yes"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Cluster               = "Latte"
-			Type                  = "ElasticSearchClient"
-			Name                  = "latte-client02-b"
-			Env                   = "Prod"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "latte-client03-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.xlarge"
-	iam_instance_profile        = "${var.elasticsearch}"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	placement_group             = "${module.placementgroup.latte-b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Env                   = "Prod"
-			Cluster               = "Latte"
-			Type                  = "ElasticSearchClient"
-			Vpc                   = "Yes"
-			Name                  = "latte-client03-b"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Env                   = "Prod"
-			Cluster               = "Latte"
-			Type                  = "ElasticSearchClient"
-			Name                  = "latte-client03-b"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "latte-client04-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.xlarge"
-	iam_instance_profile        = "${var.elasticsearch}"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
-	placement_group             = "${module.placementgroup.latte-b-id}"
-	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
-	associate_public_ip_address = false
-	source_dest_check           = true
-
-		tags {
-			Type                  = "ElasticSearchClient"
-			Env                   = "Prod"
-			Cluster               = "Latte"
-			Vpc                   = "Yes"
-			Name                  = "latte-client04-b"
-		}
-
-		root_block_device {
-			volume_type           = "gp2"
-			volume_size           = 32
-			delete_on_termination = true
-		}
-
-		volume_tags {
-			Type                  = "ElasticSearchClient"
-			Env                   = "Prod"
-			Cluster               = "Latte"
-			Name                  = "latte-client04-b"
-		}
-}
-
-###################################################################################################
-###################################################################################################
-###################################################################################################
-
-resource "aws_instance" "latte-client05-b" {
-	ami                         = "${var.ami}"
-	ebs_optimized               = true
-	instance_type               = "c4.xlarge"
-	iam_instance_profile        = "${var.elasticsearch}"
-	monitoring                  = false
-	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -414,9 +294,129 @@ resource "aws_instance" "latte-client05-b" {
 
 		tags {
 			Cluster               = "Latte"
+			Type                  = "ElasticSearchClient"
+			Name                  = "latte-client02-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "latte-client05-b"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		volume_tags {
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchClient"
+			Name                  = "latte-client02-2b"
+			Env                   = "Prod"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "latte-client03-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = true
+	instance_type               = "c4.xlarge"
+	iam_instance_profile        = "${var.elasticsearch}"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
+	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchClient"
+			Vpc                   = "Yes"
+			Name                  = "latte-client03-2b"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		volume_tags {
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Type                  = "ElasticSearchClient"
+			Name                  = "latte-client03-2b"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "latte-client04-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = true
+	instance_type               = "c4.xlarge"
+	iam_instance_profile        = "${var.elasticsearch}"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
+	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Type                  = "ElasticSearchClient"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Vpc                   = "Yes"
+			Name                  = "latte-client04-2b"
+		}
+
+		root_block_device {
+			volume_type           = "gp2"
+			volume_size           = 32
+			delete_on_termination = true
+		}
+
+		volume_tags {
+			Type                  = "ElasticSearchClient"
+			Env                   = "Prod"
+			Cluster               = "Latte"
+			Name                  = "latte-client04-2b"
+		}
+}
+
+###################################################################################################
+###################################################################################################
+###################################################################################################
+
+resource "aws_instance" "latte-client05-2b" {
+	ami                         = "${var.ami}"
+	ebs_optimized               = true
+	instance_type               = "c4.xlarge"
+	iam_instance_profile        = "${var.elasticsearch}"
+	monitoring                  = false
+	key_name                    = "${var.key_name}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
+	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
+	placement_group             = "${module.placementgroup.latte-b-id}"
+	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
+	associate_public_ip_address = false
+	source_dest_check           = true
+
+		tags {
+			Cluster               = "Latte"
+			Env                   = "Prod"
+			Vpc                   = "Yes"
+			Name                  = "latte-client05-2b"
 			Type                  = "ElasticSearchClient"
 		}
 
@@ -429,7 +429,7 @@ resource "aws_instance" "latte-client05-b" {
 		volume_tags {
 			Cluster               = "Latte"
 			Env                   = "Prod"
-			Name                  = "latte-client05-b"
+			Name                  = "latte-client05-2b"
 			Type                  = "ElasticSearchClient"
 		}
 }
@@ -438,14 +438,14 @@ resource "aws_instance" "latte-client05-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-client06-b" {
+resource "aws_instance" "latte-client06-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.latte-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
@@ -455,7 +455,7 @@ resource "aws_instance" "latte-client06-b" {
 		tags {
 			Vpc                   = "Yes"
 			Env                   = "Prod"
-			Name                  = "latte-client06-b"
+			Name                  = "latte-client06-2b"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchClient"
 		}
@@ -468,7 +468,7 @@ resource "aws_instance" "latte-client06-b" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "latte-client06-b"
+			Name                  = "latte-client06-2b"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchClient"
 		}
@@ -477,3 +477,5 @@ resource "aws_instance" "latte-client06-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

@@ -1,11 +1,11 @@
-resource "aws_instance" "latte-master01" {
+resource "aws_instance" "latte-master01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -13,7 +13,7 @@ resource "aws_instance" "latte-master01" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "latte-master01"
+			Name                  = "latte-master01-2b"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchMaster"
 			Vpc                   = "Yes"
@@ -27,7 +27,7 @@ resource "aws_instance" "latte-master01" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "latte-master01"
+			Name                  = "latte-master01-2b"
 			Cluster               = "Latte"
 			Type                  = "ElasticSearchMaster"
 		}
@@ -37,14 +37,14 @@ resource "aws_instance" "latte-master01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-master02" {
+resource "aws_instance" "latte-master02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -52,7 +52,7 @@ resource "aws_instance" "latte-master02" {
 
 		tags {
 			Cluster               = "Latte"
-			Name                  = "latte-master02"
+			Name                  = "latte-master02-2b"
 			Type                  = "ElasticSearchMaster"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
@@ -66,7 +66,7 @@ resource "aws_instance" "latte-master02" {
 
 		volume_tags {
 			Cluster               = "Latte"
-			Name                  = "latte-master02"
+			Name                  = "latte-master02-2b"
 			Type                  = "ElasticSearchMaster"
 			Env                   = "Prod"
 		}
@@ -76,14 +76,14 @@ resource "aws_instance" "latte-master02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "latte-master03" {
+resource "aws_instance" "latte-master03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-latte-id}"]
 	associate_public_ip_address = false
@@ -91,7 +91,7 @@ resource "aws_instance" "latte-master03" {
 
 		tags {
 			Cluster               = "Latte"
-			Name                  = "latte-master03"
+			Name                  = "latte-master03-2c"
 			Type                  = "ElasticSearchMaster"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -105,7 +105,7 @@ resource "aws_instance" "latte-master03" {
 
 		volume_tags {
 			Cluster               = "Latte"
-			Name                  = "latte-master03"
+			Name                  = "latte-master03-2c"
 			Type                  = "ElasticSearchMaster"
 			Env                   = "Prod"
 		}
@@ -114,3 +114,5 @@ resource "aws_instance" "latte-master03" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

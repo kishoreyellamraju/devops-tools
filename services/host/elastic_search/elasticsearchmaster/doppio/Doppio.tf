@@ -1,11 +1,11 @@
-resource "aws_instance" "doppio-master01" {
+resource "aws_instance" "doppio-master01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
@@ -14,7 +14,7 @@ resource "aws_instance" "doppio-master01" {
 		tags {
 			Vpc                   = "Yes"
 			Env                   = "Prod"
-			Name                  = "doppio-master01"
+			Name                  = "doppio-master01-2b"
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Doppio"
 		}
@@ -27,7 +27,7 @@ resource "aws_instance" "doppio-master01" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "doppio-master01"
+			Name                  = "doppio-master01-2b"
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Doppio"
 		}
@@ -37,14 +37,14 @@ resource "aws_instance" "doppio-master01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "doppio-master02" {
+resource "aws_instance" "doppio-master02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
@@ -54,7 +54,7 @@ resource "aws_instance" "doppio-master02" {
 			Vpc                   = "Yes"
 			Cluster               = "Doppio"
 			Type                  = "ElasticSearchMaster"
-			Name                  = "doppio-master02"
+			Name                  = "doppio-master02-2b"
 			Env                   = "Prod"
 		}
 
@@ -67,7 +67,7 @@ resource "aws_instance" "doppio-master02" {
 		volume_tags {
 			Cluster               = "Doppio"
 			Type                  = "ElasticSearchMaster"
-			Name                  = "doppio-master02"
+			Name                  = "doppio-master02-2b"
 			Env                   = "Prod"
 		}
 }
@@ -76,14 +76,14 @@ resource "aws_instance" "doppio-master02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "doppio-master03" {
+resource "aws_instance" "doppio-master03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
 	associate_public_ip_address = false
@@ -93,7 +93,7 @@ resource "aws_instance" "doppio-master03" {
 			Vpc                   = "Yes"
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Doppio"
-			Name                  = "doppio-master03"
+			Name                  = "doppio-master03-2c"
 			Env                   = "Prod"
 		}
 
@@ -106,7 +106,7 @@ resource "aws_instance" "doppio-master03" {
 		volume_tags {
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Doppio"
-			Name                  = "doppio-master03"
+			Name                  = "doppio-master03-2c"
 			Env                   = "Prod"
 		}
 }
@@ -114,3 +114,5 @@ resource "aws_instance" "doppio-master03" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

@@ -1,10 +1,10 @@
-resource "aws_instance" "espresso-data01-b" {
+resource "aws_instance" "espresso-data01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -15,7 +15,7 @@ resource "aws_instance" "espresso-data01-b" {
 			Type                  = "ElasticSearchData"
 			Cluster               = "Espresso"
 			Vpc                   = "Yes"
-			Name                  = "espresso-data01-b"
+			Name                  = "espresso-data01-2b"
 		}
 
 		root_block_device {
@@ -35,7 +35,7 @@ resource "aws_instance" "espresso-data01-b" {
 			Env                   = "Prod"
 			Type                  = "ElasticSearchData"
 			Cluster               = "Espresso"
-			Name                  = "espresso-data01-b"
+			Name                  = "espresso-data01-2b"
 		}
 }
 
@@ -43,13 +43,13 @@ resource "aws_instance" "espresso-data01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "espresso-data02-b" {
+resource "aws_instance" "espresso-data02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -58,7 +58,7 @@ resource "aws_instance" "espresso-data02-b" {
 		tags {
 			Cluster               = "Espresso"
 			Vpc                   = "Yes"
-			Name                  = "espresso-data02-b"
+			Name                  = "espresso-data02-2b"
 			Type                  = "ElasticSearchData"
 			Env                   = "Prod"
 		}
@@ -78,7 +78,7 @@ resource "aws_instance" "espresso-data02-b" {
 		}
 		volume_tags {
 			Cluster               = "Espresso"
-			Name                  = "espresso-data02-b"
+			Name                  = "espresso-data02-2b"
 			Type                  = "ElasticSearchData"
 			Env                   = "Prod"
 		}
@@ -88,13 +88,13 @@ resource "aws_instance" "espresso-data02-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "espresso-data01-c" {
+resource "aws_instance" "espresso-data01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -102,7 +102,7 @@ resource "aws_instance" "espresso-data01-c" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "espresso-data01-c"
+			Name                  = "espresso-data01-2c"
 			Type                  = "ElasticSearchData"
 			Cluster               = "Espresso"
 			Vpc                   = "Yes"
@@ -123,7 +123,7 @@ resource "aws_instance" "espresso-data01-c" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "espresso-data01-c"
+			Name                  = "espresso-data01-2c"
 			Type                  = "ElasticSearchData"
 			Cluster               = "Espresso"
 		}
@@ -133,13 +133,13 @@ resource "aws_instance" "espresso-data01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "espresso-data02-c" {
+resource "aws_instance" "espresso-data02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m4.xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-espresso-id}"]
 	associate_public_ip_address = false
@@ -148,7 +148,7 @@ resource "aws_instance" "espresso-data02-c" {
 		tags {
 			Env                   = "Prod"
 			Type                  = "ElasticSearchData"
-			Name                  = "espresso-data02-c"
+			Name                  = "espresso-data02-2c"
 			Cluster               = "Espresso"
 			Vpc                   = "Yes"
 		}
@@ -169,7 +169,7 @@ resource "aws_instance" "espresso-data02-c" {
 		volume_tags {
 			Env                   = "Prod"
 			Type                  = "ElasticSearchData"
-			Name                  = "espresso-data02-c"
+			Name                  = "espresso-data02-2c"
 			Cluster               = "Espresso"
 		}
 }
@@ -177,3 +177,5 @@ resource "aws_instance" "espresso-data02-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

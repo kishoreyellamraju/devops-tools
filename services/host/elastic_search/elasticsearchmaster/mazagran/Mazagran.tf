@@ -1,11 +1,11 @@
-resource "aws_instance" "mazagran-master02" {
+resource "aws_instance" "mazagran-master02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -13,7 +13,7 @@ resource "aws_instance" "mazagran-master02" {
 
 		tags {
 			Cluster               = "Mazagran"
-			Name                  = "mazagran-master02"
+			Name                  = "mazagran-master02-2b"
 			Type                  = "ElasticSearchMaster"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
@@ -27,7 +27,7 @@ resource "aws_instance" "mazagran-master02" {
 
 		volume_tags {
 			Cluster               = "Mazagran"
-			Name                  = "mazagran-master02"
+			Name                  = "mazagran-master02-2b"
 			Type                  = "ElasticSearchMaster"
 			Env                   = "Prod"
 		}
@@ -37,14 +37,14 @@ resource "aws_instance" "mazagran-master02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "mazagran-master01" {
+resource "aws_instance" "mazagran-master01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -54,7 +54,7 @@ resource "aws_instance" "mazagran-master01" {
 			Cluster               = "Mazagran"
 			Type                  = "ElasticSearchMaster"
 			Vpc                   = "Yes"
-			Name                  = "mazagran-master01"
+			Name                  = "mazagran-master01-2b"
 			Env                   = "Prod"
 		}
 
@@ -67,7 +67,7 @@ resource "aws_instance" "mazagran-master01" {
 		volume_tags {
 			Cluster               = "Mazagran"
 			Type                  = "ElasticSearchMaster"
-			Name                  = "mazagran-master01"
+			Name                  = "mazagran-master01-2b"
 			Env                   = "Prod"
 		}
 }
@@ -76,14 +76,14 @@ resource "aws_instance" "mazagran-master01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "mazagran-master03" {
+resource "aws_instance" "mazagran-master03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-mazagran-id}"]
 	associate_public_ip_address = false
@@ -91,7 +91,7 @@ resource "aws_instance" "mazagran-master03" {
 
 		tags {
 			Type                  = "ElasticSearchMaster"
-			Name                  = "mazagran-master03"
+			Name                  = "mazagran-master03-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "Mazagran"
@@ -105,7 +105,7 @@ resource "aws_instance" "mazagran-master03" {
 
 		volume_tags {
 			Type                  = "ElasticSearchMaster"
-			Name                  = "mazagran-master03"
+			Name                  = "mazagran-master03-2c"
 			Env                   = "Prod"
 			Cluster               = "Mazagran"
 		}
@@ -114,3 +114,5 @@ resource "aws_instance" "mazagran-master03" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

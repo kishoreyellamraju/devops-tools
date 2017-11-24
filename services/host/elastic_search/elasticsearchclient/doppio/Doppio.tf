@@ -1,11 +1,11 @@
-resource "aws_instance" "doppio-client02-b" {
+resource "aws_instance" "doppio-client02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.doppio-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
@@ -17,7 +17,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 			Vpc                   = "Yes"
 			Cluster               = "Doppio"
 			Env                   = "Prod"
-			Name                  = "doppio-client02-b"
+			Name                  = "doppio-client02-2b"
 		}
 
 		root_block_device {
@@ -30,7 +30,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 			Type                  = "ElasticSearchClient"
 			Cluster               = "Doppio"
 			Env                   = "Prod"
-			Name                  = "doppio-client02-b"
+			Name                  = "doppio-client02-2b"
 		}
 }
 
@@ -38,14 +38,14 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "doppio-client01-b" {
+resource "aws_instance" "doppio-client01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.doppio-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
@@ -54,7 +54,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 
 		tags {
 			Type                  = "ElasticSearchClient"
-			Name                  = "doppio-client01-b"
+			Name                  = "doppio-client01-2b"
 			Cluster               = "Doppio"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -68,7 +68,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 
 		volume_tags {
 			Type                  = "ElasticSearchClient"
-			Name                  = "doppio-client01-b"
+			Name                  = "doppio-client01-2b"
 			Cluster               = "Doppio"
 			Env                   = "Prod"
 		}
@@ -78,14 +78,14 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "doppio-client02-c" {
+resource "aws_instance" "doppio-client02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.doppio-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
@@ -94,7 +94,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "doppio-client02-c"
+			Name                  = "doppio-client02-2c"
 			Vpc                   = "Yes"
 			Cluster               = "Doppio"
 			Type                  = "ElasticSearchClient"
@@ -108,7 +108,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "doppio-client02-c"
+			Name                  = "doppio-client02-2c"
 			Cluster               = "Doppio"
 			Type                  = "ElasticSearchClient"
 		}
@@ -118,14 +118,14 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "doppio-client01-c" {
+resource "aws_instance" "doppio-client01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.doppio-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
@@ -137,7 +137,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "Doppio"
-			Name                  = "doppio-client01-c"
+			Name                  = "doppio-client01-2c"
 		}
 
 		root_block_device {
@@ -150,7 +150,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 			Type                  = "ElasticSearchClient"
 			Env                   = "Prod"
 			Cluster               = "Doppio"
-			Name                  = "doppio-client01-c"
+			Name                  = "doppio-client01-2c"
 		}
 }
 
@@ -158,14 +158,14 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "doppio-client04-c" {
+resource "aws_instance" "doppio-client04-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.doppio-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-doppio-id}"]
@@ -177,7 +177,7 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchClient"
 			Vpc                   = "Yes"
-			Name                  = "doppio-client04-c"
+			Name                  = "doppio-client04-2c"
 		}
 
 		root_block_device {
@@ -190,10 +190,12 @@ user_data 					 				= "${file("${path.root}/userdata.sh")}"
 			Cluster               = "Doppio"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchClient"
-			Name                  = "doppio-client04-c"
+			Name                  = "doppio-client04-2c"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

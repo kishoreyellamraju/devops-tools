@@ -1,11 +1,11 @@
-resource "aws_instance" "prod-is-kw04-c" {
+resource "aws_instance" "prod-is-kw04-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -14,7 +14,7 @@ resource "aws_instance" "prod-is-kw04-c" {
 		tags {
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-kw04-c"
+			Name                  = "prod-is-kw04-2c"
 			Vpc                   = "Yes"
 			Type                  = "KinesisWorker"
 		}
@@ -28,7 +28,7 @@ resource "aws_instance" "prod-is-kw04-c" {
 		volume_tags {
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-kw04-c"
+			Name                  = "prod-is-kw04-2c"
 			Type                  = "KinesisWorker"
 		}
 }
@@ -37,14 +37,14 @@ resource "aws_instance" "prod-is-kw04-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-kw01-c" {
+resource "aws_instance" "prod-is-kw01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -52,7 +52,7 @@ resource "aws_instance" "prod-is-kw01-c" {
 
 		tags {
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-kw01-c"
+			Name                  = "prod-is-kw01-2c"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Type                  = "KinesisWorker"
@@ -66,7 +66,7 @@ resource "aws_instance" "prod-is-kw01-c" {
 
 		volume_tags {
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-kw01-c"
+			Name                  = "prod-is-kw01-2c"
 			Env                   = "Prod"
 			Type                  = "KinesisWorker"
 		}
@@ -76,14 +76,14 @@ resource "aws_instance" "prod-is-kw01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-kw03-c" {
+resource "aws_instance" "prod-is-kw03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -91,7 +91,7 @@ resource "aws_instance" "prod-is-kw03-c" {
 
 		tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw03-c"
+			Name                  = "prod-is-kw03-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "ImplicitShare"
@@ -105,7 +105,7 @@ resource "aws_instance" "prod-is-kw03-c" {
 
 		volume_tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw03-c"
+			Name                  = "prod-is-kw03-2c"
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
 		}
@@ -115,14 +115,14 @@ resource "aws_instance" "prod-is-kw03-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-kw02-c" {
+resource "aws_instance" "prod-is-kw02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetc-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -131,7 +131,7 @@ resource "aws_instance" "prod-is-kw02-c" {
 		tags {
 			Cluster               = "ImplicitShare"
 			Vpc                   = "Yes"
-			Name                  = "prod-is-kw02-c"
+			Name                  = "prod-is-kw02-2c"
 			Type                  = "KinesisWorker"
 			Env                   = "Prod"
 		}
@@ -144,7 +144,7 @@ resource "aws_instance" "prod-is-kw02-c" {
 
 		volume_tags {
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-kw02-c"
+			Name                  = "prod-is-kw02-2c"
 			Type                  = "KinesisWorker"
 			Env                   = "Prod"
 		}
@@ -154,14 +154,14 @@ resource "aws_instance" "prod-is-kw02-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-kw03-b" {
+resource "aws_instance" "prod-is-kw03-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -169,7 +169,7 @@ resource "aws_instance" "prod-is-kw03-b" {
 
 		tags {
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-kw03-b"
+			Name                  = "prod-is-kw03-2b"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Type                  = "KinesisWorker"
@@ -183,7 +183,7 @@ resource "aws_instance" "prod-is-kw03-b" {
 
 		volume_tags {
 			Cluster               = "ImplicitShare"
-			Name                  = "prod-is-kw03-b"
+			Name                  = "prod-is-kw03-2b"
 			Env                   = "Prod"
 			Type                  = "KinesisWorker"
 		}
@@ -193,14 +193,14 @@ resource "aws_instance" "prod-is-kw03-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-kw02-b" {
+resource "aws_instance" "prod-is-kw02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -208,7 +208,7 @@ resource "aws_instance" "prod-is-kw02-b" {
 
 		tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw02-b"
+			Name                  = "prod-is-kw02-2b"
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
 			Vpc                   = "Yes"
@@ -222,7 +222,7 @@ resource "aws_instance" "prod-is-kw02-b" {
 
 		volume_tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw02-b"
+			Name                  = "prod-is-kw02-2b"
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
 		}
@@ -232,14 +232,14 @@ resource "aws_instance" "prod-is-kw02-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-kw01-b" {
+resource "aws_instance" "prod-is-kw01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -247,7 +247,7 @@ resource "aws_instance" "prod-is-kw01-b" {
 
 		tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw01-b"
+			Name                  = "prod-is-kw01-2b"
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
 			Vpc                   = "Yes"
@@ -261,7 +261,7 @@ resource "aws_instance" "prod-is-kw01-b" {
 
 		volume_tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw01-b"
+			Name                  = "prod-is-kw01-2b"
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
 		}
@@ -271,14 +271,14 @@ resource "aws_instance" "prod-is-kw01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-is-kw04-b" {
+resource "aws_instance" "prod-is-kw04-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.implicit-share-worker}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = true
@@ -286,7 +286,7 @@ resource "aws_instance" "prod-is-kw04-b" {
 
 		tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw04-b"
+			Name                  = "prod-is-kw04-2b"
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
 			Vpc                   = "Yes"
@@ -300,7 +300,7 @@ resource "aws_instance" "prod-is-kw04-b" {
 
 		volume_tags {
 			Type                  = "KinesisWorker"
-			Name                  = "prod-is-kw04-b"
+			Name                  = "prod-is-kw04-2b"
 			Env                   = "Prod"
 			Cluster               = "ImplicitShare"
 		}
@@ -309,3 +309,5 @@ resource "aws_instance" "prod-is-kw04-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

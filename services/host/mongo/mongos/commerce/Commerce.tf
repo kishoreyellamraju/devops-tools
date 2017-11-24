@@ -1,4 +1,4 @@
-resource "aws_instance" "prod-2co-mongos01-2b" {
+resource "aws_instance" "prod-co-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -11,7 +11,7 @@ resource "aws_instance" "prod-2co-mongos01-2b" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-2co-mongos01-2b"
+			Name                  = "prod-co-mongos01-2b"
 			Cluster               = "Commerce"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -25,7 +25,7 @@ resource "aws_instance" "prod-2co-mongos01-2b" {
 		}
 
 		volume_tags {
-			Name                  = "prod-2co-mongos01-2b"
+			Name                  = "prod-co-mongos01-2b"
 			Cluster               = "Commerce"
 			Env                   = "Prod"
 			Type                  = "MongoS"
@@ -36,7 +36,7 @@ resource "aws_instance" "prod-2co-mongos01-2b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-2co-mongos02-2b" {
+resource "aws_instance" "prod-co-mongos02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -52,7 +52,7 @@ resource "aws_instance" "prod-2co-mongos02-2b" {
 			Vpc                   = "Yes"
 			Cluster               = "Commerce"
 			Type                  = "MongoS"
-			Name                  = "prod-2co-mongos02-2b"
+			Name                  = "prod-co-mongos02-2b"
 			Env                   = "Prod"
 		}
 
@@ -65,7 +65,7 @@ resource "aws_instance" "prod-2co-mongos02-2b" {
 		volume_tags {
 			Cluster               = "Commerce"
 			Type                  = "MongoS"
-			Name                  = "prod-2co-mongos02-2b"
+			Name                  = "prod-co-mongos02-2b"
 			Env                   = "Prod"
 		}
 }
@@ -74,7 +74,7 @@ resource "aws_instance" "prod-2co-mongos02-2b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-2co-mongos01-2c" {
+resource "aws_instance" "prod-co-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -88,7 +88,7 @@ resource "aws_instance" "prod-2co-mongos01-2c" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "prod-2co-mongos01-2c"
+			Name                  = "prod-co-mongos01-2c"
 			Cluster               = "Commerce"
 			Type                  = "MongoS"
 			Vpc                   = "Yes"
@@ -102,7 +102,7 @@ resource "aws_instance" "prod-2co-mongos01-2c" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-2co-mongos01-2c"
+			Name                  = "prod-co-mongos01-2c"
 			Cluster               = "Commerce"
 			Type                  = "MongoS"
 		}
@@ -112,7 +112,7 @@ resource "aws_instance" "prod-2co-mongos01-2c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-2co-mongos02-2c" {
+resource "aws_instance" "prod-co-mongos02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -126,7 +126,7 @@ resource "aws_instance" "prod-2co-mongos02-2c" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "prod-2co-mongos02-2c"
+			Name                  = "prod-co-mongos02-2c"
 			Cluster               = "Commerce"
 			Type                  = "MongoS"
 			Vpc                   = "Yes"
@@ -140,7 +140,7 @@ resource "aws_instance" "prod-2co-mongos02-2c" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-2co-mongos02-2c"
+			Name                  = "prod-co-mongos02-2c"
 			Cluster               = "Commerce"
 			Type                  = "MongoS"
 		}

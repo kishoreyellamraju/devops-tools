@@ -1,11 +1,11 @@
-resource "aws_instance" "romano-data01-b" {
+resource "aws_instance" "romano-data01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.romano-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-romano-id}"]
@@ -14,7 +14,7 @@ resource "aws_instance" "romano-data01-b" {
 
 		tags {
 			Cluster               = "Romano"
-			Name                  = "romano-data01-b"
+			Name                  = "romano-data01-2b"
 			Type                  = "ElasticSearchData"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -35,7 +35,7 @@ resource "aws_instance" "romano-data01-b" {
 		}
 		volume_tags {
 			Cluster               = "Romano"
-			Name                  = "romano-data01-b"
+			Name                  = "romano-data01-2b"
 			Type                  = "ElasticSearchData"
 			Env                   = "Prod"
 		}
@@ -45,14 +45,14 @@ resource "aws_instance" "romano-data01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "romano-data02-b" {
+resource "aws_instance" "romano-data02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.romano-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-romano-id}"]
@@ -64,7 +64,7 @@ resource "aws_instance" "romano-data02-b" {
 			Cluster               = "Romano"
 			Vpc                   = "Yes"
 			Type                  = "ElasticSearchData"
-			Name                  = "romano-data02-b"
+			Name                  = "romano-data02-2b"
 		}
 
 		root_block_device {
@@ -84,7 +84,7 @@ resource "aws_instance" "romano-data02-b" {
 			Env                   = "Prod"
 			Cluster               = "Romano"
 			Type                  = "ElasticSearchData"
-			Name                  = "romano-data02-b"
+			Name                  = "romano-data02-2b"
 		}
 }
 
@@ -92,14 +92,14 @@ resource "aws_instance" "romano-data02-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "romano-data01-c" {
+resource "aws_instance" "romano-data01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.romano-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-romano-id}"]
@@ -108,7 +108,7 @@ resource "aws_instance" "romano-data01-c" {
 
 		tags {
 			Type                  = "ElasticSearchData"
-			Name                  = "romano-data01-c"
+			Name                  = "romano-data01-2c"
 			Cluster               = "Romano"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -129,7 +129,7 @@ resource "aws_instance" "romano-data01-c" {
 		}
 		volume_tags {
 			Type                  = "ElasticSearchData"
-			Name                  = "romano-data01-c"
+			Name                  = "romano-data01-2c"
 			Cluster               = "Romano"
 			Env                   = "Prod"
 		}
@@ -139,14 +139,14 @@ resource "aws_instance" "romano-data01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "romano-data02-c" {
+resource "aws_instance" "romano-data02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.romano-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-romano-id}"]
@@ -154,7 +154,7 @@ resource "aws_instance" "romano-data02-c" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "romano-data02-c"
+			Name                  = "romano-data02-2c"
 			Cluster               = "Romano"
 			Type                  = "ElasticSearchData"
 			Vpc                   = "Yes"
@@ -175,7 +175,7 @@ resource "aws_instance" "romano-data02-c" {
 			delete_on_termination = false
 		}
 		volume_tags {
-			Name                  = "romano-data02-c"
+			Name                  = "romano-data02-2c"
 			Cluster               = "Romano"
 			Type                  = "ElasticSearchData"
 			Env                   = "Prod"
@@ -185,3 +185,5 @@ resource "aws_instance" "romano-data02-c" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

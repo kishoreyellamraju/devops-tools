@@ -1,4 +1,4 @@
-resource "aws_instance" "prod-2co-2batch-mongos01-2b" {
+resource "aws_instance" "prod-co-batch-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -15,7 +15,7 @@ resource "aws_instance" "prod-2co-2batch-mongos01-2b" {
 			Vpc                   = "Yes"
 			Cluster               = "CommerceBatch"
 			Env                   = "Prod"
-			Name                  = "prod-2co-2batch-mongos01-2b"
+			Name                  = "prod-co-batch-mongos01-2b"
 		}
 
 		root_block_device {
@@ -28,7 +28,7 @@ resource "aws_instance" "prod-2co-2batch-mongos01-2b" {
 			Type                  = "MongoS"
 			Cluster               = "CommerceBatch"
 			Env                   = "Prod"
-			Name                  = "prod-2co-2batch-mongos01-2b"
+			Name                  = "prod-co-batch-mongos01-2b"
 		}
 }
 

@@ -1,17 +1,17 @@
-resource "aws_instance" "prod-mmsagent01" {
+resource "aws_instance" "prod-mmsagent01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "t2.small"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.databaseprivatesubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-mmsagent-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-mmsagent01"
+			Name                  = "prod-mmsagent01-2b"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 			Cluster               = "Mms"
@@ -25,7 +25,7 @@ resource "aws_instance" "prod-mmsagent01" {
 		}
 
 		volume_tags {
-			Name                  = "prod-mmsagent01"
+			Name                  = "prod-mmsagent01-2b"
 			Env                   = "Prod"
 			Cluster               = "Mms"
 			Type                  = "Mms"
@@ -35,3 +35,5 @@ resource "aws_instance" "prod-mmsagent01" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

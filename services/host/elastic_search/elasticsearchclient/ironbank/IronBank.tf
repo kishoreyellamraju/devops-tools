@@ -1,11 +1,11 @@
-resource "aws_instance" "ironbank-client01-c" {
+resource "aws_instance" "ironbank-client01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -14,7 +14,7 @@ resource "aws_instance" "ironbank-client01-c" {
 
 		tags {
 			Cluster               = "IronBank"
-			Name                  = "ironbank-client01-c"
+			Name                  = "ironbank-client01-2c"
 			Type                  = "ElasticSearchClient"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -28,7 +28,7 @@ resource "aws_instance" "ironbank-client01-c" {
 
 		volume_tags {
 			Cluster               = "IronBank"
-			Name                  = "ironbank-client01-c"
+			Name                  = "ironbank-client01-2c"
 			Type                  = "ElasticSearchClient"
 			Env                   = "Prod"
 		}
@@ -38,14 +38,14 @@ resource "aws_instance" "ironbank-client01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "ironbank-client02-c" {
+resource "aws_instance" "ironbank-client02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	placement_group             = "${module.placementgroup.ironbank-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -53,7 +53,7 @@ resource "aws_instance" "ironbank-client02-c" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "ironbank-client02-c"
+			Name                  = "ironbank-client02-2c"
 			Type                  = "ElasticSearchClient"
 			Cluster               = "IronBank"
 			Env                   = "Prod"
@@ -67,7 +67,7 @@ resource "aws_instance" "ironbank-client02-c" {
 		}
 
 		volume_tags {
-			Name                  = "ironbank-client02-c"
+			Name                  = "ironbank-client02-2c"
 			Type                  = "ElasticSearchClient"
 			Cluster               = "IronBank"
 			Env                   = "Prod"
@@ -78,14 +78,14 @@ resource "aws_instance" "ironbank-client02-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "ironbank-client01-b" {
+resource "aws_instance" "ironbank-client01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -93,7 +93,7 @@ resource "aws_instance" "ironbank-client01-b" {
 	source_dest_check           = true
 
 		tags {
-			Name                  = "ironbank-client01-b"
+			Name                  = "ironbank-client01-2b"
 			Cluster               = "IronBank"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchClient"
@@ -107,7 +107,7 @@ resource "aws_instance" "ironbank-client01-b" {
 		}
 
 		volume_tags {
-			Name                  = "ironbank-client01-b"
+			Name                  = "ironbank-client01-2b"
 			Cluster               = "IronBank"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchClient"
@@ -118,14 +118,14 @@ resource "aws_instance" "ironbank-client01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "ironbank-client02-b" {
+resource "aws_instance" "ironbank-client02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.large"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	placement_group             = "${module.placementgroup.ironbank-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-ironbank-id}"]
@@ -136,7 +136,7 @@ resource "aws_instance" "ironbank-client02-b" {
 			Cluster               = "IronBank"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "ironbank-client02-b"
+			Name                  = "ironbank-client02-2b"
 			Type                  = "ElasticSearchClient"
 		}
 
@@ -149,7 +149,7 @@ resource "aws_instance" "ironbank-client02-b" {
 		volume_tags {
 			Cluster               = "IronBank"
 			Env                   = "Prod"
-			Name                  = "ironbank-client02-b"
+			Name                  = "ironbank-client02-2b"
 			Type                  = "ElasticSearchClient"
 		}
 }
@@ -157,3 +157,5 @@ resource "aws_instance" "ironbank-client02-b" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

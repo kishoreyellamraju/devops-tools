@@ -1,10 +1,10 @@
-resource "aws_instance" "sidekiq-batch02" {
+resource "aws_instance" "sidekiq-batch02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-batch-id}"]
 	associate_public_ip_address = true
@@ -12,7 +12,7 @@ resource "aws_instance" "sidekiq-batch02" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "sidekiq-batch02"
+			Name                  = "sidekiq-batch02-2b"
 			Type                  = "Batch"
 			Vpc                   = "Yes"
 			Cluster               = "Sidekiq"
@@ -33,7 +33,7 @@ resource "aws_instance" "sidekiq-batch02" {
 		}
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "sidekiq-batch02"
+			Name                  = "sidekiq-batch02-2b"
 			Type                  = "Batch"
 			Cluster               = "Sidekiq"
 		}
@@ -43,20 +43,20 @@ resource "aws_instance" "sidekiq-batch02" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "yaga-batch2" {
+resource "aws_instance" "yaga-batch2-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-yaga-batch-id}"]
 	associate_public_ip_address = true
 	source_dest_check           = true
 
 		tags {
-			Name                  = "yaga-batch2"
+			Name                  = "yaga-batch2-2b"
 			Vpc                   = "Yes"
 			Cluster               = "Yaga"
 			Env                   = "Prod"
@@ -70,7 +70,7 @@ resource "aws_instance" "yaga-batch2" {
 		}
 
 		volume_tags {
-			Name                  = "yaga-batch2"
+			Name                  = "yaga-batch2-2b"
 			Cluster               = "Yaga"
 			Env                   = "Prod"
 			Type                  = "Batch"
@@ -81,13 +81,13 @@ resource "aws_instance" "yaga-batch2" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-batch01" {
+resource "aws_instance" "prod-batch01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-batch-id}"]
 	associate_public_ip_address = true
@@ -96,7 +96,7 @@ resource "aws_instance" "prod-batch01" {
 		tags {
 			Cluster               = "Batch"
 			Type                  = "Batch"
-			Name                  = "prod-batch01"
+			Name                  = "prod-batch01-2b"
 			Env                   = "Prod"
 		}
 
@@ -109,7 +109,7 @@ resource "aws_instance" "prod-batch01" {
 		volume_tags {
 			Cluster               = "Batch"
 			Type                  = "Batch"
-			Name                  = "prod-batch01"
+			Name                  = "prod-batch01-2b"
 			Env                   = "Prod"
 		}
 }
@@ -118,13 +118,13 @@ resource "aws_instance" "prod-batch01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "sidekiq-batch01" {
+resource "aws_instance" "sidekiq-batch01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.4xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-batch-id}"]
 	associate_public_ip_address = true
@@ -132,7 +132,7 @@ resource "aws_instance" "sidekiq-batch01" {
 
 		tags {
 			Cluster               = "Sidekiq"
-			Name                  = "sidekiq-batch01"
+			Name                  = "sidekiq-batch01-2b"
 			Type                  = "Batch"
 			Env                   = "Prod"
 		}
@@ -152,7 +152,7 @@ resource "aws_instance" "sidekiq-batch01" {
 
 		volume_tags {
 			Cluster               = "Sidekiq"
-			Name                  = "sidekiq-batch01"
+			Name                  = "sidekiq-batch01-2b"
 			Type                  = "Batch"
 			Env                   = "Prod"
 		}
@@ -162,20 +162,20 @@ resource "aws_instance" "sidekiq-batch01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-co-batch03" {
+resource "aws_instance" "prod-co-batch03-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-batch-id}"]
 	associate_public_ip_address = true
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-co-batch03"
+			Name                  = "prod-co-batch03-2b"
 			Env                   = "Prod"
 			Type                  = "Batch"
 			Vpc                   = "Yes"
@@ -189,7 +189,7 @@ resource "aws_instance" "prod-co-batch03" {
 		}
 
 		volume_tags {
-			Name                  = "prod-co-batch03"
+			Name                  = "prod-co-batch03-2b"
 			Env                   = "Prod"
 			Type                  = "Batch"
 			Cluster               = "CommerceBatch"
@@ -200,20 +200,20 @@ resource "aws_instance" "prod-co-batch03" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-co-batch01" {
+resource "aws_instance" "prod-co-batch01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-batch-id}"]
 	associate_public_ip_address = true
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-co-batch01"
+			Name                  = "prod-co-batch01-2b"
 			Type                  = "Batch"
 			Cluster               = "CommerceBatch"
 			Env                   = "Prod"
@@ -227,7 +227,7 @@ resource "aws_instance" "prod-co-batch01" {
 		}
 
 		volume_tags {
-			Name                  = "prod-co-batch01"
+			Name                  = "prod-co-batch01-2b"
 			Type                  = "Batch"
 			Cluster               = "CommerceBatch"
 			Env                   = "Prod"
@@ -238,13 +238,13 @@ resource "aws_instance" "prod-co-batch01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-co-batch02" {
+resource "aws_instance" "prod-co-batch02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.2xlarge"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-batch-id}"]
 	associate_public_ip_address = true
@@ -255,7 +255,7 @@ resource "aws_instance" "prod-co-batch02" {
 			Env                   = "Prod"
 			Type                  = "Batch"
 			Cluster               = "CommerceBatch"
-			Name                  = "prod-co-batch02"
+			Name                  = "prod-co-batch02-2b"
 		}
 
 		root_block_device {
@@ -268,10 +268,12 @@ resource "aws_instance" "prod-co-batch02" {
 			Env                   = "Prod"
 			Type                  = "Batch"
 			Cluster               = "CommerceBatch"
-			Name                  = "prod-co-batch02"
+			Name                  = "prod-co-batch02-2b"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

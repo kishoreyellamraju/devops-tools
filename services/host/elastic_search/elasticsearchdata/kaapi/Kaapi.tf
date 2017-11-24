@@ -1,11 +1,11 @@
-resource "aws_instance" "kaapi-data01-c" {
+resource "aws_instance" "kaapi-data01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2c-id}"
 	placement_group             = "${module.placementgroup.kaapi-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
@@ -15,7 +15,7 @@ resource "aws_instance" "kaapi-data01-c" {
 		tags {
 			Cluster               = "Kaapi"
 			Env                   = "Prod"
-			Name                  = "kaapi-data01-c"
+			Name                  = "kaapi-data01-2c"
 			Type                  = "ElasticSearchData"
 			Vpc                   = "Yes"
 		}
@@ -36,7 +36,7 @@ resource "aws_instance" "kaapi-data01-c" {
 		volume_tags {
 			Cluster               = "Kaapi"
 			Env                   = "Prod"
-			Name                  = "kaapi-data01-c"
+			Name                  = "kaapi-data01-2c"
 			Type                  = "ElasticSearchData"
 		}
 }
@@ -45,14 +45,14 @@ resource "aws_instance" "kaapi-data01-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "kaapi-data02-c" {
+resource "aws_instance" "kaapi-data02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2c-id}"
 	placement_group             = "${module.placementgroup.kaapi-c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
@@ -63,7 +63,7 @@ resource "aws_instance" "kaapi-data02-c" {
 			Cluster               = "Kaapi"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
-			Name                  = "kaapi-data02-c"
+			Name                  = "kaapi-data02-2c"
 			Type                  = "ElasticSearchData"
 		}
 
@@ -83,7 +83,7 @@ resource "aws_instance" "kaapi-data02-c" {
 		volume_tags {
 			Cluster               = "Kaapi"
 			Env                   = "Prod"
-			Name                  = "kaapi-data02-c"
+			Name                  = "kaapi-data02-2c"
 			Type                  = "ElasticSearchData"
 		}
 }
@@ -92,14 +92,14 @@ resource "aws_instance" "kaapi-data02-c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "kaapi-data01-b" {
+resource "aws_instance" "kaapi-data01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2b-id}"
 	placement_group             = "${module.placementgroup.kaapi-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
@@ -109,7 +109,7 @@ resource "aws_instance" "kaapi-data01-b" {
 		tags {
 			Env                   = "Prod"
 			Type                  = "ElasticSearchData"
-			Name                  = "kaapi-data01-b"
+			Name                  = "kaapi-data01-2b"
 			Vpc                   = "Yes"
 			Cluster               = "Kaapi"
 		}
@@ -130,7 +130,7 @@ resource "aws_instance" "kaapi-data01-b" {
 		volume_tags {
 			Env                   = "Prod"
 			Type                  = "ElasticSearchData"
-			Name                  = "kaapi-data01-b"
+			Name                  = "kaapi-data01-2b"
 			Cluster               = "Kaapi"
 		}
 }
@@ -139,14 +139,14 @@ resource "aws_instance" "kaapi-data01-b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "kaapi-data02-b" {
+resource "aws_instance" "kaapi-data02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "c4.2xlarge"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet2b-id}"
 	placement_group             = "${module.placementgroup.kaapi-b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-kaapi-id}"]
@@ -157,7 +157,7 @@ resource "aws_instance" "kaapi-data02-b" {
 			Cluster               = "Kaapi"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchData"
-			Name                  = "kaapi-data02-b"
+			Name                  = "kaapi-data02-2b"
 			Vpc                   = "Yes"
 		}
 
@@ -178,10 +178,12 @@ resource "aws_instance" "kaapi-data02-b" {
 			Cluster               = "Kaapi"
 			Env                   = "Prod"
 			Type                  = "ElasticSearchData"
-			Name                  = "kaapi-data02-b"
+			Name                  = "kaapi-data02-2b"
 		}
 }
 
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

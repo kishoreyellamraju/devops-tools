@@ -1,4 +1,4 @@
-resource "aws_instance" "prod-2bg-mongos02-2c" {
+resource "aws_instance" "prod-bg-mongos02-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -12,7 +12,7 @@ resource "aws_instance" "prod-2bg-mongos02-2c" {
 
 		tags {
 			Env                   = "Prod"
-			Name                  = "prod-2bg-mongos02-2c"
+			Name                  = "prod-bg-mongos02-2c"
 			Vpc                   = "Yes"
 			Type                  = "MongoS"
 			Cluster               = "Background"
@@ -26,7 +26,7 @@ resource "aws_instance" "prod-2bg-mongos02-2c" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "prod-2bg-mongos02-2c"
+			Name                  = "prod-bg-mongos02-2c"
 			Type                  = "MongoS"
 			Cluster               = "Background"
 		}
@@ -36,7 +36,7 @@ resource "aws_instance" "prod-2bg-mongos02-2c" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-2bg-mongos01-2b" {
+resource "aws_instance" "prod-bg-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -50,7 +50,7 @@ resource "aws_instance" "prod-2bg-mongos01-2b" {
 
 		tags {
 			Type                  = "MongoS"
-			Name                  = "prod-2bg-mongos01-2b"
+			Name                  = "prod-bg-mongos01-2b"
 			Cluster               = "Background"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
@@ -64,7 +64,7 @@ resource "aws_instance" "prod-2bg-mongos01-2b" {
 
 		volume_tags {
 			Type                  = "MongoS"
-			Name                  = "prod-2bg-mongos01-2b"
+			Name                  = "prod-bg-mongos01-2b"
 			Cluster               = "Background"
 			Env                   = "Prod"
 		}
@@ -74,7 +74,7 @@ resource "aws_instance" "prod-2bg-mongos01-2b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-2bg-mongos02-2b" {
+resource "aws_instance" "prod-bg-mongos02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -88,7 +88,7 @@ resource "aws_instance" "prod-2bg-mongos02-2b" {
 
 		tags {
 			Cluster               = "Background"
-			Name                  = "prod-2bg-mongos02-2b"
+			Name                  = "prod-bg-mongos02-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Type                  = "MongoS"
@@ -102,7 +102,7 @@ resource "aws_instance" "prod-2bg-mongos02-2b" {
 
 		volume_tags {
 			Cluster               = "Background"
-			Name                  = "prod-2bg-mongos02-2b"
+			Name                  = "prod-bg-mongos02-2b"
 			Env                   = "Prod"
 			Type                  = "MongoS"
 		}
@@ -112,7 +112,7 @@ resource "aws_instance" "prod-2bg-mongos02-2b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-2bg-mongos01-2c" {
+resource "aws_instance" "prod-bg-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -129,7 +129,7 @@ resource "aws_instance" "prod-2bg-mongos01-2c" {
 			Vpc                   = "Yes"
 			Cluster               = "Background"
 			Type                  = "MongoS"
-			Name                  = "prod-2bg-mongos01-2c"
+			Name                  = "prod-bg-mongos01-2c"
 		}
 
 		root_block_device {
@@ -142,7 +142,7 @@ resource "aws_instance" "prod-2bg-mongos01-2c" {
 			Env                   = "Prod"
 			Cluster               = "Background"
 			Type                  = "MongoS"
-			Name                  = "prod-2bg-mongos01-2c"
+			Name                  = "prod-bg-mongos01-2c"
 		}
 }
 

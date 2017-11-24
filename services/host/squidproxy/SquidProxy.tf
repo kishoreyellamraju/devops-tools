@@ -1,17 +1,17 @@
-resource "aws_instance" "prod-squid01" {
+resource "aws_instance" "prod-squid01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-squid-id}"]
 	associate_public_ip_address = true
 	source_dest_check           = true
 
 		tags {
-			Name                  = "prod-squid01"
+			Name                  = "prod-squid01-2b"
 			Type                  = "SquidProxy"
 			Env                   = "Prod"
 			Cluster               = "Squid"
@@ -24,7 +24,7 @@ resource "aws_instance" "prod-squid01" {
 		}
 
 		volume_tags {
-			Name                  = "prod-squid01"
+			Name                  = "prod-squid01-2b"
 			Type                  = "SquidProxy"
 			Env                   = "Prod"
 			Cluster               = "Squid"
@@ -35,13 +35,13 @@ resource "aws_instance" "prod-squid01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-squid02" {
+resource "aws_instance" "prod-squid02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.large"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.apppublicsubnetb-id}"
 	vpc_security_group_ids      = ["${module.sg.production-squid-id}"]
 	associate_public_ip_address = true
@@ -50,7 +50,7 @@ resource "aws_instance" "prod-squid02" {
 		tags {
 			Env                   = "Prod"
 			Type                  = "SquidProxy"
-			Name                  = "prod-squid02"
+			Name                  = "prod-squid02-2b"
 			Cluster               = "Squid"
 		}
 
@@ -63,7 +63,7 @@ resource "aws_instance" "prod-squid02" {
 		volume_tags {
 			Env                   = "Prod"
 			Type                  = "SquidProxy"
-			Name                  = "prod-squid02"
+			Name                  = "prod-squid02-2b"
 			Cluster               = "Squid"
 		}
 }
@@ -71,3 +71,5 @@ resource "aws_instance" "prod-squid02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

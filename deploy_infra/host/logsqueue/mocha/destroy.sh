@@ -19,7 +19,7 @@ fi
 ENV=$(echo "$1" | tr '[:upper:]' '[:lower:]')
 APPNAME=$2
 MODULE_TYPE=host
-SUB_MODULE_TYPE=queue
+SUB_MODULE_TYPE=logsqueue
 TYPE=mocha
 STATE_FILE="${ENV}/cfg.${APPNAME}/$MODULE_TYPE/$SUB_MODULE_TYPE/$TYPE/terraform.tfstate"
 #BUCKET=poshmark-terraform-state
@@ -36,4 +36,4 @@ terraform init -backend=true -force-copy \
 
 #cd ../../services/$MODULE_TYPE/$SUB_MODULE_TYPE/${ENV}
 echo `pwd`
-terraform apply -var-file="../${ENV}/terraform.tfvars"
+terraform destroy -var-file="../${ENV}/terraform.tfvars" -force

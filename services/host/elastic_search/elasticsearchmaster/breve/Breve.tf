@@ -1,18 +1,18 @@
-resource "aws_instance" "breve-master03" {
+resource "aws_instance" "breve-master03-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1c-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-breve-id}"]
 	associate_public_ip_address = false
 	source_dest_check           = true
 
 		tags {
-			Name                  = "breve-master03"
+			Name                  = "breve-master03-2c"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 			Cluster               = "Breve"
@@ -26,7 +26,7 @@ resource "aws_instance" "breve-master03" {
 		}
 
 		volume_tags {
-			Name                  = "breve-master03"
+			Name                  = "breve-master03-2c"
 			Env                   = "Prod"
 			Cluster               = "Breve"
 			Type                  = "ElasticSearchMaster"
@@ -37,14 +37,14 @@ resource "aws_instance" "breve-master03" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "breve-master01" {
+resource "aws_instance" "breve-master01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-breve-id}"]
 	associate_public_ip_address = false
@@ -53,7 +53,7 @@ resource "aws_instance" "breve-master01" {
 		tags {
 			Env                   = "Prod"
 			Vpc                   = "Yes"
-			Name                  = "breve-master01"
+			Name                  = "breve-master01-2b"
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Breve"
 		}
@@ -66,7 +66,7 @@ resource "aws_instance" "breve-master01" {
 
 		volume_tags {
 			Env                   = "Prod"
-			Name                  = "breve-master01"
+			Name                  = "breve-master01-2b"
 			Type                  = "ElasticSearchMaster"
 			Cluster               = "Breve"
 		}
@@ -76,14 +76,14 @@ resource "aws_instance" "breve-master01" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "breve-master02" {
+resource "aws_instance" "breve-master02-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = false
 	instance_type               = "m3.medium"
 	iam_instance_profile        = "${var.elasticsearch}"
 	monitoring                  = false
 	key_name                    = "${var.key_name}"
-  user_data 					 				= "${file("${path.root}/userdata.sh")}"
+	user_data                   = "${file("${path.root}/userdata.sh")}"
 	subnet_id                   = "${module.subnet.searchprivatesubnet1b-id}"
 	vpc_security_group_ids      = ["${module.sg.production-search-breve-id}"]
 	associate_public_ip_address = false
@@ -92,7 +92,7 @@ resource "aws_instance" "breve-master02" {
 		tags {
 			Cluster               = "Breve"
 			Env                   = "Prod"
-			Name                  = "breve-master02"
+			Name                  = "breve-master02-2b"
 			Type                  = "ElasticSearchMaster"
 			Vpc                   = "Yes"
 		}
@@ -106,7 +106,7 @@ resource "aws_instance" "breve-master02" {
 		volume_tags {
 			Cluster               = "Breve"
 			Env                   = "Prod"
-			Name                  = "breve-master02"
+			Name                  = "breve-master02-2b"
 			Type                  = "ElasticSearchMaster"
 		}
 }
@@ -114,3 +114,5 @@ resource "aws_instance" "breve-master02" {
 ###################################################################################################
 ###################################################################################################
 ###################################################################################################
+
+

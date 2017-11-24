@@ -1,4 +1,4 @@
-resource "aws_instance" "prod-2btn-mongos01-2b" {
+resource "aws_instance" "prod-btn-mongos01-2b" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -13,7 +13,7 @@ resource "aws_instance" "prod-2btn-mongos01-2b" {
 		tags {
 			Cluster               = "Button"
 			Type                  = "MongoS"
-			Name                  = "prod-2btn-mongos01-2b"
+			Name                  = "prod-btn-mongos01-2b"
 			Env                   = "Prod"
 			Vpc                   = "Yes"
 		}
@@ -27,7 +27,7 @@ resource "aws_instance" "prod-2btn-mongos01-2b" {
 		volume_tags {
 			Cluster               = "Button"
 			Type                  = "MongoS"
-			Name                  = "prod-2btn-mongos01-2b"
+			Name                  = "prod-btn-mongos01-2b"
 			Env                   = "Prod"
 		}
 }
@@ -36,7 +36,7 @@ resource "aws_instance" "prod-2btn-mongos01-2b" {
 ###################################################################################################
 ###################################################################################################
 
-resource "aws_instance" "prod-2btn-mongos01-2c" {
+resource "aws_instance" "prod-btn-mongos01-2c" {
 	ami                         = "${var.ami}"
 	ebs_optimized               = true
 	instance_type               = "c4.large"
@@ -51,7 +51,7 @@ resource "aws_instance" "prod-2btn-mongos01-2c" {
 		tags {
 			Cluster               = "Button"
 			Type                  = "MongoS"
-			Name                  = "prod-2btn-mongos01-2c"
+			Name                  = "prod-btn-mongos01-2c"
 			Vpc                   = "Yes"
 			Env                   = "Prod"
 		}
@@ -65,7 +65,7 @@ resource "aws_instance" "prod-2btn-mongos01-2c" {
 		volume_tags {
 			Cluster               = "Button"
 			Type                  = "MongoS"
-			Name                  = "prod-2btn-mongos01-2c"
+			Name                  = "prod-btn-mongos01-2c"
 			Env                   = "Prod"
 		}
 }
