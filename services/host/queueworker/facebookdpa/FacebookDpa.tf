@@ -14,7 +14,7 @@ resource "aws_instance" "prod-fb-dpa-qw" {
 
 		tags {
 			Env                   = "${var.tag-env}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Vpc                   = "${var.tag-vpc}"
 			Cluster               = "${var.tag-cluster}"
 			Type                  = "${var.tag-type}"
@@ -28,7 +28,7 @@ resource "aws_instance" "prod-fb-dpa-qw" {
 
 		volume_tags {
 			Env                   = "${var.tag-env}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Cluster               = "${var.tag-cluster}"
 			Type                  = "${var.tag-type}"
 		}
@@ -41,4 +41,3 @@ resource "aws_instance" "prod-fb-dpa-qw" {
 output "prod-fb-dpa-qw-ids" {
 	value="${aws_instance.prod-fb-dpa-qw.*.id}"
 }
-

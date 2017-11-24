@@ -15,7 +15,7 @@ resource "aws_instance" "prod-bg-qw" {
 		tags {
 			Type                  = "${var.tag-type}"
 			Elastic               = "${var.tag-elastic}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Vpc                   = "${var.tag-vpc}"
 			Cluster               = "${var.tag-cluster}"
 			Env                   = "${var.tag-env}"
@@ -29,7 +29,7 @@ resource "aws_instance" "prod-bg-qw" {
 
 		volume_tags {
 			Type                  = "${var.tag-type}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Cluster               = "${var.tag-cluster}"
 			Env                   = "${var.tag-env}"
 		}

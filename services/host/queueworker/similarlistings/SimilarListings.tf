@@ -13,7 +13,7 @@ resource "aws_instance" "prod-sl-qw" {
 	source_dest_check           = "${var.source_dest_check}"
 
 		tags {
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Env                   = "${var.tag-env}"
 			Type                  = "${var.tag-type}"
 			Cluster               = "${var.tag-cluster}"
@@ -27,7 +27,7 @@ resource "aws_instance" "prod-sl-qw" {
 		}
 
 		volume_tags {
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Env                   = "${var.tag-env}"
 			Type                  = "${var.tag-type}"
 			Cluster               = "${var.tag-cluster}"
@@ -41,4 +41,3 @@ resource "aws_instance" "prod-sl-qw" {
 output "prod-sl-qw-ids" {
 	value="${aws_instance.prod-sl-qw.*.id}"
 }
-

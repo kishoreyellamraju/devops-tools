@@ -17,7 +17,7 @@ resource "aws_instance" "prod-oi-qw" {
 			Cluster               = "${var.tag-cluster}"
 			Env                   = "${var.tag-env}"
 			Vpc                   = "${var.tag-vpc}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 		}
 
 		root_block_device {
@@ -30,7 +30,7 @@ resource "aws_instance" "prod-oi-qw" {
 			Type                  = "${var.tag-type}"
 			Cluster               = "${var.tag-cluster}"
 			Env                   = "${var.tag-env}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 		}
 }
 
@@ -41,4 +41,3 @@ resource "aws_instance" "prod-oi-qw" {
 output "prod-oi-qw-ids" {
 	value="${aws_instance.prod-oi-qw.*.id}"
 }
-

@@ -15,7 +15,7 @@ resource "aws_instance" "prod-smr-qw" {
 		tags {
 			Env                   = "${var.tag-env}"
 			Cluster               = "${var.tag-cluster}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Vpc                   = "${var.tag-vpc}"
 			Type                  = "${var.tag-type}"
 		}
@@ -29,7 +29,7 @@ resource "aws_instance" "prod-smr-qw" {
 		volume_tags {
 			Env                   = "${var.tag-env}"
 			Cluster               = "${var.tag-cluster}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Type                  = "${var.tag-type}"
 		}
 }

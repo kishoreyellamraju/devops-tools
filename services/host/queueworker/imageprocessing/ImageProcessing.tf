@@ -17,7 +17,7 @@ resource "aws_instance" "prod-ip-qw" {
 			Vpc                   = "${var.tag-vpc}"
 			Env                   = "${var.tag-env}"
 			Type                  = "${var.tag-type}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Cluster               = "${var.tag-cluster}"
 		}
 
@@ -30,7 +30,7 @@ resource "aws_instance" "prod-ip-qw" {
 		volume_tags {
 			Env                   = "${var.tag-env}"
 			Type                  = "${var.tag-type}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Cluster               = "${var.tag-cluster}"
 		}
 }

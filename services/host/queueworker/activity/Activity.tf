@@ -17,7 +17,7 @@ resource "aws_instance" "prod-act-qw" {
 			Type                  = "${var.tag-type}"
 			Elastic               = "${var.tag-elastic}"
 			Env                   = "${var.tag-env}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Vpc                   = "${var.tag-vpc}"
 		}
 
@@ -31,7 +31,7 @@ resource "aws_instance" "prod-act-qw" {
 			Cluster               = "${var.tag-cluster}"
 			Type                  = "${var.tag-type}"
 			Env                   = "${var.tag-env}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 		}
 }
 

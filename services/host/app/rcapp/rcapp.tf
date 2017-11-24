@@ -17,7 +17,7 @@ resource "aws_instance" "ut-app" {
 			Env                   = "${var.env}"
 			Cluster               = "${var.tag-cluster}"
 			Vpc                   = "${var.tag-vpc}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 		}
 
 		root_block_device {
@@ -29,7 +29,7 @@ resource "aws_instance" "ut-app" {
 			Cluster               = "${var.tag-cluster}"
 			Type                  = "${var.tag-type}"
 			Env                   = "${var.env}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 		}
 }
 

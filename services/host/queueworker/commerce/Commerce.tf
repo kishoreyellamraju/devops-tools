@@ -16,7 +16,7 @@ resource "aws_instance" "prod-co-qw" {
 			Env                   = "${var.tag-env}"
 			Elastic               = "${var.tag-elastic}"
 			Type                  = "${var.tag-type}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Vpc                   = "${var.tag-vpc}"
 			Cluster               = "${var.tag-cluster}"
 		}
@@ -30,7 +30,7 @@ resource "aws_instance" "prod-co-qw" {
 		volume_tags {
 			Env                   = "${var.tag-env}"
 			Type                  = "${var.tag-type}"
-			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
+			Name                  = "${var.tag-name}${count.index +1}-${element(var.az, count.index)}"
 			Cluster               = "${var.tag-cluster}"
 		}
 }
@@ -42,4 +42,3 @@ resource "aws_instance" "prod-co-qw" {
 output "prod-co-qw-ids" {
 	value="${aws_instance.prod-co-qw.*.id}"
 }
-
