@@ -167,7 +167,7 @@ resource "aws_alb" "vpc-et-poshmark" {
  * Target group and EC2 association
 */
 resource "aws_lb_target_group_attachment" "et-app-instance" {
-    count            = "${var.etapp_count}"
+  count            = "${var.etapp_count}"
   target_group_arn = "${aws_alb_target_group.et-app.arn}"
   target_id        = "${element(list(module.app.prod-et-app-ids), count.index)}"
   port             = 9292
