@@ -1,5 +1,7 @@
 variable "region"                            {}
 variable "env"					                     {}
+variable "appname"			                     {}
+variable "iam_instance_profile"			         {}
 variable "count"                             {}
 variable "ami"                               {}
 variable "ebs_optimized"                     {}

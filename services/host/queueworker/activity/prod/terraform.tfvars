@@ -1,5 +1,7 @@
 region                             = "us-west-2"
 env                                =	"prod"
+appname                            =	"poshmark"
+iam_instance_profile               =	""
 count                              = "45"
 ami                                = "test_ami"
 ebs_optimized                      = "true"
