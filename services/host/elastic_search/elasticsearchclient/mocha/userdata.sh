@@ -16,10 +16,10 @@ REGION="`wget -qO- http://instance-data/latest/meta-data/placement/availability-
 TAG_NAME_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --region $REGION --output=text | cut -f5`"
 TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_TYPE" --region $REGION --output=text | cut -f5`"
 #########################################################################
-if [[ $TAG_NAME_VALUE =~ mocha-client[0][1-4]-b ]]; then
+if [[ $TAG_NAME_VALUE =~ mocha-client[0][1-4]-2b ]]; then
   sudo puppet apply --certname=mocha-b-client --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #########################################################################
-if [[ $TAG_NAME_VALUE =~ mocha-client[0][1-4]-c ]]; then
+if [[ $TAG_NAME_VALUE =~ mocha-client[0][1-4]-2c ]]; then
   sudo puppet apply --certname=mocha-c-client --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi

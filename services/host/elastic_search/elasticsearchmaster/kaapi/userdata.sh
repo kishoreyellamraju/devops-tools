@@ -16,10 +16,10 @@ REGION="`wget -qO- http://instance-data/latest/meta-data/placement/availability-
 TAG_NAME_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --region $REGION --output=text | cut -f5`"
 TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_TYPE" --region $REGION --output=text | cut -f5`"
 #######################################################################
-if [[ $TAG_NAME_VALUE =~ kaapi-master[0][1-2]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ kaapi-master[0][1-2]-2[b-c]$ ]]; then
    sudo puppet apply --certname=kaapi-b-master --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #########################################################################
-if [[ $TAG_NAME_VALUE =~ kaapi-master[0][3]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ kaapi-master[0][3]-2[b-c]$ ]]; then
   sudo puppet apply --certname=kaapi-c-master --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi

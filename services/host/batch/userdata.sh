@@ -24,22 +24,22 @@ TAG_NAME_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTA
 TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_TYPE" --region $REGION --output=text | cut -f5`"
 
 #####################################################################################
-if [[ $TAG_NAME_VALUE =~ prod-batch01 ]]; then
+if [[ $TAG_NAME_VALUE =~ prod-batch01-2[b-c]$ ]]; then
   sudo puppet apply --certname=batch1.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
-if [[ $TAG_NAME_VALUE =~ prod-co-batch01 ]]; then
+if [[ $TAG_NAME_VALUE =~ prod-co-batch01-2[b-c]$ ]]; then
    sudo puppet apply --certname=batch2.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
-if [[ $TAG_NAME_VALUE =~ prod-co-batch03 ]]; then
+if [[ $TAG_NAME_VALUE =~ prod-co-batch03-2[b-c]$ ]]; then
   sudo puppet apply --certname=batch-redemptions.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
-if [[ $TAG_NAME_VALUE =~ sidekiq-batch[0][1-2]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ sidekiq-batch[0][1-2]-2[b-c]$ ]]; then
   sudo puppet apply --certname=sidekiq-batch.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 #######################################################################################
-if [[ $TAG_NAME_VALUE =~ prod-co-batch02 ]]; then
+if [[ $TAG_NAME_VALUE =~ prod-co-batch02-2[b-c]$ ]]; then
   sudo puppet apply --certname=sidekiq-batch-commerce.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi

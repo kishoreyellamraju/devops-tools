@@ -16,19 +16,19 @@ REGION="`wget -qO- http://instance-data/latest/meta-data/placement/availability-
 TAG_NAME_VALUE="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_NAME" --region $REGION --output=text | cut -f5`"
 TAG_TYPE_VALUE ="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=$TAG_TYPE" --region $REGION --output=text | cut -f5`"
 ######################################Shard: A##################################
-if [[ $TAG_NAME_VALUE =~ stibbons-a[0-9]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ stibbons-a[0-9]-2[b-c]$ ]]; then
    sudo puppet apply --certname=stibbons-a.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################Shard: B##################################
-if [[ $TAG_NAME_VALUE =~ stibbons-b[0-9]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ stibbons-b[0-9]-2[b-c]$ ]]; then
    sudo puppet apply --certname=stibbons-b.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################Shard: C##################################
-if [[ $TAG_NAME_VALUE =~ stibbons-c[0-9]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ stibbons-c[0-9]-2[b-c]$ ]]; then
    sudo puppet apply --certname=stibbons-c.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################Shard: D##################################
-if [[ $TAG_NAME_VALUE =~ stibbons-d[0-9]$ ]]; then
+if [[ $TAG_NAME_VALUE =~ stibbons-d[0-9]-2[b-c]$ ]]; then
    sudo puppet apply --certname=stibbons-d.poshmark.com --modulepath=/goshposh/sysops/aws/puppet/modules /goshposh/sysops/aws/puppet/manifests/nodes.pp
 fi
 ######################################Shard: E##################################
