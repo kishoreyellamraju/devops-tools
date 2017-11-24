@@ -7,7 +7,7 @@ resource "aws_instance" "prod-ui-qw" {
 	monitoring                  = "${var.monitoring}"
 	key_name                    = "${var.key_name}"
 	user_data                   = "${file("${path.root}/userdata.sh")}"
-	subnet_id                   = "${element(list(module.subnet.apppublicsubnetc-id,module.subnet.apppublicsubnetb-id), count.index)}"
+	subnet_id                   = "${element(list(module.subnet.apppublicsubnetb-id,module.subnet.apppublicsubnetc-id), count.index)}"
 	vpc_security_group_ids      = ["${module.sg.production-qw-id}"]
 	associate_public_ip_address = "${var.associate_public_ip_address}"
 	source_dest_check           = "${var.source_dest_check}"
@@ -41,4 +41,3 @@ resource "aws_instance" "prod-ui-qw" {
 output "prod-ui-qw-ids" {
 	value="${aws_instance.prod-ui-qw.*.id}"
 }
-
