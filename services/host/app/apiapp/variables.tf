@@ -18,3 +18,4 @@ variable "tag-cluster"                 {}
 variable "tag-vpc"                     {}
 variable "tag-name"                    {}
 variable "instance_type"               {}
+variable "az"                          { type="list" }

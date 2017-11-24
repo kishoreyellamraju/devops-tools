@@ -17,13 +17,20 @@ resource "aws_instance" "prod-web-app" {
 			Env                   = "${var.env}"
 			Cluster               = "${var.tag-cluster}"
 			Vpc                   = "${var.tag-vpc}"
-			Name                  = "${var.tag-name}-${count.index}"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
 		}
 
 		root_block_device {
 			volume_type           = "${var.root-volume_type}"
 			volume_size           = "${var.root-volume_size}"
 			delete_on_termination = "${var.root-volume-delete_on_termination}"
+		}
+
+		volume_tags {
+			Cluster               = "${var.tag-cluster}"
+			Type                  = "${var.tag-type}"
+			Env                   = "${var.env}"
+			Name                  = "${var.tag-name}${count.index}-${element(var.az, count.index)}"
 		}
 }
 

@@ -20,3 +20,4 @@ variable "tag-vpc"                     {}
 variable "tag-name"                    {}
 variable "security_group"              {}
 variable "instance_type"               {}
+variable "az"                          { type="list" }

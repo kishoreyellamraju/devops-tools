@@ -19,5 +19,5 @@ variable "tag-cluster"                 {}
 variable "tag-vpc"                     {}
 variable "tag-name"                    {}
 variable "security_group"              {}
-
+variable "az"                          { type="list" }
 variable "instance_type"               {}

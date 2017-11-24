@@ -4,6 +4,7 @@ appname                     =	"poshmark"
 bu                          =	"it"
 ami                         = "test_ami"
 key_name							      = "common_key_name"
+az                          = ["2b", "2c"]
 ###########################################################
 count                       ="40"
 instance_type						    = "c4.2xlarge"
