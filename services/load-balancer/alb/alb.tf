@@ -238,8 +238,9 @@ resource "aws_alb_target_group" "mapp-app" {
 resource "aws_lb_target_group_attachment" "mapp-app-instance" {
   count            = "${var.mapapp_count}"
   target_group_arn = "${aws_alb_target_group.mapp-app.arn}"
-  target_id        = "${element(list(module.app.prod-mapp-app-ids), count.index)}"
+  target_id        = "${element(list(module.app.prod-map-app-ids), count.index)}"
   port             = 9292
+
 }
 
 
